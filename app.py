@@ -37,14 +37,14 @@ if 'trade_history' not in st.session_state:
     st.session_state.trade_history = []
 
 # ==========================================
-# LIVE DATA ENGINE (TVDatafeed - NG1!)
+# LIVE DATA ENGINE (TVDatafeed - NATGASUSD)
 # ==========================================
 @st.cache_data(ttl=25)
 def fetch_live_data():
     try:
         tv = TvDatafeed()
-        # Fetch NYMEX NG1! 1-minute chart data
-        df = tv.get_hist(symbol='NG1!', exchange='NYMEX', interval=Interval.in_1_minute, n_bars=30)
+        # Fetch OANDA NATGASUSD 1-minute chart data (Zero-delay CFD)
+        df = tv.get_hist(symbol='NATGASUSD', exchange='OANDA', interval=Interval.in_1_minute, n_bars=30)
         
         if df is None or df.empty:
             raise Exception("No data received from TradingView")
@@ -145,7 +145,7 @@ st.sidebar.metric("Liquid Cash Pool", f"${st.session_state.account_balance:,.2f}
 max_safe_capital = st.session_state.account_balance * (max_allocation_pct / 100.0)
 st.sidebar.info(f"🚨 **Max Allocation Limit:** ${max_safe_capital:,.2f} USD")
 st.sidebar.markdown("---")
-st.sidebar.caption("📡 **Data Feed:** Live NYMEX NG1! via TradingView (Auto-refreshes every 30s)")
+st.sidebar.caption("📡 **Data Feed:** Live OANDA NATGASUSD via TradingView (Auto-refreshes every 30s)")
 
 # ==========================================
 # MAIN INTERFACE TABS
@@ -158,9 +158,9 @@ with tab_main:
     col_dash_left, col_dash_right = st.columns([2, 1])
 
     with col_dash_left:
-        st.subheader("📈 Live NYMEX NG1! Price Action")
+        st.subheader("📈 Live OANDA NATGASUSD Price Action")
         fig = go.Figure()
-        fig.add_trace(go.Scatter(x=df_tape['Timestamp'], y=df_tape['Price'], name='NG1! Price', line=dict(color='#00d2ff', width=3)))
+        fig.add_trace(go.Scatter(x=df_tape['Timestamp'], y=df_tape['Price'], name='NATGASUSD Price', line=dict(color='#00d2ff', width=3)))
         fig.add_trace(go.Scatter(x=df_tape['Timestamp'], y=df_tape['EMA9'], name='9 EMA (Momentum)', line=dict(color='#ff9f43', width=1.5, dash='dash')))
         fig.add_trace(go.Scatter(x=df_tape['Timestamp'], y=df_tape['EMA34'], name='34 EMA (Institutional)', line=dict(color='#ee5253', width=1.5)))
         
