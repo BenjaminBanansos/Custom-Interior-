@@ -3,5 +3,6 @@ pandas
 numpy
 plotly
 openpyxl
-yfinance
+setuptools
+git+https://github.com/rongardF/tvdatafeed.git
 streamlit-autorefresh

@@ -3,8 +3,13 @@ import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
 from datetime import datetime, timedelta
-import yfinance as yf
+from tvDatafeed import TvDatafeed, Interval
 from streamlit_autorefresh import st_autorefresh
+import logging
+import os
+
+# Suppress tvdatafeed warnings
+logging.getLogger('tvDatafeed').setLevel(logging.ERROR)
 
 # ==========================================
 # PAGE CONFIGURATION
@@ -33,54 +38,56 @@ if 'trade_history' not in st.session_state:
     st.session_state.trade_history = []
 
 # ==========================================
-# LIVE DATA ENGINE (yfinance - UNG ETF)
+# LIVE DATA ENGINE (TVDatafeed - NATGASUSD)
 # ==========================================
 @st.cache_data(ttl=25)
 def fetch_live_data():
     try:
-        # Fetch UNG ETF 1-minute chart data via Yahoo Finance
-        ticker = yf.Ticker("UNG")
-        df = ticker.history(period="1d", interval="1m")
+        # Check for TradingView Credentials in Render Environment Variables
+        tv_username = os.environ.get('TV_USERNAME')
+        tv_password = os.environ.get('TV_PASSWORD')
+        
+        if tv_username and tv_password:
+            tv = TvDatafeed(username=tv_username, password=tv_password)
+        else:
+            tv = TvDatafeed()
+            
+        # Fetch OANDA NATGASUSD 1-minute chart data (Zero-delay CFD)
+        df = tv.get_hist(symbol='NATGASUSD', exchange='OANDA', interval=Interval.in_1_minute, n_bars=30)
         
         if df is None or df.empty:
-            raise Exception("No data received from Yahoo Finance")
+            raise Exception("No data received from TradingView")
             
-        df = df.tail(30).reset_index()
-        # yfinance columns: Datetime, Open, High, Low, Close, Volume
-        df.rename(columns={'Datetime': 'Timestamp', 'Close': 'Price'}, inplace=True)
+        df = df.reset_index()
+        df.rename(columns={'datetime': 'Timestamp', 'close': 'Price', 'volume': 'Volume'}, inplace=True)
         
         # Synthetic Delta Calculation:
         deltas = []
         for i, row in df.iterrows():
-            candle_range = row['High'] - row['Low']
+            candle_range = row['high'] - row['low']
             if candle_range == 0:
                 deltas.append(0)
             else:
-                # Percentage of range where close happened (-1 to +1)
-                close_pct = ((row['Price'] - row['Low']) / candle_range) * 2 - 1
-                # Delta is the volume scaled by the close percentage
+                close_pct = ((row['Price'] - row['low']) / candle_range) * 2 - 1
                 synthetic_delta = int(row['Volume'] * close_pct)
                 deltas.append(synthetic_delta)
                 
         df['Delta'] = deltas
-        # CVD is cumulative sum of Deltas, starting at an arbitrary base
         df['CVD'] = np.cumsum(df['Delta']) - 300
         
-        # Calculate EMAs
         df['EMA9'] = df['Price'].ewm(span=9, adjust=False).mean()
         df['EMA34'] = df['Price'].ewm(span=34, adjust=False).mean()
         
         return df
     except Exception as e:
-        st.error(f"Live Data Connection Error: {e}")
+        # Render Fallback to Mock Data if Anti-Bot Triggers
+        st.error(f"Live Data Connection Error (Anti-Bot Blocked): {e}")
         timestamps = pd.date_range(end=datetime.now(), periods=20, freq='1min')
         prices = [3.350] * 20
         df = pd.DataFrame({'Timestamp': timestamps, 'Price': prices, 'Volume': [100]*20, 'Delta': [0]*20, 'CVD': [0]*20})
         df['EMA9'] = df['Price']
         df['EMA34'] = df['Price']
-        # add dummy High/Low for structure
-        df['High'] = df['Price']
-        df['Low'] = df['Price']
+        df['low'] = df['Price']
         return df
 
 df_tape = fetch_live_data()
@@ -142,7 +149,7 @@ st.sidebar.metric("Liquid Cash Pool", f"${st.session_state.account_balance:,.2f}
 max_safe_capital = st.session_state.account_balance * (max_allocation_pct / 100.0)
 st.sidebar.info(f"🚨 **Max Allocation Limit:** ${max_safe_capital:,.2f} USD")
 st.sidebar.markdown("---")
-st.sidebar.caption("📡 **Data Feed:** Live Yahoo Finance (UNG ETF) (Auto-refreshes every 30s)")
+st.sidebar.caption("📡 **Data Feed:** Live OANDA NATGASUSD via TradingView (Auto-refreshes every 30s)")
 
 # ==========================================
 # MAIN INTERFACE TABS
@@ -155,9 +162,9 @@ with tab_main:
     col_dash_left, col_dash_right = st.columns([2, 1])
 
     with col_dash_left:
-        st.subheader("📈 Live UNG ETF Price Action")
+        st.subheader("📈 Live OANDA NATGASUSD Price Action")
         fig = go.Figure()
-        fig.add_trace(go.Scatter(x=df_tape['Timestamp'], y=df_tape['Price'], name='UNG Price', line=dict(color='#00d2ff', width=3)))
+        fig.add_trace(go.Scatter(x=df_tape['Timestamp'], y=df_tape['Price'], name='NATGASUSD Price', line=dict(color='#00d2ff', width=3)))
         fig.add_trace(go.Scatter(x=df_tape['Timestamp'], y=df_tape['EMA9'], name='9 EMA (Momentum)', line=dict(color='#ff9f43', width=1.5, dash='dash')))
         fig.add_trace(go.Scatter(x=df_tape['Timestamp'], y=df_tape['EMA34'], name='34 EMA (Institutional)', line=dict(color='#ee5253', width=1.5)))
         
@@ -174,7 +181,7 @@ with tab_main:
         vwap_bias = "BELOW" if current_row['Price'] < df_tape['Price'].mean() else "ABOVE"
         structure_bias = "BEARISH" if current_row['EMA9'] < current_row['EMA34'] else "BULLISH"
         cvd_flow = "BUYING" if current_row['Delta'] > 0 else "SELLING"
-        inst_level_hit = "YES" if (current_row['Price'] <= current_row['Low'] * 1.01) else "NONE"
+        inst_level_hit = "YES" if (current_row['Price'] <= current_row['low'] * 1.01) else "NONE"
         
         short_score = 3
         long_score = 2
@@ -194,7 +201,7 @@ with tab_main:
         | **Institutional Liquidity Sweep** | **{inst_level_hit}** |
         | **Short Strategy Score** | `{short_score} / 7` |
         | **Long Strategy Score** | `{long_score} / 7` |
-        | **Active Action Engine** | `LIVE \| FETCHING YAHOO` |
+        | **Active Action Engine** | `LIVE \| FETCHING TRADINGVIEW` |
         """)
 
     st.markdown("---")
