@@ -1,0 +1,20 @@
+{
+  "catalogGridCols": 3,
+  "catalogImageRatio": "portrait",
+  "productImageSize": 400,
+  "containerWidth": "1200px",
+  "colors": {
+    "primary": "#006d8f",
+    "background": "#ffffff",
+    "text": "#006d8f"
+  },
+  "typography": {
+    "heading": "Outfit, sans-serif",
+    "body": "Inter, sans-serif"
+  },
+  "sectionOrder": [
+    "hero",
+    "catalog"
+  ],
+  "productOrder": []
+}

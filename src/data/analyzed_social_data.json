@@ -1,0 +1,3002 @@
+[
+  {
+    "id": "dummy_0",
+    "party": "CPIM",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with CPIM.",
+    "author": "User 950",
+    "timestamp": "2026-04-27T18:08:44.038Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Conflict",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_1",
+    "party": "BJP",
+    "text": "This is a sample comment about campaign and mobilisation representing the views of someone engaging with BJP.",
+    "author": "User 951",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Campaign and Mobilisation",
+    "frame": "Morality",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_2",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 620",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Development",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_3",
+    "party": "INC",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with INC.",
+    "author": "User 524",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Issue-Based",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_4",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 523",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Issue-Based",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_5",
+    "party": "INC",
+    "text": "This is a sample comment about leadership representing the views of someone engaging with INC.",
+    "author": "User 674",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Leadership",
+    "frame": "Issue-Based",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_6",
+    "party": "CPIM",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with CPIM.",
+    "author": "User 779",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Identity",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_7",
+    "party": "BJP",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with BJP.",
+    "author": "User 364",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Identity",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_8",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 271",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Morality",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_9",
+    "party": "INC",
+    "text": "This is a sample comment about leadership representing the views of someone engaging with INC.",
+    "author": "User 517",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Leadership",
+    "frame": "Human Interest",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_10",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 902",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Development",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_11",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 460",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Development",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_12",
+    "party": "INC",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with INC.",
+    "author": "User 317",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Development",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_13",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 578",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Morality",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_14",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 361",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Issue-Based",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_15",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 318",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Development",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_16",
+    "party": "INC",
+    "text": "This is a sample comment about leadership representing the views of someone engaging with INC.",
+    "author": "User 613",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Leadership",
+    "frame": "Human Interest",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_17",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 243",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Development",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_18",
+    "party": "CPIM",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with CPIM.",
+    "author": "User 513",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Identity",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_19",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 550",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Issue-Based",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_20",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 463",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Human Interest",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_21",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 383",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Conflict",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_22",
+    "party": "INC",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with INC.",
+    "author": "User 1",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Human Interest",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_23",
+    "party": "CPIM",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with CPIM.",
+    "author": "User 852",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Human Interest",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_24",
+    "party": "INC",
+    "text": "This is a sample comment about leadership representing the views of someone engaging with INC.",
+    "author": "User 266",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Leadership",
+    "frame": "Development",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_25",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 187",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Identity",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_26",
+    "party": "CPIM",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with CPIM.",
+    "author": "User 132",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Issue-Based",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_27",
+    "party": "BJP",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with BJP.",
+    "author": "User 399",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Development",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_28",
+    "party": "INC",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with INC.",
+    "author": "User 263",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Issue-Based",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_29",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 424",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Conflict",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_30",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 199",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Development",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_31",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 916",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Development",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_32",
+    "party": "CPIM",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with CPIM.",
+    "author": "User 319",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Development",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_33",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 779",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Human Interest",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_34",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 298",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Human Interest",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_35",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 608",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Issue-Based",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_36",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 31",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Identity",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_37",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 43",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Identity",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_38",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 555",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Conflict",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_39",
+    "party": "INC",
+    "text": "This is a sample comment about campaign and mobilisation representing the views of someone engaging with INC.",
+    "author": "User 231",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Campaign and Mobilisation",
+    "frame": "Identity",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_40",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 258",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Human Interest",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_41",
+    "party": "BJP",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with BJP.",
+    "author": "User 454",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Morality",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_42",
+    "party": "CPIM",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with CPIM.",
+    "author": "User 954",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Human Interest",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_43",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 866",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Issue-Based",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_44",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 746",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Identity",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_45",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 18",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Development",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_46",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 794",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Morality",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_47",
+    "party": "INC",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with INC.",
+    "author": "User 98",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Conflict",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_48",
+    "party": "BJP",
+    "text": "This is a sample comment about leadership representing the views of someone engaging with BJP.",
+    "author": "User 11",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Leadership",
+    "frame": "Human Interest",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_49",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 939",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Identity",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_50",
+    "party": "BJP",
+    "text": "This is a sample comment about leadership representing the views of someone engaging with BJP.",
+    "author": "User 903",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Leadership",
+    "frame": "Identity",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_51",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 804",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Morality",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_52",
+    "party": "CPIM",
+    "text": "This is a sample comment about leadership representing the views of someone engaging with CPIM.",
+    "author": "User 253",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Leadership",
+    "frame": "Human Interest",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_53",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 435",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Morality",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_54",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 693",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Human Interest",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_55",
+    "party": "CPIM",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with CPIM.",
+    "author": "User 138",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Identity",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_56",
+    "party": "INC",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with INC.",
+    "author": "User 865",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Conflict",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_57",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 118",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Morality",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_58",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 329",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Issue-Based",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_59",
+    "party": "CPIM",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with CPIM.",
+    "author": "User 918",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Development",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_60",
+    "party": "INC",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with INC.",
+    "author": "User 788",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Human Interest",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_61",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 326",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Issue-Based",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_62",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 321",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Identity",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_63",
+    "party": "BJP",
+    "text": "This is a sample comment about leadership representing the views of someone engaging with BJP.",
+    "author": "User 262",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Leadership",
+    "frame": "Conflict",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_64",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 449",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Morality",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_65",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 768",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Development",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_66",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 411",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Human Interest",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_67",
+    "party": "CPIM",
+    "text": "This is a sample comment about leadership representing the views of someone engaging with CPIM.",
+    "author": "User 329",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Leadership",
+    "frame": "Development",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_68",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 898",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Conflict",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_69",
+    "party": "INC",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with INC.",
+    "author": "User 619",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Conflict",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_70",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 48",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Morality",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_71",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 470",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Human Interest",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_72",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 194",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Issue-Based",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_73",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 349",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Morality",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_74",
+    "party": "INC",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with INC.",
+    "author": "User 345",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Conflict",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_75",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 25",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Conflict",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_76",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 680",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Human Interest",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_77",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 225",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Issue-Based",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_78",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 756",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Human Interest",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_79",
+    "party": "CPIM",
+    "text": "This is a sample comment about campaign and mobilisation representing the views of someone engaging with CPIM.",
+    "author": "User 374",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Campaign and Mobilisation",
+    "frame": "Identity",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_80",
+    "party": "INC",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with INC.",
+    "author": "User 441",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Morality",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_81",
+    "party": "INC",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with INC.",
+    "author": "User 348",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Development",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_82",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 947",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Development",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_83",
+    "party": "BJP",
+    "text": "This is a sample comment about campaign and mobilisation representing the views of someone engaging with BJP.",
+    "author": "User 137",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Campaign and Mobilisation",
+    "frame": "Development",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_84",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 432",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Conflict",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_85",
+    "party": "BJP",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with BJP.",
+    "author": "User 272",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Issue-Based",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_86",
+    "party": "CPIM",
+    "text": "This is a sample comment about campaign and mobilisation representing the views of someone engaging with CPIM.",
+    "author": "User 977",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Campaign and Mobilisation",
+    "frame": "Morality",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_87",
+    "party": "CPIM",
+    "text": "This is a sample comment about leadership representing the views of someone engaging with CPIM.",
+    "author": "User 232",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Leadership",
+    "frame": "Conflict",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_88",
+    "party": "CPIM",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with CPIM.",
+    "author": "User 188",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Morality",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_89",
+    "party": "BJP",
+    "text": "This is a sample comment about leadership representing the views of someone engaging with BJP.",
+    "author": "User 657",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Leadership",
+    "frame": "Identity",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_90",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 265",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Morality",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_91",
+    "party": "INC",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with INC.",
+    "author": "User 840",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Human Interest",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_92",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 34",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Conflict",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_93",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 36",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Issue-Based",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_94",
+    "party": "INC",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with INC.",
+    "author": "User 308",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Morality",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_95",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 135",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Morality",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_96",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 519",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Morality",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_97",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 414",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Development",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_98",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 724",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Conflict",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_99",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 196",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Development",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_100",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 638",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Morality",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_101",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 860",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Human Interest",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_102",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 102",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Conflict",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_103",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 536",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Conflict",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_104",
+    "party": "INC",
+    "text": "This is a sample comment about leadership representing the views of someone engaging with INC.",
+    "author": "User 597",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Leadership",
+    "frame": "Conflict",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_105",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 100",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Human Interest",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_106",
+    "party": "CPIM",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with CPIM.",
+    "author": "User 238",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Issue-Based",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_107",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 48",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Human Interest",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_108",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 881",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Issue-Based",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_109",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 708",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Human Interest",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_110",
+    "party": "INC",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with INC.",
+    "author": "User 89",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Morality",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_111",
+    "party": "BJP",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with BJP.",
+    "author": "User 764",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Development",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_112",
+    "party": "INC",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with INC.",
+    "author": "User 487",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Morality",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_113",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 693",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Issue-Based",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_114",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 380",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Issue-Based",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_115",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 466",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Conflict",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_116",
+    "party": "CPIM",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with CPIM.",
+    "author": "User 230",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Morality",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_117",
+    "party": "CPIM",
+    "text": "This is a sample comment about leadership representing the views of someone engaging with CPIM.",
+    "author": "User 466",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Leadership",
+    "frame": "Identity",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_118",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 648",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Human Interest",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_119",
+    "party": "CPIM",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with CPIM.",
+    "author": "User 83",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Development",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_120",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 573",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Morality",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_121",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 774",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Human Interest",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_122",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 692",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Identity",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_123",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 282",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Human Interest",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_124",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 163",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Human Interest",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_125",
+    "party": "CPIM",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with CPIM.",
+    "author": "User 702",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Human Interest",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_126",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 134",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Conflict",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_127",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 252",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Issue-Based",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_128",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 311",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Morality",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_129",
+    "party": "BJP",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with BJP.",
+    "author": "User 608",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Morality",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_130",
+    "party": "CPIM",
+    "text": "This is a sample comment about campaign and mobilisation representing the views of someone engaging with CPIM.",
+    "author": "User 909",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Campaign and Mobilisation",
+    "frame": "Development",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_131",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 994",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Issue-Based",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_132",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 573",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Human Interest",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_133",
+    "party": "BJP",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with BJP.",
+    "author": "User 252",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Human Interest",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_134",
+    "party": "BJP",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with BJP.",
+    "author": "User 832",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Development",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_135",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 88",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Issue-Based",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_136",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 333",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Identity",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_137",
+    "party": "BJP",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with BJP.",
+    "author": "User 930",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Issue-Based",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_138",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 20",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Development",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_139",
+    "party": "BJP",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with BJP.",
+    "author": "User 745",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Conflict",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_140",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 32",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Human Interest",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_141",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 311",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Development",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_142",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 650",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Identity",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_143",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 429",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Issue-Based",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_144",
+    "party": "INC",
+    "text": "This is a sample comment about leadership representing the views of someone engaging with INC.",
+    "author": "User 823",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Leadership",
+    "frame": "Morality",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_145",
+    "party": "INC",
+    "text": "This is a sample comment about leadership representing the views of someone engaging with INC.",
+    "author": "User 194",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Leadership",
+    "frame": "Morality",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_146",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 712",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Morality",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_147",
+    "party": "BJP",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with BJP.",
+    "author": "User 389",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Human Interest",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_148",
+    "party": "BJP",
+    "text": "This is a sample comment about campaign and mobilisation representing the views of someone engaging with BJP.",
+    "author": "User 898",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Campaign and Mobilisation",
+    "frame": "Issue-Based",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_149",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 501",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Issue-Based",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_150",
+    "party": "BJP",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with BJP.",
+    "author": "User 826",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Development",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_151",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 635",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Conflict",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_152",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 130",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Identity",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_153",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 86",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Identity",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_154",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 624",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Identity",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_155",
+    "party": "CPIM",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with CPIM.",
+    "author": "User 986",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Conflict",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_156",
+    "party": "BJP",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with BJP.",
+    "author": "User 205",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Conflict",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_157",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 388",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Identity",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_158",
+    "party": "INC",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with INC.",
+    "author": "User 869",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Identity",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_159",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 914",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Conflict",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_160",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 277",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Human Interest",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_161",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 275",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Development",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_162",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 774",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Human Interest",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_163",
+    "party": "INC",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with INC.",
+    "author": "User 611",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Identity",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_164",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 540",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Conflict",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_165",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 731",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Morality",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_166",
+    "party": "BJP",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with BJP.",
+    "author": "User 349",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Issue-Based",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_167",
+    "party": "BJP",
+    "text": "This is a sample comment about leadership representing the views of someone engaging with BJP.",
+    "author": "User 721",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Leadership",
+    "frame": "Human Interest",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_168",
+    "party": "CPIM",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with CPIM.",
+    "author": "User 562",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Issue-Based",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_169",
+    "party": "CPIM",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with CPIM.",
+    "author": "User 832",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Conflict",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_170",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 506",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Identity",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_171",
+    "party": "BJP",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with BJP.",
+    "author": "User 274",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Identity",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_172",
+    "party": "BJP",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with BJP.",
+    "author": "User 746",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Development",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_173",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 890",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Morality",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_174",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 53",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Issue-Based",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_175",
+    "party": "INC",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with INC.",
+    "author": "User 110",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Issue-Based",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_176",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 352",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Morality",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_177",
+    "party": "INC",
+    "text": "This is a sample comment about campaign and mobilisation representing the views of someone engaging with INC.",
+    "author": "User 425",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Campaign and Mobilisation",
+    "frame": "Issue-Based",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_178",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 856",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Human Interest",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_179",
+    "party": "BJP",
+    "text": "This is a sample comment about campaign and mobilisation representing the views of someone engaging with BJP.",
+    "author": "User 328",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Campaign and Mobilisation",
+    "frame": "Identity",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_180",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 42",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Human Interest",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_181",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 585",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Development",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_182",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 334",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Morality",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_183",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 784",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Development",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_184",
+    "party": "CPIM",
+    "text": "This is a sample comment about campaign and mobilisation representing the views of someone engaging with CPIM.",
+    "author": "User 397",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Campaign and Mobilisation",
+    "frame": "Development",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_185",
+    "party": "BJP",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with BJP.",
+    "author": "User 760",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Development",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_186",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 842",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Conflict",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_187",
+    "party": "BJP",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with BJP.",
+    "author": "User 148",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Conflict",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_188",
+    "party": "BJP",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with BJP.",
+    "author": "User 406",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Human Interest",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_189",
+    "party": "INC",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with INC.",
+    "author": "User 91",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Morality",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_190",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 926",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Human Interest",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_191",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 43",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Morality",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_192",
+    "party": "INC",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with INC.",
+    "author": "User 944",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Human Interest",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_193",
+    "party": "INC",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with INC.",
+    "author": "User 193",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Development",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_194",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 819",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Issue-Based",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_195",
+    "party": "INC",
+    "text": "This is a sample comment about leadership representing the views of someone engaging with INC.",
+    "author": "User 761",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Leadership",
+    "frame": "Conflict",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_196",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 337",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Morality",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_197",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 686",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Development",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_198",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 896",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Issue-Based",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_199",
+    "party": "CPIM",
+    "text": "This is a sample comment about campaign and mobilisation representing the views of someone engaging with CPIM.",
+    "author": "User 155",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Campaign and Mobilisation",
+    "frame": "Morality",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_200",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 131",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Human Interest",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_201",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 954",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Morality",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_202",
+    "party": "BJP",
+    "text": "This is a sample comment about campaign and mobilisation representing the views of someone engaging with BJP.",
+    "author": "User 694",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Campaign and Mobilisation",
+    "frame": "Identity",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_203",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 77",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Development",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_204",
+    "party": "INC",
+    "text": "This is a sample comment about campaign and mobilisation representing the views of someone engaging with INC.",
+    "author": "User 746",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Campaign and Mobilisation",
+    "frame": "Identity",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_205",
+    "party": "CPIM",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with CPIM.",
+    "author": "User 749",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Development",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_206",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 324",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Issue-Based",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_207",
+    "party": "CPIM",
+    "text": "This is a sample comment about leadership representing the views of someone engaging with CPIM.",
+    "author": "User 914",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Leadership",
+    "frame": "Morality",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_208",
+    "party": "BJP",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with BJP.",
+    "author": "User 416",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Issue-Based",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_209",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 759",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Human Interest",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_210",
+    "party": "BJP",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with BJP.",
+    "author": "User 9",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Identity",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_211",
+    "party": "INC",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with INC.",
+    "author": "User 572",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Conflict",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_212",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 992",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Morality",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_213",
+    "party": "INC",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with INC.",
+    "author": "User 885",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Issue-Based",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_214",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 677",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Morality",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_215",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 110",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Development",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_216",
+    "party": "INC",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with INC.",
+    "author": "User 784",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Identity",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_217",
+    "party": "INC",
+    "text": "This is a sample comment about campaign and mobilisation representing the views of someone engaging with INC.",
+    "author": "User 517",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Campaign and Mobilisation",
+    "frame": "Human Interest",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_218",
+    "party": "CPIM",
+    "text": "This is a sample comment about campaign and mobilisation representing the views of someone engaging with CPIM.",
+    "author": "User 769",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Campaign and Mobilisation",
+    "frame": "Identity",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_219",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 453",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Development",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_220",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 749",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Identity",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_221",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 723",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Issue-Based",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_222",
+    "party": "INC",
+    "text": "This is a sample comment about campaign and mobilisation representing the views of someone engaging with INC.",
+    "author": "User 113",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Campaign and Mobilisation",
+    "frame": "Human Interest",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_223",
+    "party": "CPIM",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with CPIM.",
+    "author": "User 374",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Issue-Based",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_224",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 38",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Identity",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_225",
+    "party": "BJP",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with BJP.",
+    "author": "User 499",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Human Interest",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_226",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 302",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Human Interest",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_227",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 279",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Morality",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_228",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 219",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Development",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_229",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 459",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Issue-Based",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_230",
+    "party": "INC",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with INC.",
+    "author": "User 579",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Human Interest",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_231",
+    "party": "INC",
+    "text": "This is a sample comment about campaign and mobilisation representing the views of someone engaging with INC.",
+    "author": "User 54",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Campaign and Mobilisation",
+    "frame": "Development",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_232",
+    "party": "INC",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with INC.",
+    "author": "User 921",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Development",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_233",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 377",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Development",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_234",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 65",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Issue-Based",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_235",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 808",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Conflict",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_236",
+    "party": "BJP",
+    "text": "This is a sample comment about campaign and mobilisation representing the views of someone engaging with BJP.",
+    "author": "User 559",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Campaign and Mobilisation",
+    "frame": "Issue-Based",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_237",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 509",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Conflict",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_238",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 285",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Human Interest",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_239",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 658",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Development",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_240",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 713",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Morality",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_241",
+    "party": "BJP",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with BJP.",
+    "author": "User 227",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Issue-Based",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_242",
+    "party": "INC",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with INC.",
+    "author": "User 120",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Human Interest",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_243",
+    "party": "BJP",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with BJP.",
+    "author": "User 489",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Identity",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_244",
+    "party": "BJP",
+    "text": "This is a sample comment about leadership representing the views of someone engaging with BJP.",
+    "author": "User 625",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Leadership",
+    "frame": "Conflict",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_245",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 639",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Identity",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_246",
+    "party": "CPIM",
+    "text": "This is a sample comment about leadership representing the views of someone engaging with CPIM.",
+    "author": "User 884",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Leadership",
+    "frame": "Conflict",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_247",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 717",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Issue-Based",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_248",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 910",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Issue-Based",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_249",
+    "party": "BJP",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with BJP.",
+    "author": "User 560",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Human Interest",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_250",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 169",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Morality",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_251",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 490",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Issue-Based",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_252",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 623",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Conflict",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_253",
+    "party": "CPIM",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with CPIM.",
+    "author": "User 919",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Conflict",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_254",
+    "party": "INC",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with INC.",
+    "author": "User 870",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Development",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_255",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 206",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Human Interest",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_256",
+    "party": "CPIM",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with CPIM.",
+    "author": "User 319",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Conflict",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_257",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 658",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Issue-Based",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_258",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 441",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Issue-Based",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_259",
+    "party": "CPIM",
+    "text": "This is a sample comment about campaign and mobilisation representing the views of someone engaging with CPIM.",
+    "author": "User 839",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Campaign and Mobilisation",
+    "frame": "Conflict",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_260",
+    "party": "CPIM",
+    "text": "This is a sample comment about leadership representing the views of someone engaging with CPIM.",
+    "author": "User 127",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Leadership",
+    "frame": "Development",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_261",
+    "party": "CPIM",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with CPIM.",
+    "author": "User 626",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Identity",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_262",
+    "party": "BJP",
+    "text": "This is a sample comment about campaign and mobilisation representing the views of someone engaging with BJP.",
+    "author": "User 273",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Campaign and Mobilisation",
+    "frame": "Human Interest",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_263",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 768",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Identity",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_264",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 711",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Morality",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_265",
+    "party": "CPIM",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with CPIM.",
+    "author": "User 127",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Development",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_266",
+    "party": "CPIM",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with CPIM.",
+    "author": "User 12",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Morality",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_267",
+    "party": "CPIM",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with CPIM.",
+    "author": "User 716",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Conflict",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_268",
+    "party": "BJP",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with BJP.",
+    "author": "User 615",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Issue-Based",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_269",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 233",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Issue-Based",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_270",
+    "party": "INC",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with INC.",
+    "author": "User 521",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Conflict",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_271",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 735",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Morality",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_272",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 582",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Identity",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_273",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 498",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Identity",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_274",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 397",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Identity",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_275",
+    "party": "CPIM",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with CPIM.",
+    "author": "User 814",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Development",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_276",
+    "party": "INC",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with INC.",
+    "author": "User 357",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Conflict",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_277",
+    "party": "BJP",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with BJP.",
+    "author": "User 60",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Conflict",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_278",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 206",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Issue-Based",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_279",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 178",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Morality",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_280",
+    "party": "INC",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with INC.",
+    "author": "User 280",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Morality",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_281",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 854",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Morality",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_282",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 610",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Identity",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_283",
+    "party": "INC",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with INC.",
+    "author": "User 361",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Morality",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_284",
+    "party": "INC",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with INC.",
+    "author": "User 55",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Identity",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_285",
+    "party": "BJP",
+    "text": "This is a sample comment about campaign and mobilisation representing the views of someone engaging with BJP.",
+    "author": "User 687",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Campaign and Mobilisation",
+    "frame": "Identity",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_286",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 94",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Conflict",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_287",
+    "party": "CPIM",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with CPIM.",
+    "author": "User 808",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Development",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_288",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 221",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Identity",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_289",
+    "party": "BJP",
+    "text": "This is a sample comment about leadership representing the views of someone engaging with BJP.",
+    "author": "User 755",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Leadership",
+    "frame": "Issue-Based",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_290",
+    "party": "INC",
+    "text": "This is a sample comment about political criticism representing the views of someone engaging with INC.",
+    "author": "User 619",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Political Criticism",
+    "frame": "Human Interest",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_291",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 165",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Human Interest",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_292",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 111",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Morality",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_293",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 152",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Development",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_294",
+    "party": "CPIM",
+    "text": "This is a sample comment about governance and development representing the views of someone engaging with CPIM.",
+    "author": "User 888",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Governance and Development",
+    "frame": "Identity",
+    "emotion": "Negative"
+  },
+  {
+    "id": "dummy_295",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 269",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Development",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_296",
+    "party": "BJP",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with BJP.",
+    "author": "User 242",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Conflict",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_297",
+    "party": "BJP",
+    "text": "This is a sample comment about leadership representing the views of someone engaging with BJP.",
+    "author": "User 33",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Leadership",
+    "frame": "Morality",
+    "emotion": "Neutral"
+  },
+  {
+    "id": "dummy_298",
+    "party": "INC",
+    "text": "This is a sample comment about welfare and social justice representing the views of someone engaging with INC.",
+    "author": "User 658",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Welfare and Social Justice",
+    "frame": "Identity",
+    "emotion": "Positive"
+  },
+  {
+    "id": "dummy_299",
+    "party": "BJP",
+    "text": "This is a sample comment about identity politics representing the views of someone engaging with BJP.",
+    "author": "User 937",
+    "timestamp": "2026-04-27T18:08:44.039Z",
+    "theme": "Identity Politics",
+    "frame": "Development",
+    "emotion": "Positive"
+  }
+]

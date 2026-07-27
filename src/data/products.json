@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Rainbow LF",
+    "category": "Zebra Blinds",
+    "basePrice": 10,
+    "basePriceMode": "perSqFt",
+    "description": "",
+    "imageUrl": "/uploads/1779362401611-Charcoal-Mockup_Rainbow-light-filteringsE1Lwc.jpg",
+    "mediaAssets": [
+      "/uploads/1779362401611-Charcoal-Mockup_Rainbow-light-filteringsE1Lwc.jpg"
+    ],
+    "status": "published",
+    "fabricFamilies": [
+      {
+        "fabricId": "fam-1",
+        "name": "Standard Linen",
+        "priceModifier": 0,
+        "colors": [
+          {
+            "colorId": "col-1",
+            "name": "Snow White",
+            "hex": "#ffffff",
+            "status": "active",
+            "mediaUrl": "/uploads/1779362408452-fabricMsysh1-2.jpg"
+          },
+          {
+            "colorId": "col-1779362424433",
+            "name": "Ice white Rainbow light",
+            "hex": "#000000",
+            "status": "active",
+            "mediaUrl": "/uploads/1779362428021-fabricMsysh1-2.jpg"
+          },
+          {
+            "colorId": "col-1779362441699",
+            "name": "Charcoal Rainbow light filtering.",
+            "hex": "#000000",
+            "status": "active",
+            "mediaUrl": "/uploads/1779362447804-fabricfz3zB4-2.jpg"
+          }
+        ]
+      }
+    ],
+    "modifiers": [
+      {
+        "id": "mod-1",
+        "name": "Lift Style",
+        "isRequired": true,
+        "options": [
+          {
+            "id": "opt-1",
+            "name": "Cordless",
+            "priceAdjustment": 0,
+            "mediaUrl": ""
+          }
+        ]
+      },
+      {
+        "id": "mod-1779362673979",
+        "name": "Lift Styles \nLift Styles \n",
+        "isRequired": true,
+        "options": []
+      },
+      {
+        "id": "mod-1779362465700",
+        "name": "Mount Type",
+        "isRequired": true,
+        "options": [
+          {
+            "id": "opt-1779362474047",
+            "name": "Inside ",
+            "priceAdjustment": 0,
+            "mediaUrl": "/uploads/1779362496435-Janal_Inside1_1.png"
+          },
+          {
+            "id": "opt-1779362492365",
+            "name": "Outside",
+            "priceAdjustment": 0,
+            "mediaUrl": "/uploads/1779362498955-Janal_Outside1_1.png"
+          }
+        ]
+      }
+    ],
+    "constraints": {
+      "minWidth": 400,
+      "maxWidth": 3000,
+      "minHeight": 400,
+      "maxHeight": 4000
+    },
+    "logic": [],
+    "id": "rainbow-lf"
+  }
+]

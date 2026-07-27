@@ -1,0 +1,23 @@
+{
+  "campaigns": [
+    {
+      "id": "camp-001",
+      "name": "Summer 2026 Wholesale Drive",
+      "status": "active",
+      "budget": 5000,
+      "leadsGenerated": 42
+    }
+  ],
+  "leads": [
+    {
+      "id": "lead-001",
+      "name": "Studio LVN",
+      "contactName": "David Lin",
+      "email": "david@studiolvn.test",
+      "status": "contacted",
+      "source": "organic",
+      "createdAt": "2026-05-18T10:00:00Z"
+    }
+  ],
+  "customers": []
+}

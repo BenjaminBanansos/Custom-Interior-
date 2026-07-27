@@ -1,0 +1,23 @@
+{
+  "suppliers": [
+    {
+      "id": "sup-001",
+      "name": "Global Fabrics Ltd",
+      "contactName": "Sarah Chen",
+      "email": "sarah.c@globalfabrics.test",
+      "phone": "+1-555-0198",
+      "leadTimeDays": 14,
+      "categories": ["fabric", "textiles"]
+    },
+    {
+      "id": "sup-002",
+      "name": "Zenith Hardware Components",
+      "contactName": "Michael Ross",
+      "email": "orders@zenithhardware.test",
+      "phone": "+1-555-0294",
+      "leadTimeDays": 7,
+      "categories": ["hardware", "motors"]
+    }
+  ],
+  "purchaseOrders": []
+}

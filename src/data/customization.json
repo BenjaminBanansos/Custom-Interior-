@@ -1,0 +1,28 @@
+{
+  "globalPricingMultiplier": 1.0,
+  "localizedSettings": [
+    {
+      "id": "loc-1",
+      "region": "United States",
+      "taxRate": 0.08,
+      "currency": "USD"
+    },
+    {
+      "id": "loc-2",
+      "region": "Canada",
+      "taxRate": 0.13,
+      "currency": "CAD"
+    },
+    {
+      "id": "loc-3",
+      "region": "Europe (VAT)",
+      "taxRate": 0.20,
+      "currency": "EUR"
+    }
+  ],
+  "branding": {
+    "primaryColor": "#000000",
+    "logoUrl": "/logo.png"
+  },
+  "defaultFabricId": "fab-001"
+}
