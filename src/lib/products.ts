@@ -1,9 +1,17 @@
-export interface FabricSwatch {
-  id: string;
+export interface FabricColor {
+  colorId: string;
   name: string;
-  hex?: string;
-  imageUrl?: string;
+  hex: string;
+  mediaUrl?: string;
+  status: 'active' | 'out-of-stock';
+}
+
+export interface FabricFamily {
+  fabricId: string;
+  name: string;
+  description?: string;
   priceModifier: number;
+  colors: FabricColor[];
 }
 
 export interface DimensionConstraints {
@@ -21,10 +29,31 @@ export interface CustomizationRule {
   status: 'active' | 'draft';
 }
 
-export interface Addon {
+export interface SubAttributeChoice {
   id: string;
   name: string;
-  price: number;
+  priceAdjustment: number;
+}
+
+export interface SubAttribute {
+  id: string;
+  name: string;
+  choices: SubAttributeChoice[];
+}
+
+export interface ModifierOption {
+  id: string;
+  name: string;
+  priceAdjustment: number;
+  mediaUrl?: string; // Optional icon or GIF for the option
+  subAttributes?: SubAttribute[]; // Nested choices specific to this option
+}
+
+export interface ModifierGroup {
+  id: string;
+  name: string; // e.g., "Lift Style", "Mount Type"
+  isRequired: boolean;
+  options: ModifierOption[];
 }
 
 export interface Product {
@@ -34,19 +63,12 @@ export interface Product {
   basePrice: number; // For sqft mode, this is Price Per Sqft
   basePriceMode: 'fixed' | 'perSqFt';
   description: string;
-  fabrics: FabricSwatch[];
+  fabricFamilies: FabricFamily[];
   constraints?: DimensionConstraints;
   logic?: CustomizationRule[];
   mediaAssets?: string[];
   imageUrl?: string;
-  addons?: Addon[];
-  
-  // Advanced Product Metadata
-  transparency?: string;
-  material?: string;
-  weight?: string;
-  repeatSize?: string;
-  
+  modifiers?: ModifierGroup[];
   status: 'published' | 'draft';
 }
 
