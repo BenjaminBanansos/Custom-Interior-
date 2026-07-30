@@ -1,11 +1,12 @@
 import React from 'react';
-import { getProducts } from '../lib/storage_actions';
+import { getProducts, getCategories } from '../lib/storage_actions';
 import { getTheme } from '../lib/theme_actions';
 import Link from 'next/link';
 
 export default async function Home() {
   const products = await getProducts();
   const theme = await getTheme();
+  const dbCategories = await getCategories();
   
   // Sort products based on theme.productOrder
   let orderedProducts = [...products];
@@ -22,7 +23,7 @@ export default async function Home() {
   }
 
   // Extract unique categories
-  const categories = Array.from(new Set(products.map(p => p.category)));
+  const categories = dbCategories;
 
   // Define the sections
   const HeroSection = (
@@ -119,14 +120,14 @@ export default async function Home() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px' }}>
         {categories.map(cat => {
           // Find first product in this category to use as a cover image
-          const coverProduct = products.find(p => p.category === cat);
+          const coverProduct = products.find(p => p.category === cat.id);
           return (
-            <div key={cat} style={{ 
+            <div key={cat.id} style={{ 
               height: '300px', backgroundColor: 'var(--bg-secondary)', borderRadius: '12px', overflow: 'hidden', position: 'relative',
               backgroundImage: coverProduct?.imageUrl ? `url(${coverProduct.imageUrl})` : 'none', backgroundSize: 'cover', backgroundPosition: 'center'
             }}>
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)', display: 'flex', alignItems: 'flex-end', padding: '20px' }}>
-                <h3 style={{ color: '#fff', fontSize: '1.5rem', margin: 0 }}>{cat}</h3>
+                <h3 style={{ color: '#fff', fontSize: '1.5rem', margin: 0 }}>{cat.name}</h3>
               </div>
             </div>
           );
