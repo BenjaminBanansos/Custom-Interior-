@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
-import { getTheme } from "../lib/theme_actions";
-import ThemeProvider from "../components/ThemeProvider";
 import "./globals.css";
 
 const inter = Inter({
@@ -19,18 +17,15 @@ export const metadata: Metadata = {
   description: "Custom-made blinds and curtains for retail and wholesale. Precision-engineered architectural light control for Canadian homes and businesses.",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const theme = await getTheme();
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
-      <body style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', margin: 0 }}>
-        <ThemeProvider initialTheme={theme}>
-          {children}
-        </ThemeProvider>
+      <body style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+        {children}
       </body>
     </html>
   );

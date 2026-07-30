@@ -99,10 +99,9 @@ export default function ProductsListPage() {
                       }}>{product.status.toUpperCase()}</span>
                     </td>
                     <td style={{ padding: '20px' }}>
-                      <div style={{ display: 'flex', gap: '15px' }}>
+                      <div style={{ display: 'flex', gap: '10px' }}>
                         <Link href={`/product/${product.id}`} style={{ fontSize: '0.7rem', color: '#888', textDecoration: 'none' }}>VIEW</Link>
-                        <Link href={`/admin/products/${product.id}/edit`} style={{ fontSize: '0.7rem', color: '#0066cc', textDecoration: 'none' }}>EDIT</Link>
-                        <button onClick={() => handleDelete(product.id)} style={{ border: 'none', background: 'none', fontSize: '0.7rem', color: '#ef4444', cursor: 'pointer', padding: 0 }}>DELETE</button>
+                        <button onClick={() => handleDelete(product.id)} style={{ border: 'none', background: 'none', fontSize: '0.7rem', color: '#ef4444', cursor: 'pointer' }}>DELETE</button>
                       </div>
                     </td>
                   </tr>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { getProducts } from '../../../lib/storage_actions';
-import { getTheme } from '../../../lib/theme_actions';
 import Configurator from '../../../components/Configurator';
 import { notFound } from 'next/navigation';
 
@@ -8,14 +7,13 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
   const { id } = await params;
   const products = await getProducts();
   const product = products.find(p => p.id === id);
-  const theme = await getTheme();
 
   if (!product) {
     notFound();
   }
 
   return (
-    <div className="container" style={{ paddingTop: '120px', paddingBottom: '120px', margin: '0 auto', maxWidth: theme.containerWidth, transition: 'max-width 0.3s ease' }}>
+    <div className="container" style={{ paddingTop: '120px', paddingBottom: '120px' }}>
       <div style={{ marginBottom: '40px' }}>
         <a href="/" style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', textDecoration: 'none' }}>← BACK TO CATALOG</a>
       </div>
@@ -27,7 +25,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
         </p>
       </div>
 
-      <Configurator product={product} theme={theme} />
+      <Configurator product={product} />
 
       {/* Product Details Section */}
       <section style={{ marginTop: '120px', borderTop: '1px solid var(--border-subtle)', paddingTop: '60px' }}>

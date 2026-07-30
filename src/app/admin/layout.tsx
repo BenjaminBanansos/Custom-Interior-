@@ -11,6 +11,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { label: 'Dashboard', path: '/admin', icon: '📊' },
     { label: 'Categories', path: '/admin/categories', icon: '📁' },
     { label: 'Products', path: '/admin/products', icon: '📦' },
+    { label: 'Users', path: '/admin/users', icon: '👥' },
     { label: 'Customization', path: '/admin/customization', icon: '⚙️' },
     { label: 'Settings', path: '/admin/settings', icon: '🔧' },
   ];

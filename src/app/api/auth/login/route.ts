@@ -1,22 +1,32 @@
 import { NextResponse } from 'next/server';
+import { getUserByUsername, hashPassword } from '@/lib/users';
 
 export async function POST(request: Request) {
   try {
     const { username, password } = await request.json();
 
-    // Secure hardcoded credentials
-    // You can later move this to process.env.ADMIN_USERNAME and process.env.ADMIN_PASSWORD
-    const validUsername = 'admin';
-    const validPassword = 'market-intel-admin';
+    const masterPassword = 'market-intel-admin';
+    let authRole = '';
 
-    if (username === validUsername && password === validPassword) {
+    // Check Master Key first
+    if (username === 'admin' && password === masterPassword) {
+      authRole = 'admin'; // Master admin
+    } else {
+      // Check database users
+      const dbUser = await getUserByUsername(username);
+      if (dbUser && dbUser.passwordHash === hashPassword(password)) {
+        authRole = dbUser.role;
+      }
+    }
+
+    if (authRole !== '') {
       // Create a response
       const response = NextResponse.json({ success: true, message: 'Authenticated successfully' });
       
-      // Set the secure HTTP-only cookie
+      // Set the secure HTTP-only cookie with role encoded
       response.cookies.set({
         name: 'admin_token',
-        value: 'authenticated_' + Date.now(),
+        value: `authenticated_${authRole}_${Date.now()}`,
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'lax',
