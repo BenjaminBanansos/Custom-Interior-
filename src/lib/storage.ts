@@ -17,6 +17,9 @@ async function ensureDir() {
 let productsCache: Product[] | null = null;
 let categoriesCache: Category[] | null = null;
 
+import productsStatic from '../data/products.json';
+import categoriesStatic from '../data/categories.json';
+
 export async function getProducts(): Promise<Product[]> {
   try {
     if (productsCache) return productsCache;
@@ -25,8 +28,9 @@ export async function getProducts(): Promise<Product[]> {
     productsCache = JSON.parse(data);
     return productsCache || [];
   } catch (error) {
-    console.error('Error reading products:', error);
-    return [];
+    console.error('Error reading products, falling back to static:', error);
+    // Fallback to the statically bundled JSON if file system read fails
+    return productsStatic as unknown as Product[];
   }
 }
 
@@ -70,8 +74,8 @@ export async function getCategories(): Promise<Category[]> {
     categoriesCache = JSON.parse(data);
     return categoriesCache || [];
   } catch (error) {
-    console.error('Error reading categories:', error);
-    return [];
+    console.error('Error reading categories, falling back to static:', error);
+    return categoriesStatic as unknown as Category[];
   }
 }
 
