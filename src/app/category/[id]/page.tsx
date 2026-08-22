@@ -85,7 +85,7 @@ export default async function CategoryPage({ params }: { params: { id: string } 
               if (theme.catalogImageRatio === 'landscape') heightStr = '240px';
 
               return (
-                <Link key={product.id} href={`/product/${product.id}`} style={{ cursor: 'pointer', textDecoration: 'none', color: 'inherit' }}>
+                <Link key={product.id} href={`/product/${product.id}`} style={{ display: 'block', cursor: 'pointer', textDecoration: 'none', color: 'inherit' }}>
                   <div style={{ 
                     height: heightStr, 
                     aspectRatio: theme.catalogImageRatio === 'square' ? '1 / 1' : 'auto',
