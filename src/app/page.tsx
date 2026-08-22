@@ -119,17 +119,21 @@ export default async function Home() {
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px' }}>
         {categories.map(cat => {
-          // Find first product in this category to use as a cover image
+          // Use category image if available, otherwise find first product in this category to use as a cover image
           const coverProduct = products.find(p => p.category === cat.id);
+          const bgImage = cat.imageUrl || coverProduct?.imageUrl;
+          
           return (
-            <div key={cat.id} style={{ 
-              height: '300px', backgroundColor: 'var(--bg-secondary)', borderRadius: '12px', overflow: 'hidden', position: 'relative',
-              backgroundImage: coverProduct?.imageUrl ? `url(${coverProduct.imageUrl})` : 'none', backgroundSize: 'cover', backgroundPosition: 'center'
-            }}>
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)', display: 'flex', alignItems: 'flex-end', padding: '20px' }}>
-                <h3 style={{ color: '#fff', fontSize: '1.5rem', margin: 0 }}>{cat.name}</h3>
+            <Link key={cat.id} href="/#retail" style={{ cursor: 'pointer', textDecoration: 'none', color: 'inherit' }}>
+              <div style={{ 
+                height: '300px', backgroundColor: 'var(--bg-secondary)', borderRadius: '12px', overflow: 'hidden', position: 'relative',
+                backgroundImage: bgImage ? `url(${bgImage})` : 'none', backgroundSize: 'cover', backgroundPosition: 'center', transition: 'transform 0.3s ease'
+              }}>
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)', display: 'flex', alignItems: 'flex-end', padding: '20px' }}>
+                  <h3 style={{ color: '#fff', fontSize: '1.5rem', margin: 0 }}>{cat.name}</h3>
+                </div>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>
