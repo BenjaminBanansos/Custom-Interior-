@@ -4,6 +4,8 @@ import { getTheme } from '../../../lib/theme_actions';
 import Configurator from '../../../components/Configurator';
 import { notFound } from 'next/navigation';
 
+export const dynamic = 'force-dynamic';
+
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const products = await getProducts();
