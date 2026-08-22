@@ -1,92 +1,102 @@
 [
   {
-    "name": "Rainbow LF",
-    "category": "Zebra Blinds - Translucent",
-    "basePrice": 10,
-    "basePriceMode": "perSqFt",
-    "description": "",
-    "imageUrl": "/uploads/1779362401611-Charcoal-Mockup_Rainbow-light-filteringsE1Lwc.jpg",
-    "mediaAssets": [
-      "/uploads/1779362401611-Charcoal-Mockup_Rainbow-light-filteringsE1Lwc.jpg"
-    ],
-    "status": "published",
-    "fabricFamilies": [
-      {
-        "fabricId": "fam-1",
-        "name": "Standard Linen",
-        "priceModifier": 0,
-        "colors": [
-          {
-            "colorId": "col-1",
-            "name": "Snow White",
-            "hex": "#ffffff",
-            "status": "active",
-            "mediaUrl": "/uploads/1779362408452-fabricMsysh1-2.jpg"
-          },
-          {
-            "colorId": "col-1779362424433",
-            "name": "Ice white Rainbow light",
-            "hex": "#000000",
-            "status": "active",
-            "mediaUrl": "/uploads/1779362428021-fabricMsysh1-2.jpg"
-          },
-          {
-            "colorId": "col-1779362441699",
-            "name": "Charcoal Rainbow light filtering.",
-            "hex": "#000000",
-            "status": "active",
-            "mediaUrl": "/uploads/1779362447804-fabricfz3zB4-2.jpg"
-          }
-        ]
-      }
-    ],
-    "modifiers": [
-      {
-        "id": "mod-1",
-        "name": "Lift Style",
-        "isRequired": true,
-        "options": [
-          {
-            "id": "opt-1",
-            "name": "Cordless",
-            "priceAdjustment": 0,
-            "mediaUrl": ""
-          }
-        ]
-      },
-      {
-        "id": "mod-1779362673979",
-        "name": "Lift Styles \nLift Styles \n",
-        "isRequired": true,
-        "options": []
-      },
-      {
-        "id": "mod-1779362465700",
-        "name": "Mount Type",
-        "isRequired": true,
-        "options": [
-          {
-            "id": "opt-1779362474047",
-            "name": "Inside ",
-            "priceAdjustment": 0,
-            "mediaUrl": "/uploads/1779362496435-Janal_Inside1_1.png"
-          },
-          {
-            "id": "opt-1779362492365",
-            "name": "Outside",
-            "priceAdjustment": 0,
-            "mediaUrl": "/uploads/1779362498955-Janal_Outside1_1.png"
-          }
-        ]
-      }
-    ],
-    "constraints": {
-      "minWidth": 400,
-      "maxWidth": 3000,
-      "minHeight": 400,
-      "maxHeight": 4000
-    },
-    "logic": [],
-    "id": "rainbow-lf"
+    "id": "zebra-translucent-1",
+    "name": "Classic Zebra Translucent",
+    "category": "zebra-translucent",
+    "basePrice": 129.99,
+    "description": "Elegant light-filtering zebra blinds that combine sheer and solid fabric bands.",
+    "imageUrl": "/uploads/pdf_images/zebra_blinds_p4_30.jpg",
+    "customizationOptions": [],
+    "fabricFamilies": []
+  },
+  {
+    "id": "zebra-translucent-2",
+    "name": "Modern Stripe Translucent",
+    "category": "zebra-translucent",
+    "basePrice": 139.99,
+    "description": "Contemporary styling with crisp translucent bands for optimal light control.",
+    "imageUrl": "/uploads/pdf_images/zebra_blinds_p4_31.jpg",
+    "customizationOptions": [],
+    "fabricFamilies": []
+  },
+  {
+    "id": "zebra-translucent-3",
+    "name": "Natural Weave Zebra",
+    "category": "zebra-translucent",
+    "basePrice": 149.99,
+    "description": "Textured translucent bands that mimic natural woven materials.",
+    "imageUrl": "/uploads/pdf_images/zebra_blinds_p4_32.jpg",
+    "customizationOptions": [],
+    "fabricFamilies": []
+  },
+  {
+    "id": "zebra-darkening-1",
+    "name": "Premium Room Darkening",
+    "category": "zebra-room-darkening",
+    "basePrice": 159.99,
+    "description": "Total privacy and light blockage when the solid bands align.",
+    "imageUrl": "/uploads/pdf_images/zebra_blinds_p5_35.jpg",
+    "customizationOptions": [],
+    "fabricFamilies": []
+  },
+  {
+    "id": "zebra-darkening-2",
+    "name": "Eclipse Zebra Blinds",
+    "category": "zebra-room-darkening",
+    "basePrice": 169.99,
+    "description": "Sleek and modern room darkening functionality.",
+    "imageUrl": "/uploads/pdf_images/zebra_blinds_p5_36.jpg",
+    "customizationOptions": [],
+    "fabricFamilies": []
+  },
+  {
+    "id": "zebra-darkening-3",
+    "name": "Midnight Stripe Blinds",
+    "category": "zebra-room-darkening",
+    "basePrice": 179.99,
+    "description": "Deep, rich solid colors for maximum room darkening impact.",
+    "imageUrl": "/uploads/pdf_images/zebra_blinds_p5_37.jpg",
+    "customizationOptions": [],
+    "fabricFamilies": []
+  },
+  {
+    "id": "shangri-la-1",
+    "name": "Shangri-La Sheer",
+    "category": "shangri-la",
+    "basePrice": 199.99,
+    "description": "Soft sheer shading with fabric vanes suspended between two sheer panels.",
+    "imageUrl": "/uploads/pdf_images/zebra_blinds_p7_52.jpg",
+    "customizationOptions": [],
+    "fabricFamilies": []
+  },
+  {
+    "id": "shangri-la-2",
+    "name": "Shangri-La Elegance",
+    "category": "shangri-la",
+    "basePrice": 219.99,
+    "description": "Premium sheer horizontal shades for a delicate, diffused light.",
+    "imageUrl": "/uploads/pdf_images/zebra_blinds_p7_53.jpg",
+    "customizationOptions": [],
+    "fabricFamilies": []
+  },
+  {
+    "id": "cellular-1",
+    "name": "Energy Efficient Cellular",
+    "category": "cellular",
+    "basePrice": 119.99,
+    "description": "Honeycomb shades that trap air to provide superior insulation.",
+    "imageUrl": "/uploads/pdf_images/zebra_blinds_p9_68.jpg",
+    "customizationOptions": [],
+    "fabricFamilies": []
+  },
+  {
+    "id": "cellular-2",
+    "name": "Blackout Cellular Shade",
+    "category": "cellular",
+    "basePrice": 149.99,
+    "description": "Maximum insulation combined with complete room darkening.",
+    "imageUrl": "/uploads/pdf_images/zebra_blinds_p9_69.jpg",
+    "customizationOptions": [],
+    "fabricFamilies": []
   }
 ]

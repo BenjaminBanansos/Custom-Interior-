@@ -17,5 +17,11 @@
     "categories",
     "catalog"
   ],
-  "productOrder": []
+  "productOrder": [],
+  "curatedProducts": [
+    "zebra-translucent-1",
+    "zebra-darkening-1",
+    "shangri-la-1",
+    "cellular-1"
+  ]
 }
