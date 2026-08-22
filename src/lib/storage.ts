@@ -22,11 +22,9 @@ import categoriesStatic from '../data/categories.json';
 
 export async function getProducts(): Promise<Product[]> {
   try {
-    if (productsCache) return productsCache;
     await ensureDir();
     const data = await fs.readFile(DATA_PATH, 'utf-8');
-    productsCache = JSON.parse(data);
-    return productsCache || [];
+    return JSON.parse(data) || [];
   } catch (error) {
     console.error('Error reading products, falling back to static:', error);
     // Fallback to the statically bundled JSON if file system read fails
@@ -69,10 +67,8 @@ export async function deleteProduct(id: string): Promise<boolean> {
 
 export async function getCategories(): Promise<Category[]> {
   try {
-    if (categoriesCache) return categoriesCache;
     const data = await fs.readFile(CAT_PATH, 'utf-8');
-    categoriesCache = JSON.parse(data);
-    return categoriesCache || [];
+    return JSON.parse(data) || [];
   } catch (error) {
     console.error('Error reading categories, falling back to static:', error);
     return categoriesStatic as unknown as Category[];
