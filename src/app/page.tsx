@@ -124,7 +124,7 @@ export default async function Home() {
           const bgImage = cat.imageUrl || coverProduct?.imageUrl;
           
           return (
-            <Link key={cat.id} href="/#retail" style={{ cursor: 'pointer', textDecoration: 'none', color: 'inherit' }}>
+            <Link key={cat.id} href={`/category/${cat.id}`} style={{ cursor: 'pointer', textDecoration: 'none', color: 'inherit' }}>
               <div style={{ 
                 height: '300px', backgroundColor: 'var(--bg-secondary)', borderRadius: '12px', overflow: 'hidden', position: 'relative',
                 backgroundImage: bgImage ? `url(${bgImage})` : 'none', backgroundSize: 'cover', backgroundPosition: 'center', transition: 'transform 0.3s ease'
