@@ -24,6 +24,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
   const [selectedSubAttributes, setSelectedSubAttributes] = useState<Record<string, string>>({});
   
   const [totalPrice, setTotalPrice] = useState(product.basePrice);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   const parseFraction = (val: string): number => {
     if (!val) return 0;
@@ -105,6 +106,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
           box-shadow: 0 15px 35px rgba(0,0,0,0.1);
           flex-shrink: 0;
           border: 1px solid rgba(0,0,0,0.05);
+          cursor: zoom-in;
         }
         @media (min-width: 1024px) {
           .visual-panel {
@@ -156,11 +158,33 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
 
       <div className="config-container">
         {/* Visual Preview */}
-        <div className="visual-panel">
+        <div className="visual-panel" onClick={() => bgImageUrl && setIsFullscreen(true)}>
           <div style={{ position: 'absolute', bottom: '-30px', left: 0, width: '100%', textAlign: 'center', fontSize: '0.7rem', fontWeight: 600, color: '#888' }}>
             PREVIEW: {selectedColor?.name || 'Base Model'}
           </div>
         </div>
+
+        {/* Fullscreen Modal */}
+        {isFullscreen && (
+          <div 
+            onClick={() => setIsFullscreen(false)}
+            style={{
+              position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+              backgroundColor: 'rgba(0,0,0,0.9)', zIndex: 9999,
+              display: 'flex', justifyContent: 'center', alignItems: 'center',
+              cursor: 'zoom-out'
+            }}
+          >
+            <img 
+              src={bgImageUrl} 
+              alt="Full screen preview" 
+              style={{ maxWidth: '95vw', maxHeight: '95vh', objectFit: 'contain' }} 
+            />
+            <div style={{ position: 'absolute', top: '20px', right: '40px', color: 'white', fontSize: '3rem', fontWeight: 300 }}>
+              &times;
+            </div>
+          </div>
+        )}
 
         {/* Control Panel */}
         <div className="control-panel">
