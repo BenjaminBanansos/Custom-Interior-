@@ -275,7 +275,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
                       }}
                     >
                       {opt.mediaUrl && (
-                        <div style={{ width: '60px', height: '60px', borderRadius: '4px', backgroundImage: `url(${opt.mediaUrl})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', flexShrink: 0, border: '1px solid #eee', background: '#fff' }} />
+                        <div style={{ width: '60px', height: '60px', borderRadius: '4px', backgroundImage: `url(${opt.mediaUrl})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', flexShrink: 0, border: '1px solid #eee', backgroundColor: '#fff' }} />
                       )}
                       <div>
                         <div style={{ fontSize: '1.1rem', fontWeight: 400, color: '#000' }}>{opt.name}</div>
