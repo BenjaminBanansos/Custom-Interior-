@@ -12,6 +12,7 @@ interface ConfiguratorProps {
 export default function Configurator({ product, theme }: ConfiguratorProps) {
   const [width, setWidth] = useState('24');
   const [height, setHeight] = useState('36');
+  const [quantity, setQuantity] = useState('1');
   
   // Advanced State
   const initialFamily = product.fabricFamilies?.[0];
@@ -24,7 +25,6 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
   const [selectedSubAttributes, setSelectedSubAttributes] = useState<Record<string, string>>({});
   
   const [totalPrice, setTotalPrice] = useState(product.basePrice);
-  const [isFullscreen, setIsFullscreen] = useState(false);
 
   const parseFraction = (val: string): number => {
     if (!val) return 0;
@@ -73,8 +73,8 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
       }
     });
 
-    setTotalPrice(Math.round(price));
-  }, [width, height, selectedFamily, selectedColor, selectedModifiers, selectedSubAttributes, product]);
+    setTotalPrice(Math.round(price) * (parseInt(quantity) || 1));
+  }, [width, height, quantity, selectedFamily, selectedColor, selectedModifiers, selectedSubAttributes, product]);
 
   const bgImageUrl = selectedColor?.mediaUrl || product.imageUrl || '';
 
@@ -106,7 +106,6 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
           box-shadow: 0 15px 35px rgba(0,0,0,0.1);
           flex-shrink: 0;
           border: 1px solid rgba(0,0,0,0.05);
-          cursor: zoom-in;
         }
         @media (min-width: 1024px) {
           .visual-panel {
@@ -158,33 +157,11 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
 
       <div className="config-container">
         {/* Visual Preview */}
-        <div className="visual-panel" onClick={() => bgImageUrl && setIsFullscreen(true)}>
+        <div className="visual-panel">
           <div style={{ position: 'absolute', bottom: '-30px', left: 0, width: '100%', textAlign: 'center', fontSize: '0.7rem', fontWeight: 600, color: '#888' }}>
             PREVIEW: {selectedColor?.name || 'Base Model'}
           </div>
         </div>
-
-        {/* Fullscreen Modal */}
-        {isFullscreen && (
-          <div 
-            onClick={() => setIsFullscreen(false)}
-            style={{
-              position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-              backgroundColor: 'rgba(0,0,0,0.9)', zIndex: 9999,
-              display: 'flex', justifyContent: 'center', alignItems: 'center',
-              cursor: 'zoom-out'
-            }}
-          >
-            <img 
-              src={bgImageUrl} 
-              alt="Full screen preview" 
-              style={{ maxWidth: '95vw', maxHeight: '95vh', objectFit: 'contain' }} 
-            />
-            <div style={{ position: 'absolute', top: '20px', right: '40px', color: 'white', fontSize: '3rem', fontWeight: 300 }}>
-              &times;
-            </div>
-          </div>
-        )}
 
         {/* Control Panel */}
         <div className="control-panel">
@@ -213,6 +190,16 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
                   placeholder="e.g. 36 3/4"
                   value={height}
                   onChange={(e) => setHeight(e.target.value)}
+                  style={{ width: '100%', padding: '16px', border: '1px solid #e0e0e0', borderRadius: '0', fontSize: '1.1rem', outline: 'none', background: '#fafafa', transition: 'border 0.3s' }}
+                />
+              </div>
+              <div>
+                <label style={{ fontSize: '0.7rem', color: '#888', display: 'block', marginBottom: '8px' }}>QUANTITY</label>
+                <input 
+                  type="number" 
+                  min="1"
+                  value={quantity}
+                  onChange={(e) => setQuantity(e.target.value)}
                   style={{ width: '100%', padding: '16px', border: '1px solid #e0e0e0', borderRadius: '0', fontSize: '1.1rem', outline: 'none', background: '#fafafa', transition: 'border 0.3s' }}
                 />
               </div>

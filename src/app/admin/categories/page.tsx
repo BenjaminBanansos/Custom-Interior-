@@ -37,6 +37,22 @@ export default function CategoriesPage() {
     setIsSubmitting(false);
   };
 
+  const handleEditCategory = async (cat: Category) => {
+    const name = prompt('Enter New Category Name (leave blank to keep current):', cat.name);
+    const imageUrl = prompt('Enter New Image URL (leave blank to keep current):', cat.imageUrl || '');
+    if (name === null || imageUrl === null) return; // cancelled
+    
+    setIsSubmitting(true);
+    const updatedCat = {
+      ...cat,
+      name: name || cat.name,
+      imageUrl: imageUrl || cat.imageUrl
+    };
+    await saveCategory(updatedCat);
+    await loadCategories();
+    setIsSubmitting(false);
+  };
+
   return (
     <div>
       <header style={{ marginBottom: '60px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -101,7 +117,7 @@ export default function CategoriesPage() {
               </div>
 
               <div style={{ display: 'flex', gap: '10px' }}>
-                <button style={{ flex: 1, padding: '10px', backgroundColor: '#f5f5f5', border: 'none', borderRadius: '6px', fontSize: '0.8rem', cursor: 'pointer' }}>EDIT</button>
+                <button onClick={() => handleEditCategory(cat)} style={{ flex: 1, padding: '10px', backgroundColor: '#f5f5f5', border: 'none', borderRadius: '6px', fontSize: '0.8rem', cursor: 'pointer' }}>EDIT</button>
                 <button style={{ padding: '10px', backgroundColor: '#f5f5f5', border: 'none', borderRadius: '6px', cursor: 'pointer' }}>🗑️</button>
               </div>
             </div>
