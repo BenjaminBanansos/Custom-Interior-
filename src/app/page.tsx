@@ -50,19 +50,14 @@ export default async function Home() {
           <button className="btn-primary btn-outline" style={{ borderColor: 'var(--primary-color)', color: 'var(--text-color)' }}>WHOLESALE LOGIN</button>
         </div>
       </div>
-      <div style={{ position: 'relative', overflow: 'hidden' }}>
-         <div style={{ 
-           width: '100%', 
-           height: '100%', 
-           background: 'linear-gradient(135deg, #1a1a1a 0%, #2b2b2b 100%)',
-           display: 'flex',
-           alignItems: 'flex-end',
-           padding: '4rem'
-         }}>
-           <div style={{ color: 'rgba(255,255,255,0.2)', fontFamily: 'var(--font-outfit)', fontSize: '5rem' }}>
-             ZENITH ZEBRA<br/>SERIES 01
-           </div>
-         </div>
+      <div style={{ flex: 1, backgroundColor: 'var(--bg-secondary)', position: 'relative' }}>
+        {/* Right side - Hero Image or Dark Panel */}
+        <div style={{ 
+          position: 'absolute', inset: 0, 
+          backgroundImage: theme.heroImage ? `url(${theme.heroImage})` : 'none',
+          backgroundSize: 'cover', backgroundPosition: 'center',
+          backgroundColor: '#2a2a2a' 
+        }} />
       </div>
     </section>
   );
