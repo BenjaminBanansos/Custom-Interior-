@@ -3,6 +3,8 @@ import { getProducts } from '../lib/storage_actions';
 import { getTheme } from '../lib/theme_actions';
 import Link from 'next/link';
 
+export const dynamic = 'force-dynamic';
+
 export default async function Home() {
   const products = await getProducts();
   const theme = await getTheme();
