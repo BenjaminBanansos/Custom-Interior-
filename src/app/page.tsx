@@ -28,29 +28,24 @@ export default async function Home() {
 
   // Define the sections
   const HeroSection = (
-    <section key="hero" style={{ 
-      height: '80vh', 
-      display: 'grid', 
-      gridTemplateColumns: '1fr 1fr',
-      backgroundColor: 'var(--bg-secondary)',
-      borderBottom: '1px solid var(--border-subtle)'
-    }}>
-      <div className="flex-center" style={{ padding: '0 10%', flexDirection: 'column', alignItems: 'flex-start' }}>
-        <span style={{ fontSize: '0.75rem', letterSpacing: '0.3em', color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
+    <section key="hero" className="hero-section">
+      {/* Left side - Text */}
+      <div className="hero-text-panel" style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '4rem' }}>
+        <div style={{ textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
           EST. 2024 | TORONTO, CANADA
-        </span>
-        <h1 style={{ fontSize: '4.5rem', lineHeight: 1.1, marginBottom: '2rem' }}>
-          Architectural <br/> Light Control.
+        </div>
+        <h1 style={{ fontSize: 'clamp(3rem, 5vw, 4.5rem)', lineHeight: 1.1, marginBottom: '1.5rem', color: 'var(--primary-color)' }}>
+          Architectural<br/>Light Control.
         </h1>
-        <p style={{ color: 'var(--text-secondary)', maxWidth: '400px', marginBottom: '3rem', fontSize: '1.1rem' }}>
+        <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', maxWidth: '400px', marginBottom: '3rem' }}>
           Custom-engineered window treatments designed for the modern Canadian home. Wholesale & Retail solutions.
         </p>
-        <div style={{ display: 'flex', gap: '1rem' }}>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
           <button className="btn-primary" style={{ backgroundColor: 'var(--primary-color)' }}>EXPLORE CATALOG</button>
           <button className="btn-primary btn-outline" style={{ borderColor: 'var(--primary-color)', color: 'var(--text-color)' }}>WHOLESALE LOGIN</button>
         </div>
       </div>
-      <div style={{ flex: 1, backgroundColor: 'var(--bg-secondary)', position: 'relative' }}>
+      <div className="hero-image-panel" style={{ flex: 1, backgroundColor: 'var(--bg-secondary)', position: 'relative' }}>
         {/* Right side - Hero Image or Dark Panel */}
         <div style={{ 
           position: 'absolute', inset: 0, 

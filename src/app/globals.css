@@ -98,3 +98,24 @@ h1, h2, h3, h4 {
 .swatch-item.active {
   border-color: var(--accent-dark);
 }
+
+/* Responsive Hero Layout */
+.hero-section {
+  display: flex;
+  min-height: 80vh;
+  background-color: var(--bg-primary);
+  flex-direction: row;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+  }
+  .hero-text-panel {
+    padding: 2rem !important;
+    text-align: center;
+  }
+  .hero-image-panel {
+    min-height: 400px;
+  }
+}
