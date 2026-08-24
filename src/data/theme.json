@@ -14,8 +14,7 @@
   },
   "sectionOrder": [
     "hero",
-    "categories",
-    "catalog"
+    "categories"
   ],
   "productOrder": []
 }
