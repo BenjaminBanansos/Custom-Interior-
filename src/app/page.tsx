@@ -1,14 +1,11 @@
 import React from 'react';
-import { getProducts, getCategories } from '../lib/storage_actions';
+import { getProducts } from '../lib/storage_actions';
 import { getTheme } from '../lib/theme_actions';
 import Link from 'next/link';
-
-export const dynamic = 'force-dynamic';
 
 export default async function Home() {
   const products = await getProducts();
   const theme = await getTheme();
-  const dbCategories = await getCategories();
   
   // Sort products based on theme.productOrder
   let orderedProducts = [...products];
@@ -25,7 +22,7 @@ export default async function Home() {
   }
 
   // Extract unique categories
-  const categories = dbCategories;
+  const categories = Array.from(new Set(products.map(p => p.category)));
 
   // Define the sections
   const HeroSection = (
@@ -87,7 +84,7 @@ export default async function Home() {
           if (theme.catalogImageRatio === 'landscape') heightStr = '240px';
 
           return (
-          <Link key={product.id} href={`/product/${product.id}`} style={{ display: 'block', cursor: 'pointer', textDecoration: 'none', color: 'inherit' }}>
+          <Link key={product.id} href={`/product/${product.id}`} style={{ cursor: 'pointer', textDecoration: 'none', color: 'inherit' }}>
             <div style={{ 
               height: heightStr, 
               aspectRatio: theme.catalogImageRatio === 'square' ? '1 / 1' : 'auto',
@@ -121,18 +118,18 @@ export default async function Home() {
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px' }}>
         {categories.map(cat => {
-          // Use category image if available, otherwise find first product in this category to use as a cover image
-          const coverProduct = products.find(p => p.category === cat.id);
-          const bgImage = cat.imageUrl || coverProduct?.imageUrl;
-          
+          // Find first product in this category to use as a cover image
+          const coverProduct = products.find(p => p.category === cat);
+          // Generate the URL slug for the category
+          const catId = cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
           return (
-            <Link key={cat.id} href={`/category/${cat.id}`} style={{ display: 'block', cursor: 'pointer', textDecoration: 'none', color: 'inherit' }}>
+            <Link href={`/category/${catId}`} key={cat} style={{ textDecoration: 'none' }}>
               <div style={{ 
                 height: '300px', backgroundColor: 'var(--bg-secondary)', borderRadius: '12px', overflow: 'hidden', position: 'relative',
-                backgroundImage: bgImage ? `url(${bgImage})` : 'none', backgroundSize: 'cover', backgroundPosition: 'center', transition: 'transform 0.3s ease'
+                backgroundImage: coverProduct?.imageUrl ? `url(${coverProduct.imageUrl})` : 'none', backgroundSize: 'cover', backgroundPosition: 'center'
               }}>
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)', display: 'flex', alignItems: 'flex-end', padding: '20px' }}>
-                  <h3 style={{ color: '#fff', fontSize: '1.5rem', margin: 0 }}>{cat.name}</h3>
+                  <h3 style={{ color: '#fff', fontSize: '1.5rem', margin: 0 }}>{cat.replace(/-/g, ' ')}</h3>
                 </div>
               </div>
             </Link>
@@ -153,7 +150,7 @@ export default async function Home() {
         <h3 style={{ fontSize: '1.8rem', marginBottom: '2rem', borderBottom: '2px solid var(--primary-color)', display: 'inline-block', paddingBottom: '10px' }}>{title}</h3>
         <div style={{ display: 'grid', gridTemplateColumns: `repeat(${theme.catalogGridCols}, 1fr)`, gap: '30px' }}>
           {curatedProducts.map(product => (
-            <Link key={product.id} href={`/product/${product.id}`} style={{ display: 'block', cursor: 'pointer', textDecoration: 'none', color: 'inherit' }}>
+            <Link key={product.id} href={`/product/${product.id}`} style={{ cursor: 'pointer', textDecoration: 'none', color: 'inherit' }}>
               <div style={{ height: '300px', backgroundColor: product.fabricFamilies?.[0]?.colors?.[0]?.hex || 'var(--bg-secondary)', backgroundImage: product.imageUrl ? `url(${product.imageUrl})` : 'none', backgroundSize: 'cover', backgroundPosition: 'center', marginBottom: '1rem', borderRadius: '8px' }} />
               <div>
                 <h4 style={{ fontSize: '1.1rem', marginBottom: '4px' }}>{product.name}</h4>
