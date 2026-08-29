@@ -27,6 +27,11 @@ export default async function RootLayout({
   const theme = await getTheme();
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
+      <head>
+        <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta httpEquiv="Pragma" content="no-cache" />
+        <meta httpEquiv="Expires" content="0" />
+      </head>
       <body style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', margin: 0 }}>
         <ThemeProvider initialTheme={theme}>
           {children}
