@@ -179,9 +179,9 @@ export default async function Home() {
         backdropFilter: 'blur(10px)',
         zIndex: 100
       }}>
-        <div style={{ fontFamily: 'var(--font-outfit)', fontSize: '1.25rem', letterSpacing: '0.1em', fontWeight: 600 }}>
+        <Link href="/" style={{ fontFamily: 'var(--font-outfit)', fontSize: '1.25rem', letterSpacing: '0.1em', fontWeight: 600, textDecoration: 'none', color: 'inherit' }}>
           STITCH CANADA
-        </div>
+        </Link>
         <div style={{ display: 'flex', gap: '2.5rem', fontSize: '0.85rem', fontWeight: 500, letterSpacing: '0.05em' }}>
           <a href="#retail">RETAIL</a>
           <a href="#wholesale" style={{ color: 'var(--text-secondary)' }}>WHOLESALE</a>
