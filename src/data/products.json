@@ -2514,7 +2514,7 @@
   {
     "id": "pdf-hybz9-bk1---blackout-81",
     "name": "HYBZ9-BK1 - BLACKOUT",
-    "category": "zebra-room-darkening",
+    "category": "zebra-blackout",
     "basePrice": 159.99,
     "description": "Premium blind model featuring high quality fabric and sleek design. Authentic catalog model HYBZ9-BK1 - BLACKOUT.",
     "imageUrl": "/uploads/pdf_images/zebra_blinds_p26_154.jpg",
@@ -2671,7 +2671,7 @@
   {
     "id": "pdf-bk2----blackout-86",
     "name": "BK2 -  BLACKOUT",
-    "category": "zebra-room-darkening",
+    "category": "zebra-blackout",
     "basePrice": 164.99,
     "description": "Premium blind model featuring high quality fabric and sleek design. Authentic catalog model BK2 -  BLACKOUT.",
     "imageUrl": "/uploads/pdf_images/zebra_blinds_p27_159.jpg",
@@ -2828,7 +2828,7 @@
   {
     "id": "pdf-bk5----blackout-94",
     "name": "BK5 -  BLACKOUT",
-    "category": "zebra-room-darkening",
+    "category": "zebra-blackout",
     "basePrice": 172.99,
     "description": "Premium blind model featuring high quality fabric and sleek design. Authentic catalog model BK5 -  BLACKOUT.",
     "imageUrl": "/uploads/pdf_images/zebra_blinds_p28_167.jpg",

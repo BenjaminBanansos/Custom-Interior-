@@ -1,16 +1,5 @@
 [
-  {
-    "id": "zebra-translucent",
-    "name": "zebra-translucent",
-    "description": "Professional architectural window treatments.",
-    "productCount": 119,
-    "viewCount": 1200
-  },
-  {
-    "id": "zebra-room-darkening",
-    "name": "zebra-room-darkening",
-    "description": "Professional architectural window treatments.",
-    "productCount": 79,
-    "viewCount": 1200
-  }
+  "zebra-translucent",
+  "zebra-room-darkening",
+  "zebra-blackout"
 ]
