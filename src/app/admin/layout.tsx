@@ -1,25 +1,20 @@
-'use client';
-
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { cookies } from 'next/headers';
 import AdminSidebar from './AdminSidebar';
 
+export const dynamic = 'force-dynamic';
+
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  const [authorized, setAuthorized] = useState(false);
+  const cookieStore = cookies();
+  const hasToken = cookieStore.get('admin_token');
 
-  useEffect(() => {
-    // Manually check if they have the admin_token cookie
-    const hasToken = document.cookie.includes('admin_token=');
-    if (!hasToken) {
-      // Force a HARD browser redirect to clear all Next.js RSC router cache state
-      window.location.href = '/login';
-    } else {
-      setAuthorized(true);
-    }
-  }, []);
-
-  if (!authorized) {
-    // Render nothing while checking to avoid flash
-    return <div style={{ minHeight: '100vh', backgroundColor: '#fcfcfc' }} />;
+  if (!hasToken) {
+    return (
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <script dangerouslySetInnerHTML={{ __html: `window.location.href = "/login";` }} />
+        <p>Redirecting to login...</p>
+      </div>
+    );
   }
 
   return (
