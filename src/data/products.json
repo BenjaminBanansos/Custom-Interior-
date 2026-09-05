@@ -160,6 +160,36 @@
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
           }
         ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
+          }
+        ]
       }
     ]
   },
@@ -315,6 +345,36 @@
             "name": "Neo Smart Hub",
             "priceAdjustment": 199.99,
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
+          }
+        ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
           }
         ]
       }
@@ -481,6 +541,36 @@
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
           }
         ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
+          }
+        ]
       }
     ]
   },
@@ -645,6 +735,36 @@
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
           }
         ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
+          }
+        ]
       }
     ]
   },
@@ -795,6 +915,36 @@
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
           }
         ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
+          }
+        ]
       }
     ]
   },
@@ -938,6 +1088,36 @@
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
           }
         ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
+          }
+        ]
       }
     ]
   },
@@ -1079,6 +1259,36 @@
             "name": "Neo Smart Hub",
             "priceAdjustment": 199.99,
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
+          }
+        ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
           }
         ]
       }
@@ -1236,6 +1446,36 @@
             "name": "Neo Smart Hub",
             "priceAdjustment": 199.99,
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
+          }
+        ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
           }
         ]
       }
@@ -1402,6 +1642,36 @@
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
           }
         ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
+          }
+        ]
       }
     ]
   },
@@ -1557,6 +1827,36 @@
             "name": "Neo Smart Hub",
             "priceAdjustment": 199.99,
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
+          }
+        ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
           }
         ]
       }
@@ -1744,6 +2044,36 @@
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
           }
         ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
+          }
+        ]
       }
     ]
   },
@@ -1899,6 +2229,36 @@
             "name": "Neo Smart Hub",
             "priceAdjustment": 199.99,
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
+          }
+        ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
           }
         ]
       }
@@ -2070,6 +2430,36 @@
             "name": "Neo Smart Hub",
             "priceAdjustment": 199.99,
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
+          }
+        ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
           }
         ]
       }
@@ -2250,6 +2640,36 @@
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
           }
         ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
+          }
+        ]
       }
     ]
   },
@@ -2412,6 +2832,36 @@
             "name": "Neo Smart Hub",
             "priceAdjustment": 199.99,
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
+          }
+        ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
           }
         ]
       }
@@ -2599,6 +3049,36 @@
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
           }
         ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
+          }
+        ]
       }
     ]
   },
@@ -2761,6 +3241,36 @@
             "name": "Neo Smart Hub",
             "priceAdjustment": 199.99,
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
+          }
+        ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
           }
         ]
       }
@@ -2948,6 +3458,36 @@
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
           }
         ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
+          }
+        ]
       }
     ]
   },
@@ -3103,6 +3643,36 @@
             "name": "Neo Smart Hub",
             "priceAdjustment": 199.99,
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
+          }
+        ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
           }
         ]
       }
@@ -3269,6 +3839,36 @@
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
           }
         ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
+          }
+        ]
       }
     ]
   },
@@ -3417,6 +4017,36 @@
             "name": "Neo Smart Hub",
             "priceAdjustment": 199.99,
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
+          }
+        ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
           }
         ]
       }
@@ -3597,6 +4227,36 @@
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
           }
         ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
+          }
+        ]
       }
     ]
   },
@@ -3745,6 +4405,36 @@
             "name": "Neo Smart Hub",
             "priceAdjustment": 199.99,
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
+          }
+        ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
           }
         ]
       }
@@ -3918,6 +4608,36 @@
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
           }
         ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
+          }
+        ]
       }
     ]
   },
@@ -4073,6 +4793,36 @@
             "name": "Neo Smart Hub",
             "priceAdjustment": 199.99,
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
+          }
+        ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
           }
         ]
       }
@@ -4237,6 +4987,36 @@
             "name": "Neo Smart Hub",
             "priceAdjustment": 199.99,
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
+          }
+        ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
           }
         ]
       }
@@ -4438,6 +5218,36 @@
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
           }
         ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
+          }
+        ]
       }
     ]
   },
@@ -4614,6 +5424,36 @@
             "name": "Neo Smart Hub",
             "priceAdjustment": 199.99,
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
+          }
+        ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
           }
         ]
       }
@@ -4822,6 +5662,36 @@
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
           }
         ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
+          }
+        ]
       }
     ]
   },
@@ -4984,6 +5854,36 @@
             "name": "Neo Smart Hub",
             "priceAdjustment": 199.99,
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
+          }
+        ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
           }
         ]
       }
@@ -5176,6 +6076,36 @@
             "name": "Neo Smart Hub",
             "priceAdjustment": 199.99,
             "mediaUrl": "https://img.icons8.com/ios/100/wifi-router.png"
+          }
+        ]
+      },
+      {
+        "id": "bottom-rail",
+        "name": "Bottom Rail Options",
+        "options": [
+          {
+            "id": "u-shaped",
+            "name": "U-Shaped",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/horizontal-line.png"
+          },
+          {
+            "id": "waterdrop",
+            "name": "Waterdrop",
+            "priceAdjustment": 0,
+            "mediaUrl": "https://img.icons8.com/ios/100/drop-of-blood.png"
+          },
+          {
+            "id": "u-shaped-fabric",
+            "name": "U-Shaped Fabric-Wrapped",
+            "priceAdjustment": 15,
+            "mediaUrl": "https://img.icons8.com/ios/100/rolled-up.png"
+          },
+          {
+            "id": "fabric-inserted",
+            "name": "Fabric-Inserted",
+            "priceAdjustment": 10,
+            "mediaUrl": "https://img.icons8.com/ios/100/towel.png"
           }
         ]
       }
