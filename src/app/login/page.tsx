@@ -28,8 +28,7 @@ export default function LoginPage() {
 
       if (res.ok && data.success) {
         // Redirect to admin dashboard
-        router.push('/admin');
-        router.refresh(); // Refresh to ensure layout gets updated state
+        window.location.href = '/admin?bust=' + Date.now(); // Refresh to ensure layout gets updated state
       } else {
         setError(data.error || 'Invalid credentials');
       }

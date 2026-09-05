@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
+
 import { usePathname } from 'next/navigation';
 
 export default function AdminSidebar() {
@@ -45,7 +45,7 @@ export default function AdminSidebar() {
 
       <nav style={{ flex: 1 }}>
         {navItems.map(item => (
-          <Link 
+          <a 
             key={item.path} 
             href={item.path}
             style={{ 
@@ -64,7 +64,7 @@ export default function AdminSidebar() {
           >
             <span style={{ fontSize: '1.1rem' }}>{item.icon}</span>
             {item.label}
-          </Link>
+          </a>
         ))}
       </nav>
 
