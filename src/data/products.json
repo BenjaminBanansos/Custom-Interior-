@@ -15,32 +15,39 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p10_77.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p10_78.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p10_79.jpg"
           },
           {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
+            "colorId": "opt-4",
+            "name": "Option 4",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p10_80.jpg"
+          },
+          {
+            "colorId": "opt-5",
+            "name": "Option 5",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p10_81.jpg"
           }
         ]
       }
@@ -172,32 +179,32 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p11_82.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p11_83.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p11_84.jpg"
           },
           {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
+            "colorId": "opt-4",
+            "name": "Option 4",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p11_85.jpg"
           }
         ]
       }
@@ -329,32 +336,39 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p12_86.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p12_87.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p12_88.jpg"
           },
           {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
+            "colorId": "opt-4",
+            "name": "Option 4",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p12_89.jpg"
+          },
+          {
+            "colorId": "opt-5",
+            "name": "Option 5",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p12_90.jpg"
           }
         ]
       }
@@ -486,32 +500,39 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p13_91.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p13_92.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p13_93.jpg"
           },
           {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
+            "colorId": "opt-4",
+            "name": "Option 4",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p13_94.jpg"
+          },
+          {
+            "colorId": "opt-5",
+            "name": "Option 5",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p13_95.jpg"
           }
         ]
       }
@@ -643,32 +664,25 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p14_96.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p14_97.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
-          },
-          {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
-            "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p14_98.jpg"
           }
         ]
       }
@@ -790,7 +804,7 @@
     "category": "zebra-translucent",
     "basePrice": 151.99,
     "description": "Premium blind model featuring high quality fabric and sleek design. Authentic catalog model BE6 -  TRANSLUCENT.",
-    "imageUrl": "/uploads/pdf_images/zebra_blinds_p15_100.jpg",
+    "imageUrl": "/uploads/pdf_images/zebra_blinds_p15_99.jpg",
     "customizationOptions": [],
     "fabricFamilies": [
       {
@@ -800,32 +814,18 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p15_99.jpg"
+          },
+          {
+            "colorId": "opt-2",
+            "name": "Option 2",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p15_100.jpg"
-          },
-          {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
-            "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
-          },
-          {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
-            "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
-          },
-          {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
-            "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
           }
         ]
       }
@@ -957,32 +957,18 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p16_101.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
-          },
-          {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
-            "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
-          },
-          {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
-            "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p16_102.jpg"
           }
         ]
       }
@@ -1114,32 +1100,32 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p17_103.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p17_104.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p17_105.jpg"
           },
           {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
+            "colorId": "opt-4",
+            "name": "Option 4",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p17_106.jpg"
           }
         ]
       }
@@ -1271,32 +1257,39 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p18_107.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p18_108.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p18_109.jpg"
           },
           {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
+            "colorId": "opt-4",
+            "name": "Option 4",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p18_110.jpg"
+          },
+          {
+            "colorId": "opt-5",
+            "name": "Option 5",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p18_111.jpg"
           }
         ]
       }
@@ -1428,32 +1421,32 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p19_112.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p19_113.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p19_114.jpg"
           },
           {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
+            "colorId": "opt-4",
+            "name": "Option 4",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p19_115.jpg"
           }
         ]
       }
@@ -1585,32 +1578,60 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p20_116.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p20_117.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p20_118.jpg"
           },
           {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
+            "colorId": "opt-4",
+            "name": "Option 4",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p20_119.jpg"
+          },
+          {
+            "colorId": "opt-5",
+            "name": "Option 5",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p20_120.jpg"
+          },
+          {
+            "colorId": "opt-6",
+            "name": "Option 6",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p20_121.jpg"
+          },
+          {
+            "colorId": "opt-7",
+            "name": "Option 7",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p20_122.jpg"
+          },
+          {
+            "colorId": "opt-8",
+            "name": "Option 8",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p20_123.jpg"
           }
         ]
       }
@@ -1742,32 +1763,32 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p21_124.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p21_125.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p21_126.jpg"
           },
           {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
+            "colorId": "opt-4",
+            "name": "Option 4",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p21_127.jpg"
           }
         ]
       }
@@ -1899,32 +1920,46 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p22_128.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p22_129.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p22_130.jpg"
           },
           {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
+            "colorId": "opt-4",
+            "name": "Option 4",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p22_131.jpg"
+          },
+          {
+            "colorId": "opt-5",
+            "name": "Option 5",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p22_132.jpg"
+          },
+          {
+            "colorId": "opt-6",
+            "name": "Option 6",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p22_133.jpg"
           }
         ]
       }
@@ -2056,32 +2091,53 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p23_134.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p23_135.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p23_136.jpg"
           },
           {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
+            "colorId": "opt-4",
+            "name": "Option 4",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p23_137.jpg"
+          },
+          {
+            "colorId": "opt-5",
+            "name": "Option 5",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p23_138.jpg"
+          },
+          {
+            "colorId": "opt-6",
+            "name": "Option 6",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p23_139.jpg"
+          },
+          {
+            "colorId": "opt-7",
+            "name": "Option 7",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p23_140.jpg"
           }
         ]
       }
@@ -2213,32 +2269,39 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p24_141.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p24_142.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p24_143.jpg"
           },
           {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
+            "colorId": "opt-4",
+            "name": "Option 4",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p24_144.jpg"
+          },
+          {
+            "colorId": "opt-5",
+            "name": "Option 5",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p24_145.jpg"
           }
         ]
       }
@@ -2370,32 +2433,60 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p25_146.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p25_147.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p25_148.jpg"
           },
           {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
+            "colorId": "opt-4",
+            "name": "Option 4",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p25_149.jpg"
+          },
+          {
+            "colorId": "opt-5",
+            "name": "Option 5",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p25_150.jpg"
+          },
+          {
+            "colorId": "opt-6",
+            "name": "Option 6",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p25_151.jpg"
+          },
+          {
+            "colorId": "opt-7",
+            "name": "Option 7",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p25_152.jpg"
+          },
+          {
+            "colorId": "opt-8",
+            "name": "Option 8",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p25_153.jpg"
           }
         ]
       }
@@ -2527,32 +2618,39 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p26_154.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p26_155.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p26_156.jpg"
           },
           {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
+            "colorId": "opt-4",
+            "name": "Option 4",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p26_157.jpg"
+          },
+          {
+            "colorId": "opt-5",
+            "name": "Option 5",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p26_158.jpg"
           }
         ]
       }
@@ -2684,32 +2782,60 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p27_159.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p27_160.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p27_161.jpg"
           },
           {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
+            "colorId": "opt-4",
+            "name": "Option 4",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p27_162.jpg"
+          },
+          {
+            "colorId": "opt-5",
+            "name": "Option 5",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p27_163.jpg"
+          },
+          {
+            "colorId": "opt-6",
+            "name": "Option 6",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p27_164.jpg"
+          },
+          {
+            "colorId": "opt-7",
+            "name": "Option 7",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p27_165.jpg"
+          },
+          {
+            "colorId": "opt-8",
+            "name": "Option 8",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p27_166.jpg"
           }
         ]
       }
@@ -2841,32 +2967,32 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p28_167.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p28_168.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p28_169.jpg"
           },
           {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
+            "colorId": "opt-4",
+            "name": "Option 4",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p28_170.jpg"
           }
         ]
       }
@@ -2998,32 +3124,39 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p29_171.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p29_172.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p29_173.jpg"
           },
           {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
+            "colorId": "opt-4",
+            "name": "Option 4",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p29_174.jpg"
+          },
+          {
+            "colorId": "opt-5",
+            "name": "Option 5",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p29_175.jpg"
           }
         ]
       }
@@ -3155,32 +3288,25 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p30_176.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p30_177.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
-          },
-          {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
-            "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p30_178.jpg"
           }
         ]
       }
@@ -3312,32 +3438,53 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p31_179.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p31_180.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p31_181.jpg"
           },
           {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
+            "colorId": "opt-4",
+            "name": "Option 4",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p31_182.jpg"
+          },
+          {
+            "colorId": "opt-5",
+            "name": "Option 5",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p31_183.jpg"
+          },
+          {
+            "colorId": "opt-6",
+            "name": "Option 6",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p31_184.jpg"
+          },
+          {
+            "colorId": "opt-7",
+            "name": "Option 7",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p31_185.jpg"
           }
         ]
       }
@@ -3469,32 +3616,25 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p32_186.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p32_187.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
-          },
-          {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
-            "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p32_188.jpg"
           }
         ]
       }
@@ -3626,32 +3766,46 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p33_189.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p33_190.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p33_191.jpg"
           },
           {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
+            "colorId": "opt-4",
+            "name": "Option 4",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p33_192.jpg"
+          },
+          {
+            "colorId": "opt-5",
+            "name": "Option 5",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p33_193.jpg"
+          },
+          {
+            "colorId": "opt-6",
+            "name": "Option 6",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p33_194.jpg"
           }
         ]
       }
@@ -3783,32 +3937,32 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p34_195.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p34_196.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p34_197.jpg"
           },
           {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
+            "colorId": "opt-4",
+            "name": "Option 4",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p34_198.jpg"
           }
         ]
       }
@@ -3940,32 +4094,39 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p4_30.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p4_31.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p4_32.jpg"
           },
           {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
+            "colorId": "opt-4",
+            "name": "Option 4",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p4_33.jpg"
+          },
+          {
+            "colorId": "opt-5",
+            "name": "Option 5",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p4_34.jpg"
           }
         ]
       }
@@ -4097,32 +4258,74 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p5_35.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p5_36.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p5_37.jpg"
           },
           {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
+            "colorId": "opt-4",
+            "name": "Option 4",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p5_38.jpg"
+          },
+          {
+            "colorId": "opt-5",
+            "name": "Option 5",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p5_39.jpg"
+          },
+          {
+            "colorId": "opt-6",
+            "name": "Option 6",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p5_40.jpg"
+          },
+          {
+            "colorId": "opt-7",
+            "name": "Option 7",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p5_41.jpg"
+          },
+          {
+            "colorId": "opt-8",
+            "name": "Option 8",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p5_42.jpg"
+          },
+          {
+            "colorId": "opt-9",
+            "name": "Option 9",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p5_43.jpg"
+          },
+          {
+            "colorId": "opt-10",
+            "name": "Option 10",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p5_44.jpg"
           }
         ]
       }
@@ -4254,32 +4457,53 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p6_45.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p6_46.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p6_47.jpg"
           },
           {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
+            "colorId": "opt-4",
+            "name": "Option 4",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p6_48.jpg"
+          },
+          {
+            "colorId": "opt-5",
+            "name": "Option 5",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p6_49.jpg"
+          },
+          {
+            "colorId": "opt-6",
+            "name": "Option 6",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p6_50.jpg"
+          },
+          {
+            "colorId": "opt-7",
+            "name": "Option 7",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p6_51.jpg"
           }
         ]
       }
@@ -4411,32 +4635,81 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p7_52.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p7_53.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p7_54.jpg"
           },
           {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
+            "colorId": "opt-4",
+            "name": "Option 4",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p7_55.jpg"
+          },
+          {
+            "colorId": "opt-5",
+            "name": "Option 5",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p7_56.jpg"
+          },
+          {
+            "colorId": "opt-6",
+            "name": "Option 6",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p7_57.jpg"
+          },
+          {
+            "colorId": "opt-7",
+            "name": "Option 7",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p7_58.jpg"
+          },
+          {
+            "colorId": "opt-8",
+            "name": "Option 8",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p7_59.jpg"
+          },
+          {
+            "colorId": "opt-9",
+            "name": "Option 9",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p7_60.jpg"
+          },
+          {
+            "colorId": "opt-10",
+            "name": "Option 10",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p7_61.jpg"
+          },
+          {
+            "colorId": "opt-11",
+            "name": "Option 11",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p7_62.jpg"
           }
         ]
       }
@@ -4568,32 +4841,39 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p8_63.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p8_64.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p8_65.jpg"
           },
           {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
+            "colorId": "opt-4",
+            "name": "Option 4",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p8_66.jpg"
+          },
+          {
+            "colorId": "opt-5",
+            "name": "Option 5",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p8_67.jpg"
           }
         ]
       }
@@ -4725,32 +5005,67 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "white",
-            "name": "Arctic White",
+            "colorId": "opt-1",
+            "name": "Option 1",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p9_68.jpg"
           },
           {
-            "colorId": "grey",
-            "name": "Charcoal Grey",
-            "hex": "#4a4a4a",
+            "colorId": "opt-2",
+            "name": "Option 2",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1601084224716-96b6537dbd11?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p9_69.jpg"
           },
           {
-            "colorId": "beige",
-            "name": "Warm Beige",
-            "hex": "#e8dcca",
+            "colorId": "opt-3",
+            "name": "Option 3",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1594916315843-0c48e8958ea3?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p9_70.jpg"
           },
           {
-            "colorId": "black",
-            "name": "Midnight Black",
-            "hex": "#111111",
+            "colorId": "opt-4",
+            "name": "Option 4",
+            "hex": "#ffffff",
             "status": "available",
-            "mediaUrl": "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?w=200&fit=crop"
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p9_71.jpg"
+          },
+          {
+            "colorId": "opt-5",
+            "name": "Option 5",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p9_72.jpg"
+          },
+          {
+            "colorId": "opt-6",
+            "name": "Option 6",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p9_73.jpg"
+          },
+          {
+            "colorId": "opt-7",
+            "name": "Option 7",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p9_74.jpg"
+          },
+          {
+            "colorId": "opt-8",
+            "name": "Option 8",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p9_75.jpg"
+          },
+          {
+            "colorId": "opt-9",
+            "name": "Option 9",
+            "hex": "#ffffff",
+            "status": "available",
+            "mediaUrl": "/uploads/pdf_images/zebra_blinds_p9_76.jpg"
           }
         ]
       }
