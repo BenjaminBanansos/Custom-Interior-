@@ -1,5 +1,20 @@
 [
-  "zebra-translucent",
-  "zebra-room-darkening",
-  "zebra-blackout"
+  {
+    "id": "zebra-translucent",
+    "name": "Zebra Translucent",
+    "description": "Light-filtering zebra blinds for a soft, natural glow.",
+    "imageUrl": "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=2000"
+  },
+  {
+    "id": "zebra-room-darkening",
+    "name": "Zebra Room Darkening",
+    "description": "Perfect for living spaces that need significant light control.",
+    "imageUrl": "https://images.unsplash.com/photo-1540932239986-30128078f3ed?q=80&w=2000"
+  },
+  {
+    "id": "zebra-blackout",
+    "name": "Zebra Blackout",
+    "description": "Maximum light blocking and privacy for bedrooms and media rooms.",
+    "imageUrl": "https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?q=80&w=2000"
+  }
 ]
