@@ -66,6 +66,21 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
     return parseFloat(val) || 0;
   };
 
+  const getSelectedIds = () => Object.values(selectedModifiers);
+
+  const isOptionCompatible = (opt: any) => {
+    const selected = getSelectedIds();
+    if (opt.requires && opt.requires.length > 0) {
+      // Must have AT LEAST ONE of the required options
+      if (!opt.requires.some((r: string) => selected.includes(r))) return false;
+    }
+    if (opt.excludes && opt.excludes.length > 0) {
+      // Must NOT have ANY of the excluded options
+      if (opt.excludes.some((e: string) => selected.includes(e))) return false;
+    }
+    return true;
+  };
+
   useEffect(() => {
     const w = parseFraction(width);
     const h = parseFraction(height);
@@ -81,24 +96,37 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
     // Add Fabric Family Modifier
     if (selectedFamily) price += selectedFamily.priceModifier;
 
+    let newSelectedModifiers = { ...selectedModifiers };
+    let hasChanges = false;
+
     // Add Modifiers and Sub-Attributes
     product.modifiers?.forEach(group => {
-      const selectedOptionId = selectedModifiers[group.id];
+      const selectedOptionId = newSelectedModifiers[group.id];
       if (selectedOptionId) {
         const option = group.options.find(o => o.id === selectedOptionId);
         if (option) {
-          price += option.priceAdjustment;
-          // Sub-attributes
-          option.subAttributes?.forEach(sub => {
-            const selectedChoiceId = selectedSubAttributes[sub.id];
-            if (selectedChoiceId) {
-              const choice = sub.choices.find(c => c.id === selectedChoiceId);
-              if (choice) price += choice.priceAdjustment;
-            }
-          });
+          // Check if it's still compatible
+          if (!isOptionCompatible(option)) {
+            delete newSelectedModifiers[group.id];
+            hasChanges = true;
+          } else {
+            price += option.priceAdjustment;
+            // Sub-attributes
+            option.subAttributes?.forEach(sub => {
+              const selectedChoiceId = selectedSubAttributes[sub.id];
+              if (selectedChoiceId) {
+                const choice = sub.choices.find(c => c.id === selectedChoiceId);
+                if (choice) price += choice.priceAdjustment;
+              }
+            });
+          }
         }
       }
     });
+
+    if (hasChanges) {
+      setSelectedModifiers(newSelectedModifiers);
+    }
 
     setTotalPrice(Math.round(price) * (parseInt(quantity) || 1));
   }, [width, height, quantity, selectedFamily, selectedColor, selectedModifiers, selectedSubAttributes, product]);
@@ -294,25 +322,42 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
                 </label>
                 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '12px' }}>
-                  {group.options.map(opt => (
-                    <div 
-                      key={opt.id}
-                      onClick={() => setSelectedModifiers({ ...selectedModifiers, [group.id]: opt.id })}
-                      style={{ 
-                        border: selectedOption?.id === opt.id ? '2px solid #000' : '1px solid #eaeaea',
-                        padding: '20px', cursor: 'pointer', background: selectedOption?.id === opt.id ? '#fafafa' : '#fff',
-                        display: 'flex', alignItems: 'center', gap: '20px', transition: 'all 0.2s'
-                      }}
-                    >
-                      {opt.mediaUrl && (
-                        <div style={{ width: '60px', height: '60px', borderRadius: '4px', backgroundImage: `url(${opt.mediaUrl})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', flexShrink: 0, border: '1px solid #eee', backgroundColor: '#fff' }} />
-                      )}
-                      <div>
-                        <div style={{ fontSize: '1.1rem', fontWeight: 400, color: '#000' }}>{opt.name}</div>
-                        <div style={{ fontSize: '0.8rem', color: opt.priceAdjustment > 0 ? '#10b981' : '#888', marginTop: '4px' }}>{opt.priceAdjustment > 0 ? `+ $${opt.priceAdjustment}` : 'Included in Base'}</div>
+                  {group.options.map(opt => {
+                    const isCompatible = isOptionCompatible(opt);
+                    return (
+                      <div 
+                        key={opt.id}
+                        onClick={() => {
+                          if (isCompatible) {
+                            setSelectedModifiers({ ...selectedModifiers, [group.id]: opt.id });
+                          }
+                        }}
+                        style={{ 
+                          border: selectedOption?.id === opt.id ? '2px solid #000' : '1px solid #eaeaea',
+                          padding: '20px', cursor: isCompatible ? 'pointer' : 'not-allowed', 
+                          background: selectedOption?.id === opt.id ? '#fafafa' : '#fff',
+                          opacity: isCompatible ? 1 : 0.4,
+                          display: 'flex', alignItems: 'center', gap: '20px', transition: 'all 0.2s'
+                        }}
+                      >
+                        {opt.mediaUrl && (
+                          <div 
+                            onClick={(e) => { 
+                              // Optional: open lightbox for hardware too? 
+                              // For now just prevent it from toggling the option if we add a dedicated enlarge button
+                            }} 
+                            style={{ width: '60px', height: '60px', borderRadius: '4px', backgroundImage: `url(${opt.mediaUrl})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', flexShrink: 0, border: '1px solid #eee', backgroundColor: '#fff' }} 
+                          />
+                        )}
+                        <div>
+                          <div style={{ fontSize: '1.1rem', fontWeight: 400, color: '#000' }}>
+                            {opt.name} {!isCompatible && <span style={{fontSize:'0.7rem', color:'red', marginLeft:'10px'}}>Incompatible with current selections</span>}
+                          </div>
+                          <div style={{ fontSize: '0.8rem', color: opt.priceAdjustment > 0 ? '#10b981' : '#888', marginTop: '4px' }}>{opt.priceAdjustment > 0 ? `+ $${opt.priceAdjustment}` : 'Included in Base'}</div>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
 
                 {/* Sub-Attributes Accordion */}

@@ -47,6 +47,8 @@ export interface ModifierOption {
   priceAdjustment: number;
   mediaUrl?: string; // Optional icon or GIF for the option
   subAttributes?: SubAttribute[]; // Nested choices specific to this option
+  requires?: string[]; // Array of option IDs required for this to be selectable (e.g. ['cordless'])
+  excludes?: string[]; // Array of option IDs that are incompatible with this
 }
 
 export interface ModifierGroup {
