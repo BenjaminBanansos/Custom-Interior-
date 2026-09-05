@@ -7,6 +7,7 @@ export interface FabricColor {
 }
 
 export interface FabricFamily {
+  maxWidth?: number;
   fabricId: string;
   name: string;
   description?: string;

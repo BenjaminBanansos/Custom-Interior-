@@ -11,7 +11,9 @@ interface ConfiguratorProps {
 
 export default function Configurator({ product, theme }: ConfiguratorProps) {
   const [width, setWidth] = useState('24');
+  const [widthFraction, setWidthFraction] = useState('0');
   const [height, setHeight] = useState('36');
+  const [heightFraction, setHeightFraction] = useState('0');
   const [quantity, setQuantity] = useState('1');
   
   // Advanced State
@@ -83,8 +85,8 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
   };
 
   useEffect(() => {
-    const w = parseFraction(width);
-    const h = parseFraction(height);
+    const w = (parseFloat(width) || 0) + parseFraction(widthFraction);
+    const h = (parseFloat(height) || 0) + parseFraction(heightFraction);
     
     let price = 0;
     if (product.basePriceMode === 'perSqFt') {
@@ -130,7 +132,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
     }
 
     setTotalPrice(Math.round(price) * (parseInt(quantity) || 1));
-  }, [width, height, quantity, selectedFamily, selectedColor, selectedModifiers, selectedSubAttributes, product]);
+  }, [width, widthFraction, height, heightFraction, quantity, selectedFamily, selectedColor, selectedModifiers, selectedSubAttributes, product]);
 
   const bgImageUrl = selectedColor?.mediaUrl || product.imageUrl || '';
 
@@ -234,23 +236,62 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
               <div>
                 <label style={{ fontSize: '0.7rem', color: '#888', display: 'block', marginBottom: '8px' }}>WIDTH (IN)</label>
-                <input 
-                  type="text" 
-                  placeholder="e.g. 24 1/2"
-                  value={width}
-                  onChange={(e) => setWidth(e.target.value)}
-                  style={{ width: '100%', padding: '16px', border: '1px solid #e0e0e0', borderRadius: '0', fontSize: '1.1rem', outline: 'none', background: '#fafafa', transition: 'border 0.3s' }}
-                />
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  <input 
+                    type="number" 
+                    min="12"
+                    placeholder="Inches"
+                    value={width}
+                    onChange={(e) => setWidth(e.target.value)}
+                    style={{ flex: 2, padding: '16px', border: '1px solid #e0e0e0', borderRadius: '0', fontSize: '1.1rem', outline: 'none', background: '#fafafa' }}
+                  />
+                  <select 
+                    value={widthFraction} 
+                    onChange={(e) => setWidthFraction(e.target.value)}
+                    style={{ flex: 1, padding: '16px', border: '1px solid #e0e0e0', borderRadius: '0', fontSize: '1.1rem', outline: 'none', background: '#fafafa', appearance: 'none', cursor: 'pointer' }}
+                  >
+                    <option value="0">0"</option>
+                    <option value="1/8">1/8"</option>
+                    <option value="1/4">1/4"</option>
+                    <option value="3/8">3/8"</option>
+                    <option value="1/2">1/2"</option>
+                    <option value="5/8">5/8"</option>
+                    <option value="3/4">3/4"</option>
+                    <option value="7/8">7/8"</option>
+                  </select>
+                </div>
+                {selectedFamily?.maxWidth && (parseFloat(width) > selectedFamily.maxWidth) && (
+                  <div style={{ color: 'red', fontSize: '0.7rem', marginTop: '4px' }}>
+                    Max width for this fabric is {selectedFamily.maxWidth}"
+                  </div>
+                )}
               </div>
               <div>
                 <label style={{ fontSize: '0.7rem', color: '#888', display: 'block', marginBottom: '8px' }}>HEIGHT (IN)</label>
-                <input 
-                  type="text" 
-                  placeholder="e.g. 36 3/4"
-                  value={height}
-                  onChange={(e) => setHeight(e.target.value)}
-                  style={{ width: '100%', padding: '16px', border: '1px solid #e0e0e0', borderRadius: '0', fontSize: '1.1rem', outline: 'none', background: '#fafafa', transition: 'border 0.3s' }}
-                />
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  <input 
+                    type="number" 
+                    min="12"
+                    placeholder="Inches"
+                    value={height}
+                    onChange={(e) => setHeight(e.target.value)}
+                    style={{ flex: 2, padding: '16px', border: '1px solid #e0e0e0', borderRadius: '0', fontSize: '1.1rem', outline: 'none', background: '#fafafa' }}
+                  />
+                  <select 
+                    value={heightFraction} 
+                    onChange={(e) => setHeightFraction(e.target.value)}
+                    style={{ flex: 1, padding: '16px', border: '1px solid #e0e0e0', borderRadius: '0', fontSize: '1.1rem', outline: 'none', background: '#fafafa', appearance: 'none', cursor: 'pointer' }}
+                  >
+                    <option value="0">0"</option>
+                    <option value="1/8">1/8"</option>
+                    <option value="1/4">1/4"</option>
+                    <option value="3/8">3/8"</option>
+                    <option value="1/2">1/2"</option>
+                    <option value="5/8">5/8"</option>
+                    <option value="3/4">3/4"</option>
+                    <option value="7/8">7/8"</option>
+                  </select>
+                </div>
               </div>
               <div>
                 <label style={{ fontSize: '0.7rem', color: '#888', display: 'block', marginBottom: '8px' }}>QUANTITY</label>
@@ -403,9 +444,17 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
           <span style={{ fontSize: '0.7rem', color: '#555', fontWeight: 700, letterSpacing: '0.1em', display: 'block', marginBottom: '4px' }}>ESTIMATED TOTAL</span>
           <span style={{ fontSize: '2rem', fontWeight: 400, letterSpacing: '-0.05em' }}>${totalPrice}</span>
         </div>
-        <button style={{ padding: '16px 32px', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.1em', backgroundColor: '#000', color: '#fff', border: 'none', cursor: 'pointer', transition: 'transform 0.2s' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.02)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}>
-          ADD TO PROJECT
-        </button>
+        
+        {selectedFamily?.maxWidth && (parseFloat(width) > selectedFamily.maxWidth) ? (
+          <button style={{ padding: '16px 32px', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.1em', backgroundColor: '#e53e3e', color: '#fff', border: 'none', cursor: 'not-allowed' }}>
+            SIZE TOO LARGE
+          </button>
+        ) : (
+          <button style={{ padding: '16px 32px', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.1em', backgroundColor: '#000', color: '#fff', border: 'none', cursor: 'pointer', transition: 'transform 0.2s' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.02)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}>
+            ADD TO PROJECT
+          </button>
+        )}
+
       </div>
 
       {/* Lightbox Modal */}
