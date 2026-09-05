@@ -4,8 +4,8 @@ import AdminSidebar from './AdminSidebar';
 
 export const dynamic = 'force-dynamic';
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  const cookieStore = cookies();
+export default async function AdminLayout({ children }: { children: React.ReactNode }) {
+  const cookieStore = await cookies();
   const hasToken = cookieStore.get('admin_token');
 
   if (!hasToken) {
