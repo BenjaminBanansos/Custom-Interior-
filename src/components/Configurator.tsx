@@ -25,6 +25,33 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
   const [selectedSubAttributes, setSelectedSubAttributes] = useState<Record<string, string>>({});
   
   const [totalPrice, setTotalPrice] = useState(product.basePrice);
+  
+  // Lightbox State
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const openLightbox = () => {
+    if (!selectedFamily) return;
+    const idx = selectedFamily.colors.findIndex(c => c.colorId === selectedColor?.colorId);
+    setLightboxIndex(idx !== -1 ? idx : 0);
+    setLightboxOpen(true);
+  };
+
+  const nextLightboxImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!selectedFamily) return;
+    const newIdx = (lightboxIndex + 1) % selectedFamily.colors.length;
+    setLightboxIndex(newIdx);
+    setSelectedColor(selectedFamily.colors[newIdx]);
+  };
+
+  const prevLightboxImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!selectedFamily) return;
+    const newIdx = (lightboxIndex - 1 + selectedFamily.colors.length) % selectedFamily.colors.length;
+    setLightboxIndex(newIdx);
+    setSelectedColor(selectedFamily.colors[newIdx]);
+  };
 
   const parseFraction = (val: string): number => {
     if (!val) return 0;
@@ -157,9 +184,12 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
 
       <div className="config-container">
         {/* Visual Preview */}
-        <div className="visual-panel">
+        <div className="visual-panel" onClick={openLightbox} style={{ cursor: 'pointer' }}>
           <div style={{ position: 'absolute', bottom: '-30px', left: 0, width: '100%', textAlign: 'center', fontSize: '0.7rem', fontWeight: 600, color: '#888' }}>
             PREVIEW: {selectedColor?.name || 'Base Model'}
+          </div>
+          <div style={{ position: 'absolute', top: '20px', right: '20px', background: 'rgba(255,255,255,0.8)', padding: '8px 12px', borderRadius: '20px', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.1em' }}>
+            🔍 ENLARGE
           </div>
         </div>
 
@@ -328,6 +358,30 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
           ADD TO PROJECT
         </button>
       </div>
+
+      {/* Lightbox Modal */}
+      {lightboxOpen && selectedFamily && (
+        <div style={{
+          position: 'fixed', inset: 0, zIndex: 9999, backgroundColor: 'rgba(0,0,0,0.9)',
+          display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(10px)'
+        }} onClick={() => setLightboxOpen(false)}>
+          
+          <button style={{ position: 'absolute', top: '30px', right: '30px', background: 'transparent', border: 'none', color: 'white', fontSize: '2rem', cursor: 'pointer', padding: '10px' }} onClick={() => setLightboxOpen(false)}>✕</button>
+          
+          <div style={{ display: 'flex', alignItems: 'center', gap: '40px', maxWidth: '90vw' }}>
+            <button style={{ background: 'rgba(255,255,255,0.1)', border: 'none', color: 'white', fontSize: '3rem', padding: '20px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80px', height: '80px' }} onClick={prevLightboxImage}>‹</button>
+            
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <img src={selectedFamily.colors[lightboxIndex]?.mediaUrl} alt={selectedFamily.colors[lightboxIndex]?.name} style={{ maxHeight: '75vh', maxWidth: '75vw', objectFit: 'contain', borderRadius: '8px', boxShadow: '0 20px 50px rgba(0,0,0,0.5)' }} />
+              <div style={{ color: 'white', marginTop: '20px', fontSize: '1.5rem', fontWeight: 500, letterSpacing: '0.05em' }}>
+                {selectedFamily.colors[lightboxIndex]?.name}
+              </div>
+            </div>
+
+            <button style={{ background: 'rgba(255,255,255,0.1)', border: 'none', color: 'white', fontSize: '3rem', padding: '20px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80px', height: '80px' }} onClick={nextLightboxImage}>›</button>
+          </div>
+        </div>
+      )}
     </>
   );
 }
