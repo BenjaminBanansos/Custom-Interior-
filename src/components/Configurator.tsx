@@ -71,6 +71,13 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
 
   const getSelectedIds = () => Object.values(selectedModifiers);
 
+  const getDynamicMinWidth = () => {
+    const liftStyle = selectedModifiers['lift-style'];
+    if (liftStyle === 'motorization') return 24;
+    if (liftStyle === 'cordless') return 20;
+    return 12; // default for standard-chain and others
+  };
+
   const isOptionCompatible = (opt: any) => {
     const selected = getSelectedIds();
     if (opt.requires && opt.requires.length > 0) {
@@ -265,6 +272,11 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
                     Max width for this fabric is {selectedFamily.maxWidth}"
                   </div>
                 )}
+                {(parseFloat(width) < getDynamicMinWidth()) && (
+                  <div style={{ color: 'red', fontSize: '0.7rem', marginTop: '4px' }}>
+                    Min width for the selected lift system is {getDynamicMinWidth()}"
+                  </div>
+                )}
               </div>
               <div>
                 <label style={{ fontSize: '0.7rem', color: '#888', display: 'block', marginBottom: '8px' }}>HEIGHT (IN)</label>
@@ -445,15 +457,31 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
           <span style={{ fontSize: '2rem', fontWeight: 400, letterSpacing: '-0.05em' }}>${totalPrice}</span>
         </div>
         
-        {selectedFamily?.maxWidth && (parseFloat(width) > selectedFamily.maxWidth) ? (
-          <button style={{ padding: '16px 32px', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.1em', backgroundColor: '#e53e3e', color: '#fff', border: 'none', cursor: 'not-allowed' }}>
-            SIZE TOO LARGE
-          </button>
-        ) : (
-          <button style={{ padding: '16px 32px', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.1em', backgroundColor: '#000', color: '#fff', border: 'none', cursor: 'pointer', transition: 'transform 0.2s' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.02)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}>
-            ADD TO PROJECT
-          </button>
-        )}
+        {(() => {
+          const isTooLarge = selectedFamily?.maxWidth && (parseFloat(width) > selectedFamily.maxWidth);
+          const isTooSmall = parseFloat(width) < getDynamicMinWidth();
+          
+          if (isTooLarge) {
+            return (
+              <button style={{ padding: '16px 32px', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.1em', backgroundColor: '#e53e3e', color: '#fff', border: 'none', cursor: 'not-allowed' }}>
+                SIZE TOO LARGE
+              </button>
+            );
+          }
+          if (isTooSmall) {
+            return (
+              <button style={{ padding: '16px 32px', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.1em', backgroundColor: '#e53e3e', color: '#fff', border: 'none', cursor: 'not-allowed' }}>
+                SIZE TOO SMALL
+              </button>
+            );
+          }
+          
+          return (
+            <button style={{ padding: '16px 32px', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.1em', backgroundColor: '#000', color: '#fff', border: 'none', cursor: 'pointer', transition: 'transform 0.2s' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.02)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}>
+              ADD TO PROJECT
+            </button>
+          );
+        })()}
 
       </div>
 
