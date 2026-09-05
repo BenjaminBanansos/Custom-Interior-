@@ -29,6 +29,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
   // Lightbox State
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [hardwareLightboxImage, setHardwareLightboxImage] = useState<string | null>(null);
 
   const openLightbox = () => {
     if (!selectedFamily) return;
@@ -341,13 +342,16 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
                         }}
                       >
                         {opt.mediaUrl && (
-                          <div 
-                            onClick={(e) => { 
-                              // Optional: open lightbox for hardware too? 
-                              // For now just prevent it from toggling the option if we add a dedicated enlarge button
-                            }} 
-                            style={{ width: '60px', height: '60px', borderRadius: '4px', backgroundImage: `url(${opt.mediaUrl})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', flexShrink: 0, border: '1px solid #eee', backgroundColor: '#fff' }} 
-                          />
+                          <div style={{ position: 'relative' }}>
+                            <div 
+                              onClick={(e) => { 
+                                e.stopPropagation();
+                                setHardwareLightboxImage(opt.mediaUrl || null);
+                              }} 
+                              style={{ width: '60px', height: '60px', borderRadius: '4px', backgroundImage: `url(${opt.mediaUrl})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', flexShrink: 0, border: '1px solid #eee', backgroundColor: '#fff', cursor: 'zoom-in' }} 
+                            />
+                            <div style={{ position: 'absolute', bottom: '-8px', right: '-8px', background: 'rgba(0,0,0,0.6)', color: 'white', fontSize: '10px', padding: '2px 4px', borderRadius: '4px', pointerEvents: 'none' }}>🔍</div>
+                          </div>
                         )}
                         <div>
                           <div style={{ fontSize: '1.1rem', fontWeight: 400, color: '#000' }}>
@@ -422,8 +426,22 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
                 {selectedFamily.colors[lightboxIndex]?.name}
               </div>
             </div>
-
             <button style={{ background: 'rgba(255,255,255,0.1)', border: 'none', color: 'white', fontSize: '3rem', padding: '20px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80px', height: '80px' }} onClick={nextLightboxImage}>›</button>
+          </div>
+        </div>
+      )}
+
+      {/* Hardware Lightbox Modal */}
+      {hardwareLightboxImage && (
+        <div style={{
+          position: 'fixed', inset: 0, zIndex: 10000, backgroundColor: 'rgba(0,0,0,0.9)',
+          display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(10px)'
+        }} onClick={() => setHardwareLightboxImage(null)}>
+          
+          <button style={{ position: 'absolute', top: '30px', right: '30px', background: 'transparent', border: 'none', color: 'white', fontSize: '2rem', cursor: 'pointer', padding: '10px' }} onClick={() => setHardwareLightboxImage(null)}>✕</button>
+          
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', maxWidth: '90vw' }}>
+            <img src={hardwareLightboxImage} alt="Hardware Enlarge" style={{ maxHeight: '85vh', maxWidth: '85vw', objectFit: 'contain', borderRadius: '8px', boxShadow: '0 20px 50px rgba(0,0,0,0.5)' }} />
           </div>
         </div>
       )}
