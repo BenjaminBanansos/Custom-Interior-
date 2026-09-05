@@ -200,7 +200,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-g32---translucent-6",
@@ -396,7 +525,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-g37---translucent-10",
@@ -599,7 +857,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-g38---translucent-15",
@@ -802,7 +1189,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-be5----translucent-20",
@@ -991,7 +1507,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-be6----translucent-23",
@@ -1173,7 +1818,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-be7----translucent-25",
@@ -1355,7 +2129,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-dl20025----translucent-27",
@@ -1551,7 +2454,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-dl22030---translucent-31",
@@ -1754,7 +2786,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-zb----translucent-36",
@@ -1950,7 +3111,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-bl200---room-darkening-43",
@@ -2174,7 +3464,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-bl46---room-darkening-51",
@@ -2370,7 +3789,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-bl48---room-darkening-55",
@@ -2580,7 +4128,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-bl50---room-darkening-61",
@@ -2797,7 +4474,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-df57----room-darkening-68",
@@ -3000,7 +4806,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-bl58---room-darkening-73",
@@ -3224,7 +5159,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-hybz9-bk1---blackout-81",
@@ -3427,7 +5491,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-bk2----blackout-86",
@@ -3651,7 +5844,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-bk5----blackout-94",
@@ -3847,7 +6169,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-dl20205---room-darkening-98",
@@ -4050,7 +6501,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-dl22033---room-darkening-107",
@@ -4239,7 +6819,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-dl22034---room-darkening-110",
@@ -4456,7 +7165,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-zbp---room-darkening-117",
@@ -4645,7 +7483,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-ghx03----room-darkening-120",
@@ -4855,7 +7822,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-g35---translucent-126",
@@ -5051,7 +8147,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-g31---translucent-152",
@@ -5254,7 +8479,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-b1---translucent-157",
@@ -5492,7 +8846,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-bl2---translucent-167",
@@ -5709,7 +9192,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-bl52---translucent-174",
@@ -5954,7 +9566,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-bl25---translucent-185",
@@ -6157,7 +9898,136 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   },
   {
     "id": "pdf-bl51---translucent-190",
@@ -6388,6 +10258,135 @@
           }
         ]
       }
-    ]
+    ],
+    "configurator": {
+      "liftSystems": [
+        {
+          "id": "chain",
+          "name": "Standard Chain Loop",
+          "description": "Classic beaded chain operation",
+          "priceMultiplier": 1,
+          "icon": "chain"
+        },
+        {
+          "id": "cordless",
+          "name": "Cordless System",
+          "description": "Clean look, child safe",
+          "priceMultiplier": 1.1,
+          "icon": "cordless"
+        },
+        {
+          "id": "motorized",
+          "name": "Motorized System",
+          "description": "Remote control operation",
+          "priceMultiplier": 1.3,
+          "icon": "motor"
+        }
+      ],
+      "cassettes": [
+        {
+          "id": "round_standard",
+          "name": "Round Cassette",
+          "description": "Standard curved profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_round.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_standard",
+          "name": "Square Cassette",
+          "description": "Modern square profile",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_square.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "round_fabric",
+          "name": "Fabric-Wrapped Round Cassette",
+          "description": "Curved profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_round_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "square_fabric",
+          "name": "Fabric-Wrapped Square Cassette",
+          "description": "Square profile wrapped in matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/cassette_square_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "mini_cordless",
+          "name": "Mini Cassette (Cordless)",
+          "description": "Compact 83mm cassette exclusively for cordless shades",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/cassette_mini_cordless.jpg",
+          "requires": [
+            "cordless"
+          ],
+          "excludes": [
+            "chain",
+            "motorized"
+          ]
+        },
+        {
+          "id": "no_drill",
+          "name": "No-Drill Design Cassette",
+          "description": "Easy installation cassette without drilling",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/cassette_no_drill.jpg",
+          "requires": [
+            "chain"
+          ],
+          "excludes": [
+            "cordless",
+            "motorized"
+          ]
+        }
+      ],
+      "bottomRails": [
+        {
+          "id": "u_shaped",
+          "name": "U-Shaped Bottom Rail",
+          "description": "Standard U-shaped aluminum rail",
+          "priceMultiplier": 1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "waterdrop",
+          "name": "Waterdrop Bottom Rail",
+          "description": "Elegant teardrop profile",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_waterdrop.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "fabric_inserted",
+          "name": "Fabric-Inserted Bottom Rail",
+          "description": "Aluminum rail with a strip of matching fabric",
+          "priceMultiplier": 1.05,
+          "mediaUrl": "/uploads/hardware/bottom_rail_fabric_inserted.jpg",
+          "requires": [],
+          "excludes": []
+        },
+        {
+          "id": "u_shaped_wrapped",
+          "name": "U-Shaped Fabric-Wrapped Bottom Rail",
+          "description": "U-shaped rail fully wrapped in matching fabric",
+          "priceMultiplier": 1.1,
+          "mediaUrl": "/uploads/hardware/bottom_rail_u_shaped_fabric_wrapped.jpg",
+          "requires": [],
+          "excludes": []
+        }
+      ]
+    }
   }
 ]
