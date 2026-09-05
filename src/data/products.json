@@ -15,36 +15,36 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-tr-dl22032-0001",
+            "name": "DS-TR-DL22032-0001",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p10_77.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-tr-dl22032-0002",
+            "name": "DS-TR-DL22032-0002",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p10_78.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-tr-dl22032-0003",
+            "name": "DS-TR-DL22032-0003",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p10_79.jpg"
           },
           {
-            "colorId": "opt-4",
-            "name": "Option 4",
+            "colorId": "ds-tr-dl22032-0004",
+            "name": "DS-TR-DL22032-0004",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p10_80.jpg"
           },
           {
-            "colorId": "opt-5",
-            "name": "Option 5",
+            "colorId": "ds-tr-dl22032-0005",
+            "name": "DS-TR-DL22032-0005",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p10_81.jpg"
@@ -179,29 +179,29 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-tr-g32-001",
+            "name": "DS-TR-G32-001",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p11_82.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-tr-g32-002",
+            "name": "DS-TR-G32-002",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p11_83.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-tr-g32-003",
+            "name": "DS-TR-G32-003",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p11_84.jpg"
           },
           {
-            "colorId": "opt-4",
-            "name": "Option 4",
+            "colorId": "ds-tr-g32-004",
+            "name": "DS-TR-G32-004",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p11_85.jpg"
@@ -336,36 +336,36 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-tr-g37-001",
+            "name": "DS-TR-G37-001",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p12_86.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-tr-g37-002",
+            "name": "DS-TR-G37-002",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p12_87.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-tr-g37-003",
+            "name": "DS-TR-G37-003",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p12_88.jpg"
           },
           {
-            "colorId": "opt-4",
-            "name": "Option 4",
+            "colorId": "ds-tr-g37-004",
+            "name": "DS-TR-G37-004",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p12_89.jpg"
           },
           {
-            "colorId": "opt-5",
-            "name": "Option 5",
+            "colorId": "ds-tr-g37-005",
+            "name": "DS-TR-G37-005",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p12_90.jpg"
@@ -500,36 +500,36 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-tr-g38-001",
+            "name": "DS-TR-G38-001",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p13_91.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-tr-g38-002",
+            "name": "DS-TR-G38-002",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p13_92.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-tr-g38-003",
+            "name": "DS-TR-G38-003",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p13_93.jpg"
           },
           {
-            "colorId": "opt-4",
-            "name": "Option 4",
+            "colorId": "ds-tr-g38-004",
+            "name": "DS-TR-G38-004",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p13_94.jpg"
           },
           {
-            "colorId": "opt-5",
-            "name": "Option 5",
+            "colorId": "ds-tr-g38-005",
+            "name": "DS-TR-G38-005",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p13_95.jpg"
@@ -664,22 +664,22 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-tr-be501",
+            "name": "DS-TR-BE501",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p14_96.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-tr-be502",
+            "name": "DS-TR-BE502",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p14_97.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-tr-be503",
+            "name": "DS-TR-BE503",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p14_98.jpg"
@@ -814,15 +814,15 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-tr-be601",
+            "name": "DS-TR-BE601",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p15_99.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-tr-be602",
+            "name": "DS-TR-BE602",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p15_100.jpg"
@@ -957,15 +957,15 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-tr-be701",
+            "name": "DS-TR-BE701",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p16_101.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-tr-be702",
+            "name": "DS-TR-BE702",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p16_102.jpg"
@@ -1100,29 +1100,29 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-tr-dl20025-0001",
+            "name": "DS-TR-DL20025-0001",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p17_103.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-tr-dl20025-0002",
+            "name": "DS-TR-DL20025-0002",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p17_104.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-tr-dl20025-0003",
+            "name": "DS-TR-DL20025-0003",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p17_105.jpg"
           },
           {
-            "colorId": "opt-4",
-            "name": "Option 4",
+            "colorId": "ds-tr-dl20025-0004",
+            "name": "DS-TR-DL20025-0004",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p17_106.jpg"
@@ -1257,36 +1257,36 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-tr-dl22030-0001",
+            "name": "DS-TR-DL22030-0001",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p18_107.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-tr-dl22030-0002",
+            "name": "DS-TR-DL22030-0002",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p18_108.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-tr-dl22030-0003",
+            "name": "DS-TR-DL22030-0003",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p18_109.jpg"
           },
           {
-            "colorId": "opt-4",
-            "name": "Option 4",
+            "colorId": "ds-tr-dl22030-0004",
+            "name": "DS-TR-DL22030-0004",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p18_110.jpg"
           },
           {
-            "colorId": "opt-5",
-            "name": "Option 5",
+            "colorId": "ds-tr-dl22030-0005",
+            "name": "DS-TR-DL22030-0005",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p18_111.jpg"
@@ -1421,29 +1421,29 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-tr-zb00-693",
+            "name": "DS-TR-ZB00-693",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p19_112.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-tr-zb00-694",
+            "name": "DS-TR-ZB00-694",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p19_113.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-tr-zb00-695",
+            "name": "DS-TR-ZB00-695",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p19_114.jpg"
           },
           {
-            "colorId": "opt-4",
-            "name": "Option 4",
+            "colorId": "ds-tr-zb00-700",
+            "name": "DS-TR-ZB00-700",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p19_115.jpg"
@@ -1578,57 +1578,57 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-rd-bl-2001",
+            "name": "DS-RD-BL-2001",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p20_116.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-rd-bl-2002",
+            "name": "DS-RD-BL-2002",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p20_117.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-rd-bl-2003",
+            "name": "DS-RD-BL-2003",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p20_118.jpg"
           },
           {
-            "colorId": "opt-4",
-            "name": "Option 4",
+            "colorId": "ds-rd-bl-2004",
+            "name": "DS-RD-BL-2004",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p20_119.jpg"
           },
           {
-            "colorId": "opt-5",
-            "name": "Option 5",
+            "colorId": "ds-rd-bl-2005",
+            "name": "DS-RD-BL-2005",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p20_120.jpg"
           },
           {
-            "colorId": "opt-6",
-            "name": "Option 6",
+            "colorId": "ds-rd-bl-2006",
+            "name": "DS-RD-BL-2006",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p20_121.jpg"
           },
           {
-            "colorId": "opt-7",
-            "name": "Option 7",
+            "colorId": "ds-rd-bl-2007",
+            "name": "DS-RD-BL-2007",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p20_122.jpg"
           },
           {
-            "colorId": "opt-8",
-            "name": "Option 8",
+            "colorId": "ds-rd-bl-2008",
+            "name": "DS-RD-BL-2008",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p20_123.jpg"
@@ -1763,29 +1763,29 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-rd-bl4601",
+            "name": "DS-RD-BL4601",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p21_124.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-rd-bl4602",
+            "name": "DS-RD-BL4602",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p21_125.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-rd-bl4604",
+            "name": "DS-RD-BL4604",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p21_126.jpg"
           },
           {
-            "colorId": "opt-4",
-            "name": "Option 4",
+            "colorId": "ds-rd-bl4611",
+            "name": "DS-RD-BL4611",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p21_127.jpg"
@@ -1920,43 +1920,43 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-rd-bl4801",
+            "name": "DS-RD-BL4801",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p22_128.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-rd-bl4802",
+            "name": "DS-RD-BL4802",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p22_129.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-rd-bl4803",
+            "name": "DS-RD-BL4803",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p22_130.jpg"
           },
           {
-            "colorId": "opt-4",
-            "name": "Option 4",
+            "colorId": "ds-rd-bl4804",
+            "name": "DS-RD-BL4804",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p22_131.jpg"
           },
           {
-            "colorId": "opt-5",
-            "name": "Option 5",
+            "colorId": "ds-rd-bl4805",
+            "name": "DS-RD-BL4805",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p22_132.jpg"
           },
           {
-            "colorId": "opt-6",
-            "name": "Option 6",
+            "colorId": "ds-rd-bl4806",
+            "name": "DS-RD-BL4806",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p22_133.jpg"
@@ -2091,43 +2091,43 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-rd-bl5001",
+            "name": "DS-RD-BL5001",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p23_134.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-rd-bl5002",
+            "name": "DS-RD-BL5002",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p23_135.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-rd-bl5003",
+            "name": "DS-RD-BL5003",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p23_136.jpg"
           },
           {
-            "colorId": "opt-4",
-            "name": "Option 4",
+            "colorId": "ds-rd-bl5004",
+            "name": "DS-RD-BL5004",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p23_137.jpg"
           },
           {
-            "colorId": "opt-5",
-            "name": "Option 5",
+            "colorId": "ds-rd-bl5005",
+            "name": "DS-RD-BL5005",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p23_138.jpg"
           },
           {
-            "colorId": "opt-6",
-            "name": "Option 6",
+            "colorId": "ds-rd-bl5006",
+            "name": "DS-RD-BL5006",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p23_139.jpg"
@@ -2269,36 +2269,36 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-rd-df5701",
+            "name": "DS-RD-DF5701",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p24_141.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-rd-df5702",
+            "name": "DS-RD-DF5702",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p24_142.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-rd-df5703",
+            "name": "DS-RD-DF5703",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p24_143.jpg"
           },
           {
-            "colorId": "opt-4",
-            "name": "Option 4",
+            "colorId": "ds-rd-df5704",
+            "name": "DS-RD-DF5704",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p24_144.jpg"
           },
           {
-            "colorId": "opt-5",
-            "name": "Option 5",
+            "colorId": "ds-rd-df5705",
+            "name": "DS-RD-DF5705",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p24_145.jpg"
@@ -2433,57 +2433,57 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-rd-bl5801",
+            "name": "DS-RD-BL5801",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p25_146.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-rd-bl5802",
+            "name": "DS-RD-BL5802",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p25_147.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-rd-bl5803",
+            "name": "DS-RD-BL5803",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p25_148.jpg"
           },
           {
-            "colorId": "opt-4",
-            "name": "Option 4",
+            "colorId": "ds-rd-bl5804",
+            "name": "DS-RD-BL5804",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p25_149.jpg"
           },
           {
-            "colorId": "opt-5",
-            "name": "Option 5",
+            "colorId": "ds-rd-bl5805",
+            "name": "DS-RD-BL5805",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p25_150.jpg"
           },
           {
-            "colorId": "opt-6",
-            "name": "Option 6",
+            "colorId": "ds-rd-bl5806",
+            "name": "DS-RD-BL5806",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p25_151.jpg"
           },
           {
-            "colorId": "opt-7",
-            "name": "Option 7",
+            "colorId": "ds-rd-bl5807",
+            "name": "DS-RD-BL5807",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p25_152.jpg"
           },
           {
-            "colorId": "opt-8",
-            "name": "Option 8",
+            "colorId": "ds-rd-bl5808",
+            "name": "DS-RD-BL5808",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p25_153.jpg"
@@ -2618,36 +2618,36 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-bo-hybz901",
+            "name": "DS-BO-HYBZ901",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p26_154.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-bo-hybz903",
+            "name": "DS-BO-HYBZ903",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p26_155.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-bo-hybz905",
+            "name": "DS-BO-HYBZ905",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p26_156.jpg"
           },
           {
-            "colorId": "opt-4",
-            "name": "Option 4",
+            "colorId": "ds-bo-hybz907",
+            "name": "DS-BO-HYBZ907",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p26_157.jpg"
           },
           {
-            "colorId": "opt-5",
-            "name": "Option 5",
+            "colorId": "ds-bo-hybz909",
+            "name": "DS-BO-HYBZ909",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p26_158.jpg"
@@ -2782,57 +2782,57 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-bo-bk201",
+            "name": "DS-BO-BK201",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p27_159.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-bo-bk202",
+            "name": "DS-BO-BK202",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p27_160.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-bo-bk203",
+            "name": "DS-BO-BK203",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p27_161.jpg"
           },
           {
-            "colorId": "opt-4",
-            "name": "Option 4",
+            "colorId": "ds-bo-bk204",
+            "name": "DS-BO-BK204",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p27_162.jpg"
           },
           {
-            "colorId": "opt-5",
-            "name": "Option 5",
+            "colorId": "ds-bo-bk205",
+            "name": "DS-BO-BK205",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p27_163.jpg"
           },
           {
-            "colorId": "opt-6",
-            "name": "Option 6",
+            "colorId": "ds-bo-bk206",
+            "name": "DS-BO-BK206",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p27_164.jpg"
           },
           {
-            "colorId": "opt-7",
-            "name": "Option 7",
+            "colorId": "ds-bo-bk207",
+            "name": "DS-BO-BK207",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p27_165.jpg"
           },
           {
-            "colorId": "opt-8",
-            "name": "Option 8",
+            "colorId": "ds-bo-bk208",
+            "name": "DS-BO-BK208",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p27_166.jpg"
@@ -2967,29 +2967,29 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-bo-bk501",
+            "name": "DS-BO-BK501",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p28_167.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-bo-bk502",
+            "name": "DS-BO-BK502",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p28_168.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-bo-bk503",
+            "name": "DS-BO-BK503",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p28_169.jpg"
           },
           {
-            "colorId": "opt-4",
-            "name": "Option 4",
+            "colorId": "ds-bo-bk504",
+            "name": "DS-BO-BK504",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p28_170.jpg"
@@ -3124,36 +3124,36 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-rd-dl202050003",
+            "name": "DS-RD-DL202050003",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p29_171.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-rd-dl202050004",
+            "name": "DS-RD-DL202050004",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p29_172.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-rd-dl202050007",
+            "name": "DS-RD-DL202050007",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p29_173.jpg"
           },
           {
-            "colorId": "opt-4",
-            "name": "Option 4",
+            "colorId": "ds-rd-dl202050090",
+            "name": "DS-RD-DL202050090",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p29_174.jpg"
           },
           {
-            "colorId": "opt-5",
-            "name": "Option 5",
+            "colorId": "ds-rd-dl202050092",
+            "name": "DS-RD-DL202050092",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p29_175.jpg"
@@ -3288,22 +3288,22 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-rd-dl22033-0001",
+            "name": "DS-RD-DL22033-0001",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p30_176.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-rd-dl22033-0002",
+            "name": "DS-RD-DL22033-0002",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p30_177.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-rd-dl22033-0004",
+            "name": "DS-RD-DL22033-0004",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p30_178.jpg"
@@ -3438,50 +3438,50 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-rd-dl22034-0001",
+            "name": "DS-RD-DL22034-0001",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p31_179.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-rd-dl22034-0002",
+            "name": "DS-RD-DL22034-0002",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p31_180.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-rd-dl22034-0003",
+            "name": "DS-RD-DL22034-0003",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p31_181.jpg"
           },
           {
-            "colorId": "opt-4",
-            "name": "Option 4",
+            "colorId": "ds-rd-dl22034-0008",
+            "name": "DS-RD-DL22034-0008",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p31_182.jpg"
           },
           {
-            "colorId": "opt-5",
-            "name": "Option 5",
+            "colorId": "ds-rd-dl22034-0011",
+            "name": "DS-RD-DL22034-0011",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p31_183.jpg"
           },
           {
-            "colorId": "opt-6",
-            "name": "Option 6",
+            "colorId": "ds-rd-dl22034-0012",
+            "name": "DS-RD-DL22034-0012",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p31_184.jpg"
           },
           {
-            "colorId": "opt-7",
-            "name": "Option 7",
+            "colorId": "ds-rd-dl22034-0013",
+            "name": "DS-RD-DL22034-0013",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p31_185.jpg"
@@ -3616,22 +3616,22 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-tr-zbp-697",
+            "name": "DS-TR-ZBP-697",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p32_186.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-tr-zbp-698",
+            "name": "DS-TR-ZBP-698",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p32_187.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-tr-zbp-699",
+            "name": "DS-TR-ZBP-699",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p32_188.jpg"
@@ -3766,43 +3766,43 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-rd-ghx03-001",
+            "name": "DS-RD-GHX03-001",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p33_189.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-rd-ghx03-002",
+            "name": "DS-RD-GHX03-002",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p33_190.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-rd-ghx03-004",
+            "name": "DS-RD-GHX03-004",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p33_191.jpg"
           },
           {
-            "colorId": "opt-4",
-            "name": "Option 4",
+            "colorId": "ds-rd-ghx03-005",
+            "name": "DS-RD-GHX03-005",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p33_192.jpg"
           },
           {
-            "colorId": "opt-5",
-            "name": "Option 5",
+            "colorId": "ds-rd-ghx03-006",
+            "name": "DS-RD-GHX03-006",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p33_193.jpg"
           },
           {
-            "colorId": "opt-6",
-            "name": "Option 6",
+            "colorId": "ds-rd-ghx03-003",
+            "name": "DS-RD-GHX03-003",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p33_194.jpg"
@@ -3937,29 +3937,29 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-tr-g35-001",
+            "name": "DS-TR-G35-001",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p34_195.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-tr-g35-002",
+            "name": "DS-TR-G35-002",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p34_196.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-tr-g35-003",
+            "name": "DS-TR-G35-003",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p34_197.jpg"
           },
           {
-            "colorId": "opt-4",
-            "name": "Option 4",
+            "colorId": "ds-tr-g35-004",
+            "name": "DS-TR-G35-004",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p34_198.jpg"
@@ -4094,36 +4094,36 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-tr-g31-001",
+            "name": "DS-TR-G31-001",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p4_30.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-tr-g31-002",
+            "name": "DS-TR-G31-002",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p4_31.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-tr-g31-003",
+            "name": "DS-TR-G31-003",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p4_32.jpg"
           },
           {
-            "colorId": "opt-4",
-            "name": "Option 4",
+            "colorId": "ds-tr-g31-004",
+            "name": "DS-TR-G31-004",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p4_33.jpg"
           },
           {
-            "colorId": "opt-5",
-            "name": "Option 5",
+            "colorId": "ds-tr-g31-005",
+            "name": "DS-TR-G31-005",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p4_34.jpg"
@@ -4258,71 +4258,71 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-tr-b101",
+            "name": "DS-TR-B101",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p5_35.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-tr-b104",
+            "name": "DS-TR-B104",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p5_36.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-tr-b105",
+            "name": "DS-TR-B105",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p5_37.jpg"
           },
           {
-            "colorId": "opt-4",
-            "name": "Option 4",
+            "colorId": "ds-tr-b106",
+            "name": "DS-TR-B106",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p5_38.jpg"
           },
           {
-            "colorId": "opt-5",
-            "name": "Option 5",
+            "colorId": "ds-tr-b107",
+            "name": "DS-TR-B107",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p5_39.jpg"
           },
           {
-            "colorId": "opt-6",
-            "name": "Option 6",
+            "colorId": "ds-tr-b119",
+            "name": "DS-TR-B119",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p5_40.jpg"
           },
           {
-            "colorId": "opt-7",
-            "name": "Option 7",
+            "colorId": "ds-tr-b123",
+            "name": "DS-TR-B123",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p5_41.jpg"
           },
           {
-            "colorId": "opt-8",
-            "name": "Option 8",
+            "colorId": "ds-tr-b112",
+            "name": "DS-TR-B112",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p5_42.jpg"
           },
           {
-            "colorId": "opt-9",
-            "name": "Option 9",
+            "colorId": "ds-tr-b114",
+            "name": "DS-TR-B114",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p5_43.jpg"
           },
           {
-            "colorId": "opt-10",
-            "name": "Option 10",
+            "colorId": "ds-tr-b109",
+            "name": "DS-TR-B109",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p5_44.jpg"
@@ -4457,50 +4457,50 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-tr-bl201",
+            "name": "DS-TR-BL201",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p6_45.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-tr-bl202",
+            "name": "DS-TR-BL202",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p6_46.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-tr-bl203",
+            "name": "DS-TR-BL203",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p6_47.jpg"
           },
           {
-            "colorId": "opt-4",
-            "name": "Option 4",
+            "colorId": "ds-tr-bl206",
+            "name": "DS-TR-BL206",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p6_48.jpg"
           },
           {
-            "colorId": "opt-5",
-            "name": "Option 5",
+            "colorId": "ds-tr-bl207",
+            "name": "DS-TR-BL207",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p6_49.jpg"
           },
           {
-            "colorId": "opt-6",
-            "name": "Option 6",
+            "colorId": "ds-tr-bl208",
+            "name": "DS-TR-BL208",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p6_50.jpg"
           },
           {
-            "colorId": "opt-7",
-            "name": "Option 7",
+            "colorId": "ds-tr-bl210",
+            "name": "DS-TR-BL210",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p6_51.jpg"
@@ -4635,78 +4635,78 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-tr-bl5201",
+            "name": "DS-TR-BL5201",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p7_52.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-tr-bl5202",
+            "name": "DS-TR-BL5202",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p7_53.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-tr-bl5203",
+            "name": "DS-TR-BL5203",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p7_54.jpg"
           },
           {
-            "colorId": "opt-4",
-            "name": "Option 4",
+            "colorId": "ds-tr-bl5204",
+            "name": "DS-TR-BL5204",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p7_55.jpg"
           },
           {
-            "colorId": "opt-5",
-            "name": "Option 5",
+            "colorId": "ds-tr-bl5205",
+            "name": "DS-TR-BL5205",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p7_56.jpg"
           },
           {
-            "colorId": "opt-6",
-            "name": "Option 6",
+            "colorId": "ds-tr-bl5206",
+            "name": "DS-TR-BL5206",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p7_57.jpg"
           },
           {
-            "colorId": "opt-7",
-            "name": "Option 7",
+            "colorId": "ds-tr-bl5207",
+            "name": "DS-TR-BL5207",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p7_58.jpg"
           },
           {
-            "colorId": "opt-8",
-            "name": "Option 8",
+            "colorId": "ds-tr-bl5208",
+            "name": "DS-TR-BL5208",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p7_59.jpg"
           },
           {
-            "colorId": "opt-9",
-            "name": "Option 9",
+            "colorId": "ds-tr-bl5209",
+            "name": "DS-TR-BL5209",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p7_60.jpg"
           },
           {
-            "colorId": "opt-10",
-            "name": "Option 10",
+            "colorId": "ds-tr-bl5210",
+            "name": "DS-TR-BL5210",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p7_61.jpg"
           },
           {
-            "colorId": "opt-11",
-            "name": "Option 11",
+            "colorId": "ds-tr-bl5211",
+            "name": "DS-TR-BL5211",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p7_62.jpg"
@@ -4841,36 +4841,36 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-tr-bl2501",
+            "name": "DS-TR-BL2501",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p8_63.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-tr-bl2502",
+            "name": "DS-TR-BL2502",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p8_64.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-tr-bl2503",
+            "name": "DS-TR-BL2503",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p8_65.jpg"
           },
           {
-            "colorId": "opt-4",
-            "name": "Option 4",
+            "colorId": "ds-tr-bl2504",
+            "name": "DS-TR-BL2504",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p8_66.jpg"
           },
           {
-            "colorId": "opt-5",
-            "name": "Option 5",
+            "colorId": "ds-tr-bl2505",
+            "name": "DS-TR-BL2505",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p8_67.jpg"
@@ -5005,64 +5005,64 @@
         "priceModifier": 0,
         "colors": [
           {
-            "colorId": "opt-1",
-            "name": "Option 1",
+            "colorId": "ds-tr-bl5101",
+            "name": "DS-TR-BL5101",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p9_68.jpg"
           },
           {
-            "colorId": "opt-2",
-            "name": "Option 2",
+            "colorId": "ds-tr-bl5102",
+            "name": "DS-TR-BL5102",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p9_69.jpg"
           },
           {
-            "colorId": "opt-3",
-            "name": "Option 3",
+            "colorId": "ds-tr-bl5103",
+            "name": "DS-TR-BL5103",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p9_70.jpg"
           },
           {
-            "colorId": "opt-4",
-            "name": "Option 4",
+            "colorId": "ds-tr-bl5104",
+            "name": "DS-TR-BL5104",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p9_71.jpg"
           },
           {
-            "colorId": "opt-5",
-            "name": "Option 5",
+            "colorId": "ds-tr-bl5105",
+            "name": "DS-TR-BL5105",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p9_72.jpg"
           },
           {
-            "colorId": "opt-6",
-            "name": "Option 6",
+            "colorId": "ds-tr-bl5109",
+            "name": "DS-TR-BL5109",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p9_73.jpg"
           },
           {
-            "colorId": "opt-7",
-            "name": "Option 7",
+            "colorId": "ds-tr-bl5106",
+            "name": "DS-TR-BL5106",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p9_74.jpg"
           },
           {
-            "colorId": "opt-8",
-            "name": "Option 8",
+            "colorId": "ds-tr-bl5107",
+            "name": "DS-TR-BL5107",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p9_75.jpg"
           },
           {
-            "colorId": "opt-9",
-            "name": "Option 9",
+            "colorId": "ds-tr-bl5108",
+            "name": "DS-TR-BL5108",
             "hex": "#ffffff",
             "status": "available",
             "mediaUrl": "/uploads/pdf_images/zebra_blinds_p9_76.jpg"
