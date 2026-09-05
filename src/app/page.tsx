@@ -212,8 +212,8 @@ export default async function Home() {
       }}>
         <div style={{ fontFamily: 'var(--font-outfit)', fontSize: '1.5rem', marginBottom: '2rem' }}>STITCH</div>
         <p style={{ fontSize: '0.8rem', opacity: 0.6, marginBottom: '1rem' }}>© 2024 STITCH BLINDS CANADA. ALL RIGHTS RESERVED.</p>
-        <a href="/admin" style={{ fontSize: '0.6rem', opacity: 0.3, textDecoration: 'none', color: 'white', letterSpacing: '0.1em' }}>
-          ADMIN ACCESS (v2)
+        <a href="/admin?fresh=1" onClick={(e) => { e.preventDefault(); window.location.href = '/admin?ts=' + Date.now(); }} style={{ fontSize: '0.6rem', opacity: 0.3, textDecoration: 'none', color: 'white', letterSpacing: '0.1em' }}>
+          ADMIN ACCESS (v3)
         </a>
         {/* Force Vercel/Hostinger rebuild */}
       </footer>

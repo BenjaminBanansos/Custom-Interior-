@@ -11,7 +11,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   if (!hasToken) {
     return (
       <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <script dangerouslySetInnerHTML={{ __html: `window.location.href = "/login";` }} />
+        <script dangerouslySetInnerHTML={{ __html: `window.location.href = "/login?cachebust=" + Date.now();` }} />
         <p>Redirecting to login...</p>
       </div>
     );
