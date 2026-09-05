@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Product, FabricFamily, FabricColor } from '../lib/products';
 import { ThemeConfig } from '../lib/theme_actions';
+import { submitOrder } from '../lib/order_actions';
 
 interface ConfiguratorProps {
   product: Product;
@@ -32,6 +33,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const [hardwareLightboxImage, setHardwareLightboxImage] = useState<string | null>(null);
+  const [orderStatus, setOrderStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
 
   const openLightbox = () => {
     if (!selectedFamily) return;
@@ -67,6 +69,40 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
       return parseFloat(num) / parseFloat(den);
     }
     return parseFloat(val) || 0;
+  };
+
+  
+  const handleOrderSubmit = async () => {
+    setOrderStatus('submitting');
+    
+    // Gather all details
+    const orderDetails = {
+      family: selectedFamily?.name,
+      color: selectedColor?.name,
+      modifiers: Object.entries(selectedModifiers).map(([groupId, optId]) => {
+        const group = product.modifiers?.find(m => m.id === groupId);
+        const opt = group?.options.find(o => o.id === optId);
+        return `${group?.name}: ${opt?.name}`;
+      }),
+      subAttributes: Object.entries(selectedSubAttributes).map(([subId, choiceId]) => {
+        return `${subId}: ${choiceId}`;
+      })
+    };
+
+    const w = (parseFloat(width) || 0) + parseFraction(widthFraction);
+    const h = (parseFloat(height) || 0) + parseFraction(heightFraction);
+
+    await submitOrder({
+      productName: product.name,
+      width: w.toString(),
+      height: h.toString(),
+      quantity: parseInt(quantity) || 1,
+      totalPrice: totalPrice,
+      details: orderDetails
+    });
+
+    setOrderStatus('success');
+    setTimeout(() => setOrderStatus('idle'), 4000);
   };
 
   const getSelectedIds = () => Object.values(selectedModifiers);
@@ -477,8 +513,14 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
           }
           
           return (
-            <button style={{ padding: '16px 32px', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.1em', backgroundColor: '#000', color: '#fff', border: 'none', cursor: 'pointer', transition: 'transform 0.2s' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.02)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}>
-              ADD TO PROJECT
+            <button 
+              onClick={handleOrderSubmit}
+              disabled={orderStatus === 'submitting'}
+              style={{ padding: '16px 32px', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.1em', backgroundColor: orderStatus === 'success' ? '#10b981' : '#000', color: '#fff', border: 'none', cursor: orderStatus === 'submitting' ? 'wait' : 'pointer', transition: 'all 0.2s' }} 
+              onMouseOver={e => { if(orderStatus === 'idle') e.currentTarget.style.transform = 'scale(1.02)'; }} 
+              onMouseOut={e => { if(orderStatus === 'idle') e.currentTarget.style.transform = 'scale(1)'; }}
+            >
+              {orderStatus === 'submitting' ? 'PROCESSING...' : orderStatus === 'success' ? 'ORDER SENT ✓' : 'ADD TO PROJECT'}
             </button>
           );
         })()}
