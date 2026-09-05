@@ -2,11 +2,17 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  // We handle auth redirects securely inside layout.tsx Server Components now
-  // to prevent Next.js RSC payload caching glitches!
-  return NextResponse.next();
+  const response = NextResponse.next();
+  
+  // Force CDNs (like Hostinger/Cloudflare) to NOT cache RSC payloads for HTML requests
+  response.headers.set('Vary', 'RSC, Next-Router-State-Tree, Next-Router-Prefetch, Accept-Encoding');
+  response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+  response.headers.set('Pragma', 'no-cache');
+  response.headers.set('Expires', '0');
+
+  return response;
 }
 
 export const config = {
-  matcher: ['/admin/:path*'],
+  matcher: ['/admin/:path*', '/login'],
 };
