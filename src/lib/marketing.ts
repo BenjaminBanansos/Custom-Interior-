@@ -1,5 +1,4 @@
-import fs from 'fs/promises';
-import path from 'path';
+import { getDb } from './mongo';
 
 export interface Campaign {
   id: string;
@@ -25,17 +24,14 @@ export interface CRMData {
   customers: any[];
 }
 
-const DATA_PATH = path.join(process.cwd(), 'src/data/crm.json');
-let cache: CRMData | null = null;
-
 export async function getCRMData(): Promise<CRMData> {
   try {
-    if (cache) return cache;
-    const data = await fs.readFile(DATA_PATH, 'utf-8');
-    cache = JSON.parse(data);
-    return cache || { campaigns: [], leads: [], customers: [] };
+    const db = await getDb();
+    const data = await db.collection('crm').findOne({});
+    if (!data) return { campaigns: [], leads: [], customers: [] };
+    const { _id, ...rest } = data;
+    return rest as unknown as CRMData;
   } catch (error) {
-    console.error('Error reading CRM data:', error);
     return { campaigns: [], leads: [], customers: [] };
   }
 }

@@ -1,12 +1,8 @@
 'use server';
 
-import fs from 'fs/promises';
-import path from 'path';
 import { revalidatePath } from 'next/cache';
 import { Product } from './products';
-
-const LEADS_PATH = path.join(process.cwd(), 'src/data/leads.json');
-const CONFIG_PATH = path.join(process.cwd(), 'src/data/crm_config.json');
+import { getDb } from './mongo';
 
 export interface Lead {
   id: string;
@@ -21,18 +17,14 @@ export interface CRMConfig {
   geminiApiKey: string;
 }
 
-async function ensureDir() {
-  const dir = path.join(process.cwd(), 'src/data');
-  try {
-    await fs.mkdir(dir, { recursive: true });
-  } catch (e) {}
-}
-
 export async function getLeads(): Promise<Lead[]> {
   try {
-    await ensureDir();
-    const data = await fs.readFile(LEADS_PATH, 'utf-8');
-    return JSON.parse(data);
+    const db = await getDb();
+    const leads = await db.collection('leads').find({}).toArray();
+    return leads.map(l => {
+      const { _id, ...rest } = l;
+      return rest as Lead;
+    });
   } catch (error) {
     return [];
   }
@@ -40,14 +32,8 @@ export async function getLeads(): Promise<Lead[]> {
 
 export async function saveLead(lead: Lead): Promise<boolean> {
   try {
-    const leads = await getLeads();
-    const index = leads.findIndex(l => l.id === lead.id);
-    if (index >= 0) {
-      leads[index] = lead;
-    } else {
-      leads.push(lead);
-    }
-    await fs.writeFile(LEADS_PATH, JSON.stringify(leads, null, 2));
+    const db = await getDb();
+    await db.collection('leads').updateOne({ id: lead.id }, { $set: lead }, { upsert: true });
     revalidatePath('/admin/marketing');
     return true;
   } catch (error) {
@@ -57,15 +43,10 @@ export async function saveLead(lead: Lead): Promise<boolean> {
 
 export async function updateLeadStatus(id: string, status: Lead['status']): Promise<boolean> {
   try {
-    const leads = await getLeads();
-    const lead = leads.find(l => l.id === id);
-    if (lead) {
-      lead.status = status;
-      await fs.writeFile(LEADS_PATH, JSON.stringify(leads, null, 2));
-      revalidatePath('/admin/marketing');
-      return true;
-    }
-    return false;
+    const db = await getDb();
+    await db.collection('leads').updateOne({ id }, { $set: { status } });
+    revalidatePath('/admin/marketing');
+    return true;
   } catch (error) {
     return false;
   }
@@ -73,9 +54,10 @@ export async function updateLeadStatus(id: string, status: Lead['status']): Prom
 
 export async function getCRMConfig(): Promise<CRMConfig> {
   try {
-    await ensureDir();
-    const data = await fs.readFile(CONFIG_PATH, 'utf-8');
-    return JSON.parse(data);
+    const db = await getDb();
+    const config = await db.collection('crm_config').findOne({});
+    if (!config) return { geminiApiKey: '' };
+    return { geminiApiKey: config.geminiApiKey };
   } catch (error) {
     return { geminiApiKey: '' };
   }
@@ -83,8 +65,8 @@ export async function getCRMConfig(): Promise<CRMConfig> {
 
 export async function saveCRMConfig(config: CRMConfig): Promise<boolean> {
   try {
-    await ensureDir();
-    await fs.writeFile(CONFIG_PATH, JSON.stringify(config, null, 2));
+    const db = await getDb();
+    await db.collection('crm_config').updateOne({}, { $set: config }, { upsert: true });
     revalidatePath('/admin/marketing');
     return true;
   } catch (error) {
@@ -113,8 +95,7 @@ Please respond ONLY with a valid JSON object matching this exact schema, with no
 }`;
 
   if (!config.geminiApiKey) {
-    // Simulated Mockup
-    await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate latency
+    await new Promise(resolve => setTimeout(resolve, 1500));
     return {
       subject: `Elevate Your Space with ${product.name}`,
       body: `Hi there,<br/><br/>Discover the perfect blend of architectural precision and luxury with our <strong>${product.name}</strong>.<br/><br/>${product.description}<br/><br/>Starting at just $${product.basePrice}.<br/><br/>Best,<br/>The STITCH CANADA Team`,
@@ -144,8 +125,6 @@ Please respond ONLY with a valid JSON object matching this exact schema, with no
 
     const data = await response.json();
     const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
-    
-    // Clean up markdown block if present
     const cleanedText = rawText.replace(/^```json\n?/, '').replace(/\n?```$/, '').trim();
     return JSON.parse(cleanedText);
 

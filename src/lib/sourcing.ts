@@ -1,5 +1,4 @@
-import fs from 'fs/promises';
-import path from 'path';
+import { getDb } from './mongo';
 
 export interface Supplier {
   id: string;
@@ -16,17 +15,14 @@ export interface SourcingData {
   purchaseOrders: any[];
 }
 
-const DATA_PATH = path.join(process.cwd(), 'src/data/suppliers.json');
-let cache: SourcingData | null = null;
-
 export async function getSourcingData(): Promise<SourcingData> {
   try {
-    if (cache) return cache;
-    const data = await fs.readFile(DATA_PATH, 'utf-8');
-    cache = JSON.parse(data);
-    return cache || { suppliers: [], purchaseOrders: [] };
+    const db = await getDb();
+    const data = await db.collection('suppliers').findOne({});
+    if (!data) return { suppliers: [], purchaseOrders: [] };
+    const { _id, ...rest } = data;
+    return rest as unknown as SourcingData;
   } catch (error) {
-    console.error('Error reading sourcing data:', error);
     return { suppliers: [], purchaseOrders: [] };
   }
 }

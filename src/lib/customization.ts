@@ -1,5 +1,4 @@
-import fs from 'fs/promises';
-import path from 'path';
+import { getDb } from './mongo';
 
 export interface LocalizedSetting {
   id: string;
@@ -18,29 +17,26 @@ export interface CustomizationSettings {
   defaultFabricId: string;
 }
 
-const DATA_PATH = path.join(process.cwd(), 'src/data/customization.json');
-
 let cache: CustomizationSettings | null = null;
 
 export async function getCustomization(): Promise<CustomizationSettings | null> {
   try {
-    if (cache) return cache;
-    const data = await fs.readFile(DATA_PATH, 'utf-8');
-    cache = JSON.parse(data);
-    return cache;
+    const db = await getDb();
+    const data = await db.collection('customization').findOne({});
+    if (!data) return null;
+    const { _id, ...rest } = data;
+    return rest as unknown as CustomizationSettings;
   } catch (error) {
-    console.error('Error reading customization:', error);
     return null;
   }
 }
 
 export async function saveCustomization(settings: CustomizationSettings): Promise<boolean> {
   try {
-    await fs.writeFile(DATA_PATH, JSON.stringify(settings, null, 2));
-    cache = settings;
+    const db = await getDb();
+    await db.collection('customization').updateOne({}, { $set: settings }, { upsert: true });
     return true;
   } catch (error) {
-    console.error('Error saving customization:', error);
     return false;
   }
 }
