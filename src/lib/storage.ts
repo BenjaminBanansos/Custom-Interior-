@@ -17,18 +17,16 @@ async function ensureDir() {
 let productsCache: Product[] | null = null;
 let categoriesCache: Category[] | null = null;
 
-import productsStatic from '../data/products.json';
-import categoriesStatic from '../data/categories.json';
-
 export async function getProducts(): Promise<Product[]> {
   try {
+    if (productsCache) return productsCache;
     await ensureDir();
     const data = await fs.readFile(DATA_PATH, 'utf-8');
-    return JSON.parse(data) || [];
+    productsCache = JSON.parse(data);
+    return productsCache || [];
   } catch (error) {
-    console.error('Error reading products, falling back to static:', error);
-    // Fallback to the statically bundled JSON if file system read fails
-    return productsStatic as unknown as Product[];
+    console.error('Error reading products:', error);
+    return [{ id: 'error-debug', name: 'File read error: ' + String(error.message) + ' (cwd: ' + process.cwd() + ')', category: 'Error', basePrice: 0, basePriceMode: 'fixed', status: 'draft' } as any];
   }
 }
 
@@ -67,11 +65,13 @@ export async function deleteProduct(id: string): Promise<boolean> {
 
 export async function getCategories(): Promise<Category[]> {
   try {
+    if (categoriesCache) return categoriesCache;
     const data = await fs.readFile(CAT_PATH, 'utf-8');
-    return JSON.parse(data) || [];
+    categoriesCache = JSON.parse(data);
+    return categoriesCache || [];
   } catch (error) {
-    console.error('Error reading categories, falling back to static:', error);
-    return categoriesStatic as unknown as Category[];
+    console.error('Error reading categories:', error);
+    return [{ id: 'error-debug', name: 'File read error: ' + String(error.message) + ' (cwd: ' + process.cwd() + ')', image: '', displayOrder: 0 } as any];
   }
 }
 
