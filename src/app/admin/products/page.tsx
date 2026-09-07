@@ -13,10 +13,22 @@ export default function ProductsListPage() {
     loadProducts();
   }, []);
 
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
   async function loadProducts() {
-    const data = await getProducts();
-    setProducts(data);
-    setIsLoading(false);
+    try {
+      const data = await getProducts();
+      if (!Array.isArray(data)) {
+        setErrorMsg("Data returned is not an array: " + JSON.stringify(data));
+      } else {
+        setProducts(data);
+      }
+    } catch (err: any) {
+      console.error(err);
+      setErrorMsg(err.message || "Unknown error fetching products");
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   const handleDelete = async (id: string) => {
@@ -45,7 +57,12 @@ export default function ProductsListPage() {
         }}>+ NEW PRODUCT</Link>
       </header>
 
-      {isLoading ? (
+      {errorMsg ? (
+        <div style={{ color: 'red', padding: '20px', border: '1px solid red', backgroundColor: '#fee' }}>
+          <h3>Debug Error:</h3>
+          <p>{errorMsg}</p>
+        </div>
+      ) : isLoading ? (
         <div style={{ color: '#888' }}>Loading products...</div>
       ) : (
         <div style={{ backgroundColor: '#fff', border: '1px solid #eee', borderRadius: '12px', overflow: 'hidden' }}>
@@ -65,7 +82,9 @@ export default function ProductsListPage() {
                   <td colSpan={5} style={{ padding: '40px', textAlign: 'center', color: '#aaa' }}>No products found in the atelier database.</td>
                 </tr>
               ) : (
-                products.map(product => (
+                products.map(product => {
+                  try {
+                    return (
                   <tr key={product.id} style={{ borderBottom: '1px solid #eee' }}>
                     <td style={{ padding: '20px' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
@@ -106,7 +125,11 @@ export default function ProductsListPage() {
                       </div>
                     </td>
                   </tr>
-                ))
+                );
+                  } catch (e: any) {
+                    return <tr key={product.id || Math.random()}><td colSpan={5}>Render Error: {e.message}</td></tr>;
+                  }
+                })
               )}
             </tbody>
           </table>
