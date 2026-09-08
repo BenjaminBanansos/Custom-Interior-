@@ -7,6 +7,7 @@ export interface FabricColor {
 }
 
 export interface FabricFamily {
+  category?: string; // e.g. Translucent, Blackout
   maxWidth?: number;
   fabricId: string;
   name: string;
