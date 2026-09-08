@@ -43,6 +43,9 @@ export default function ProductBuilder({ productId }: { productId?: string }) {
         const products = await getProducts();
         const existing = products.find(p => p.id === productId);
         if (existing) {
+          if (!existing.mediaAssets && existing.imageUrl) {
+            existing.mediaAssets = [existing.imageUrl];
+          }
           setFormData(existing);
         } else {
           alert('Product not found!');
@@ -170,7 +173,7 @@ function BasicInfoStep({ data, update, categories }: any) {
                   onChange={e => update({...data, category: e.target.value})}
                   style={{ width: '100%', padding: '16px', borderRadius: '8px', border: '1px solid #eee', backgroundColor: '#f9f9f9' }}
                 >
-                  {categories.length === 0 ? <option disabled>No categories found</option> : categories.map((c: any) => <option key={c.id} value={c.name}>{c.name}</option>)}
+                  {categories.length === 0 ? <option disabled>No categories found</option> : categories.map((c: any) => <option key={c.id} value={c.id}>{c.name}</option>)}
                 </select>
              </div>
              <div>
