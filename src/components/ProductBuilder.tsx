@@ -148,13 +148,13 @@ function StepIcon({ num, active, label }: any) {
        }}>{num}</div>
        <div style={{ fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.1em' }}>{label}</div>
     </div>
+  </div>
   );
 }
-
 function BasicInfoStep({ data, update, categories }: any) {
   return (
     <div style={{ display: 'grid', gap: '40px' }}>
-      <Section title="Basic Information">
+      {activeTab === 'details' && (<><Section title="Basic Information">
         <div style={{ display: 'grid', gap: '20px' }}>
           <div>
             <label style={{ fontSize: '0.7rem', color: '#888', display: 'block', marginBottom: '10px' }}>PRODUCT NAME</label>
@@ -433,7 +433,7 @@ function HardwareStep({ data, update }: any) {
 
 
   return (
-    <Section title="Materials & Hardware (GIF-Style Configurator)">
+    </>)}{activeTab === 'fabrics' && (<Section title="Fabric Collections & Colors">
       <div style={{ marginBottom: '40px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
           <h4 style={{ fontSize: '0.9rem', color: '#888' }}>FABRIC FAMILIES & COLORS</h4>
@@ -654,7 +654,7 @@ function HardwareStep({ data, update }: any) {
 
 function LogicStep({ data, update }: any) {
   return (
-    <Section title="Customization Logic">
+    )}{activeTab === 'customization' && (<Section title="Product Customization (Hardware, Lift Styles, Modules)">
       <p style={{ color: '#888', fontSize: '0.9rem', marginBottom: '20px' }}>Apply pricing surcharges and material compatibility rules.</p>
       <div style={{ padding: '20px', border: '1px solid #eee', borderRadius: '12px', background: '#fcfcfc' }}>
          <div style={{ fontSize: '0.9rem', fontWeight: 600 }}>Oversize Width Logic</div>
