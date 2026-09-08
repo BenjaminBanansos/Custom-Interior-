@@ -61,7 +61,7 @@ export default function ProductBuilder({ productId }: { productId?: string }) {
     load();
   }, [productId]); // Run on mount or when productId changes
 
-  const handleNext = () => setStep(s => Math.min(s + 1, 4));
+  const handleNext = () => setStep(s => Math.min(s + 1, 5));
   const handleBack = () => setStep(s => Math.max(s - 1, 1));
 
   const handleSave = async () => {
@@ -113,8 +113,9 @@ export default function ProductBuilder({ productId }: { productId?: string }) {
       <div style={{ backgroundColor: '#fff', border: '1px solid #eee', borderRadius: '16px', padding: '40px' }}>
         {step === 1 && <BasicInfoStep data={formData} update={setFormData} categories={categories} />}
         {step === 2 && <DimensionsStep data={formData} update={setFormData} />}
-        {step === 3 && <HardwareStep data={formData} update={setFormData} />}
-        {step === 4 && <LogicStep data={formData} update={setFormData} />}
+        {step === 3 && <MaterialsStep data={formData} update={setFormData} />}
+        {step === 4 && <CustomizationStep data={formData} update={setFormData} />}
+        {step === 5 && <LogicStep data={formData} update={setFormData} />}
 
         <div style={{ marginTop: '60px', borderTop: '1px solid #eee', paddingTop: '40px', display: 'flex', justifyContent: 'space-between' }}>
           <button onClick={handleBack} style={{ padding: '12px 24px', border: 'none', background: 'none', color: '#888', cursor: 'pointer', opacity: step === 1 ? 0 : 1 }}>← BACK</button>
@@ -126,7 +127,7 @@ export default function ProductBuilder({ productId }: { productId?: string }) {
             borderRadius: '8px', 
             fontWeight: 600, 
             cursor: 'pointer',
-            display: step === 4 ? 'none' : 'block'
+            display: step === 5 ? 'none' : 'block'
           }}>NEXT STEP</button>
         </div>
       </div>
@@ -327,7 +328,7 @@ function DimensionsStep({ data, update }: any) {
   );
 }
 
-function HardwareStep({ data, update }: any) {
+function MaterialsStep({ data, update }: any) {
   // --- FAMILY CRUD ---
   const addFamily = () => {
     const name = prompt('Fabric Family Name (e.g. Premium Silk):');
@@ -662,7 +663,7 @@ function CustomizationStep({ data, update }: any) {
   );
 }
 
-function LogicStepp({ data, update }: any) {
+function LogicStep({ data, update }: any) {
   return (
     <Section title="Customization Logic">
       <p style={{ color: '#888', fontSize: '0.9rem', marginBottom: '20px' }}>Apply pricing surcharges and material compatibility rules.</p>
