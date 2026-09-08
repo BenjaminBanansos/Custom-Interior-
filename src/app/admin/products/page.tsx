@@ -98,7 +98,7 @@ export default function ProductsListPage() {
                           backgroundPosition: 'center'
                         }}></div>
                         <div>
-                          <div style={{ fontWeight: 600, fontSize: '0.9rem' }}>{product.name}</div>
+                          <div style={{ fontWeight: 600, fontSize: '0.9rem' }}>{(product.name || 'Unnamed Product')}</div>
                           <div style={{ fontSize: '0.7rem', color: '#aaa' }}>ID: {product.id}</div>
                         </div>
                       </div>
@@ -115,7 +115,7 @@ export default function ProductsListPage() {
                         fontWeight: 700,
                         backgroundColor: product.status === 'published' ? '#ecfdf5' : '#fef2f2',
                         color: product.status === 'published' ? '#10b981' : '#ef4444'
-                      }}>{product.status.toUpperCase()}</span>
+                      }}>{(product.status || 'draft').toUpperCase()}</span>
                     </td>
                     <td style={{ padding: '20px' }}>
                       <div style={{ display: 'flex', gap: '15px' }}>
