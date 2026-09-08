@@ -149,7 +149,6 @@ function StepIcon({ num, active, label }: any) {
        }}>{num}</div>
        <div style={{ fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.1em' }}>{label}</div>
     </div>
-  </div>
   );
 }
 function BasicInfoStep({ data, update, categories }: any) {
