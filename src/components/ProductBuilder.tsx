@@ -499,7 +499,16 @@ function HardwareStep({ data, update }: any) {
       </div>
 
       <div style={{ borderTop: '1px solid #eee', paddingTop: '40px', marginTop: '40px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+            </Section>
+  );
+}
+
+
+function CustomizationStep({ data, update }: any) {
+  
+  return (
+    <Section title="Product Customization (Hardware)">
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
           <div>
             <h4 style={{ fontSize: '1.2rem', color: '#000', margin: 0 }}>DYNAMIC ATTRIBUTES</h4>
             <p style={{ fontSize: '0.8rem', color: '#888', margin: '5px 0 0 0' }}>Define custom configurations like Lift Style, Mount Type, Valance, etc.</p>
@@ -648,11 +657,12 @@ function HardwareStep({ data, update }: any) {
           )}
         </div>
       </div>
+    
     </Section>
   );
 }
 
-function LogicStep({ data, update }: any) {
+function LogicStepp({ data, update }: any) {
   return (
     <Section title="Customization Logic">
       <p style={{ color: '#888', fontSize: '0.9rem', marginBottom: '20px' }}>Apply pricing surcharges and material compatibility rules.</p>
