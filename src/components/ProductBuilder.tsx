@@ -332,12 +332,16 @@ function HardwareStep({ data, update }: any) {
     const newFam: FabricFamily = { fabricId: `fam-${Date.now()}`, name, priceModifier: 0, colors: [] };
     update({ ...data, fabricFamilies: [...(data.fabricFamilies || []), newFam] });
   };
-  const editFamily = (famId: string, oldName: string, oldPrice: number) => {
-    const name = prompt('Edit Family Name:', oldName);
+  const editFamily = (famId: string, oldName: string, oldPrice: number, oldMaxW: number = 0, oldMaxH: number = 0) => {
+    const name = prompt('Edit Fabric Family Name:', oldName);
     if (!name && name !== '') return;
     const priceStr = prompt('Edit Base Price Modifier ($):', oldPrice.toString());
     const priceModifier = priceStr ? parseFloat(priceStr) : oldPrice;
-    update({ ...data, fabricFamilies: data.fabricFamilies.map((f: FabricFamily) => f.fabricId === famId ? { ...f, name: name || f.name, priceModifier } : f) });
+    const maxWStr = prompt('Max Width (Inches):', oldMaxW.toString());
+    const maxW = maxWStr ? parseFloat(maxWStr) : oldMaxW;
+    const maxHStr = prompt('Max Height (Inches):', oldMaxH.toString());
+    const maxH = maxHStr ? parseFloat(maxHStr) : oldMaxH;
+    update({ ...data, fabricFamilies: data.fabricFamilies.map((f: FabricFamily) => f.fabricId === famId ? { ...f, name: name || f.name, priceModifier, maxWidth: maxW, maxHeight: maxH } : f) });
   };
   const deleteFamily = (famId: string) => {
     if (!confirm('Delete this fabric family and all its colors?')) return;
@@ -442,7 +446,7 @@ function HardwareStep({ data, update }: any) {
                   <span style={{ fontSize: '0.7rem', color: '#888', background: '#eee', padding: '4px 8px', borderRadius: '4px' }}>Base +${fam.priceModifier}</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <button onClick={() => editFamily(fam.fabricId, fam.name, fam.priceModifier)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1rem' }}>✏️</button>
+                  <button onClick={() => editFamily(fam.fabricId, fam.name, fam.priceModifier, fam.maxWidth, fam.maxHeight)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1rem' }}>✏️</button>
                   <button onClick={() => deleteFamily(fam.fabricId)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1rem', color: 'red' }}>🗑️</button>
                 </div>
               </div>
