@@ -20,8 +20,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
   // Advanced State
   const initialFamily = product.fabricFamilies?.[0];
   const [selectedFamily, setSelectedFamily] = useState<FabricFamily | null>(initialFamily || null);
-  const categories = Array.from(new Set((product.fabricFamilies || []).map(f => f.category || 'Standard'))).sort();
-  const [selectedCategory, setSelectedCategory] = useState<string>(categories[0] || 'Standard');
+  
   const [selectedColor, setSelectedColor] = useState<FabricColor | null>(initialFamily?.colors?.[0] || null);
   
   // Modifiers: Map of groupId -> optionId
@@ -360,33 +359,11 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
           {product.fabricFamilies && product.fabricFamilies.length > 0 && (
             <div style={{ marginBottom: '4rem' }}>
               <label style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1.5rem', display: 'block', color: '#000' }}>
-                Opacity / Category
+                Architectural Finish
               </label>
               
-              <div style={{ display: 'flex', gap: '15px', borderBottom: '1px solid #eaeaea', paddingBottom: '15px', marginBottom: '30px' }}>
-                {categories.map(cat => (
-                  <button 
-                    key={cat}
-                    onClick={() => {
-                      setSelectedCategory(cat);
-                      const firstFamInCat = product.fabricFamilies.find(f => (f.category || 'Standard') === cat);
-                      if (firstFamInCat) {
-                        setSelectedFamily(firstFamInCat);
-                        setSelectedColor(firstFamInCat.colors[0] || null);
-                      }
-                    }}
-                    style={{ 
-                      background: 'none', border: 'none', padding: 0, cursor: 'pointer',
-                      fontSize: '1.1rem', fontWeight: selectedCategory === cat ? 700 : 400,
-                      color: selectedCategory === cat ? '#000' : '#888',
-                      borderBottom: selectedCategory === cat ? '2px solid #000' : 'none',
-                      paddingBottom: '5px'
-                    }}
-                  >{cat}</button>
-                ))}
-              </div>
-            <div style={{ display: 'flex', gap: '10px', overflowX: 'auto', paddingBottom: '10px', marginBottom: '20px' }}>
-                {product.fabricFamilies.filter(f => (f.category || 'Standard') === selectedCategory).map(fam => (
+              <div style={{ display: 'flex', gap: '10px', overflowX: 'auto', paddingBottom: '10px', marginBottom: '20px' }}>
+                {product.fabricFamilies.map(fam => (
                   <button 
                     key={fam.fabricId}
                     onClick={() => { setSelectedFamily(fam); setSelectedColor(fam.colors[0] || null); }}
