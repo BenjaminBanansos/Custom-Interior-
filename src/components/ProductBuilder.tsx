@@ -498,8 +498,7 @@ function MaterialsStep({ data, update }: any) {
         </div>
       </div>
 
-      <div style={{ borderTop: '1px solid #eee', paddingTop: '40px', marginTop: '40px' }}>
-            </Section>
+      </Section>
   );
 }
 
@@ -656,7 +655,6 @@ function CustomizationStep({ data, update }: any) {
             <div style={{ padding: '40px', textAlign: 'center', color: '#aaa', border: '1px dashed #ccc', borderRadius: '12px' }}>Click "Add Attribute Group" to create options like Lift Style.</div>
           )}
         </div>
-      </div>
     
     </Section>
   );
