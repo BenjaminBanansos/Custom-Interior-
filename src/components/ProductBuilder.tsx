@@ -576,13 +576,15 @@ function HardwareStep({ data, update }: any) {
 
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                         <div>
-                          <div style={{ fontSize: '1rem', fontWeight: 700, color: '#000' }}>{opt.name}</div>
+                          <div style={{ fontSize: '1rem', fontWeight: 700, color: '#000' }}>{opt.name} <span style={{fontSize:'0.65rem', color:'#aaa', fontWeight:400}}>(ID: {opt.id})</span></div>
                           <div style={{ fontSize: '0.85rem', color: opt.priceAdjustment > 0 ? '#10b981' : '#888', marginTop: '2px', fontWeight: 600 }}>
-                            {opt.priceAdjustment > 0 ? `+ $${opt.priceAdjustment}` : 'Included'}
+                            {opt.priceAdjustment > 0 ? `+ ${opt.priceAdjustment}` : 'Included'}
+                            {opt.requires && opt.requires.length > 0 && <span style={{display:'block', color:'#0066cc', fontSize:'0.65rem'}}>Requires: {opt.requires.join(', ')}</span>}
+                            {opt.excludes && opt.excludes.length > 0 && <span style={{display:'block', color:'#ef4444', fontSize:'0.65rem'}}>Excludes: {opt.excludes.join(', ')}</span>}
                           </div>
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-                          <button onClick={() => editOption(group.id, opt.id, opt.name, opt.priceAdjustment)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.8rem' }}>✏️</button>
+                          <button onClick={() => editOption(group.id, opt.id, opt.name, opt.priceAdjustment, opt.requires, opt.excludes)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.8rem' }}>✏️</button>
                           <button onClick={() => deleteOption(group.id, opt.id)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.8rem', color: 'red' }}>🗑️</button>
                         </div>
                       </div>
