@@ -1,6 +1,6 @@
 import ProductBuilder from '../../../../../components/ProductBuilder';
 
-export default async function EditProductRoute({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
+export default function EditProductRoute(props: any) {
+  const id = props?.params?.id || '';
   return <ProductBuilder productId={id} />;
 }
