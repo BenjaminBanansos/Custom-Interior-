@@ -43,7 +43,7 @@ export default function ProductBuilder({ productId }: { productId?: string }) {
         const products = await getProducts();
         const existing = products.find(p => p.id === productId);
         if (existing) {
-          if (!existing.mediaAssets && existing.imageUrl) {
+          if ((!existing.mediaAssets || existing.mediaAssets.length === 0) && existing.imageUrl) {
             existing.mediaAssets = [existing.imageUrl];
           }
           setFormData(existing);
