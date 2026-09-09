@@ -29,7 +29,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
         </p>
       </div>
 
-      <Configurator product={product} theme={theme} />
+      <Configurator product={product} theme={theme} allProducts={products} />
 
       {/* Product Details Section */}
       <section style={{ marginTop: '120px', borderTop: '1px solid var(--border-subtle)', paddingTop: '60px' }}>
