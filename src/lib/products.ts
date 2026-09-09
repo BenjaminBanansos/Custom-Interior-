@@ -63,6 +63,7 @@ export interface ModifierGroup {
 export interface Product {
   id: string;
   name: string;
+  productFamily?: string;
   category: string;
   basePrice: number; // For sqft mode, this is Price Per Sqft
   basePriceMode: 'fixed' | 'perSqFt';

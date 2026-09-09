@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -8,24 +9,26 @@ import { getProducts, deleteProduct } from '../../../lib/storage_actions';
 export default function ProductsListPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [sortConfig, setSortConfig] = useState<{ key: string, direction: 'asc' | 'desc' } | null>(null);
 
   useEffect(() => {
-    loadProducts();
+    loadData();
   }, []);
 
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  async function loadProducts() {
+  async function loadData() {
     try {
-      const data = await getProducts();
-      if (!Array.isArray(data)) {
-        setErrorMsg("Data returned is not an array: " + JSON.stringify(data));
+      // Add a timestamp to bust next.js cache for sure
+      const prodData = await getProducts();
+      if (!Array.isArray(prodData)) {
+        setErrorMsg("Data returned is not an array: " + JSON.stringify(prodData));
       } else {
-        setProducts(data);
+        setProducts(prodData);
       }
     } catch (err: any) {
       console.error(err);
-      setErrorMsg(err.message || "Unknown error fetching products");
+      setErrorMsg(err.message || "Unknown error fetching data");
     } finally {
       setIsLoading(false);
     }
@@ -34,7 +37,59 @@ export default function ProductsListPage() {
   const handleDelete = async (id: string) => {
     if (!confirm('Are you sure you want to delete this product?')) return;
     await deleteProduct(id);
-    await loadProducts();
+    await loadData();
+  };
+
+  const handleSort = (key: string) => {
+    let direction: 'asc' | 'desc' = 'asc';
+    if (sortConfig && sortConfig.key === key && sortConfig.direction === 'asc') {
+      direction = 'desc';
+    }
+    setSortConfig({ key, direction });
+  };
+
+  const sortedProducts = React.useMemo(() => {
+    let sortableItems = [...products];
+    if (sortConfig !== null) {
+      sortableItems.sort((a, b) => {
+        let aValue = (a as any)[sortConfig.key] || '';
+        let bValue = (b as any)[sortConfig.key] || '';
+        
+        if (typeof aValue === 'string') aValue = aValue.toLowerCase();
+        if (typeof bValue === 'string') bValue = bValue.toLowerCase();
+        
+        if (aValue < bValue) {
+          return sortConfig.direction === 'asc' ? -1 : 1;
+        }
+        if (aValue > bValue) {
+          return sortConfig.direction === 'asc' ? 1 : -1;
+        }
+        return 0;
+      });
+    } else {
+      // Default sort by productFamily then category
+      sortableItems.sort((a, b) => {
+        const famA = a.productFamily || '';
+        const famB = b.productFamily || '';
+        if (famA < famB) return -1;
+        if (famA > famB) return 1;
+        
+        const catA = a.category || '';
+        const catB = b.category || '';
+        if (catA < catB) return -1;
+        if (catA > catB) return 1;
+        
+        return 0;
+      });
+    }
+    return sortableItems;
+  }, [products, sortConfig]);
+
+  const SortIcon = ({ columnKey }: { columnKey: string }) => {
+    if (sortConfig?.key === columnKey) {
+      return <span>{sortConfig.direction === 'asc' ? ' ↑' : ' ↓'}</span>;
+    }
+    return <span style={{ opacity: 0.3 }}> ↕</span>;
   };
 
   return (
@@ -45,16 +100,28 @@ export default function ProductsListPage() {
           <h1 style={{ fontSize: '2.5rem' }}>Master Product List</h1>
           <p style={{ color: '#888', marginTop: '10px' }}>Manage industrial specifications and retail availability for all window treatments.</p>
         </div>
-        <Link href="/admin/products/new" style={{ 
-          backgroundColor: '#000', 
-          color: '#fff', 
-          padding: '12px 24px', 
-          border: 'none', 
-          borderRadius: '8px',
-          fontWeight: 600,
-          textDecoration: 'none',
-          fontSize: '0.9rem'
-        }}>+ NEW PRODUCT</Link>
+        <div style={{ display: 'flex', gap: '15px' }}>
+          <button onClick={loadData} style={{
+            backgroundColor: '#fff', 
+            color: '#000', 
+            padding: '12px 24px', 
+            border: '1px solid #ddd', 
+            borderRadius: '8px',
+            fontWeight: 600,
+            cursor: 'pointer',
+            fontSize: '0.9rem'
+          }}>↻ REFRESH DATA</button>
+          <Link href="/admin/products/new" style={{ 
+            backgroundColor: '#000', 
+            color: '#fff', 
+            padding: '12px 24px', 
+            border: 'none', 
+            borderRadius: '8px',
+            fontWeight: 600,
+            textDecoration: 'none',
+            fontSize: '0.9rem'
+          }}>+ NEW PRODUCT</Link>
+        </div>
       </header>
 
       {errorMsg ? (
@@ -69,23 +136,38 @@ export default function ProductsListPage() {
           <table style={{ width: '100%', borderCollapse: 'collapse' }}>
             <thead>
               <tr style={{ textAlign: 'left', borderBottom: '1px solid #eee', backgroundColor: '#fcfcfc' }}>
-                <th style={{ padding: '20px', fontSize: '0.7rem', color: '#888', fontWeight: 700 }}>PRODUCT NAME</th>
-                <th style={{ padding: '20px', fontSize: '0.7rem', color: '#888', fontWeight: 700 }}>CATEGORY</th>
-                <th style={{ padding: '20px', fontSize: '0.7rem', color: '#888', fontWeight: 700 }}>BASE PRICE</th>
-                <th style={{ padding: '20px', fontSize: '0.7rem', color: '#888', fontWeight: 700 }}>STATUS</th>
+                <th onClick={() => handleSort('productFamily')} style={{ padding: '20px', fontSize: '0.7rem', color: '#888', fontWeight: 700, cursor: 'pointer' }}>
+                  PRODUCT FAMILY <SortIcon columnKey="productFamily" />
+                </th>
+                <th onClick={() => handleSort('category')} style={{ padding: '20px', fontSize: '0.7rem', color: '#888', fontWeight: 700, cursor: 'pointer' }}>
+                  CATEGORY <SortIcon columnKey="category" />
+                </th>
+                <th onClick={() => handleSort('name')} style={{ padding: '20px', fontSize: '0.7rem', color: '#888', fontWeight: 700, cursor: 'pointer' }}>
+                  PRODUCT NAME <SortIcon columnKey="name" />
+                </th>
+                <th onClick={() => handleSort('basePrice')} style={{ padding: '20px', fontSize: '0.7rem', color: '#888', fontWeight: 700, cursor: 'pointer' }}>
+                  BASE PRICE <SortIcon columnKey="basePrice" />
+                </th>
+                <th onClick={() => handleSort('status')} style={{ padding: '20px', fontSize: '0.7rem', color: '#888', fontWeight: 700, cursor: 'pointer' }}>
+                  STATUS <SortIcon columnKey="status" />
+                </th>
                 <th style={{ padding: '20px', fontSize: '0.7rem', color: '#888', fontWeight: 700 }}>ACTIONS</th>
               </tr>
             </thead>
             <tbody>
-              {products.length === 0 ? (
+              {sortedProducts.length === 0 ? (
                 <tr>
-                  <td colSpan={5} style={{ padding: '40px', textAlign: 'center', color: '#aaa' }}>No products found in the atelier database.</td>
+                  <td colSpan={6} style={{ padding: '40px', textAlign: 'center', color: '#aaa' }}>No products found in the atelier database.</td>
                 </tr>
               ) : (
-                products.map(product => {
+                sortedProducts.map(product => {
                   try {
                     return (
                   <tr key={product.id} style={{ borderBottom: '1px solid #eee' }}>
+                    <td style={{ padding: '20px', fontSize: '0.9rem', fontWeight: 600 }}>{product.productFamily || 'Unknown'}</td>
+                    <td style={{ padding: '20px', fontSize: '0.8rem', color: '#555' }}>
+                      <span style={{ backgroundColor: '#f0f0f0', padding: '4px 8px', borderRadius: '4px' }}>{product.category}</span>
+                    </td>
                     <td style={{ padding: '20px' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
                         <div style={{ 
@@ -103,7 +185,6 @@ export default function ProductsListPage() {
                         </div>
                       </div>
                     </td>
-                    <td style={{ padding: '20px', fontSize: '0.8rem', color: '#555' }}>{product.category}</td>
                     <td style={{ padding: '20px', fontSize: '0.8rem', fontWeight: 600 }}>
                       ${product.basePrice} <span style={{ fontSize: '0.6rem', color: '#aaa' }}>({product.basePriceMode === 'fixed' ? 'FIXED' : 'PER SQ M'})</span>
                     </td>
@@ -127,7 +208,7 @@ export default function ProductsListPage() {
                   </tr>
                 );
                   } catch (e: any) {
-                    return <tr key={product.id || Math.random()}><td colSpan={5}>Render Error: {e.message}</td></tr>;
+                    return <tr key={product.id || Math.random()}><td colSpan={6}>Render Error: {e.message}</td></tr>;
                   }
                 })
               )}

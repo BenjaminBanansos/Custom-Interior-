@@ -156,14 +156,25 @@ function BasicInfoStep({ data, update, categories }: any) {
     <div style={{ display: 'grid', gap: '40px' }}>
       <Section title="Basic Information">
         <div style={{ display: 'grid', gap: '20px' }}>
-          <div>
-            <label style={{ fontSize: '0.7rem', color: '#888', display: 'block', marginBottom: '10px' }}>PRODUCT NAME</label>
-            <input 
-              placeholder="e.g., Signature S-Fold Linen"
-              value={data.name}
-              onChange={e => update({...data, name: e.target.value})}
-              style={{ width: '100%', padding: '16px', borderRadius: '8px', border: '1px solid #eee', backgroundColor: '#f9f9f9' }}
-            />
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+            <div>
+              <label style={{ fontSize: '0.7rem', color: '#888', display: 'block', marginBottom: '10px' }}>PRODUCT NAME</label>
+              <input 
+                placeholder="e.g., Signature S-Fold Linen"
+                value={data.name || ''}
+                onChange={e => update({...data, name: e.target.value})}
+                style={{ width: '100%', padding: '16px', borderRadius: '8px', border: '1px solid #eee', backgroundColor: '#f9f9f9' }}
+              />
+            </div>
+            <div>
+              <label style={{ fontSize: '0.7rem', color: '#888', display: 'block', marginBottom: '10px' }}>PRODUCT FAMILY</label>
+              <input 
+                placeholder="e.g., Zebra Blinds, Roller Blinds"
+                value={data.productFamily || ''}
+                onChange={e => update({...data, productFamily: e.target.value})}
+                style={{ width: '100%', padding: '16px', borderRadius: '8px', border: '1px solid #eee', backgroundColor: '#f9f9f9' }}
+              />
+            </div>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px' }}>
              <div>
