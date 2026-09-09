@@ -195,7 +195,7 @@ export default async function Home() {
       </nav>
 
       {/* Dynamic Sections mapped from Theme DND Order */}
-      {(theme.sectionOrder || ['hero', 'categories', 'curated', 'catalog']).map(section => {
+      {(theme.sectionOrder?.includes('catalog') ? theme.sectionOrder : ['hero', 'categories', 'catalog']).map(section => {
         if (section === 'hero') return HeroSection;
         if (section === 'categories') return CategoriesSection;
         if (section === 'curated') return CuratedSection;
