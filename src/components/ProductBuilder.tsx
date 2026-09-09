@@ -3,12 +3,12 @@
 import React, { useState, useEffect } from 'react';
 import { Product, FabricFamily, FabricColor, Category } from '../lib/products';
 import { saveProduct, getCategories, getProducts } from '../lib/storage_actions';
-import { useRouter } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation';
 
-export default function ProductBuilder({ productId }: { productId?: string }) {
+export default function ProductBuilder({ productId: initialProductId }: { productId?: string }) {\n  const params = useParams();\n  const productId = initialProductId || (params?.id as string);
   const router = useRouter();
   const [step, setStep] = useState(1);
-  const [isLoading, setIsLoading] = useState(!!productId);
+  const [isLoading, setIsLoading] = useState(!!initialProductId || !!(params && params.id));
   const [categories, setCategories] = useState<Category[]>([]);
   const [formData, setFormData] = useState<Partial<Product>>({
     name: '',
