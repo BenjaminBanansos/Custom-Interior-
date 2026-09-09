@@ -5,10 +5,10 @@ import { Product, FabricFamily, FabricColor, Category } from '../lib/products';
 import { saveProduct, getCategories, getProducts } from '../lib/storage_actions';
 import { useRouter, useParams } from 'next/navigation';
 
-export default function ProductBuilder({ productId: initialProductId }: { productId?: string }) {\n  const params = useParams();\n  const productId = initialProductId || (params?.id as string);
+export default function ProductBuilder({ productId: initialProductId, initialData }: { productId?: string, initialData?: any }) {\n  const params = useParams();\n  const productId = initialProductId || (params?.id as string);
   const router = useRouter();
   const [step, setStep] = useState(1);
-  const [isLoading, setIsLoading] = useState(!!initialProductId || !!(params && params.id));
+  const [isLoading, setIsLoading] = useState(!initialData && (!!initialProductId || !!(params && params.id)));
   const [categories, setCategories] = useState<Category[]>([]);
   const [formData, setFormData] = useState<Partial<Product>>({
     name: '',
@@ -38,6 +38,14 @@ export default function ProductBuilder({ productId: initialProductId }: { produc
     async function load() {
       const cats = await getCategories();
       setCategories(cats);
+      
+      if (initialData) {
+        let d = { ...initialData };
+        if ((!d.mediaAssets || d.mediaAssets.length === 0) && d.imageUrl) d.mediaAssets = [d.imageUrl];
+        setFormData(d);
+        setIsLoading(false);
+        return;
+      }
       
       if (productId) {
         const products = await getProducts();
