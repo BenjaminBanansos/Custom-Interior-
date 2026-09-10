@@ -645,8 +645,8 @@ function CustomizationStep({ data, update }: any) {
                             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
                               <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
                                 <span style={{ fontSize: '0.8rem', fontWeight: 600 }}>{sub.name}</span>
-                                <button onClick={() => editSub(group.id, opt.id, sub.id, sub.name)} style={{ padding: '2px 6px', borderRadius: '4px', backgroundColor: '#e5e7eb', color: '#374151', border: '1px solid #d1d5db', cursor: 'pointer', fontSize: '0.65rem', fontWeight: 600 }}>Edit Sub-Attribute</button>
-                                <button onClick={() => deleteSub(group.id, opt.id, sub.id)} style={{ padding: '2px 6px', borderRadius: '4px', backgroundColor: '#fee2e2', color: '#ef4444', border: '1px solid #fca5a5', cursor: 'pointer', fontSize: '0.65rem', fontWeight: 600 }}>Delete</button>
+                                <button onClick={() => editSub(group.id, opt.id, sub.id, sub.name)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.7rem' }}>✏️</button>
+                                <button onClick={() => deleteSub(group.id, opt.id, sub.id)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.7rem', color: 'red' }}>🗑️</button>
                               </div>
                               <button onClick={() => {
                                 const choiceName = prompt(`Choice for ${sub.name} (e.g. Left):`);
@@ -659,11 +659,12 @@ function CustomizationStep({ data, update }: any) {
                             </div>
                             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px' }}>
                               {sub.choices.map((c: any) => (
-                                <div key={c.id} style={{ fontSize: '0.7rem', background: '#fff', border: '1px solid #ddd', padding: '4px 8px', borderRadius: '4px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                  <span>{c.name} <span style={{ color: c.priceAdjustment > 0 ? '#10b981' : '#888', fontWeight: 600 }}>({c.priceAdjustment > 0 ? `+${c.priceAdjustment}` : '+$0'})</span></span>
-                                  <button onClick={() => editChoice(group.id, opt.id, sub.id, c.id, c.name, c.priceAdjustment)} style={{ padding: '2px 6px', borderRadius: '4px', backgroundColor: '#f3f4f6', color: '#000', border: '1px solid #ccc', cursor: 'pointer', fontSize: '0.65rem' }}>Edit Choice</button>
-                                  <button onClick={() => deleteChoice(group.id, opt.id, sub.id, c.id)} style={{ padding: '2px 6px', borderRadius: '4px', backgroundColor: '#fee2e2', color: '#ef4444', border: '1px solid #fca5a5', cursor: 'pointer', fontSize: '0.65rem' }}>X</button>
-                                </div>
+                                <span key={c.id} style={{ fontSize: '0.7rem', background: '#fff', border: '1px solid #ddd', padding: '2px 6px', borderRadius: '12px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                                  <span onClick={() => editChoice(group.id, opt.id, sub.id, c.id, c.name, c.priceAdjustment)} style={{ cursor: 'pointer' }}>
+                                    {c.name} <span style={{ color: c.priceAdjustment > 0 ? '#10b981' : '#888' }}>({c.priceAdjustment > 0 ? `+$${c.priceAdjustment}` : '+$0'})</span>
+                                  </span>
+                                  <button onClick={() => deleteChoice(group.id, opt.id, sub.id, c.id)} style={{ background: 'none', border: 'none', color: 'red', cursor: 'pointer', padding: 0, fontSize: '0.6rem' }}>✕</button>
+                                </span>
                               ))}
                             </div>
                           </div>
