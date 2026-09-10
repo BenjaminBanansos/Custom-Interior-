@@ -422,8 +422,8 @@ function MaterialsStep({ data, update }: any) {
     if (!name && name !== '') return;
     const priceStr = prompt('Edit Price Adjustment ($):', oldPrice.toString());
     const priceAdjustment = priceStr ? parseFloat(priceStr) : oldPrice;
-    const reqStr = prompt('Requires (comma separated option IDs):', (oldReqs || []).join(', '));
-    const exclStr = prompt('Excludes (comma separated option IDs):', (oldExcls || []).join(', '));
+    const reqStr = prompt('Requires (comma separated option IDs):', Array.isArray(oldReqs) ? oldReqs.join(', ') : '');
+    const exclStr = prompt('Excludes (comma separated option IDs):', Array.isArray(oldExcls) ? oldExcls.join(', ') : '');
     const requires = reqStr ? reqStr.split(',').map(s => s.trim()).filter(Boolean) : [];
     const excludes = exclStr ? exclStr.split(',').map(s => s.trim()).filter(Boolean) : [];
     
@@ -461,8 +461,8 @@ function MaterialsStep({ data, update }: any) {
     if (!name && name !== '') return;
     const priceStr = prompt('Edit Price Adjustment ($):', oldPrice.toString());
     const priceAdjustment = priceStr ? parseFloat(priceStr) : oldPrice;
-    const reqStr = prompt('Requires (comma separated IDs):', (oldReqs || []).join(', '));
-    const exclStr = prompt('Excludes (comma separated IDs):', (oldExcls || []).join(', '));
+    const reqStr = prompt('Requires (comma separated IDs):', Array.isArray(oldReqs) ? oldReqs.join(', ') : '');
+    const exclStr = prompt('Excludes (comma separated IDs):', Array.isArray(oldExcls) ? oldExcls.join(', ') : '');
     const requires = reqStr ? reqStr.split(',').map(s => s.trim()).filter(Boolean) : [];
     const excludes = exclStr ? exclStr.split(',').map(s => s.trim()).filter(Boolean) : [];
     
