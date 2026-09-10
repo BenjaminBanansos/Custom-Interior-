@@ -90,3 +90,17 @@ export async function saveCategory(category: Category): Promise<boolean> {
     return false;
   }
 }
+
+export async function bulkUpdateCategoryModifiers(category: string, modifiers: any[]): Promise<number> {
+  try {
+    const db = await getDb();
+    const result = await db.collection('products').updateMany(
+      { category },
+      { $set: { modifiers } }
+    );
+    return result.modifiedCount;
+  } catch(e) {
+    console.error(e);
+    return 0;
+  }
+}
