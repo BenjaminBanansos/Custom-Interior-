@@ -44,6 +44,9 @@ export default function ProductBuilder({ productId: initialProductId, initialDat
       if (initialData) {
         let d = { ...initialData };
         if ((!d.mediaAssets || d.mediaAssets.length === 0) && d.imageUrl) d.mediaAssets = [d.imageUrl];
+        if (!d.constraints) d.constraints = { minWidth: 400, maxWidth: 3000, minHeight: 400, maxHeight: 4000 };
+        if (!d.fabricFamilies) d.fabricFamilies = [];
+        if (!d.modifiers) d.modifiers = [];
         setFormData(d);
         setIsLoading(false);
         return;
@@ -311,7 +314,7 @@ function BasicInfoStep({ data, update, categories }: any) {
 }
 
 function DimensionsStep({ data, update }: any) {
-  const c = data.constraints;
+  const c = data.constraints || { minWidth: 400, maxWidth: 3000, minHeight: 400, maxHeight: 4000 };
   const setC = (nc: any) => update({...data, constraints: {...c, ...nc}});
 
   return (
