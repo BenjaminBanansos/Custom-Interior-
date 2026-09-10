@@ -686,12 +686,16 @@ function CustomizationStep({ data, update }: any) {
                             </div>
                             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px' }}>
                               {sub.choices.map((c: any) => (
-                                <span key={c.id} style={{ fontSize: '0.7rem', background: '#fff', border: '1px solid #ddd', padding: '2px 6px', borderRadius: '12px', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                                  <span onClick={() => editChoice(group.id, opt.id, sub.id, c.id, c.name, c.priceAdjustment)} style={{ cursor: 'pointer' }}>
-                                    {c.name} <span style={{ color: c.priceAdjustment > 0 ? '#10b981' : '#888' }}>({c.priceAdjustment > 0 ? `+$${c.priceAdjustment}` : '+$0'})</span>
+                                <div key={c.id} style={{ fontSize: '0.7rem', background: '#fff', border: '1px solid #ddd', padding: '4px 8px', borderRadius: '4px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                  <span style={{display:'flex', flexDirection:'column'}}>
+                                    <span>{c.name} <span style={{ color: c.priceAdjustment > 0 ? '#10b981' : '#888', fontWeight: 600 }}>({c.priceAdjustment > 0 ? `+${c.priceAdjustment}` : '+$0'})</span></span>
+                                    {c.requires && c.requires.length > 0 && <span style={{color:'#0066cc', fontSize:'0.55rem'}}>Req: {c.requires.join(', ')}</span>}
+                                    {c.excludes && c.excludes.length > 0 && <span style={{color:'#ef4444', fontSize:'0.55rem'}}>Exc: {c.excludes.join(', ')}</span>}
+                                    {c.constraints && (c.constraints.minWidth || c.constraints.maxWidth || c.constraints.minHeight || c.constraints.maxHeight) && <span style={{color:'#9333ea', fontSize:'0.55rem'}}>Limits: W[{c.constraints.minWidth || 0}-{c.constraints.maxWidth || '∞'}] H[{c.constraints.minHeight || 0}-{c.constraints.maxHeight || '∞'}]</span>}
                                   </span>
-                                  <button onClick={() => deleteChoice(group.id, opt.id, sub.id, c.id)} style={{ background: 'none', border: 'none', color: 'red', cursor: 'pointer', padding: 0, fontSize: '0.6rem' }}>✕</button>
-                                </span>
+                                  <button onClick={() => editChoice(group.id, opt.id, sub.id, c.id, c.name, c.priceAdjustment, c.requires, c.excludes, c.constraints)} style={{ padding: '2px 6px', borderRadius: '4px', backgroundColor: '#f3f4f6', color: '#000', border: '1px solid #ccc', cursor: 'pointer', fontSize: '0.65rem' }}>Edit Choice</button>
+                                  <button onClick={() => deleteChoice(group.id, opt.id, sub.id, c.id)} style={{ padding: '2px 6px', borderRadius: '4px', backgroundColor: '#fee2e2', color: '#ef4444', border: '1px solid #fca5a5', cursor: 'pointer', fontSize: '0.65rem' }}>X</button>
+                                </div>
                               ))}
                             </div>
                           </div>
