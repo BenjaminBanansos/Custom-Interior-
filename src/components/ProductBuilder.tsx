@@ -479,10 +479,23 @@ function MaterialsStep({ data, update }: any) {
 function CustomizationStep({ data, update }: any) {
 
 // --- MODIFIER CRUD ---
-  const editModifier = (modId: string, oldName: string) => {
+  const editModifier = (modId: string, oldName: string, oldReqs: string[] = [], oldExcls: string[] = [], oldConstraints: any = {}) => {
     const name = prompt('Edit Attribute Group Name:', oldName);
-    if (!name) return;
-    update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, name } : m) });
+    if (!name && name !== '') return;
+    const reqStr = prompt('Requires (comma separated IDs):', Array.isArray(oldReqs) ? oldReqs.join(', ') : '');
+    const exclStr = prompt('Excludes (comma separated IDs):', Array.isArray(oldExcls) ? oldExcls.join(', ') : '');
+    const requires = reqStr ? reqStr.split(',').map(s => s.trim()).filter(Boolean) : [];
+    const excludes = exclStr ? exclStr.split(',').map(s => s.trim()).filter(Boolean) : [];
+    const minWStr = prompt('Min Width (mm, optional):', oldConstraints?.minWidth || '');
+    const maxWStr = prompt('Max Width (mm, optional):', oldConstraints?.maxWidth || '');
+    const minHStr = prompt('Min Height (mm, optional):', oldConstraints?.minHeight || '');
+    const maxHStr = prompt('Max Height (mm, optional):', oldConstraints?.maxHeight || '');
+    const constraints: any = {};
+    if (minWStr) constraints.minWidth = parseFloat(minWStr);
+    if (maxWStr) constraints.maxWidth = parseFloat(maxWStr);
+    if (minHStr) constraints.minHeight = parseFloat(minHStr);
+    if (maxHStr) constraints.maxHeight = parseFloat(maxHStr);
+    update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, name: name || m.name, requires, excludes, constraints } : m) });
   };
   const deleteModifier = (modId: string) => {
     if (!confirm('Delete this attribute group and ALL its options?')) return;
@@ -518,10 +531,23 @@ function CustomizationStep({ data, update }: any) {
   };
 
   // --- SUB-ATTRIBUTE CRUD ---
-  const editSub = (modId: string, optId: string, subId: string, oldName: string) => {
+  const editSub = (modId: string, optId: string, subId: string, oldName: string, oldReqs: string[] = [], oldExcls: string[] = [], oldConstraints: any = {}) => {
     const name = prompt('Edit Sub-Attribute Name:', oldName);
-    if (!name) return;
-    update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === subId ? { ...s, name } : s) } : o) } : m) });
+    if (!name && name !== '') return;
+    const reqStr = prompt('Requires (comma separated IDs):', Array.isArray(oldReqs) ? oldReqs.join(', ') : '');
+    const exclStr = prompt('Excludes (comma separated IDs):', Array.isArray(oldExcls) ? oldExcls.join(', ') : '');
+    const requires = reqStr ? reqStr.split(',').map(s => s.trim()).filter(Boolean) : [];
+    const excludes = exclStr ? exclStr.split(',').map(s => s.trim()).filter(Boolean) : [];
+    const minWStr = prompt('Min Width (mm, optional):', oldConstraints?.minWidth || '');
+    const maxWStr = prompt('Max Width (mm, optional):', oldConstraints?.maxWidth || '');
+    const minHStr = prompt('Min Height (mm, optional):', oldConstraints?.minHeight || '');
+    const maxHStr = prompt('Max Height (mm, optional):', oldConstraints?.maxHeight || '');
+    const constraints: any = {};
+    if (minWStr) constraints.minWidth = parseFloat(minWStr);
+    if (maxWStr) constraints.maxWidth = parseFloat(maxWStr);
+    if (minHStr) constraints.minHeight = parseFloat(minHStr);
+    if (maxHStr) constraints.maxHeight = parseFloat(maxHStr);
+    update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === subId ? { ...s, name: name || s.name, requires, excludes, constraints } : s) } : o) } : m) });
   };
   const deleteSub = (modId: string, optId: string, subId: string) => {
     if (!confirm('Delete this sub-attribute?')) return;
@@ -593,8 +619,13 @@ function CustomizationStep({ data, update }: any) {
                       update({ ...data, modifiers: newMods });
                     }} style={{ border: 'none', background: 'none', cursor: groupIndex === data.modifiers.length - 1 ? 'not-allowed' : 'pointer', opacity: groupIndex === data.modifiers.length - 1 ? 0.3 : 1, padding: 0 }}>↓</button>
                   </div>
-                  <h5 style={{ fontSize: '1rem', margin: 0 }}>{group.name}</h5>
-                  <button onClick={() => editModifier(group.id, group.name)} style={{ padding: '4px 10px', borderRadius: '4px', backgroundColor: '#f3f4f6', color: '#374151', border: '1px solid #d1d5db', cursor: 'pointer', fontSize: '0.8rem', fontWeight: 600 }}>Edit Group</button>
+                  <div style={{display:'flex', flexDirection:'column'}}>
+                    <h5 style={{ fontSize: '1rem', margin: 0 }}>{group.name}</h5>
+                    {group.requires && group.requires.length > 0 && <span style={{display:'block', color:'#0066cc', fontSize:'0.65rem'}}>Requires: {group.requires.join(', ')}</span>}
+                    {group.excludes && group.excludes.length > 0 && <span style={{display:'block', color:'#ef4444', fontSize:'0.65rem'}}>Excludes: {group.excludes.join(', ')}</span>}
+                    {group.constraints && (group.constraints.minWidth || group.constraints.maxWidth || group.constraints.minHeight || group.constraints.maxHeight) && <span style={{display:'block', color:'#9333ea', fontSize:'0.65rem'}}>Limits: W[{group.constraints.minWidth || 0}-{group.constraints.maxWidth || '∞'}] H[{group.constraints.minHeight || 0}-{group.constraints.maxHeight || '∞'}]</span>}
+                  </div>
+                  <button onClick={() => editModifier(group.id, group.name, group.requires, group.excludes, group.constraints)} style={{ padding: '4px 10px', borderRadius: '4px', backgroundColor: '#f3f4f6', color: '#374151', border: '1px solid #d1d5db', cursor: 'pointer', fontSize: '0.8rem', fontWeight: 600 }}>Edit Group</button>
                 </div>
                 <div style={{ display: 'flex', gap: '10px' }}>
                   <button onClick={() => deleteModifier(group.id)} style={{ padding: '6px 12px', borderRadius: '6px', backgroundColor: '#fee2e2', color: '#ef4444', border: 'none', cursor: 'pointer', fontSize: '0.8rem' }}>🗑️ Delete Group</button>
@@ -672,10 +703,15 @@ function CustomizationStep({ data, update }: any) {
                         {(opt.subAttributes || []).map((sub: any) => (
                           <div key={sub.id} style={{ marginBottom: '10px', background: '#fafafa', padding: '10px', borderRadius: '6px', border: '1px solid #f0f0f0' }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
-                              <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
-                                <span style={{ fontSize: '0.8rem', fontWeight: 600 }}>{sub.name}</span>
-                                <button onClick={() => editSub(group.id, opt.id, sub.id, sub.name)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.7rem' }}>✏️</button>
-                                <button onClick={() => deleteSub(group.id, opt.id, sub.id)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.7rem', color: 'red' }}>🗑️</button>
+                              <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                                <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
+                                  <span style={{ fontSize: '0.8rem', fontWeight: 600 }}>{sub.name}</span>
+                                  <button onClick={() => editSub(group.id, opt.id, sub.id, sub.name, sub.requires, sub.excludes, sub.constraints)} style={{ padding: '2px 6px', borderRadius: '4px', backgroundColor: '#f3f4f6', color: '#374151', border: '1px solid #d1d5db', cursor: 'pointer', fontSize: '0.65rem' }}>Edit Sub-Attribute</button>
+                                  <button onClick={() => deleteSub(group.id, opt.id, sub.id)} style={{ padding: '2px 6px', borderRadius: '4px', backgroundColor: '#fee2e2', color: '#ef4444', border: '1px solid #fca5a5', cursor: 'pointer', fontSize: '0.65rem' }}>Delete Sub</button>
+                                </div>
+                                {sub.requires && sub.requires.length > 0 && <span style={{display:'block', color:'#0066cc', fontSize:'0.65rem'}}>Requires: {sub.requires.join(', ')}</span>}
+                                {sub.excludes && sub.excludes.length > 0 && <span style={{display:'block', color:'#ef4444', fontSize:'0.65rem'}}>Excludes: {sub.excludes.join(', ')}</span>}
+                                {sub.constraints && (sub.constraints.minWidth || sub.constraints.maxWidth || sub.constraints.minHeight || sub.constraints.maxHeight) && <span style={{display:'block', color:'#9333ea', fontSize:'0.65rem'}}>Limits: W[{sub.constraints.minWidth || 0}-{sub.constraints.maxWidth || '∞'}] H[{sub.constraints.minHeight || 0}-{sub.constraints.maxHeight || '∞'}]</span>}
                               </div>
                               <button onClick={() => {
                                 const choiceName = prompt(`Choice for ${sub.name} (e.g. Left):`);
