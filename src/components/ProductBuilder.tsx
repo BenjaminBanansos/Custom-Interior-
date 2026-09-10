@@ -417,16 +417,27 @@ function MaterialsStep({ data, update }: any) {
   };
 
   // --- OPTION CRUD ---
-  const editOption = (modId: string, optId: string, oldName: string, oldPrice: number, oldReqs: string[] = [], oldExcls: string[] = []) => {
+  const editOption = (modId: string, optId: string, oldName: string, oldPrice: number, oldReqs: string[] = [], oldExcls: string[] = [], oldConstraints: any = {}) => {
     const name = prompt('Edit Option Name:', oldName);
     if (!name && name !== '') return;
     const priceStr = prompt('Edit Price Adjustment ($):', oldPrice.toString());
     const priceAdjustment = priceStr ? parseFloat(priceStr) : oldPrice;
-    const reqStr = prompt('Requires (comma separated option IDs, optional):', oldReqs.join(', '));
-    const exclStr = prompt('Excludes (comma separated option IDs, optional):', oldExcls.join(', '));
+    const reqStr = prompt('Requires (comma separated option IDs):', oldReqs.join(', '));
+    const exclStr = prompt('Excludes (comma separated option IDs):', oldExcls.join(', '));
     const requires = reqStr ? reqStr.split(',').map(s => s.trim()).filter(Boolean) : [];
     const excludes = exclStr ? exclStr.split(',').map(s => s.trim()).filter(Boolean) : [];
-    update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, name: name || o.name, priceAdjustment, requires, excludes } : o) } : m) });
+    
+    const minWStr = prompt('Min Width (mm, optional):', oldConstraints?.minWidth || '');
+    const maxWStr = prompt('Max Width (mm, optional):', oldConstraints?.maxWidth || '');
+    const minHStr = prompt('Min Height (mm, optional):', oldConstraints?.minHeight || '');
+    const maxHStr = prompt('Max Height (mm, optional):', oldConstraints?.maxHeight || '');
+    const constraints: any = {};
+    if (minWStr) constraints.minWidth = parseFloat(minWStr);
+    if (maxWStr) constraints.maxWidth = parseFloat(maxWStr);
+    if (minHStr) constraints.minHeight = parseFloat(minHStr);
+    if (maxHStr) constraints.maxHeight = parseFloat(maxHStr);
+
+    update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, name: name || o.name, priceAdjustment, requires, excludes, constraints } : o) } : m) });
   };
   const deleteOption = (modId: string, optId: string) => {
     if (!confirm('Delete this option?')) return;
@@ -445,12 +456,27 @@ function MaterialsStep({ data, update }: any) {
   };
 
   // --- CHOICE CRUD ---
-  const editChoice = (modId: string, optId: string, subId: string, choiceId: string, oldName: string, oldPrice: number) => {
+  const editChoice = (modId: string, optId: string, subId: string, choiceId: string, oldName: string, oldPrice: number, oldReqs: string[] = [], oldExcls: string[] = [], oldConstraints: any = {}) => {
     const name = prompt('Edit Choice Name:', oldName);
     if (!name && name !== '') return;
     const priceStr = prompt('Edit Price Adjustment ($):', oldPrice.toString());
     const priceAdjustment = priceStr ? parseFloat(priceStr) : oldPrice;
-    update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === subId ? { ...s, choices: s.choices.map((c: any) => c.id === choiceId ? { ...c, name: name || c.name, priceAdjustment } : c) } : s) } : o) } : m) });
+    const reqStr = prompt('Requires (comma separated IDs):', oldReqs.join(', '));
+    const exclStr = prompt('Excludes (comma separated IDs):', oldExcls.join(', '));
+    const requires = reqStr ? reqStr.split(',').map(s => s.trim()).filter(Boolean) : [];
+    const excludes = exclStr ? exclStr.split(',').map(s => s.trim()).filter(Boolean) : [];
+    
+    const minWStr = prompt('Min Width (mm, optional):', oldConstraints?.minWidth || '');
+    const maxWStr = prompt('Max Width (mm, optional):', oldConstraints?.maxWidth || '');
+    const minHStr = prompt('Min Height (mm, optional):', oldConstraints?.minHeight || '');
+    const maxHStr = prompt('Max Height (mm, optional):', oldConstraints?.maxHeight || '');
+    const constraints: any = {};
+    if (minWStr) constraints.minWidth = parseFloat(minWStr);
+    if (maxWStr) constraints.maxWidth = parseFloat(maxWStr);
+    if (minHStr) constraints.minHeight = parseFloat(minHStr);
+    if (maxHStr) constraints.maxHeight = parseFloat(maxHStr);
+
+    update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === subId ? { ...s, choices: s.choices.map((c: any) => c.id === choiceId ? { ...c, name: name || c.name, priceAdjustment, requires, excludes, constraints } : c) } : s) } : o) } : m) });
   };
   const deleteChoice = (modId: string, optId: string, subId: string, choiceId: string) => {
     if (!confirm('Delete this choice?')) return;
@@ -619,10 +645,11 @@ function CustomizationStep({ data, update }: any) {
                             {opt.priceAdjustment > 0 ? `+ ${opt.priceAdjustment}` : 'Included'}
                             {opt.requires && opt.requires.length > 0 && <span style={{display:'block', color:'#0066cc', fontSize:'0.65rem'}}>Requires: {opt.requires.join(', ')}</span>}
                             {opt.excludes && opt.excludes.length > 0 && <span style={{display:'block', color:'#ef4444', fontSize:'0.65rem'}}>Excludes: {opt.excludes.join(', ')}</span>}
+                            {opt.constraints && (opt.constraints.minWidth || opt.constraints.maxWidth || opt.constraints.minHeight || opt.constraints.maxHeight) && <span style={{display:'block', color:'#9333ea', fontSize:'0.65rem'}}>Limits: W[{opt.constraints.minWidth || 0}-{opt.constraints.maxWidth || '∞'}] H[{opt.constraints.minHeight || 0}-{opt.constraints.maxHeight || '∞'}]</span>}
                           </div>
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-                          <button onClick={() => editOption(group.id, opt.id, opt.name, opt.priceAdjustment, opt.requires, opt.excludes)} style={{ padding: '4px 10px', borderRadius: '4px', backgroundColor: '#f3f4f6', color: '#374151', border: '1px solid #d1d5db', cursor: 'pointer', fontSize: '0.75rem', fontWeight: 600, width: '100%' }}>Edit Option</button>
+                          <button onClick={() => editOption(group.id, opt.id, opt.name, opt.priceAdjustment, opt.requires, opt.excludes, opt.constraints)} style={{ padding: '4px 10px', borderRadius: '4px', backgroundColor: '#f3f4f6', color: '#374151', border: '1px solid #d1d5db', cursor: 'pointer', fontSize: '0.75rem', fontWeight: 600, width: '100%' }}>Edit Option</button>
                           <button onClick={() => deleteOption(group.id, opt.id)} style={{ padding: '4px 10px', borderRadius: '4px', backgroundColor: '#fee2e2', color: '#ef4444', border: '1px solid #fca5a5', cursor: 'pointer', fontSize: '0.75rem', fontWeight: 600, width: '100%' }}>Delete Option</button>
                         </div>
                       </div>
