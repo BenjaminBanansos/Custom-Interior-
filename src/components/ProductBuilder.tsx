@@ -405,7 +405,80 @@ function MaterialsStep({ data, update }: any) {
     } catch(err) { console.error(err); }
   };
 
-  // --- MODIFIER CRUD ---
+  return (
+    <Section title="Materials & Hardware (GIF-Style Configurator)">
+      <div style={{ marginBottom: '40px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+          <h4 style={{ fontSize: '0.9rem', color: '#888' }}>FABRIC FAMILIES & COLORS</h4>
+          <button onClick={addFamily} style={{ padding: '8px 16px', borderRadius: '6px', backgroundColor: '#000', color: '#fff', border: 'none', cursor: 'pointer', fontSize: '0.8rem', fontWeight: 600 }}>+ New Fabric Family</button>
+        </div>
+
+        <div style={{ display: 'grid', gap: '20px' }}>
+          {(data.fabricFamilies || []).map((fam: FabricFamily) => (
+            <div key={fam.fabricId} style={{ border: '1px solid #eee', borderRadius: '12px', background: '#fff', overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
+              
+              <div style={{ padding: '20px', background: '#fafafa', borderBottom: '1px solid #eee', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                  <h5 style={{ fontSize: '1.1rem', margin: 0 }}>{fam.name}</h5>
+                  <span style={{ fontSize: '0.7rem', color: '#888', background: '#eee', padding: '4px 8px', borderRadius: '4px' }}>Base +${fam.priceModifier}</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <button onClick={() => editFamily(fam.fabricId, fam.name, fam.priceModifier, fam.maxWidth, fam.maxHeight, fam.category)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1rem' }}>✏️</button>
+                  <button onClick={() => deleteFamily(fam.fabricId)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1rem', color: 'red' }}>🗑️</button>
+                </div>
+              </div>
+
+              <div style={{ padding: '20px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '15px' }}>
+                  {fam.colors.map((color) => (
+                    <div key={color.colorId} style={{ border: '1px solid #eee', borderRadius: '8px', padding: '10px', position: 'relative', background: '#fff' }}>
+                      
+                      <div style={{ 
+                        height: '120px', borderRadius: '6px', marginBottom: '10px', backgroundColor: color.hex,
+                        backgroundImage: color.mediaUrl ? `url(${color.mediaUrl})` : 'none',
+                        backgroundSize: 'cover', backgroundPosition: 'center',
+                        display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', border: '1px solid #f0f0f0', position: 'relative', overflow: 'hidden'
+                      }}>
+                        {!color.mediaUrl && <span style={{ color: '#fff', mixBlendMode: 'difference', fontSize: '0.8rem', opacity: 0.9, marginBottom: '10px' }}>No Picture</span>}
+                        <label style={{ background: 'rgba(255,255,255,0.9)', color: '#000', padding: '6px 12px', borderRadius: '20px', fontSize: '0.7rem', fontWeight: 600, cursor: 'pointer' }}>
+                          {color.mediaUrl ? 'Change Picture' : '+ Upload Picture'}
+                          <input type="file" accept="image/*" style={{ display: 'none' }} onChange={(e) => {
+                            if (e.target.files && e.target.files[0]) updateColorMedia(fam.fabricId, color.colorId, e.target.files[0]);
+                          }} />
+                        </label>
+                      </div>
+
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <div style={{ fontSize: '0.9rem', fontWeight: 700, color: '#000' }}>{color.name}</div>
+                        <div style={{ display: 'flex', gap: '5px' }}>
+                          <button onClick={() => editColor(fam.fabricId, color.colorId, color.name, color.hex)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.8rem' }}>✏️</button>
+                          <button onClick={() => deleteColor(fam.fabricId, color.colorId)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.8rem', color: 'red' }}>🗑️</button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                  <button onClick={() => addColor(fam.fabricId)} style={{ border: '1px dashed #ccc', borderRadius: '8px', padding: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: 'transparent', cursor: 'pointer', height: '100%', minHeight: '150px' }}>
+                    <span style={{ fontSize: '1.5rem', color: '#888', marginBottom: '5px' }}>+</span>
+                    <span style={{ fontSize: '0.8rem', color: '#888' }}>Add Color</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+          {(!data.fabricFamilies || data.fabricFamilies.length === 0) && (
+            <div style={{ padding: '40px', textAlign: 'center', color: '#aaa', border: '1px dashed #ccc', borderRadius: '12px' }}>No fabric families added yet.</div>
+          )}
+        </div>
+      </div>
+
+      </Section>
+  );
+}
+
+
+function CustomizationStep({ data, update }: any) {
+
+// --- MODIFIER CRUD ---
   const editModifier = (modId: string, oldName: string) => {
     const name = prompt('Edit Attribute Group Name:', oldName);
     if (!name) return;
@@ -484,78 +557,7 @@ function MaterialsStep({ data, update }: any) {
   };
 
 
-  return (
-    <Section title="Materials & Hardware (GIF-Style Configurator)">
-      <div style={{ marginBottom: '40px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-          <h4 style={{ fontSize: '0.9rem', color: '#888' }}>FABRIC FAMILIES & COLORS</h4>
-          <button onClick={addFamily} style={{ padding: '8px 16px', borderRadius: '6px', backgroundColor: '#000', color: '#fff', border: 'none', cursor: 'pointer', fontSize: '0.8rem', fontWeight: 600 }}>+ New Fabric Family</button>
-        </div>
-
-        <div style={{ display: 'grid', gap: '20px' }}>
-          {(data.fabricFamilies || []).map((fam: FabricFamily) => (
-            <div key={fam.fabricId} style={{ border: '1px solid #eee', borderRadius: '12px', background: '#fff', overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
-              
-              <div style={{ padding: '20px', background: '#fafafa', borderBottom: '1px solid #eee', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                  <h5 style={{ fontSize: '1.1rem', margin: 0 }}>{fam.name}</h5>
-                  <span style={{ fontSize: '0.7rem', color: '#888', background: '#eee', padding: '4px 8px', borderRadius: '4px' }}>Base +${fam.priceModifier}</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <button onClick={() => editFamily(fam.fabricId, fam.name, fam.priceModifier, fam.maxWidth, fam.maxHeight, fam.category)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1rem' }}>✏️</button>
-                  <button onClick={() => deleteFamily(fam.fabricId)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1rem', color: 'red' }}>🗑️</button>
-                </div>
-              </div>
-
-              <div style={{ padding: '20px' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '15px' }}>
-                  {fam.colors.map((color) => (
-                    <div key={color.colorId} style={{ border: '1px solid #eee', borderRadius: '8px', padding: '10px', position: 'relative', background: '#fff' }}>
-                      
-                      <div style={{ 
-                        height: '120px', borderRadius: '6px', marginBottom: '10px', backgroundColor: color.hex,
-                        backgroundImage: color.mediaUrl ? `url(${color.mediaUrl})` : 'none',
-                        backgroundSize: 'cover', backgroundPosition: 'center',
-                        display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', border: '1px solid #f0f0f0', position: 'relative', overflow: 'hidden'
-                      }}>
-                        {!color.mediaUrl && <span style={{ color: '#fff', mixBlendMode: 'difference', fontSize: '0.8rem', opacity: 0.9, marginBottom: '10px' }}>No Picture</span>}
-                        <label style={{ background: 'rgba(255,255,255,0.9)', color: '#000', padding: '6px 12px', borderRadius: '20px', fontSize: '0.7rem', fontWeight: 600, cursor: 'pointer' }}>
-                          {color.mediaUrl ? 'Change Picture' : '+ Upload Picture'}
-                          <input type="file" accept="image/*" style={{ display: 'none' }} onChange={(e) => {
-                            if (e.target.files && e.target.files[0]) updateColorMedia(fam.fabricId, color.colorId, e.target.files[0]);
-                          }} />
-                        </label>
-                      </div>
-
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <div style={{ fontSize: '0.9rem', fontWeight: 700, color: '#000' }}>{color.name}</div>
-                        <div style={{ display: 'flex', gap: '5px' }}>
-                          <button onClick={() => editColor(fam.fabricId, color.colorId, color.name, color.hex)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.8rem' }}>✏️</button>
-                          <button onClick={() => deleteColor(fam.fabricId, color.colorId)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.8rem', color: 'red' }}>🗑️</button>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                  <button onClick={() => addColor(fam.fabricId)} style={{ border: '1px dashed #ccc', borderRadius: '8px', padding: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: 'transparent', cursor: 'pointer', height: '100%', minHeight: '150px' }}>
-                    <span style={{ fontSize: '1.5rem', color: '#888', marginBottom: '5px' }}>+</span>
-                    <span style={{ fontSize: '0.8rem', color: '#888' }}>Add Color</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
-          {(!data.fabricFamilies || data.fabricFamilies.length === 0) && (
-            <div style={{ padding: '40px', textAlign: 'center', color: '#aaa', border: '1px dashed #ccc', borderRadius: '12px' }}>No fabric families added yet.</div>
-          )}
-        </div>
-      </div>
-
-      </Section>
-  );
-}
-
-
-function CustomizationStep({ data, update }: any) {
+  
   
   return (
     <Section title="Product Customization (Hardware)">
