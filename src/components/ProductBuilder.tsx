@@ -417,12 +417,16 @@ function MaterialsStep({ data, update }: any) {
   };
 
   // --- OPTION CRUD ---
-  const editOption = (modId: string, optId: string, oldName: string, oldPrice: number) => {
+  const editOption = (modId: string, optId: string, oldName: string, oldPrice: number, oldReqs: string[] = [], oldExcls: string[] = []) => {
     const name = prompt('Edit Option Name:', oldName);
     if (!name && name !== '') return;
     const priceStr = prompt('Edit Price Adjustment ($):', oldPrice.toString());
     const priceAdjustment = priceStr ? parseFloat(priceStr) : oldPrice;
-    update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, name: name || o.name, priceAdjustment } : o) } : m) });
+    const reqStr = prompt('Requires (comma separated option IDs, optional):', oldReqs.join(', '));
+    const exclStr = prompt('Excludes (comma separated option IDs, optional):', oldExcls.join(', '));
+    const requires = reqStr ? reqStr.split(',').map(s => s.trim()).filter(Boolean) : [];
+    const excludes = exclStr ? exclStr.split(',').map(s => s.trim()).filter(Boolean) : [];
+    update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, name: name || o.name, priceAdjustment, requires, excludes } : o) } : m) });
   };
   const deleteOption = (modId: string, optId: string) => {
     if (!confirm('Delete this option?')) return;
@@ -562,7 +566,7 @@ function CustomizationStep({ data, update }: any) {
                     }} style={{ border: 'none', background: 'none', cursor: groupIndex === data.modifiers.length - 1 ? 'not-allowed' : 'pointer', opacity: groupIndex === data.modifiers.length - 1 ? 0.3 : 1, padding: 0 }}>↓</button>
                   </div>
                   <h5 style={{ fontSize: '1rem', margin: 0 }}>{group.name}</h5>
-                  <button onClick={() => editModifier(group.id, group.name)} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>✏️</button>
+                  <button onClick={() => editModifier(group.id, group.name)} style={{ padding: '4px 10px', borderRadius: '4px', backgroundColor: '#f3f4f6', color: '#374151', border: '1px solid #d1d5db', cursor: 'pointer', fontSize: '0.8rem', fontWeight: 600 }}>Edit Group</button>
                 </div>
                 <div style={{ display: 'flex', gap: '10px' }}>
                   <button onClick={() => deleteModifier(group.id)} style={{ padding: '6px 12px', borderRadius: '6px', backgroundColor: '#fee2e2', color: '#ef4444', border: 'none', cursor: 'pointer', fontSize: '0.8rem' }}>🗑️ Delete Group</button>
@@ -618,8 +622,8 @@ function CustomizationStep({ data, update }: any) {
                           </div>
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-                          <button onClick={() => editOption(group.id, opt.id, opt.name, opt.priceAdjustment, opt.requires, opt.excludes)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.8rem' }}>✏️</button>
-                          <button onClick={() => deleteOption(group.id, opt.id)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.8rem', color: 'red' }}>🗑️</button>
+                          <button onClick={() => editOption(group.id, opt.id, opt.name, opt.priceAdjustment, opt.requires, opt.excludes)} style={{ padding: '4px 10px', borderRadius: '4px', backgroundColor: '#f3f4f6', color: '#374151', border: '1px solid #d1d5db', cursor: 'pointer', fontSize: '0.75rem', fontWeight: 600, width: '100%' }}>Edit Option</button>
+                          <button onClick={() => deleteOption(group.id, opt.id)} style={{ padding: '4px 10px', borderRadius: '4px', backgroundColor: '#fee2e2', color: '#ef4444', border: '1px solid #fca5a5', cursor: 'pointer', fontSize: '0.75rem', fontWeight: 600, width: '100%' }}>Delete Option</button>
                         </div>
                       </div>
                       
