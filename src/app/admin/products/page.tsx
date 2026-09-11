@@ -9,6 +9,9 @@ import { getProducts, deleteProduct } from '../../../lib/storage_actions';
 export default function ProductsListPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [baseProducts, setBaseProducts] = useState<any[]>([]);
+  const [filterProduct, setFilterProduct] = useState('');
+  const [filterCategory, setFilterCategory] = useState('');
   const [sortConfig, setSortConfig] = useState<{ key: string, direction: 'asc' | 'desc' } | null>(null);
 
   useEffect(() => {
@@ -19,6 +22,8 @@ export default function ProductsListPage() {
 
   async function loadData() {
     try {
+      const bpData = await fetch('/api/base-products').then(res => res.json()).catch(() => []);
+      setBaseProducts(bpData);
       // Add a timestamp to bust next.js cache for sure
       const prodData = await getProducts();
       if (!Array.isArray(prodData)) {
@@ -49,7 +54,11 @@ export default function ProductsListPage() {
   };
 
   const sortedProducts = React.useMemo(() => {
-    let sortableItems = [...products];
+    let sortableItems = products.filter(p => {
+      if (filterProduct && p.productFamily !== filterProduct) return false;
+      if (filterCategory && p.category !== filterCategory) return false;
+      return true;
+    });
     if (sortConfig !== null) {
       sortableItems.sort((a, b) => {
         let aValue = (a as any)[sortConfig.key] || '';
@@ -83,7 +92,7 @@ export default function ProductsListPage() {
       });
     }
     return sortableItems;
-  }, [products, sortConfig]);
+  }, [products, sortConfig, filterProduct, filterCategory]);
 
   const SortIcon = ({ columnKey }: { columnKey: string }) => {
     if (sortConfig?.key === columnKey) {
