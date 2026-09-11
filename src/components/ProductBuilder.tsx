@@ -528,21 +528,37 @@ function CustomizationStep({ data, update }: any) {
   
 
   const handleModalSave = () => {
-    const { type, modId, optId, subId, choiceId, name, priceAdjustment, requires, excludes, constraints } = editModal;
+    const { isNew, type, modId, optId, subId, choiceId, name, priceAdjustment, requires, excludes, constraints } = editModal;
     const cleanConstraints: any = {};
     if (!isNaN(constraints?.minWidth)) cleanConstraints.minWidth = constraints.minWidth;
     if (!isNaN(constraints?.maxWidth)) cleanConstraints.maxWidth = constraints.maxWidth;
     if (!isNaN(constraints?.minHeight)) cleanConstraints.minHeight = constraints.minHeight;
     if (!isNaN(constraints?.maxHeight)) cleanConstraints.maxHeight = constraints.maxHeight;
 
-    if (type === 'modifier') {
-      update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, name, requires, excludes, constraints: cleanConstraints } : m) });
-    } else if (type === 'option') {
-      update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, name, priceAdjustment, requires, excludes, constraints: cleanConstraints } : o) } : m) });
-    } else if (type === 'sub') {
-      update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === subId ? { ...s, name, requires, excludes, constraints: cleanConstraints } : s) } : o) } : m) });
-    } else if (type === 'choice') {
-      update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === subId ? { ...s, choices: s.choices.map((c: any) => c.id === choiceId ? { ...c, name, priceAdjustment, requires, excludes, constraints: cleanConstraints } : c) } : s) } : o) } : m) });
+    if (isNew) {
+      if (type === 'modifier') {
+        const newGroup = { id: modId, name, isRequired: true, options: [], requires, excludes, constraints: cleanConstraints };
+        update({ ...data, modifiers: [...(data.modifiers || []), newGroup] });
+      } else if (type === 'option') {
+        const newOpt = { id: optId, name, priceAdjustment: priceAdjustment || 0, requires, excludes, constraints: cleanConstraints, subAttributes: [] };
+        update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: [...m.options, newOpt] } : m) });
+      } else if (type === 'sub') {
+        const newSub = { id: subId, name, choices: [], requires, excludes, constraints: cleanConstraints };
+        update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: [...(o.subAttributes||[]), newSub] } : o) } : m) });
+      } else if (type === 'choice') {
+        const newChoice = { id: choiceId, name, priceAdjustment: priceAdjustment || 0, requires, excludes, constraints: cleanConstraints };
+        update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === subId ? { ...s, choices: [...s.choices, newChoice] } : s) } : o) } : m) });
+      }
+    } else {
+      if (type === 'modifier') {
+        update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, name, requires, excludes, constraints: cleanConstraints } : m) });
+      } else if (type === 'option') {
+        update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, name, priceAdjustment, requires, excludes, constraints: cleanConstraints } : o) } : m) });
+      } else if (type === 'sub') {
+        update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === subId ? { ...s, name, requires, excludes, constraints: cleanConstraints } : s) } : o) } : m) });
+      } else if (type === 'choice') {
+        update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === subId ? { ...s, choices: s.choices.map((c: any) => c.id === choiceId ? { ...c, name, priceAdjustment, requires, excludes, constraints: cleanConstraints } : c) } : s) } : o) } : m) });
+      }
     }
     setEditModal(null);
   };
@@ -561,13 +577,8 @@ function CustomizationStep({ data, update }: any) {
             <h4 style={{ fontSize: '1.2rem', color: '#000', margin: 0 }}>DYNAMIC ATTRIBUTES</h4>
             <p style={{ fontSize: '0.8rem', color: '#888', margin: '5px 0 0 0' }}>Define custom configurations like Lift Style, Mount Type, Valance, etc.</p>
           </div>
-          <button onClick={() => {
-            const name = prompt('Attribute Group Name (e.g. Lift Style):');
-            if (!name) return;
-            const newGroup = { id: `mod-${Date.now()}`, name, isRequired: true, options: [] };
-            update({ ...data, modifiers: [...(data.modifiers || []), newGroup] });
-          }} style={{ padding: '8px 16px', borderRadius: '6px', backgroundColor: '#000', color: '#fff', border: 'none', cursor: 'pointer', fontSize: '0.8rem', fontWeight: 600 }}>
-            + Add Attribute Group
+          <button onClick={() => setEditModal({ isNew: true, type: 'modifier', modId: `mod-${Date.now()}`, name: '', requires: [], excludes: [], constraints: {} })} style={{ padding: '8px 16px', borderRadius: '6px', backgroundColor: '#000', color: '#fff', border: 'none', cursor: 'pointer', fontSize: '0.8rem', fontWeight: 600 }}>
+            + Attribute Group
           </button>
         </div>
         
@@ -598,14 +609,7 @@ function CustomizationStep({ data, update }: any) {
                 </div>
                 <div style={{ display: 'flex', gap: '10px' }}>
                   <button onClick={() => deleteModifier(group.id)} style={{ padding: '6px 12px', borderRadius: '6px', backgroundColor: '#fee2e2', color: '#ef4444', border: 'none', cursor: 'pointer', fontSize: '0.8rem' }}>🗑️ Delete Group</button>
-                  <button onClick={() => {
-                    const optName = prompt(`New option for ${group.name} (e.g. Motorized):`);
-                    if (!optName) return;
-                    const price = prompt('Price adjustment ($):', '0') || '0';
-                    const newOpt = { id: `opt-${Date.now()}`, name: optName, priceAdjustment: parseFloat(price), mediaUrl: '' };
-                    const updated = data.modifiers.map((m: any) => m.id === group.id ? { ...m, options: [...m.options, newOpt] } : m);
-                    update({ ...data, modifiers: updated });
-                  }} style={{ padding: '6px 12px', borderRadius: '6px', backgroundColor: '#fff', color: '#000', border: '1px solid #ccc', cursor: 'pointer', fontSize: '0.8rem' }}>+ Add Option</button>
+                  <button onClick={() => setEditModal({ isNew: true, type: 'option', modId: group.id, optId: `opt-${Date.now()}`, name: '', priceAdjustment: 0, requires: [], excludes: [], constraints: {} })} style={{ padding: '6px 12px', borderRadius: '6px', backgroundColor: '#000', color: '#fff', border: 'none', cursor: 'pointer', fontSize: '0.8rem' }}>+ Option</button>
                 </div>
               </div>
 
@@ -660,13 +664,7 @@ function CustomizationStep({ data, update }: any) {
                       <div style={{ marginTop: '15px', paddingTop: '15px', borderTop: '1px dashed #eee' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
                           <span style={{ fontSize: '0.7rem', color: '#888', fontWeight: 600 }}>SUB-ATTRIBUTES</span>
-                          <button onClick={() => {
-                            const subName = prompt(`Sub-attribute name for ${opt.name} (e.g. Wand Position):`);
-                            if (!subName) return;
-                            const newSub = { id: `sub-${Date.now()}`, name: subName, choices: [] };
-                            const updated = data.modifiers.map((m: any) => m.id === group.id ? { ...m, options: m.options.map((o: any) => o.id === opt.id ? { ...o, subAttributes: [...(o.subAttributes || []), newSub] } : o) } : m);
-                            update({ ...data, modifiers: updated });
-                          }} style={{ padding: '4px 8px', borderRadius: '4px', background: '#f5f5f5', border: '1px solid #ccc', fontSize: '0.6rem', cursor: 'pointer' }}>+ Add</button>
+                          <button onClick={() => setEditModal({ isNew: true, type: 'sub', modId: group.id, optId: opt.id, subId: `sub-${Date.now()}`, name: '', requires: [], excludes: [], constraints: {} })} style={{ fontSize: '0.7rem', color: '#0066cc', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>+ Sub-Attribute</button>
                         </div>
                         
                         {(opt.subAttributes || []).map((sub: any) => (
@@ -682,14 +680,7 @@ function CustomizationStep({ data, update }: any) {
                                 {sub.excludes && sub.excludes.length > 0 && <span style={{display:'block', color:'#ef4444', fontSize:'0.65rem'}}>Excludes: {sub.excludes.join(', ')}</span>}
                                 {sub.constraints && (sub.constraints.minWidth || sub.constraints.maxWidth || sub.constraints.minHeight || sub.constraints.maxHeight) && <span style={{display:'block', color:'#9333ea', fontSize:'0.65rem'}}>Limits: W[{sub.constraints.minWidth || 0}-{sub.constraints.maxWidth || '∞'}] H[{sub.constraints.minHeight || 0}-{sub.constraints.maxHeight || '∞'}]</span>}
                               </div>
-                              <button onClick={() => {
-                                const choiceName = prompt(`Choice for ${sub.name} (e.g. Left):`);
-                                if (!choiceName) return;
-                                const price = prompt('Price adjustment ($):', '0') || '0';
-                                const newChoice = { id: `choice-${Date.now()}`, name: choiceName, priceAdjustment: parseFloat(price) };
-                                const updated = data.modifiers.map((m: any) => m.id === group.id ? { ...m, options: m.options.map((o: any) => o.id === opt.id ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === sub.id ? { ...s, choices: [...s.choices, newChoice] } : s) } : o) } : m);
-                                update({ ...data, modifiers: updated });
-                              }} style={{ fontSize: '0.7rem', color: '#0066cc', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>+ Choice</button>
+                              <button onClick={() => setEditModal({ isNew: true, type: 'choice', modId: group.id, optId: opt.id, subId: sub.id, choiceId: `choice-${Date.now()}`, name: '', priceAdjustment: 0, requires: [], excludes: [], constraints: {} })} style={{ fontSize: '0.7rem', color: '#0066cc', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>+ Choice</button>
                             </div>
                             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px' }}>
                               {sub.choices.map((c: any) => (
@@ -725,7 +716,7 @@ function CustomizationStep({ data, update }: any) {
         <div style={modalOverlayStyle}>
           <div style={modalStyle}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
-              <h3 style={{ margin: 0 }}>Edit {editModal.type.charAt(0).toUpperCase() + editModal.type.slice(1)}</h3>
+              <h3 style={{ margin: 0 }}>{editModal.isNew ? 'Add' : 'Edit'} {editModal.type.charAt(0).toUpperCase() + editModal.type.slice(1)}</h3>
               <button onClick={() => setEditModal(null)} style={{ background: 'none', border: 'none', fontSize: '1.2rem', cursor: 'pointer' }}>&times;</button>
             </div>
             
