@@ -489,22 +489,7 @@ function CustomizationStep({ data, update }: any) {
 
 // --- MODIFIER CRUD ---
   const editModifier = (modId: string, oldName: string, oldReqs: string[] = [], oldExcls: string[] = [], oldConstraints: any = {}) => {
-    const name = prompt('Edit Attribute Group Name:', oldName);
-    if (!name && name !== '') return;
-    const reqStr = prompt('Requires (comma separated IDs):', Array.isArray(oldReqs) ? oldReqs.join(', ') : '');
-    const exclStr = prompt('Excludes (comma separated IDs):', Array.isArray(oldExcls) ? oldExcls.join(', ') : '');
-    const requires = reqStr ? reqStr.split(',').map(s => s.trim()).filter(Boolean) : [];
-    const excludes = exclStr ? exclStr.split(',').map(s => s.trim()).filter(Boolean) : [];
-    const minWStr = prompt('Min Width (mm, optional):', oldConstraints?.minWidth || '');
-    const maxWStr = prompt('Max Width (mm, optional):', oldConstraints?.maxWidth || '');
-    const minHStr = prompt('Min Height (mm, optional):', oldConstraints?.minHeight || '');
-    const maxHStr = prompt('Max Height (mm, optional):', oldConstraints?.maxHeight || '');
-    const constraints: any = {};
-    if (minWStr) constraints.minWidth = parseFloat(minWStr);
-    if (maxWStr) constraints.maxWidth = parseFloat(maxWStr);
-    if (minHStr) constraints.minHeight = parseFloat(minHStr);
-    if (maxHStr) constraints.maxHeight = parseFloat(maxHStr);
-    update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, name: name || m.name, requires, excludes, constraints } : m) });
+    setEditModal({ type: 'modifier', modId, name: oldName, requires: oldReqs, excludes: oldExcls, constraints: oldConstraints });
   };
   const deleteModifier = (modId: string) => {
     if (!confirm('Delete this attribute group and ALL its options?')) return;
@@ -513,26 +498,7 @@ function CustomizationStep({ data, update }: any) {
 
   // --- OPTION CRUD ---
   const editOption = (modId: string, optId: string, oldName: string, oldPrice: number, oldReqs: string[] = [], oldExcls: string[] = [], oldConstraints: any = {}) => {
-    const name = prompt('Edit Option Name:', oldName);
-    if (!name && name !== '') return;
-    const priceStr = prompt('Edit Price Adjustment ($):', oldPrice.toString());
-    const priceAdjustment = priceStr ? parseFloat(priceStr) : oldPrice;
-    const reqStr = prompt('Requires (comma separated option IDs):', Array.isArray(oldReqs) ? oldReqs.join(', ') : '');
-    const exclStr = prompt('Excludes (comma separated option IDs):', Array.isArray(oldExcls) ? oldExcls.join(', ') : '');
-    const requires = reqStr ? reqStr.split(',').map(s => s.trim()).filter(Boolean) : [];
-    const excludes = exclStr ? exclStr.split(',').map(s => s.trim()).filter(Boolean) : [];
-    
-    const minWStr = prompt('Min Width (mm, optional):', oldConstraints?.minWidth || '');
-    const maxWStr = prompt('Max Width (mm, optional):', oldConstraints?.maxWidth || '');
-    const minHStr = prompt('Min Height (mm, optional):', oldConstraints?.minHeight || '');
-    const maxHStr = prompt('Max Height (mm, optional):', oldConstraints?.maxHeight || '');
-    const constraints: any = {};
-    if (minWStr) constraints.minWidth = parseFloat(minWStr);
-    if (maxWStr) constraints.maxWidth = parseFloat(maxWStr);
-    if (minHStr) constraints.minHeight = parseFloat(minHStr);
-    if (maxHStr) constraints.maxHeight = parseFloat(maxHStr);
-
-    update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, name: name || o.name, priceAdjustment, requires, excludes, constraints } : o) } : m) });
+    setEditModal({ type: 'option', modId, optId, name: oldName, priceAdjustment: oldPrice, requires: oldReqs, excludes: oldExcls, constraints: oldConstraints });
   };
   const deleteOption = (modId: string, optId: string) => {
     if (!confirm('Delete this option?')) return;
@@ -541,22 +507,7 @@ function CustomizationStep({ data, update }: any) {
 
   // --- SUB-ATTRIBUTE CRUD ---
   const editSub = (modId: string, optId: string, subId: string, oldName: string, oldReqs: string[] = [], oldExcls: string[] = [], oldConstraints: any = {}) => {
-    const name = prompt('Edit Sub-Attribute Name:', oldName);
-    if (!name && name !== '') return;
-    const reqStr = prompt('Requires (comma separated IDs):', Array.isArray(oldReqs) ? oldReqs.join(', ') : '');
-    const exclStr = prompt('Excludes (comma separated IDs):', Array.isArray(oldExcls) ? oldExcls.join(', ') : '');
-    const requires = reqStr ? reqStr.split(',').map(s => s.trim()).filter(Boolean) : [];
-    const excludes = exclStr ? exclStr.split(',').map(s => s.trim()).filter(Boolean) : [];
-    const minWStr = prompt('Min Width (mm, optional):', oldConstraints?.minWidth || '');
-    const maxWStr = prompt('Max Width (mm, optional):', oldConstraints?.maxWidth || '');
-    const minHStr = prompt('Min Height (mm, optional):', oldConstraints?.minHeight || '');
-    const maxHStr = prompt('Max Height (mm, optional):', oldConstraints?.maxHeight || '');
-    const constraints: any = {};
-    if (minWStr) constraints.minWidth = parseFloat(minWStr);
-    if (maxWStr) constraints.maxWidth = parseFloat(maxWStr);
-    if (minHStr) constraints.minHeight = parseFloat(minHStr);
-    if (maxHStr) constraints.maxHeight = parseFloat(maxHStr);
-    update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === subId ? { ...s, name: name || s.name, requires, excludes, constraints } : s) } : o) } : m) });
+    setEditModal({ type: 'sub', modId, optId, subId, name: oldName, requires: oldReqs, excludes: oldExcls, constraints: oldConstraints });
   };
   const deleteSub = (modId: string, optId: string, subId: string) => {
     if (!confirm('Delete this sub-attribute?')) return;
@@ -565,26 +516,7 @@ function CustomizationStep({ data, update }: any) {
 
   // --- CHOICE CRUD ---
   const editChoice = (modId: string, optId: string, subId: string, choiceId: string, oldName: string, oldPrice: number, oldReqs: string[] = [], oldExcls: string[] = [], oldConstraints: any = {}) => {
-    const name = prompt('Edit Choice Name:', oldName);
-    if (!name && name !== '') return;
-    const priceStr = prompt('Edit Price Adjustment ($):', oldPrice.toString());
-    const priceAdjustment = priceStr ? parseFloat(priceStr) : oldPrice;
-    const reqStr = prompt('Requires (comma separated IDs):', Array.isArray(oldReqs) ? oldReqs.join(', ') : '');
-    const exclStr = prompt('Excludes (comma separated IDs):', Array.isArray(oldExcls) ? oldExcls.join(', ') : '');
-    const requires = reqStr ? reqStr.split(',').map(s => s.trim()).filter(Boolean) : [];
-    const excludes = exclStr ? exclStr.split(',').map(s => s.trim()).filter(Boolean) : [];
-    
-    const minWStr = prompt('Min Width (mm, optional):', oldConstraints?.minWidth || '');
-    const maxWStr = prompt('Max Width (mm, optional):', oldConstraints?.maxWidth || '');
-    const minHStr = prompt('Min Height (mm, optional):', oldConstraints?.minHeight || '');
-    const maxHStr = prompt('Max Height (mm, optional):', oldConstraints?.maxHeight || '');
-    const constraints: any = {};
-    if (minWStr) constraints.minWidth = parseFloat(minWStr);
-    if (maxWStr) constraints.maxWidth = parseFloat(maxWStr);
-    if (minHStr) constraints.minHeight = parseFloat(minHStr);
-    if (maxHStr) constraints.maxHeight = parseFloat(maxHStr);
-
-    update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === subId ? { ...s, choices: s.choices.map((c: any) => c.id === choiceId ? { ...c, name: name || c.name, priceAdjustment, requires, excludes, constraints } : c) } : s) } : o) } : m) });
+    setEditModal({ type: 'choice', modId, optId, subId, choiceId, name: oldName, priceAdjustment: oldPrice, requires: oldReqs, excludes: oldExcls, constraints: oldConstraints });
   };
   const deleteChoice = (modId: string, optId: string, subId: string, choiceId: string) => {
     if (!confirm('Delete this choice?')) return;
