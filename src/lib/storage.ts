@@ -104,3 +104,56 @@ export async function bulkUpdateCategoryModifiers(category: string, modifiers: a
     return 0;
   }
 }
+
+export async function bulkUpdateComplexModifiers(filter: any, modifiers: any[]): Promise<number> {
+  try {
+    const db = await getDb();
+    
+    // Construct MongoDB query from filter
+    let query: any = {};
+    if (!filter.applyAll) {
+      const conditions: any[] = [];
+      
+      if (filter.categories && filter.categories.length > 0) {
+        conditions.push({ category: { $in: filter.categories } });
+      }
+      
+      if (filter.fabricTypes && filter.fabricTypes.length > 0) {
+        // Assume fabric type is stored either in productFamily or fabricFamilies.category
+        conditions.push({
+          $or: [
+            { productFamily: { $in: filter.fabricTypes } },
+            { 'fabricFamilies.category': { $in: filter.fabricTypes } }
+          ]
+        });
+      }
+      
+      if (filter.collections && filter.collections.length > 0) {
+        // e.g., code collection like g31 might be in product name or id or a specific field.
+        // We'll search in id and name for these substrings.
+        const regexes = filter.collections.map((c: string) => new RegExp(c, 'i'));
+        conditions.push({
+          $or: [
+            { id: { $in: regexes } },
+            { name: { $in: regexes } }
+          ]
+        });
+      }
+      
+      if (conditions.length > 0) {
+        query = { $or: conditions };
+      } else {
+        return 0; // If not applyAll and no conditions, update nothing
+      }
+    }
+    
+    const result = await db.collection('products').updateMany(
+      query,
+      { $set: { modifiers } }
+    );
+    return result.modifiedCount;
+  } catch(e) {
+    console.error(e);
+    return 0;
+  }
+}
