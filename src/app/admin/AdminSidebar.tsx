@@ -10,9 +10,9 @@ export default function AdminSidebar() {
   const navItems = [
     { label: 'Dashboard', path: '/admin', icon: '📊' },
     { label: 'Orders', path: '/admin/orders', icon: '🛒' },
-    { label: 'Categories', path: '/admin/categories', icon: '📁' },
-    { label: 'Products', path: '/admin/base-products', icon: '🛋️' },
-    { label: 'Product Variants', path: '/admin/products', icon: '📦' },
+    
+    { label: 'Products & Categories', path: '/admin/base-products', icon: '📁' },
+    { label: 'Master Product List', path: '/admin/products', icon: '📦' },
     { label: 'Customization', path: '/admin/customization', icon: '⚙️' },
     { label: 'Settings', path: '/admin/settings', icon: '🔧' },
   ];
