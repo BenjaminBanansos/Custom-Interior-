@@ -307,6 +307,75 @@ function BasicInfoStep({ data, update, categories }: any) {
           </div>
         </div>
   
+
+      {bulkModal && (
+        <div style={modalOverlayStyle}>
+          <div style={modalStyle}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+              <h3 style={{ margin: 0 }}>Advanced Bulk Apply</h3>
+              <button onClick={() => setBulkModal(null)} style={{ background: 'none', border: 'none', fontSize: '1.2rem', cursor: 'pointer' }}>&times;</button>
+            </div>
+            
+            <p style={{ fontSize: '0.8rem', color: '#666', marginBottom: '15px' }}>Apply the current hardware configuration to multiple products at once.</p>
+            
+            <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold', marginBottom: '15px', padding: '10px', background: '#f3f4f6', borderRadius: '6px' }}>
+              <input type="checkbox" checked={bulkModal.applyAll} onChange={e => setBulkModal({...bulkModal, applyAll: e.target.checked})} />
+              Apply to ALL Products
+            </label>
+            
+            {!bulkModal.applyAll && (
+              <div style={{ maxHeight: '300px', overflowY: 'auto', border: '1px solid #eee', padding: '10px', borderRadius: '6px', marginBottom: '15px' }}>
+                {allProducts.length === 0 ? <div style={{fontSize:'0.8rem', color:'#888'}}>Loading products...</div> : (
+                  <>
+                    <div style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: '5px', marginTop: '10px' }}>By Category</div>
+                    {Array.from(new Set(allProducts.map(p => p.category).filter(Boolean))).map(cat => (
+                      <label key={cat as string} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', marginBottom: '4px' }}>
+                        <input type="checkbox" checked={bulkModal.categories.includes(cat)} onChange={e => {
+                          const newCats = e.target.checked ? [...bulkModal.categories, cat] : bulkModal.categories.filter((c:any) => c !== cat);
+                          setBulkModal({...bulkModal, categories: newCats});
+                        }} /> {cat as string}
+                      </label>
+                    ))}
+
+                    <div style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: '5px', marginTop: '15px' }}>By Fabric Type (Translucent, Blackout, etc.)</div>
+                    {Array.from(new Set(allProducts.flatMap(p => p.fabricFamilies?.map((f:any) => f.category)).filter(Boolean))).map(fab => (
+                      <label key={fab as string} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', marginBottom: '4px' }}>
+                        <input type="checkbox" checked={bulkModal.fabricTypes.includes(fab)} onChange={e => {
+                          const newFabs = e.target.checked ? [...bulkModal.fabricTypes, fab] : bulkModal.fabricTypes.filter((c:any) => c !== fab);
+                          setBulkModal({...bulkModal, fabricTypes: newFabs});
+                        }} /> {fab as string}
+                      </label>
+                    ))}
+
+                    <div style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: '5px', marginTop: '15px' }}>By Product Variant / Collection Code</div>
+                    <input type="text" placeholder="e.g. g31, premium (comma separated)" onChange={e => setBulkModal({...bulkModal, collections: e.target.value.split(',').map(s=>s.trim()).filter(Boolean)})} style={{ width: '100%', padding: '6px', borderRadius: '4px', border: '1px solid #ccc', fontSize: '0.8rem' }} />
+                  </>
+                )}
+              </div>
+            )}
+            
+            <button onClick={async () => {
+              try {
+                const res = await fetch('/api/products/bulk-update-modifiers', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ filter: bulkModal, modifiers: data.modifiers })
+                });
+                const result = await res.json();
+                if (result.success) {
+                  alert(`Successfully applied to ${result.modifiedCount} products!`);
+                  setBulkModal(null);
+                } else {
+                  alert('Error: ' + result.error);
+                }
+              } catch(e) {
+                alert('Failed to apply bulk update.');
+              }
+            }} style={{ width: '100%', padding: '10px', backgroundColor: '#2563eb', color: '#fff', border: 'none', borderRadius: '6px', fontWeight: 600, cursor: 'pointer' }}>Apply Configuration</button>
+          </div>
+        </div>
+      )}
+
       {editModal && (
         <div style={modalOverlayStyle}>
           <div style={modalStyle}>
@@ -433,6 +502,75 @@ function DimensionsStep({ data, update }: any) {
               </div>
            </div>
       </div>
+
+
+      {bulkModal && (
+        <div style={modalOverlayStyle}>
+          <div style={modalStyle}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+              <h3 style={{ margin: 0 }}>Advanced Bulk Apply</h3>
+              <button onClick={() => setBulkModal(null)} style={{ background: 'none', border: 'none', fontSize: '1.2rem', cursor: 'pointer' }}>&times;</button>
+            </div>
+            
+            <p style={{ fontSize: '0.8rem', color: '#666', marginBottom: '15px' }}>Apply the current hardware configuration to multiple products at once.</p>
+            
+            <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold', marginBottom: '15px', padding: '10px', background: '#f3f4f6', borderRadius: '6px' }}>
+              <input type="checkbox" checked={bulkModal.applyAll} onChange={e => setBulkModal({...bulkModal, applyAll: e.target.checked})} />
+              Apply to ALL Products
+            </label>
+            
+            {!bulkModal.applyAll && (
+              <div style={{ maxHeight: '300px', overflowY: 'auto', border: '1px solid #eee', padding: '10px', borderRadius: '6px', marginBottom: '15px' }}>
+                {allProducts.length === 0 ? <div style={{fontSize:'0.8rem', color:'#888'}}>Loading products...</div> : (
+                  <>
+                    <div style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: '5px', marginTop: '10px' }}>By Category</div>
+                    {Array.from(new Set(allProducts.map(p => p.category).filter(Boolean))).map(cat => (
+                      <label key={cat as string} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', marginBottom: '4px' }}>
+                        <input type="checkbox" checked={bulkModal.categories.includes(cat)} onChange={e => {
+                          const newCats = e.target.checked ? [...bulkModal.categories, cat] : bulkModal.categories.filter((c:any) => c !== cat);
+                          setBulkModal({...bulkModal, categories: newCats});
+                        }} /> {cat as string}
+                      </label>
+                    ))}
+
+                    <div style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: '5px', marginTop: '15px' }}>By Fabric Type (Translucent, Blackout, etc.)</div>
+                    {Array.from(new Set(allProducts.flatMap(p => p.fabricFamilies?.map((f:any) => f.category)).filter(Boolean))).map(fab => (
+                      <label key={fab as string} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', marginBottom: '4px' }}>
+                        <input type="checkbox" checked={bulkModal.fabricTypes.includes(fab)} onChange={e => {
+                          const newFabs = e.target.checked ? [...bulkModal.fabricTypes, fab] : bulkModal.fabricTypes.filter((c:any) => c !== fab);
+                          setBulkModal({...bulkModal, fabricTypes: newFabs});
+                        }} /> {fab as string}
+                      </label>
+                    ))}
+
+                    <div style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: '5px', marginTop: '15px' }}>By Product Variant / Collection Code</div>
+                    <input type="text" placeholder="e.g. g31, premium (comma separated)" onChange={e => setBulkModal({...bulkModal, collections: e.target.value.split(',').map(s=>s.trim()).filter(Boolean)})} style={{ width: '100%', padding: '6px', borderRadius: '4px', border: '1px solid #ccc', fontSize: '0.8rem' }} />
+                  </>
+                )}
+              </div>
+            )}
+            
+            <button onClick={async () => {
+              try {
+                const res = await fetch('/api/products/bulk-update-modifiers', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ filter: bulkModal, modifiers: data.modifiers })
+                });
+                const result = await res.json();
+                if (result.success) {
+                  alert(`Successfully applied to ${result.modifiedCount} products!`);
+                  setBulkModal(null);
+                } else {
+                  alert('Error: ' + result.error);
+                }
+              } catch(e) {
+                alert('Failed to apply bulk update.');
+              }
+            }} style={{ width: '100%', padding: '10px', backgroundColor: '#2563eb', color: '#fff', border: 'none', borderRadius: '6px', fontWeight: 600, cursor: 'pointer' }}>Apply Configuration</button>
+          </div>
+        </div>
+      )}
 
       {editModal && (
         <div style={modalOverlayStyle}>
@@ -648,6 +786,75 @@ function MaterialsStep({ data, update }: any) {
       </div>
 
   
+
+      {bulkModal && (
+        <div style={modalOverlayStyle}>
+          <div style={modalStyle}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+              <h3 style={{ margin: 0 }}>Advanced Bulk Apply</h3>
+              <button onClick={() => setBulkModal(null)} style={{ background: 'none', border: 'none', fontSize: '1.2rem', cursor: 'pointer' }}>&times;</button>
+            </div>
+            
+            <p style={{ fontSize: '0.8rem', color: '#666', marginBottom: '15px' }}>Apply the current hardware configuration to multiple products at once.</p>
+            
+            <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold', marginBottom: '15px', padding: '10px', background: '#f3f4f6', borderRadius: '6px' }}>
+              <input type="checkbox" checked={bulkModal.applyAll} onChange={e => setBulkModal({...bulkModal, applyAll: e.target.checked})} />
+              Apply to ALL Products
+            </label>
+            
+            {!bulkModal.applyAll && (
+              <div style={{ maxHeight: '300px', overflowY: 'auto', border: '1px solid #eee', padding: '10px', borderRadius: '6px', marginBottom: '15px' }}>
+                {allProducts.length === 0 ? <div style={{fontSize:'0.8rem', color:'#888'}}>Loading products...</div> : (
+                  <>
+                    <div style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: '5px', marginTop: '10px' }}>By Category</div>
+                    {Array.from(new Set(allProducts.map(p => p.category).filter(Boolean))).map(cat => (
+                      <label key={cat as string} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', marginBottom: '4px' }}>
+                        <input type="checkbox" checked={bulkModal.categories.includes(cat)} onChange={e => {
+                          const newCats = e.target.checked ? [...bulkModal.categories, cat] : bulkModal.categories.filter((c:any) => c !== cat);
+                          setBulkModal({...bulkModal, categories: newCats});
+                        }} /> {cat as string}
+                      </label>
+                    ))}
+
+                    <div style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: '5px', marginTop: '15px' }}>By Fabric Type (Translucent, Blackout, etc.)</div>
+                    {Array.from(new Set(allProducts.flatMap(p => p.fabricFamilies?.map((f:any) => f.category)).filter(Boolean))).map(fab => (
+                      <label key={fab as string} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', marginBottom: '4px' }}>
+                        <input type="checkbox" checked={bulkModal.fabricTypes.includes(fab)} onChange={e => {
+                          const newFabs = e.target.checked ? [...bulkModal.fabricTypes, fab] : bulkModal.fabricTypes.filter((c:any) => c !== fab);
+                          setBulkModal({...bulkModal, fabricTypes: newFabs});
+                        }} /> {fab as string}
+                      </label>
+                    ))}
+
+                    <div style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: '5px', marginTop: '15px' }}>By Product Variant / Collection Code</div>
+                    <input type="text" placeholder="e.g. g31, premium (comma separated)" onChange={e => setBulkModal({...bulkModal, collections: e.target.value.split(',').map(s=>s.trim()).filter(Boolean)})} style={{ width: '100%', padding: '6px', borderRadius: '4px', border: '1px solid #ccc', fontSize: '0.8rem' }} />
+                  </>
+                )}
+              </div>
+            )}
+            
+            <button onClick={async () => {
+              try {
+                const res = await fetch('/api/products/bulk-update-modifiers', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ filter: bulkModal, modifiers: data.modifiers })
+                });
+                const result = await res.json();
+                if (result.success) {
+                  alert(`Successfully applied to ${result.modifiedCount} products!`);
+                  setBulkModal(null);
+                } else {
+                  alert('Error: ' + result.error);
+                }
+              } catch(e) {
+                alert('Failed to apply bulk update.');
+              }
+            }} style={{ width: '100%', padding: '10px', backgroundColor: '#2563eb', color: '#fff', border: 'none', borderRadius: '6px', fontWeight: 600, cursor: 'pointer' }}>Apply Configuration</button>
+          </div>
+        </div>
+      )}
+
       {editModal && (
         <div style={modalOverlayStyle}>
           <div style={modalStyle}>
@@ -712,6 +919,14 @@ function MaterialsStep({ data, update }: any) {
 
 function CustomizationStep({ data, update }: any) {
   const [editModal, setEditModal] = useState<any>(null);
+  const [bulkModal, setBulkModal] = useState<any>(null);
+  const [allProducts, setAllProducts] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (bulkModal && allProducts.length === 0) {
+      fetch('/api/products').then(res => res.json()).then(data => setAllProducts(data || []));
+    }
+  }, [bulkModal]);
 
 // --- MODIFIER CRUD ---
   const editModifier = (modId: string, oldName: string, oldReqs: string[] = [], oldExcls: string[] = [], oldConstraints: any = {}) => {
@@ -1017,6 +1232,75 @@ function CustomizationStep({ data, update }: any) {
         </div>
     
 
+
+      {bulkModal && (
+        <div style={modalOverlayStyle}>
+          <div style={modalStyle}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+              <h3 style={{ margin: 0 }}>Advanced Bulk Apply</h3>
+              <button onClick={() => setBulkModal(null)} style={{ background: 'none', border: 'none', fontSize: '1.2rem', cursor: 'pointer' }}>&times;</button>
+            </div>
+            
+            <p style={{ fontSize: '0.8rem', color: '#666', marginBottom: '15px' }}>Apply the current hardware configuration to multiple products at once.</p>
+            
+            <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold', marginBottom: '15px', padding: '10px', background: '#f3f4f6', borderRadius: '6px' }}>
+              <input type="checkbox" checked={bulkModal.applyAll} onChange={e => setBulkModal({...bulkModal, applyAll: e.target.checked})} />
+              Apply to ALL Products
+            </label>
+            
+            {!bulkModal.applyAll && (
+              <div style={{ maxHeight: '300px', overflowY: 'auto', border: '1px solid #eee', padding: '10px', borderRadius: '6px', marginBottom: '15px' }}>
+                {allProducts.length === 0 ? <div style={{fontSize:'0.8rem', color:'#888'}}>Loading products...</div> : (
+                  <>
+                    <div style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: '5px', marginTop: '10px' }}>By Category</div>
+                    {Array.from(new Set(allProducts.map(p => p.category).filter(Boolean))).map(cat => (
+                      <label key={cat as string} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', marginBottom: '4px' }}>
+                        <input type="checkbox" checked={bulkModal.categories.includes(cat)} onChange={e => {
+                          const newCats = e.target.checked ? [...bulkModal.categories, cat] : bulkModal.categories.filter((c:any) => c !== cat);
+                          setBulkModal({...bulkModal, categories: newCats});
+                        }} /> {cat as string}
+                      </label>
+                    ))}
+
+                    <div style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: '5px', marginTop: '15px' }}>By Fabric Type (Translucent, Blackout, etc.)</div>
+                    {Array.from(new Set(allProducts.flatMap(p => p.fabricFamilies?.map((f:any) => f.category)).filter(Boolean))).map(fab => (
+                      <label key={fab as string} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', marginBottom: '4px' }}>
+                        <input type="checkbox" checked={bulkModal.fabricTypes.includes(fab)} onChange={e => {
+                          const newFabs = e.target.checked ? [...bulkModal.fabricTypes, fab] : bulkModal.fabricTypes.filter((c:any) => c !== fab);
+                          setBulkModal({...bulkModal, fabricTypes: newFabs});
+                        }} /> {fab as string}
+                      </label>
+                    ))}
+
+                    <div style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: '5px', marginTop: '15px' }}>By Product Variant / Collection Code</div>
+                    <input type="text" placeholder="e.g. g31, premium (comma separated)" onChange={e => setBulkModal({...bulkModal, collections: e.target.value.split(',').map(s=>s.trim()).filter(Boolean)})} style={{ width: '100%', padding: '6px', borderRadius: '4px', border: '1px solid #ccc', fontSize: '0.8rem' }} />
+                  </>
+                )}
+              </div>
+            )}
+            
+            <button onClick={async () => {
+              try {
+                const res = await fetch('/api/products/bulk-update-modifiers', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ filter: bulkModal, modifiers: data.modifiers })
+                });
+                const result = await res.json();
+                if (result.success) {
+                  alert(`Successfully applied to ${result.modifiedCount} products!`);
+                  setBulkModal(null);
+                } else {
+                  alert('Error: ' + result.error);
+                }
+              } catch(e) {
+                alert('Failed to apply bulk update.');
+              }
+            }} style={{ width: '100%', padding: '10px', backgroundColor: '#2563eb', color: '#fff', border: 'none', borderRadius: '6px', fontWeight: 600, cursor: 'pointer' }}>Apply Configuration</button>
+          </div>
+        </div>
+      )}
+
       {editModal && (
         <div style={modalOverlayStyle}>
           <div style={modalStyle}>
@@ -1116,6 +1400,75 @@ function LogicStep({ data, update }: any) {
          <div style={{ fontSize: '0.9rem', fontWeight: 600 }}>Oversize Width Logic</div>
          <div style={{ fontSize: '0.7rem', color: '#888' }}>If Width {'>'} 2500mm, apply +15% material surcharge.</div>
       </div>
+
+
+      {bulkModal && (
+        <div style={modalOverlayStyle}>
+          <div style={modalStyle}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+              <h3 style={{ margin: 0 }}>Advanced Bulk Apply</h3>
+              <button onClick={() => setBulkModal(null)} style={{ background: 'none', border: 'none', fontSize: '1.2rem', cursor: 'pointer' }}>&times;</button>
+            </div>
+            
+            <p style={{ fontSize: '0.8rem', color: '#666', marginBottom: '15px' }}>Apply the current hardware configuration to multiple products at once.</p>
+            
+            <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold', marginBottom: '15px', padding: '10px', background: '#f3f4f6', borderRadius: '6px' }}>
+              <input type="checkbox" checked={bulkModal.applyAll} onChange={e => setBulkModal({...bulkModal, applyAll: e.target.checked})} />
+              Apply to ALL Products
+            </label>
+            
+            {!bulkModal.applyAll && (
+              <div style={{ maxHeight: '300px', overflowY: 'auto', border: '1px solid #eee', padding: '10px', borderRadius: '6px', marginBottom: '15px' }}>
+                {allProducts.length === 0 ? <div style={{fontSize:'0.8rem', color:'#888'}}>Loading products...</div> : (
+                  <>
+                    <div style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: '5px', marginTop: '10px' }}>By Category</div>
+                    {Array.from(new Set(allProducts.map(p => p.category).filter(Boolean))).map(cat => (
+                      <label key={cat as string} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', marginBottom: '4px' }}>
+                        <input type="checkbox" checked={bulkModal.categories.includes(cat)} onChange={e => {
+                          const newCats = e.target.checked ? [...bulkModal.categories, cat] : bulkModal.categories.filter((c:any) => c !== cat);
+                          setBulkModal({...bulkModal, categories: newCats});
+                        }} /> {cat as string}
+                      </label>
+                    ))}
+
+                    <div style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: '5px', marginTop: '15px' }}>By Fabric Type (Translucent, Blackout, etc.)</div>
+                    {Array.from(new Set(allProducts.flatMap(p => p.fabricFamilies?.map((f:any) => f.category)).filter(Boolean))).map(fab => (
+                      <label key={fab as string} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', marginBottom: '4px' }}>
+                        <input type="checkbox" checked={bulkModal.fabricTypes.includes(fab)} onChange={e => {
+                          const newFabs = e.target.checked ? [...bulkModal.fabricTypes, fab] : bulkModal.fabricTypes.filter((c:any) => c !== fab);
+                          setBulkModal({...bulkModal, fabricTypes: newFabs});
+                        }} /> {fab as string}
+                      </label>
+                    ))}
+
+                    <div style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: '5px', marginTop: '15px' }}>By Product Variant / Collection Code</div>
+                    <input type="text" placeholder="e.g. g31, premium (comma separated)" onChange={e => setBulkModal({...bulkModal, collections: e.target.value.split(',').map(s=>s.trim()).filter(Boolean)})} style={{ width: '100%', padding: '6px', borderRadius: '4px', border: '1px solid #ccc', fontSize: '0.8rem' }} />
+                  </>
+                )}
+              </div>
+            )}
+            
+            <button onClick={async () => {
+              try {
+                const res = await fetch('/api/products/bulk-update-modifiers', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ filter: bulkModal, modifiers: data.modifiers })
+                });
+                const result = await res.json();
+                if (result.success) {
+                  alert(`Successfully applied to ${result.modifiedCount} products!`);
+                  setBulkModal(null);
+                } else {
+                  alert('Error: ' + result.error);
+                }
+              } catch(e) {
+                alert('Failed to apply bulk update.');
+              }
+            }} style={{ width: '100%', padding: '10px', backgroundColor: '#2563eb', color: '#fff', border: 'none', borderRadius: '6px', fontWeight: 600, cursor: 'pointer' }}>Apply Configuration</button>
+          </div>
+        </div>
+      )}
 
       {editModal && (
         <div style={modalOverlayStyle}>
