@@ -7,6 +7,7 @@ import { getCategories, saveCategory } from '../../../lib/storage_actions';
 export default function CategoriesPage() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [catModal, setCatModal] = useState<any>(null);
 
   useEffect(() => {
     loadCategories();
@@ -17,39 +18,42 @@ export default function CategoriesPage() {
     setCategories(data);
   }
 
-  const handleAddCategory = async () => {
-    const name = prompt('Enter Category Name:');
-    if (!name) return;
-    const imageUrl = prompt('Enter Category Image URL (optional):') || '';
-    
-    setIsSubmitting(true);
-    const newCat: Category = {
-      id: name.toLowerCase().replace(/ /g, '-'),
-      name: name,
-      description: 'Professional architectural window treatments.',
-      imageUrl: imageUrl,
-      productCount: 0,
-      viewCount: 0
-    };
-    
-    await saveCategory(newCat);
-    await loadCategories();
-    setIsSubmitting(false);
+  const handleAddCategory = () => {
+    setCatModal({ isNew: true, name: '', description: 'Professional architectural window treatments.', imageUrl: '' });
   };
 
-  const handleEditCategory = async (cat: Category) => {
-    const name = prompt('Enter New Category Name (leave blank to keep current):', cat.name);
-    const imageUrl = prompt('Enter New Image URL (leave blank to keep current):', cat.imageUrl || '');
-    if (name === null || imageUrl === null) return; // cancelled
-    
+  const handleEditCategory = (cat: Category) => {
+    setCatModal({ isNew: false, id: cat.id, name: cat.name, description: cat.description || '', imageUrl: cat.imageUrl || '', productCount: cat.productCount, viewCount: cat.viewCount });
+  };
+
+  const handleModalSave = async () => {
+    if (!catModal.name) return;
     setIsSubmitting(true);
-    const updatedCat = {
-      ...cat,
-      name: name || cat.name,
-      imageUrl: imageUrl || cat.imageUrl
-    };
-    await saveCategory(updatedCat);
+    
+    let targetCat: Category;
+    if (catModal.isNew) {
+      targetCat = {
+        id: catModal.name.toLowerCase().replace(/ /g, '-'),
+        name: catModal.name,
+        description: catModal.description,
+        imageUrl: catModal.imageUrl,
+        productCount: 0,
+        viewCount: 0
+      };
+    } else {
+      targetCat = {
+        id: catModal.id,
+        name: catModal.name,
+        description: catModal.description,
+        imageUrl: catModal.imageUrl,
+        productCount: catModal.productCount,
+        viewCount: catModal.viewCount
+      };
+    }
+    
+    await saveCategory(targetCat);
     await loadCategories();
+    setCatModal(null);
     setIsSubmitting(false);
   };
 
@@ -124,6 +128,36 @@ export default function CategoriesPage() {
           </div>
         ))}
       </div>
+
+      {catModal && (
+        <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <div style={{ backgroundColor: '#fff', padding: '30px', borderRadius: '12px', width: '400px', maxWidth: '90%' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+              <h3 style={{ margin: 0, fontSize: '1.2rem' }}>{catModal.isNew ? 'Add Category' : 'Edit Category'}</h3>
+              <button onClick={() => setCatModal(null)} style={{ background: 'none', border: 'none', fontSize: '1.2rem', cursor: 'pointer' }}>&times;</button>
+            </div>
+            
+            <div style={{ marginBottom: '15px' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '6px' }}>Category Name</label>
+              <input type="text" value={catModal.name} onChange={e => setCatModal({...catModal, name: e.target.value})} style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ccc' }} />
+            </div>
+            
+            <div style={{ marginBottom: '15px' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '6px' }}>Image URL</label>
+              <input type="text" value={catModal.imageUrl} onChange={e => setCatModal({...catModal, imageUrl: e.target.value})} placeholder="https://..." style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ccc' }} />
+            </div>
+
+            <div style={{ marginBottom: '25px' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '6px' }}>Description</label>
+              <textarea value={catModal.description} onChange={e => setCatModal({...catModal, description: e.target.value})} style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ccc', minHeight: '80px', fontFamily: 'inherit' }} />
+            </div>
+            
+            <button onClick={handleModalSave} disabled={isSubmitting} style={{ width: '100%', padding: '12px', backgroundColor: '#000', color: '#fff', border: 'none', borderRadius: '6px', fontWeight: 600, cursor: 'pointer', opacity: isSubmitting ? 0.5 : 1 }}>
+              {isSubmitting ? 'Saving...' : 'Save Changes'}
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
