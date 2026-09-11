@@ -88,6 +88,12 @@ export default function BaseProductsPage() {
 
               <div style={{ display: 'flex', gap: '10px' }}>
                 <button onClick={() => setModal({ isNew: false, id: p.id, name: p.name, description: p.description, imageUrl: p.imageUrl, categories: (p.categories||[]).join(', '), variantCount: p.variantCount })} style={{ flex: 1, padding: '10px', backgroundColor: '#f5f5f5', border: 'none', borderRadius: '6px', fontSize: '0.8rem', cursor: 'pointer' }}>EDIT</button>
+                <button onClick={async () => {
+                  if(confirm('Are you sure you want to delete this product?')) {
+                    await fetch('/api/base-products?id=' + p.id, { method: 'DELETE' });
+                    loadProducts();
+                  }
+                }} style={{ padding: '10px', backgroundColor: '#ffefef', color: '#ff4d4f', border: 'none', borderRadius: '6px', cursor: 'pointer' }}>🗑️</button>
               </div>
             </div>
           </div>

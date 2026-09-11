@@ -38,3 +38,15 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: false });
   }
 }
+
+export async function DELETE(req: Request) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get('id');
+    const db = await getDb();
+    await db.collection('base_products').deleteOne({ id });
+    return NextResponse.json({ success: true });
+  } catch (err) {
+    return NextResponse.json({ success: false });
+  }
+}

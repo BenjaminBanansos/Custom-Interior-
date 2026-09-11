@@ -122,7 +122,12 @@ export default function CategoriesPage() {
 
               <div style={{ display: 'flex', gap: '10px' }}>
                 <button onClick={() => handleEditCategory(cat)} style={{ flex: 1, padding: '10px', backgroundColor: '#f5f5f5', border: 'none', borderRadius: '6px', fontSize: '0.8rem', cursor: 'pointer' }}>EDIT</button>
-                <button style={{ padding: '10px', backgroundColor: '#f5f5f5', border: 'none', borderRadius: '6px', cursor: 'pointer' }}>🗑️</button>
+                <button onClick={async () => {
+                  if(confirm('Are you sure you want to delete this category?')) {
+                    await fetch('/api/categories?id=' + cat.id, { method: 'DELETE' });
+                    loadCategories();
+                  }
+                }} style={{ padding: '10px', backgroundColor: '#ffefef', color: '#ff4d4f', border: 'none', borderRadius: '6px', cursor: 'pointer' }}>🗑️</button>
               </div>
             </div>
           </div>
