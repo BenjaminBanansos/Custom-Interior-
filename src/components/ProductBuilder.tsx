@@ -306,7 +306,65 @@ function BasicInfoStep({ data, update, categories }: any) {
             />
           </div>
         </div>
-      </Section>
+  
+      {editModal && (
+        <div style={modalOverlayStyle}>
+          <div style={modalStyle}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+              <h3 style={{ margin: 0 }}>Edit {editModal.type.charAt(0).toUpperCase() + editModal.type.slice(1)}</h3>
+              <button onClick={() => setEditModal(null)} style={{ background: 'none', border: 'none', fontSize: '1.2rem', cursor: 'pointer' }}>&times;</button>
+            </div>
+            
+            <div style={{ marginBottom: '10px' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Name</label>
+              <input type="text" value={editModal.name} onChange={e => setEditModal({...editModal, name: e.target.value})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+            </div>
+            
+            {(editModal.type === 'option' || editModal.type === 'choice') && (
+              <div style={{ marginBottom: '10px' }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Price Adjustment ($)</label>
+                <input type="number" value={editModal.priceAdjustment || 0} onChange={e => setEditModal({...editModal, priceAdjustment: parseFloat(e.target.value) || 0})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+            )}
+            
+            <div style={{ marginBottom: '10px' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Requires (comma-separated IDs)</label>
+              <input type="text" value={(editModal.requires || []).join(', ')} onChange={e => setEditModal({...editModal, requires: e.target.value.split(',').map(s => s.trim()).filter(Boolean)})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+            </div>
+            
+            <div style={{ marginBottom: '10px' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Excludes (comma-separated IDs)</label>
+              <input type="text" value={(editModal.excludes || []).join(', ')} onChange={e => setEditModal({...editModal, excludes: e.target.value.split(',').map(s => s.trim()).filter(Boolean)})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+            </div>
+            
+            <div style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+              <div style={{ flex: 1 }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Min Width</label>
+                <input type="number" value={editModal.constraints?.minWidth || ''} onChange={e => setEditModal({...editModal, constraints: {...(editModal.constraints||{}), minWidth: parseFloat(e.target.value)}})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+              <div style={{ flex: 1 }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Max Width</label>
+                <input type="number" value={editModal.constraints?.maxWidth || ''} onChange={e => setEditModal({...editModal, constraints: {...(editModal.constraints||{}), maxWidth: parseFloat(e.target.value)}})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+            </div>
+            
+            <div style={{ display: 'flex', gap: '10px', marginBottom: '15px' }}>
+              <div style={{ flex: 1 }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Min Height</label>
+                <input type="number" value={editModal.constraints?.minHeight || ''} onChange={e => setEditModal({...editModal, constraints: {...(editModal.constraints||{}), minHeight: parseFloat(e.target.value)}})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+              <div style={{ flex: 1 }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Max Height</label>
+                <input type="number" value={editModal.constraints?.maxHeight || ''} onChange={e => setEditModal({...editModal, constraints: {...(editModal.constraints||{}), maxHeight: parseFloat(e.target.value)}})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+            </div>
+            
+            <button onClick={handleModalSave} style={{ width: '100%', padding: '10px', backgroundColor: '#000', color: '#fff', border: 'none', borderRadius: '6px', fontWeight: 600, cursor: 'pointer' }}>Save Changes</button>
+          </div>
+        </div>
+      )}
+    </Section>
+
     </div>
   );
 }
@@ -314,6 +372,36 @@ function BasicInfoStep({ data, update, categories }: any) {
 function DimensionsStep({ data, update }: any) {
   const c = data.constraints || { minWidth: 400, maxWidth: 3000, minHeight: 400, maxHeight: 4000 };
   const setC = (nc: any) => update({...data, constraints: {...c, ...nc}});
+
+
+  const handleModalSave = () => {
+    const { type, modId, optId, subId, choiceId, name, priceAdjustment, requires, excludes, constraints } = editModal;
+    
+    // clean up constraints
+    const cleanConstraints: any = {};
+    if (!isNaN(constraints?.minWidth)) cleanConstraints.minWidth = constraints.minWidth;
+    if (!isNaN(constraints?.maxWidth)) cleanConstraints.maxWidth = constraints.maxWidth;
+    if (!isNaN(constraints?.minHeight)) cleanConstraints.minHeight = constraints.minHeight;
+    if (!isNaN(constraints?.maxHeight)) cleanConstraints.maxHeight = constraints.maxHeight;
+
+    if (type === 'modifier') {
+      update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, name, requires, excludes, constraints: cleanConstraints } : m) });
+    } else if (type === 'option') {
+      update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, name, priceAdjustment, requires, excludes, constraints: cleanConstraints } : o) } : m) });
+    } else if (type === 'sub') {
+      update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === subId ? { ...s, name, requires, excludes, constraints: cleanConstraints } : s) } : o) } : m) });
+    } else if (type === 'choice') {
+      update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === subId ? { ...s, choices: s.choices.map((c: any) => c.id === choiceId ? { ...c, name, priceAdjustment, requires, excludes, constraints: cleanConstraints } : c) } : s) } : o) } : m) });
+    }
+    setEditModal(null);
+  };
+
+  const modalOverlayStyle: any = {
+    position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center'
+  };
+  const modalStyle: any = {
+    backgroundColor: '#fff', padding: '20px', borderRadius: '8px', width: '400px', maxWidth: '90%', maxHeight: '90vh', overflowY: 'auto'
+  };
 
   return (
     <Section title="Dimension Constraints (MM)">
@@ -345,7 +433,65 @@ function DimensionsStep({ data, update }: any) {
               </div>
            </div>
       </div>
+
+      {editModal && (
+        <div style={modalOverlayStyle}>
+          <div style={modalStyle}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+              <h3 style={{ margin: 0 }}>Edit {editModal.type.charAt(0).toUpperCase() + editModal.type.slice(1)}</h3>
+              <button onClick={() => setEditModal(null)} style={{ background: 'none', border: 'none', fontSize: '1.2rem', cursor: 'pointer' }}>&times;</button>
+            </div>
+            
+            <div style={{ marginBottom: '10px' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Name</label>
+              <input type="text" value={editModal.name} onChange={e => setEditModal({...editModal, name: e.target.value})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+            </div>
+            
+            {(editModal.type === 'option' || editModal.type === 'choice') && (
+              <div style={{ marginBottom: '10px' }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Price Adjustment ($)</label>
+                <input type="number" value={editModal.priceAdjustment || 0} onChange={e => setEditModal({...editModal, priceAdjustment: parseFloat(e.target.value) || 0})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+            )}
+            
+            <div style={{ marginBottom: '10px' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Requires (comma-separated IDs)</label>
+              <input type="text" value={(editModal.requires || []).join(', ')} onChange={e => setEditModal({...editModal, requires: e.target.value.split(',').map(s => s.trim()).filter(Boolean)})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+            </div>
+            
+            <div style={{ marginBottom: '10px' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Excludes (comma-separated IDs)</label>
+              <input type="text" value={(editModal.excludes || []).join(', ')} onChange={e => setEditModal({...editModal, excludes: e.target.value.split(',').map(s => s.trim()).filter(Boolean)})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+            </div>
+            
+            <div style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+              <div style={{ flex: 1 }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Min Width</label>
+                <input type="number" value={editModal.constraints?.minWidth || ''} onChange={e => setEditModal({...editModal, constraints: {...(editModal.constraints||{}), minWidth: parseFloat(e.target.value)}})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+              <div style={{ flex: 1 }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Max Width</label>
+                <input type="number" value={editModal.constraints?.maxWidth || ''} onChange={e => setEditModal({...editModal, constraints: {...(editModal.constraints||{}), maxWidth: parseFloat(e.target.value)}})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+            </div>
+            
+            <div style={{ display: 'flex', gap: '10px', marginBottom: '15px' }}>
+              <div style={{ flex: 1 }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Min Height</label>
+                <input type="number" value={editModal.constraints?.minHeight || ''} onChange={e => setEditModal({...editModal, constraints: {...(editModal.constraints||{}), minHeight: parseFloat(e.target.value)}})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+              <div style={{ flex: 1 }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Max Height</label>
+                <input type="number" value={editModal.constraints?.maxHeight || ''} onChange={e => setEditModal({...editModal, constraints: {...(editModal.constraints||{}), maxHeight: parseFloat(e.target.value)}})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+            </div>
+            
+            <button onClick={handleModalSave} style={{ width: '100%', padding: '10px', backgroundColor: '#000', color: '#fff', border: 'none', borderRadius: '6px', fontWeight: 600, cursor: 'pointer' }}>Save Changes</button>
+          </div>
+        </div>
+      )}
     </Section>
+
   );
 }
 
@@ -403,6 +549,36 @@ function MaterialsStep({ data, update }: any) {
         update({ ...data, fabricFamilies: data.fabricFamilies.map((fam: FabricFamily) => fam.fabricId === familyId ? { ...fam, colors: fam.colors.map(c => c.colorId === colorId ? { ...c, mediaUrl: result.url } : c) } : fam) });
       }
     } catch(err) { console.error(err); }
+  };
+
+
+  const handleModalSave = () => {
+    const { type, modId, optId, subId, choiceId, name, priceAdjustment, requires, excludes, constraints } = editModal;
+    
+    // clean up constraints
+    const cleanConstraints: any = {};
+    if (!isNaN(constraints?.minWidth)) cleanConstraints.minWidth = constraints.minWidth;
+    if (!isNaN(constraints?.maxWidth)) cleanConstraints.maxWidth = constraints.maxWidth;
+    if (!isNaN(constraints?.minHeight)) cleanConstraints.minHeight = constraints.minHeight;
+    if (!isNaN(constraints?.maxHeight)) cleanConstraints.maxHeight = constraints.maxHeight;
+
+    if (type === 'modifier') {
+      update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, name, requires, excludes, constraints: cleanConstraints } : m) });
+    } else if (type === 'option') {
+      update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, name, priceAdjustment, requires, excludes, constraints: cleanConstraints } : o) } : m) });
+    } else if (type === 'sub') {
+      update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === subId ? { ...s, name, requires, excludes, constraints: cleanConstraints } : s) } : o) } : m) });
+    } else if (type === 'choice') {
+      update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === subId ? { ...s, choices: s.choices.map((c: any) => c.id === choiceId ? { ...c, name, priceAdjustment, requires, excludes, constraints: cleanConstraints } : c) } : s) } : o) } : m) });
+    }
+    setEditModal(null);
+  };
+
+  const modalOverlayStyle: any = {
+    position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center'
+  };
+  const modalStyle: any = {
+    backgroundColor: '#fff', padding: '20px', borderRadius: '8px', width: '400px', maxWidth: '90%', maxHeight: '90vh', overflowY: 'auto'
   };
 
   return (
@@ -471,12 +647,71 @@ function MaterialsStep({ data, update }: any) {
         </div>
       </div>
 
-      </Section>
+  
+      {editModal && (
+        <div style={modalOverlayStyle}>
+          <div style={modalStyle}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+              <h3 style={{ margin: 0 }}>Edit {editModal.type.charAt(0).toUpperCase() + editModal.type.slice(1)}</h3>
+              <button onClick={() => setEditModal(null)} style={{ background: 'none', border: 'none', fontSize: '1.2rem', cursor: 'pointer' }}>&times;</button>
+            </div>
+            
+            <div style={{ marginBottom: '10px' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Name</label>
+              <input type="text" value={editModal.name} onChange={e => setEditModal({...editModal, name: e.target.value})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+            </div>
+            
+            {(editModal.type === 'option' || editModal.type === 'choice') && (
+              <div style={{ marginBottom: '10px' }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Price Adjustment ($)</label>
+                <input type="number" value={editModal.priceAdjustment || 0} onChange={e => setEditModal({...editModal, priceAdjustment: parseFloat(e.target.value) || 0})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+            )}
+            
+            <div style={{ marginBottom: '10px' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Requires (comma-separated IDs)</label>
+              <input type="text" value={(editModal.requires || []).join(', ')} onChange={e => setEditModal({...editModal, requires: e.target.value.split(',').map(s => s.trim()).filter(Boolean)})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+            </div>
+            
+            <div style={{ marginBottom: '10px' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Excludes (comma-separated IDs)</label>
+              <input type="text" value={(editModal.excludes || []).join(', ')} onChange={e => setEditModal({...editModal, excludes: e.target.value.split(',').map(s => s.trim()).filter(Boolean)})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+            </div>
+            
+            <div style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+              <div style={{ flex: 1 }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Min Width</label>
+                <input type="number" value={editModal.constraints?.minWidth || ''} onChange={e => setEditModal({...editModal, constraints: {...(editModal.constraints||{}), minWidth: parseFloat(e.target.value)}})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+              <div style={{ flex: 1 }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Max Width</label>
+                <input type="number" value={editModal.constraints?.maxWidth || ''} onChange={e => setEditModal({...editModal, constraints: {...(editModal.constraints||{}), maxWidth: parseFloat(e.target.value)}})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+            </div>
+            
+            <div style={{ display: 'flex', gap: '10px', marginBottom: '15px' }}>
+              <div style={{ flex: 1 }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Min Height</label>
+                <input type="number" value={editModal.constraints?.minHeight || ''} onChange={e => setEditModal({...editModal, constraints: {...(editModal.constraints||{}), minHeight: parseFloat(e.target.value)}})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+              <div style={{ flex: 1 }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Max Height</label>
+                <input type="number" value={editModal.constraints?.maxHeight || ''} onChange={e => setEditModal({...editModal, constraints: {...(editModal.constraints||{}), maxHeight: parseFloat(e.target.value)}})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+            </div>
+            
+            <button onClick={handleModalSave} style={{ width: '100%', padding: '10px', backgroundColor: '#000', color: '#fff', border: 'none', borderRadius: '6px', fontWeight: 600, cursor: 'pointer' }}>Save Changes</button>
+          </div>
+        </div>
+      )}
+    </Section>
+
   );
 }
 
 
 function CustomizationStep({ data, update }: any) {
+  const [editModal, setEditModal] = useState<any>(null);
 
 // --- MODIFIER CRUD ---
   const editModifier = (modId: string, oldName: string, oldReqs: string[] = [], oldExcls: string[] = [], oldConstraints: any = {}) => {
@@ -585,6 +820,36 @@ function CustomizationStep({ data, update }: any) {
 
   
   
+
+  const handleModalSave = () => {
+    const { type, modId, optId, subId, choiceId, name, priceAdjustment, requires, excludes, constraints } = editModal;
+    
+    // clean up constraints
+    const cleanConstraints: any = {};
+    if (!isNaN(constraints?.minWidth)) cleanConstraints.minWidth = constraints.minWidth;
+    if (!isNaN(constraints?.maxWidth)) cleanConstraints.maxWidth = constraints.maxWidth;
+    if (!isNaN(constraints?.minHeight)) cleanConstraints.minHeight = constraints.minHeight;
+    if (!isNaN(constraints?.maxHeight)) cleanConstraints.maxHeight = constraints.maxHeight;
+
+    if (type === 'modifier') {
+      update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, name, requires, excludes, constraints: cleanConstraints } : m) });
+    } else if (type === 'option') {
+      update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, name, priceAdjustment, requires, excludes, constraints: cleanConstraints } : o) } : m) });
+    } else if (type === 'sub') {
+      update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === subId ? { ...s, name, requires, excludes, constraints: cleanConstraints } : s) } : o) } : m) });
+    } else if (type === 'choice') {
+      update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === subId ? { ...s, choices: s.choices.map((c: any) => c.id === choiceId ? { ...c, name, priceAdjustment, requires, excludes, constraints: cleanConstraints } : c) } : s) } : o) } : m) });
+    }
+    setEditModal(null);
+  };
+
+  const modalOverlayStyle: any = {
+    position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center'
+  };
+  const modalStyle: any = {
+    backgroundColor: '#fff', padding: '20px', borderRadius: '8px', width: '400px', maxWidth: '90%', maxHeight: '90vh', overflowY: 'auto'
+  };
+
   return (
     <Section title="Product Customization (Hardware)">
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
@@ -751,11 +1016,99 @@ function CustomizationStep({ data, update }: any) {
           )}
         </div>
     
+
+      {editModal && (
+        <div style={modalOverlayStyle}>
+          <div style={modalStyle}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+              <h3 style={{ margin: 0 }}>Edit {editModal.type.charAt(0).toUpperCase() + editModal.type.slice(1)}</h3>
+              <button onClick={() => setEditModal(null)} style={{ background: 'none', border: 'none', fontSize: '1.2rem', cursor: 'pointer' }}>&times;</button>
+            </div>
+            
+            <div style={{ marginBottom: '10px' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Name</label>
+              <input type="text" value={editModal.name} onChange={e => setEditModal({...editModal, name: e.target.value})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+            </div>
+            
+            {(editModal.type === 'option' || editModal.type === 'choice') && (
+              <div style={{ marginBottom: '10px' }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Price Adjustment ($)</label>
+                <input type="number" value={editModal.priceAdjustment || 0} onChange={e => setEditModal({...editModal, priceAdjustment: parseFloat(e.target.value) || 0})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+            )}
+            
+            <div style={{ marginBottom: '10px' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Requires (comma-separated IDs)</label>
+              <input type="text" value={(editModal.requires || []).join(', ')} onChange={e => setEditModal({...editModal, requires: e.target.value.split(',').map(s => s.trim()).filter(Boolean)})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+            </div>
+            
+            <div style={{ marginBottom: '10px' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Excludes (comma-separated IDs)</label>
+              <input type="text" value={(editModal.excludes || []).join(', ')} onChange={e => setEditModal({...editModal, excludes: e.target.value.split(',').map(s => s.trim()).filter(Boolean)})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+            </div>
+            
+            <div style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+              <div style={{ flex: 1 }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Min Width</label>
+                <input type="number" value={editModal.constraints?.minWidth || ''} onChange={e => setEditModal({...editModal, constraints: {...(editModal.constraints||{}), minWidth: parseFloat(e.target.value)}})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+              <div style={{ flex: 1 }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Max Width</label>
+                <input type="number" value={editModal.constraints?.maxWidth || ''} onChange={e => setEditModal({...editModal, constraints: {...(editModal.constraints||{}), maxWidth: parseFloat(e.target.value)}})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+            </div>
+            
+            <div style={{ display: 'flex', gap: '10px', marginBottom: '15px' }}>
+              <div style={{ flex: 1 }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Min Height</label>
+                <input type="number" value={editModal.constraints?.minHeight || ''} onChange={e => setEditModal({...editModal, constraints: {...(editModal.constraints||{}), minHeight: parseFloat(e.target.value)}})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+              <div style={{ flex: 1 }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Max Height</label>
+                <input type="number" value={editModal.constraints?.maxHeight || ''} onChange={e => setEditModal({...editModal, constraints: {...(editModal.constraints||{}), maxHeight: parseFloat(e.target.value)}})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+            </div>
+            
+            <button onClick={handleModalSave} style={{ width: '100%', padding: '10px', backgroundColor: '#000', color: '#fff', border: 'none', borderRadius: '6px', fontWeight: 600, cursor: 'pointer' }}>Save Changes</button>
+          </div>
+        </div>
+      )}
     </Section>
+
   );
 }
 
 function LogicStep({ data, update }: any) {
+
+  const handleModalSave = () => {
+    const { type, modId, optId, subId, choiceId, name, priceAdjustment, requires, excludes, constraints } = editModal;
+    
+    // clean up constraints
+    const cleanConstraints: any = {};
+    if (!isNaN(constraints?.minWidth)) cleanConstraints.minWidth = constraints.minWidth;
+    if (!isNaN(constraints?.maxWidth)) cleanConstraints.maxWidth = constraints.maxWidth;
+    if (!isNaN(constraints?.minHeight)) cleanConstraints.minHeight = constraints.minHeight;
+    if (!isNaN(constraints?.maxHeight)) cleanConstraints.maxHeight = constraints.maxHeight;
+
+    if (type === 'modifier') {
+      update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, name, requires, excludes, constraints: cleanConstraints } : m) });
+    } else if (type === 'option') {
+      update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, name, priceAdjustment, requires, excludes, constraints: cleanConstraints } : o) } : m) });
+    } else if (type === 'sub') {
+      update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === subId ? { ...s, name, requires, excludes, constraints: cleanConstraints } : s) } : o) } : m) });
+    } else if (type === 'choice') {
+      update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === subId ? { ...s, choices: s.choices.map((c: any) => c.id === choiceId ? { ...c, name, priceAdjustment, requires, excludes, constraints: cleanConstraints } : c) } : s) } : o) } : m) });
+    }
+    setEditModal(null);
+  };
+
+  const modalOverlayStyle: any = {
+    position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center'
+  };
+  const modalStyle: any = {
+    backgroundColor: '#fff', padding: '20px', borderRadius: '8px', width: '400px', maxWidth: '90%', maxHeight: '90vh', overflowY: 'auto'
+  };
+
   return (
     <Section title="Customization Logic">
       <p style={{ color: '#888', fontSize: '0.9rem', marginBottom: '20px' }}>Apply pricing surcharges and material compatibility rules.</p>
@@ -763,7 +1116,65 @@ function LogicStep({ data, update }: any) {
          <div style={{ fontSize: '0.9rem', fontWeight: 600 }}>Oversize Width Logic</div>
          <div style={{ fontSize: '0.7rem', color: '#888' }}>If Width {'>'} 2500mm, apply +15% material surcharge.</div>
       </div>
+
+      {editModal && (
+        <div style={modalOverlayStyle}>
+          <div style={modalStyle}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+              <h3 style={{ margin: 0 }}>Edit {editModal.type.charAt(0).toUpperCase() + editModal.type.slice(1)}</h3>
+              <button onClick={() => setEditModal(null)} style={{ background: 'none', border: 'none', fontSize: '1.2rem', cursor: 'pointer' }}>&times;</button>
+            </div>
+            
+            <div style={{ marginBottom: '10px' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Name</label>
+              <input type="text" value={editModal.name} onChange={e => setEditModal({...editModal, name: e.target.value})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+            </div>
+            
+            {(editModal.type === 'option' || editModal.type === 'choice') && (
+              <div style={{ marginBottom: '10px' }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Price Adjustment ($)</label>
+                <input type="number" value={editModal.priceAdjustment || 0} onChange={e => setEditModal({...editModal, priceAdjustment: parseFloat(e.target.value) || 0})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+            )}
+            
+            <div style={{ marginBottom: '10px' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Requires (comma-separated IDs)</label>
+              <input type="text" value={(editModal.requires || []).join(', ')} onChange={e => setEditModal({...editModal, requires: e.target.value.split(',').map(s => s.trim()).filter(Boolean)})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+            </div>
+            
+            <div style={{ marginBottom: '10px' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Excludes (comma-separated IDs)</label>
+              <input type="text" value={(editModal.excludes || []).join(', ')} onChange={e => setEditModal({...editModal, excludes: e.target.value.split(',').map(s => s.trim()).filter(Boolean)})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+            </div>
+            
+            <div style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+              <div style={{ flex: 1 }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Min Width</label>
+                <input type="number" value={editModal.constraints?.minWidth || ''} onChange={e => setEditModal({...editModal, constraints: {...(editModal.constraints||{}), minWidth: parseFloat(e.target.value)}})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+              <div style={{ flex: 1 }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Max Width</label>
+                <input type="number" value={editModal.constraints?.maxWidth || ''} onChange={e => setEditModal({...editModal, constraints: {...(editModal.constraints||{}), maxWidth: parseFloat(e.target.value)}})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+            </div>
+            
+            <div style={{ display: 'flex', gap: '10px', marginBottom: '15px' }}>
+              <div style={{ flex: 1 }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Min Height</label>
+                <input type="number" value={editModal.constraints?.minHeight || ''} onChange={e => setEditModal({...editModal, constraints: {...(editModal.constraints||{}), minHeight: parseFloat(e.target.value)}})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+              <div style={{ flex: 1 }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Max Height</label>
+                <input type="number" value={editModal.constraints?.maxHeight || ''} onChange={e => setEditModal({...editModal, constraints: {...(editModal.constraints||{}), maxHeight: parseFloat(e.target.value)}})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+            </div>
+            
+            <button onClick={handleModalSave} style={{ width: '100%', padding: '10px', backgroundColor: '#000', color: '#fff', border: 'none', borderRadius: '6px', fontWeight: 600, cursor: 'pointer' }}>Save Changes</button>
+          </div>
+        </div>
+      )}
     </Section>
+
   );
 }
 
