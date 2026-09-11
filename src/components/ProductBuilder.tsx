@@ -350,24 +350,13 @@ function DimensionsStep({ data, update }: any) {
 }
 
 function MaterialsStep({ data, update }: any) {
+  const [matModal, setMatModal] = React.useState<any>(null);
   // --- FAMILY CRUD ---
   const addFamily = () => {
-    const name = prompt('Fabric Family Name (e.g. Premium Silk):');
-    if (!name) return;
-    const newFam: FabricFamily = { fabricId: `fam-${Date.now()}`, name, priceModifier: 0, colors: [] };
-    update({ ...data, fabricFamilies: [...(data.fabricFamilies || []), newFam] });
+    setMatModal({ isNew: true, type: 'family', name: '', category: '', priceModifier: 0, maxWidth: 0, maxHeight: 0 });
   };
   const editFamily = (famId: string, oldName: string, oldPrice: number, oldMaxW: number = 0, oldMaxH: number = 0, oldCategory: string = '') => {
-    const name = prompt('Edit Fabric Family Name:', oldName);
-    if (!name && name !== '') return;
-    const cat = prompt('Fabric Category (e.g. Translucent, Blackout):', oldCategory);
-    const priceStr = prompt('Edit Base Price Modifier ($):', oldPrice.toString());
-    const priceModifier = priceStr ? parseFloat(priceStr) : oldPrice;
-    const maxWStr = prompt('Max Width (Inches):', oldMaxW.toString());
-    const maxW = maxWStr ? parseFloat(maxWStr) : oldMaxW;
-    const maxHStr = prompt('Max Height (Inches):', oldMaxH.toString());
-    const maxH = maxHStr ? parseFloat(maxHStr) : oldMaxH;
-    update({ ...data, fabricFamilies: data.fabricFamilies.map((f: FabricFamily) => f.fabricId === famId ? { ...f, name: name || f.name, category: cat || f.category, priceModifier, maxWidth: maxW, maxHeight: maxH } : f) });
+    setMatModal({ isNew: false, type: 'family', famId, name: oldName, category: oldCategory, priceModifier: oldPrice, maxWidth: oldMaxW, maxHeight: oldMaxH });
   };
   const deleteFamily = (famId: string) => {
     if (!confirm('Delete this fabric family and all its colors?')) return;
@@ -376,17 +365,10 @@ function MaterialsStep({ data, update }: any) {
 
   // --- COLOR CRUD ---
   const addColor = (familyId: string) => {
-    const name = prompt('Color Name (e.g. Midnight Blue):');
-    if (!name) return;
-    const hex = prompt('Hex Code (e.g. #0a192f):', '#000000') || '#000000';
-    const newColor: FabricColor = { colorId: `col-${Date.now()}`, name, hex, status: 'active', mediaUrl: '' };
-    update({ ...data, fabricFamilies: data.fabricFamilies.map((fam: FabricFamily) => fam.fabricId === familyId ? { ...fam, colors: [...fam.colors, newColor] } : fam) });
+    setMatModal({ isNew: true, type: 'color', famId: familyId, name: '', hex: '#000000' });
   };
   const editColor = (familyId: string, colorId: string, oldName: string, oldHex: string) => {
-    const name = prompt('Edit Color Name:', oldName);
-    if (!name && name !== '') return;
-    const hex = prompt('Edit Hex Code:', oldHex) || oldHex;
-    update({ ...data, fabricFamilies: data.fabricFamilies.map((fam: FabricFamily) => fam.fabricId === familyId ? { ...fam, colors: fam.colors.map(c => c.colorId === colorId ? { ...c, name: name || c.name, hex } : c) } : fam) });
+    setMatModal({ isNew: false, type: 'color', famId: familyId, colorId, name: oldName, hex: oldHex });
   };
   const deleteColor = (familyId: string, colorId: string) => {
     if (!confirm('Delete this color?')) return;
@@ -403,6 +385,36 @@ function MaterialsStep({ data, update }: any) {
         update({ ...data, fabricFamilies: data.fabricFamilies.map((fam: FabricFamily) => fam.fabricId === familyId ? { ...fam, colors: fam.colors.map(c => c.colorId === colorId ? { ...c, mediaUrl: result.url } : c) } : fam) });
       }
     } catch(err) { console.error(err); }
+  };
+
+
+  const handleMatModalSave = () => {
+    const { isNew, type, famId, colorId, name, category, priceModifier, maxWidth, maxHeight, hex } = matModal;
+    if (!name) return;
+
+    if (type === 'family') {
+      if (isNew) {
+        const newFam: FabricFamily = { fabricId: `fam-${Date.now()}`, name, category: category || '', priceModifier: parseFloat(priceModifier)||0, maxWidth: parseFloat(maxWidth)||0, maxHeight: parseFloat(maxHeight)||0, colors: [] };
+        update({ ...data, fabricFamilies: [...(data.fabricFamilies || []), newFam] });
+      } else {
+        update({ ...data, fabricFamilies: data.fabricFamilies.map((f: FabricFamily) => f.fabricId === famId ? { ...f, name, category, priceModifier: parseFloat(priceModifier)||0, maxWidth: parseFloat(maxWidth)||0, maxHeight: parseFloat(maxHeight)||0 } : f) });
+      }
+    } else if (type === 'color') {
+      if (isNew) {
+        const newColor: FabricColor = { colorId: `col-${Date.now()}`, name, hex: hex || '#000000', status: 'active', mediaUrl: '' };
+        update({ ...data, fabricFamilies: data.fabricFamilies.map((fam: FabricFamily) => fam.fabricId === famId ? { ...fam, colors: [...fam.colors, newColor] } : fam) });
+      } else {
+        update({ ...data, fabricFamilies: data.fabricFamilies.map((fam: FabricFamily) => fam.fabricId === famId ? { ...fam, colors: fam.colors.map(c => c.colorId === colorId ? { ...c, name, hex } : c) } : fam) });
+      }
+    }
+    setMatModal(null);
+  };
+
+  const modalOverlayStyle: React.CSSProperties = {
+    position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center'
+  };
+  const modalStyle: React.CSSProperties = {
+    backgroundColor: '#fff', padding: '20px', borderRadius: '8px', width: '400px', maxWidth: '90%', maxHeight: '90vh', overflowY: 'auto'
   };
 
   return (
@@ -471,7 +483,58 @@ function MaterialsStep({ data, update }: any) {
         </div>
       </div>
 
-      </Section>
+  
+      {matModal && (
+        <div style={modalOverlayStyle}>
+          <div style={modalStyle}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+              <h3 style={{ margin: 0 }}>{matModal.isNew ? 'Add' : 'Edit'} {matModal.type.charAt(0).toUpperCase() + matModal.type.slice(1)}</h3>
+              <button onClick={() => setMatModal(null)} style={{ background: 'none', border: 'none', fontSize: '1.2rem', cursor: 'pointer' }}>&times;</button>
+            </div>
+            
+            <div style={{ marginBottom: '10px' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Name</label>
+              <input type="text" value={matModal.name || ''} onChange={e => setMatModal({...matModal, name: e.target.value})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+            </div>
+
+            {matModal.type === 'family' && (
+              <>
+                <div style={{ marginBottom: '10px' }}>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Category (e.g. Translucent, Blackout)</label>
+                  <input type="text" value={matModal.category || ''} onChange={e => setMatModal({...matModal, category: e.target.value})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+                </div>
+                <div style={{ marginBottom: '10px' }}>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Base Price Modifier ($)</label>
+                  <input type="number" value={matModal.priceModifier || 0} onChange={e => setMatModal({...matModal, priceModifier: e.target.value})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+                </div>
+                <div style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+                  <div style={{ flex: 1 }}>
+                    <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Max Width (Inches)</label>
+                    <input type="number" value={matModal.maxWidth || 0} onChange={e => setMatModal({...matModal, maxWidth: e.target.value})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Max Height (Inches)</label>
+                    <input type="number" value={matModal.maxHeight || 0} onChange={e => setMatModal({...matModal, maxHeight: e.target.value})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+                  </div>
+                </div>
+              </>
+            )}
+
+            {matModal.type === 'color' && (
+              <div style={{ marginBottom: '15px' }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Hex Code</label>
+                <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                  <input type="color" value={matModal.hex || '#000000'} onChange={e => setMatModal({...matModal, hex: e.target.value})} style={{ width: '40px', height: '40px', padding: '0', border: 'none', cursor: 'pointer' }} />
+                  <input type="text" value={matModal.hex || '#000000'} onChange={e => setMatModal({...matModal, hex: e.target.value})} style={{ flex: 1, padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+                </div>
+              </div>
+            )}
+            
+            <button onClick={handleMatModalSave} style={{ width: '100%', padding: '10px', backgroundColor: '#000', color: '#fff', border: 'none', borderRadius: '6px', fontWeight: 600, cursor: 'pointer', marginTop: '10px' }}>Save Changes</button>
+          </div>
+        </div>
+      )}
+    </Section>
   );
 }
 
