@@ -47,7 +47,7 @@ export default function BaseProductsPage() {
       <header style={{ marginBottom: '60px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div>
           <span style={{ fontSize: '0.7rem', color: '#888', letterSpacing: '0.1em' }}>DIGITAL ATELIER CMS</span>
-          <h1 style={{ fontSize: '2.5rem' }}>Products</h1>
+          <h1 style={{ fontSize: '2.5rem' }}>Products & Categories</h1>
           <p style={{ color: '#888', maxWidth: '600px', marginTop: '10px' }}>
             Manage the primary product families (e.g. Roller Shades, Honeycomb Blinds).
           </p>
