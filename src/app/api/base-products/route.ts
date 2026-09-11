@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getDb } from '../../../../lib/mongo';
+import { getDb } from '../../../lib/mongo';
 
 const DEFAULT_PRODUCTS = [
   { id: 'duo-stripes', name: 'Duo stripes', description: 'Modern dual-layered shades.', imageUrl: '', variantCount: 0 },
