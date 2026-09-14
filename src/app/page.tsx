@@ -76,34 +76,7 @@ export default async function Home() {
           if (theme.catalogImageRatio === 'landscape') heightStr = '240px';
 
           
-  // Find specific featured fabrics
-  const featuredSkus = products.filter(p => p.name.includes('BL46') || p.name.includes('G31') || p.name.includes('MARIO') || p.name.includes('DECO 2265')).slice(0, 4);
-
-  const FeaturedSection = (
-    <section key="featured" style={{ padding: '6rem 2rem', backgroundColor: '#ffffff' }}>
-      <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-        <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Featured Fabrics</h2>
-        <p style={{ color: 'var(--text-secondary)' }}>Our most popular choices across all collections.</p>
-      </div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '30px' }}>
-        {featuredSkus.map(p => (
-          <Link href={`/product/${p.id}`} key={p.id} style={{ textDecoration: 'none', color: 'inherit' }}>
-            <div style={{ 
-              height: '250px', backgroundColor: 'var(--bg-secondary)', borderRadius: '12px', overflow: 'hidden', position: 'relative',
-              backgroundImage: p.imageUrl ? `url(${p.imageUrl})` : 'none', backgroundSize: 'cover', backgroundPosition: 'center',
-              boxShadow: '0 4px 15px rgba(0,0,0,0.05)'
-            }} />
-            <div style={{ marginTop: '15px' }}>
-              <h3 style={{ fontSize: '1.2rem', marginBottom: '4px' }}>{p.name}</h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>From ${p.basePrice} | {p.productFamily}</p>
-            </div>
-          </Link>
-        ))}
-      </div>
-    </section>
-  );
-  
-  return (
+return (
           <Link key={product.id} href={`/product/${product.id}`} style={{ cursor: 'pointer', textDecoration: 'none', color: 'inherit' }}>
             <div style={{ 
               height: heightStr, 
@@ -130,6 +103,35 @@ export default async function Home() {
       </div>
     </section>
   );
+
+    // Find specific featured fabrics
+  const featuredSkus = products.filter(p => p.name.includes('BL46') || p.name.includes('G31') || p.name.includes('MARIO') || p.name.includes('DECO 2265')).slice(0, 4);
+
+  const FeaturedSection = (
+    <section key="featured" style={{ padding: '6rem 2rem', backgroundColor: '#ffffff' }}>
+      <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+        <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Featured Fabrics</h2>
+        <p style={{ color: 'var(--text-secondary)' }}>Our most popular choices across all collections.</p>
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '30px' }}>
+        {featuredSkus.map(p => (
+          <Link href={`/product/${p.id}`} key={p.id} style={{ textDecoration: 'none', color: 'inherit' }}>
+            <div style={{ 
+              height: '250px', backgroundColor: 'var(--bg-secondary)', borderRadius: '12px', overflow: 'hidden', position: 'relative',
+              backgroundImage: p.imageUrl ? `url(${p.imageUrl})` : 'none', backgroundSize: 'cover', backgroundPosition: 'center',
+              boxShadow: '0 4px 15px rgba(0,0,0,0.05)'
+            }} />
+            <div style={{ marginTop: '15px' }}>
+              <h3 style={{ fontSize: '1.2rem', marginBottom: '4px' }}>{p.name}</h3>
+              <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>From ${p.basePrice} | {p.productFamily}</p>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+  
+  
 
   const CategoriesSection = (
     <section key="categories" style={{ padding: '6rem 2rem', backgroundColor: '#f9f9f9' }}>
