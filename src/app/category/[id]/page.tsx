@@ -1,5 +1,6 @@
 import React from 'react';
-import { getProducts, getCategories } from '../../../lib/storage_actions';
+import { getProducts } from '../../../lib/storage_actions';
+import { getDb } from '../../../lib/mongo';
 import { getTheme } from '../../../lib/theme_actions';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -8,18 +9,19 @@ export const dynamic = 'force-dynamic';
 
 export default async function CategoryPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const categories = await getCategories();
   const products = await getProducts();
   const theme = await getTheme();
+  const db = await getDb();
 
-  const category = categories.find(c => c.id === id);
+  const baseProduct = await db.collection('base_products').findOne({ id });
   
-  if (!category) {
+  if (!baseProduct) {
     notFound();
   }
+  const category = baseProduct; // map for template
 
-  // Filter products by this category
-  const categoryProducts = products.filter(p => p.category === category.id);
+  // Filter products by base_product name (e.g. "Roller Shades")
+  const categoryProducts = products.filter(p => p.productFamily === baseProduct.name);
 
   return (
     <main style={{ flex: 1, margin: '0 auto', maxWidth: theme.containerWidth, width: '100%', transition: 'max-width 0.3s ease' }}>
