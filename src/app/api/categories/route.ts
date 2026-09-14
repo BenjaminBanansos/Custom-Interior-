@@ -1,4 +1,4 @@
-404: Not Found
+
 export async function DELETE(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
