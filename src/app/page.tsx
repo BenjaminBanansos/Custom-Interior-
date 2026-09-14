@@ -227,7 +227,7 @@ return (
       {/* Dynamic Sections mapped from Theme DND Order */}
       {(theme.sectionOrder?.includes('catalog') ? theme.sectionOrder : ['hero', 'categories', 'catalog']).map(section => {
         if (section === 'hero') return HeroSection;
-        if (section === 'categories') return <React.Fragment key="cats">{CategoriesSection}{FeaturedSection}</React.Fragment>;
+        if (section === 'categories') return <React.Fragment key="cats">{FeaturedSection}</React.Fragment>;
         if (section === 'curated') return CuratedSection;
         if (section === 'catalog') return CatalogSection;
         return null;
