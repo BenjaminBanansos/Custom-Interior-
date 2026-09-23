@@ -68,17 +68,17 @@ export default function AdminOrdersDashboard() {
               <div style={{ display: 'flex', gap: '40px' }}>
                 <div>
                   <h4 style={{ margin: '0 0 8px', fontSize: '0.9rem', color: '#888' }}>Configuration</h4>
-                  <p style={{ margin: '0 0 4px', fontSize: '0.9rem' }}><strong>Family:</strong> {order.family}</p>
-                  <p style={{ margin: '0 0 4px', fontSize: '0.9rem' }}><strong>Color:</strong> {order.color}</p>
+                  <p style={{ margin: '0 0 4px', fontSize: '0.9rem' }}><strong>Family:</strong> {order.details?.family}</p>
+                  <p style={{ margin: '0 0 4px', fontSize: '0.9rem' }}><strong>Color:</strong> {order.details?.color}</p>
                   <p style={{ margin: '0 0 4px', fontSize: '0.9rem' }}><strong>Size:</strong> {order.width} W x {order.height} H</p>
                   <p style={{ margin: '0', fontSize: '0.9rem' }}><strong>Quantity:</strong> {order.quantity}</p>
                 </div>
                 <div>
                   <h4 style={{ margin: '0 0 8px', fontSize: '0.9rem', color: '#888' }}>Modifiers</h4>
-                  {order.modifiers.map((mod, i) => (
+                  {order.details?.modifiers?.map((mod: string, i: number) => (
                     <p key={i} style={{ margin: '0 0 4px', fontSize: '0.9rem' }}>• {mod}</p>
                   ))}
-                  {order.subAttributes && order.subAttributes.map((attr, i) => (
+                  {order.details?.subAttributes && order.details.subAttributes.map((attr: string, i: number) => (
                     <p key={`sub-${i}`} style={{ margin: '0 0 4px', fontSize: '0.9rem' }}>• {attr}</p>
                   ))}
                 </div>
