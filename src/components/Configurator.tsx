@@ -96,7 +96,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
     const w = (parseFloat(width) || 0) + parseFraction(widthFraction);
     const h = (parseFloat(height) || 0) + parseFraction(heightFraction);
 
-    await addToCart({
+    const res = await addToCart({
       productName: product.name,
       width: w.toString(),
       height: h.toString(),
@@ -104,6 +104,12 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
       totalPrice: totalPrice,
       details: orderDetails
     });
+
+    if (res && res.error) {
+      alert("Failed to add to cart: " + res.error);
+      setOrderStatus('');
+      return;
+    }
 
     setOrderStatus('success');
     router.push('/cart');

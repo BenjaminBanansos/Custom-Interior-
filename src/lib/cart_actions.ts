@@ -23,21 +23,26 @@ export async function getCartSessionId() {
 }
 
 export async function addToCart(itemData: any) {
-  const cartId = await getCartSessionId();
-  const db = await getDb();
-  
-  const cartItem = {
-    cartItemId: 'ITEM-' + Date.now(),
-    ...itemData
-  };
+  try {
+    const cartId = await getCartSessionId();
+    const db = await getDb();
+    
+    const cartItem = {
+      cartItemId: 'ITEM-' + Date.now(),
+      ...itemData
+    };
 
-  await db.collection('carts').updateOne(
-    { cartId },
-    { $push: { items: cartItem } },
-    { upsert: true }
-  );
+    await db.collection('carts').updateOne(
+      { cartId },
+      { $push: { items: cartItem } },
+      { upsert: true }
+    );
 
-  return { success: true };
+    return { success: true };
+  } catch (err: any) {
+    console.error('addToCart error:', err);
+    return { success: false, error: err.message || String(err) };
+  }
 }
 
 export async function getCart() {
