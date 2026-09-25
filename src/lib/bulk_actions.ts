@@ -14,7 +14,7 @@ export async function bulkAppendModifier(
   const db = await getDb();
   
   // Find all products matching the category
-  const query = category === 'all' ? {} : { base_product_id: category };
+  const query = category === 'all' ? {} : { category: category };
   const products = await db.collection('products').find(query).toArray();
   
   let updatedCount = 0;

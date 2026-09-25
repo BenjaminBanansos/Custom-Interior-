@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import { getTheme } from "../lib/theme_actions";
 import ThemeProvider from "../components/ThemeProvider";
+import FloatingCart from "../components/FloatingCart";
 import "./globals.css";
 
 const inter = Inter({
@@ -35,6 +36,7 @@ export default async function RootLayout({
       <body style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', margin: 0 }}>
         <ThemeProvider initialTheme={theme}>
           {children}
+          <FloatingCart />
         </ThemeProvider>
       </body>
     </html>

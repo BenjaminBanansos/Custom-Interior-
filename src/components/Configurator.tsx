@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Product, FabricFamily, FabricColor } from '../lib/products';
 import { ThemeConfig } from '../lib/theme_actions';
-import { submitOrder } from '../lib/order_actions';
+import { addToCart } from '../lib/cart_actions';
 
 interface ConfiguratorProps {
   product: Product;
@@ -94,7 +94,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
     const w = (parseFloat(width) || 0) + parseFraction(widthFraction);
     const h = (parseFloat(height) || 0) + parseFraction(heightFraction);
 
-    await submitOrder({
+    await addToCart({
       productName: product.name,
       width: w.toString(),
       height: h.toString(),
@@ -104,7 +104,9 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
     });
 
     setOrderStatus('success');
-    setTimeout(() => setOrderStatus('idle'), 4000);
+    setTimeout(() => {
+      window.location.href = '/cart';
+    }, 1500);
   };
 
   const getSelectedIds = () => Object.values(selectedModifiers);
@@ -544,7 +546,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
               onMouseOver={e => { if(orderStatus === 'idle') e.currentTarget.style.transform = 'scale(1.02)'; }} 
               onMouseOut={e => { if(orderStatus === 'idle') e.currentTarget.style.transform = 'scale(1)'; }}
             >
-              {orderStatus === 'submitting' ? 'PROCESSING...' : orderStatus === 'success' ? 'ORDER SENT ✓' : 'ADD TO PROJECT'}
+              {orderStatus === 'submitting' ? 'PROCESSING...' : orderStatus === 'success' ? 'ADDED TO CART ✓' : 'ADD TO CART'}
             </button>
           );
         })()}
