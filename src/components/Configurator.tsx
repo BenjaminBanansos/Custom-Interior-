@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Product, FabricFamily, FabricColor } from '../lib/products';
 import { ThemeConfig } from '../lib/theme_actions';
 import { addToCart } from '../lib/cart_actions';
+import { useRouter } from 'next/navigation';
 
 interface ConfiguratorProps {
   product: Product;
@@ -11,6 +12,7 @@ interface ConfiguratorProps {
 }
 
 export default function Configurator({ product, theme }: ConfiguratorProps) {
+  const router = useRouter();
   const [width, setWidth] = useState('24');
   const [widthFraction, setWidthFraction] = useState('0');
   const [height, setHeight] = useState('36');
@@ -104,9 +106,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
     });
 
     setOrderStatus('success');
-    setTimeout(() => {
-      window.location.href = '/cart';
-    }, 1500);
+    router.push('/cart');
   };
 
   const getSelectedIds = () => Object.values(selectedModifiers);
