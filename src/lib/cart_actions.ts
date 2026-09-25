@@ -9,22 +9,18 @@ export async function getCartSessionId() {
   let cartId = cookieStore.get('cart_session')?.value;
   if (!cartId) {
     cartId = 'CART-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
-    cookieStore.set({
-      name: 'cart_session',
-      value: cartId,
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      path: '/',
-      maxAge: 60 * 60 * 24 * 30, // 30 days
-    });
+    try {
+      cookieStore.set('cart_session', cartId, { maxAge: 60 * 60 * 24 * 30, path: '/' });
+    } catch (err) {
+      console.error('Cookie set error:', err);
+    }
   }
   return cartId;
 }
 
-export async function addToCart(itemData: any) {
+export async function addToCart(itemData: any, clientCartId?: string) {
   try {
-    const cartId = await getCartSessionId();
+    const cartId = clientCartId || await getCartSessionId();
     const db = await getDb();
     
     const cartItem = {
@@ -38,16 +34,16 @@ export async function addToCart(itemData: any) {
       { upsert: true }
     );
 
-    return { success: true };
+    return { success: true, cartId };
   } catch (err: any) {
     console.error('addToCart error:', err);
     return { success: false, error: err.message || String(err) };
   }
 }
 
-export async function getCart() {
+export async function getCart(clientCartId?: string) {
   try {
-    const cartId = await getCartSessionId();
+    const cartId = clientCartId || await getCartSessionId();
     const db = await getDb();
     const cart = await db.collection('carts').findOne({ cartId });
     return cart && cart.items ? cart.items : [];
@@ -57,8 +53,8 @@ export async function getCart() {
   }
 }
 
-export async function removeFromCart(cartItemId: string) {
-  const cartId = await getCartSessionId();
+export async function removeFromCart(cartItemId: string, clientCartId?: string) {
+  const cartId = clientCartId || await getCartSessionId();
   const db = await getDb();
   await db.collection('carts').updateOne(
     { cartId },
@@ -68,8 +64,8 @@ export async function removeFromCart(cartItemId: string) {
   return { success: true };
 }
 
-export async function checkoutCart(customerEmail: string, customerName: string = 'Guest') {
-  const cartId = await getCartSessionId();
+export async function checkoutCart(customerEmail: string, customerName: string = 'Guest', clientCartId?: string) {
+  const cartId = clientCartId || await getCartSessionId();
   const db = await getDb();
   const cart = await db.collection('carts').findOne({ cartId });
   

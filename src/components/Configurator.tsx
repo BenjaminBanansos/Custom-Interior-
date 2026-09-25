@@ -96,6 +96,8 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
     const w = (parseFloat(width) || 0) + parseFraction(widthFraction);
     const h = (parseFloat(height) || 0) + parseFraction(heightFraction);
 
+    const localCartId = typeof window !== 'undefined' ? localStorage.getItem('local_cart_id') || undefined : undefined;
+
     const res = await addToCart({
       productName: product.name,
       width: w.toString(),
@@ -103,12 +105,16 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
       quantity: parseInt(quantity) || 1,
       totalPrice: totalPrice,
       details: orderDetails
-    });
+    }, localCartId);
 
     if (res && res.error) {
       alert("Failed to add to cart: " + res.error);
       setOrderStatus('');
       return;
+    }
+    
+    if (res && res.cartId && typeof window !== 'undefined') {
+      localStorage.setItem('local_cart_id', res.cartId);
     }
 
     setOrderStatus('success');
