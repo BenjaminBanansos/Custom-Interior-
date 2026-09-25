@@ -20,13 +20,19 @@ export default function CartPage() {
   }, []);
 
   const loadData = async () => {
-    const [cartItems, loggedInCustomer] = await Promise.all([
-      getCart(),
-      getLoggedInCustomer()
-    ]);
-    setItems(cartItems);
-    setCustomer(loggedInCustomer);
-    setLoading(false);
+    try {
+      const [cartItems, loggedInCustomer] = await Promise.all([
+        getCart(),
+        getLoggedInCustomer()
+      ]);
+      setItems(cartItems);
+      setCustomer(loggedInCustomer);
+    } catch (err) {
+      console.error('Error loading cart:', err);
+      setMsg('Failed to load cart. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleRemove = async (id: string) => {

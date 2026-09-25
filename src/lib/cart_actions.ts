@@ -41,10 +41,15 @@ export async function addToCart(itemData: any) {
 }
 
 export async function getCart() {
-  const cartId = await getCartSessionId();
-  const db = await getDb();
-  const cart = await db.collection('carts').findOne({ cartId });
-  return cart ? cart.items : [];
+  try {
+    const cartId = await getCartSessionId();
+    const db = await getDb();
+    const cart = await db.collection('carts').findOne({ cartId });
+    return cart && cart.items ? cart.items : [];
+  } catch (err) {
+    console.error("getCart Error:", err);
+    return [];
+  }
 }
 
 export async function removeFromCart(cartItemId: string) {

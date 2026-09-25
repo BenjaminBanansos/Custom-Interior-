@@ -61,12 +61,17 @@ export async function logoutCustomer() {
 }
 
 export async function getLoggedInCustomer() {
-  const token = cookies().get('customer_token')?.value;
-  if (!token) return null;
-  
-  const db = await getDb();
-  const user = await db.collection('users').findOne({ id: token });
-  if (!user) return null;
-  
-  return { id: user.id, username: user.username, email: user.email };
+  try {
+    const token = cookies().get('customer_token')?.value;
+    if (!token) return null;
+    
+    const db = await getDb();
+    const user = await db.collection('users').findOne({ id: token });
+    if (!user) return null;
+    
+    return { id: user.id, username: user.username, email: user.email };
+  } catch (err) {
+    console.error("getLoggedInCustomer Error:", err);
+    return null;
+  }
 }
