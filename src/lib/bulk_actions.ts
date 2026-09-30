@@ -1,6 +1,7 @@
 'use server';
 
 import { getDb } from './mongo';
+import { revalidatePath } from 'next/cache';
 
 function slugify(text: string) {
   return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
@@ -53,6 +54,8 @@ export async function bulkAppendModifier(
     );
     updatedCount++;
   }
+  
+  revalidatePath('/', 'layout');
   
   return { success: true, updatedCount };
 }

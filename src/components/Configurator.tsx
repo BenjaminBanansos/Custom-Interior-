@@ -18,6 +18,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
   const [height, setHeight] = useState('36');
   const [heightFraction, setHeightFraction] = useState('0');
   const [quantity, setQuantity] = useState('1');
+  const [roomName, setRoomName] = useState('');
   
   // Advanced State
   const initialFamily = product.fabricFamilies?.[0];
@@ -83,6 +84,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
     const orderDetails = {
       family: selectedFamily?.name,
       color: selectedColor?.name,
+      roomName: roomName || 'Unspecified Room',
       modifiers: Object.entries(selectedModifiers).map(([groupId, optId]) => {
         const group = product.modifiers?.find(m => m.id === groupId);
         const opt = group?.options.find(o => o.id === optId);
@@ -109,7 +111,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
 
     if (res && res.error) {
       alert("Failed to add to cart: " + res.error);
-      setOrderStatus('');
+      setOrderStatus('idle');
       return;
     }
     
@@ -118,7 +120,8 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
     }
 
     setOrderStatus('success');
-    router.push('/cart');
+    setRoomName(''); // Reset for next window
+    setTimeout(() => setOrderStatus('idle'), 3000);
   };
 
   const getSelectedIds = () => Object.values(selectedModifiers);
@@ -364,6 +367,16 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
                   min="1"
                   value={quantity}
                   onChange={(e) => setQuantity(e.target.value)}
+                  style={{ width: '100%', padding: '16px', border: '1px solid #e0e0e0', borderRadius: '0', fontSize: '1.1rem', outline: 'none', background: '#fafafa', transition: 'border 0.3s' }}
+                />
+              </div>
+              <div>
+                <label style={{ fontSize: '0.7rem', color: '#888', display: 'block', marginBottom: '8px' }}>ROOM NAME</label>
+                <input 
+                  type="text" 
+                  placeholder="e.g. Master Bedroom"
+                  value={roomName}
+                  onChange={(e) => setRoomName(e.target.value)}
                   style={{ width: '100%', padding: '16px', border: '1px solid #e0e0e0', borderRadius: '0', fontSize: '1.1rem', outline: 'none', background: '#fafafa', transition: 'border 0.3s' }}
                 />
               </div>
