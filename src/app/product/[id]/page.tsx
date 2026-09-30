@@ -1,15 +1,16 @@
 
 import React from 'react';
-import { getProductById, getProducts } from '../../lib/products_actions';
-import { getTheme } from '../../lib/theme_actions';
-import Configurator from '../../components/Configurator';
+import { getProducts } from '@/lib/storage_actions';
+import { getTheme } from '@/lib/theme_actions';
+import Configurator from '@/components/Configurator';
 
-export default async function ProductPage({ params }: { params: { id: string } }) {
-  const [product, allProducts, theme] = await Promise.all([
-    getProductById(params.id),
+export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+    const [allProducts, theme] = await Promise.all([
     getProducts(),
     getTheme()
   ]);
+  const product = allProducts.find(p => p.id === id);
 
   if (!product) {
     return (

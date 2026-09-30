@@ -6,7 +6,7 @@ import { getCart, removeFromCart, checkoutCart } from '@/lib/cart_actions';
 import { sendOtp, verifyOtp } from '@/lib/otp_actions';
 import { getLoggedInCustomer, logoutCustomer } from '@/lib/customer_auth';
 import { Product } from '@/lib/products';
-import { getProducts } from '@/lib/products_actions';
+import { getProducts } from '@/lib/storage_actions';
 
 export default function CartPage() {
   const [items, setItems] = useState<any[]>([]);
