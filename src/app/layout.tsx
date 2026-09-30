@@ -37,7 +37,7 @@ export default async function RootLayout({
       <body style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', margin: 0 }}>
         <ThemeProvider initialTheme={theme}>
           <Navbar />
-          <main className="flex-1 w-full bg-[#F7F3EA]">{children}</main>
+          <main className="flex-1 w-full bg-[#F5F7F9]">{children}</main>
           <FloatingCart />
         </ThemeProvider>
       </body>
