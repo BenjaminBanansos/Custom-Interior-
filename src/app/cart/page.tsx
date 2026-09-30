@@ -1,12 +1,9 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
 import { getCart, removeFromCart, checkoutCart } from '@/lib/cart_actions';
 import { sendOtp, verifyOtp } from '@/lib/otp_actions';
 import { getLoggedInCustomer, logoutCustomer } from '@/lib/customer_auth';
-import { Product } from '@/lib/products';
-import { getProducts } from '@/lib/storage_actions';
 
 export default function CartPage() {
   const [items, setItems] = useState<any[]>([]);
@@ -17,8 +14,6 @@ export default function CartPage() {
   const [code, setCode] = useState('');
   const [step, setStep] = useState<'cart' | 'email' | 'verify'>('cart');
   const [msg, setMsg] = useState('');
-  
-  const [productsDb, setProductsDb] = useState<Record<string, Product>>({});
 
   useEffect(() => {
     loadData();
@@ -27,16 +22,10 @@ export default function CartPage() {
   const loadData = async () => {
     try {
       const localCartId = typeof window !== 'undefined' ? localStorage.getItem('local_cart_id') || undefined : undefined;
-      const [cartItems, loggedInCustomer, prods] = await Promise.all([
+      const [cartItems, loggedInCustomer] = await Promise.all([
         getCart(localCartId),
-        getLoggedInCustomer(),
-        getProducts()
+        getLoggedInCustomer()
       ]);
-      
-      const pMap: Record<string, Product> = {};
-      prods.forEach(p => pMap[p.name] = p);
-      setProductsDb(pMap);
-      
       setItems(cartItems);
       setCustomer(loggedInCustomer);
     } catch (err) {
@@ -59,196 +48,259 @@ export default function CartPage() {
   };
 
   const handleSendCode = async () => {
+    if (!email) {
+      setMsg('Please enter an email.');
+      return;
+    }
     setMsg('Sending code...');
     const res = await sendOtp(email);
     if (res.success) {
+      setMsg('Code sent! Check your email.');
       setStep('verify');
-      setMsg('Code sent to ' + email);
     } else {
-      setMsg('Failed: ' + res.error);
+      setMsg(res.error || 'Failed to send code.');
     }
   };
 
-  const handleVerify = async () => {
-    setMsg('Verifying...');
+  const handleVerifyAndCheckout = async () => {
+    if (!code) {
+      setMsg('Please enter the code.');
+      return;
+    }
+    setMsg('Verifying code...');
     const res = await verifyOtp(email, code);
     if (res.success) {
-      setMsg('Verified! Redirecting checkout...');
-      await handleCheckout();
+      setMsg('Verified! Processing order...');
+      const localCartId = typeof window !== 'undefined' ? localStorage.getItem('local_cart_id') || undefined : undefined;
+      const checkoutRes = await checkoutCart(email, 'Guest Customer', localCartId);
+      if (checkoutRes.success) {
+        setMsg(`Success! Your order ID is ${checkoutRes.orderId}`);
+        setItems([]);
+        if (typeof window !== 'undefined') localStorage.removeItem('local_cart_id');
+        setStep('cart');
+      } else {
+        setMsg(checkoutRes.error || 'Failed to checkout.');
+      }
     } else {
-      setMsg('Failed: ' + res.error);
+      setMsg(res.error || 'Invalid code.');
     }
   };
 
-  const handleCheckout = async () => {
+  const handleLoggedInCheckout = async () => {
+    if (!customer) return;
+    setMsg('Processing order...');
     const localCartId = typeof window !== 'undefined' ? localStorage.getItem('local_cart_id') || undefined : undefined;
-    const res = await checkoutCart(localCartId);
-    if (res.success) {
+    const checkoutRes = await checkoutCart(customer.email, customer.username, localCartId);
+    if (checkoutRes.success) {
+      setMsg(`Success! Your order ID is ${checkoutRes.orderId}`);
       setItems([]);
-      alert("Checkout Successful! We will contact you soon.");
       if (typeof window !== 'undefined') localStorage.removeItem('local_cart_id');
-      window.location.href = '/';
+      setStep('cart');
     } else {
-      alert("Checkout failed: " + res.error);
+      setMsg(checkoutRes.error || 'Failed to checkout.');
     }
   };
 
-  const beginCheckout = () => {
-    if (customer) {
-      handleCheckout();
-    } else {
-      setStep('email');
-    }
-  };
+  if (loading) return (
+    <main className="min-h-screen bg-[#F5F7F9] flex flex-col">
 
-  if (loading) return <div className="min-h-[60vh] flex items-center justify-center text-[#1A1D20] text-xl">Loading your cart...</div>;
-
-  const total = items.reduce((sum, item) => sum + item.totalPrice, 0);
-  const tax = total * 0.05;
-  const grandTotal = total + tax;
-
-  return (
-    <div className="max-w-[1400px] mx-auto p-4 md:p-12 w-full">
-      <div className="mb-10 text-center md:text-left">
-        <h1 className="text-4xl md:text-5xl font-serif text-[#1A1D20] tracking-tight">Your Cart</h1>
-      </div>
-      
-      {items.length === 0 ? (
-        <div className="bg-white p-16 rounded-sm text-center shadow-[0_12px_28px_rgba(26,29,32,0.06)] border border-gray-100">
-          <p className="text-[#1A1D20] text-2xl font-serif mb-8">Your cart is empty.</p>
-          <a href="/categories/all" className="inline-block px-10 py-4 bg-[#1A1D20] text-white rounded-sm font-medium hover:bg-[#111518] transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5">
-            Continue Shopping
+      {/* Navigation */}
+      <nav className="w-full h-[90px] flex justify-between items-center bg-white border-b border-gray-200 shadow-sm px-16 sticky top-0 z-[100]">
+        <div className="flex gap-10 text-[0.9rem] font-medium">
+          <a href="/categories/all" className="text-gray-500 hover:text-[#D4AF37] transition-colors">Shop Categories</a>
+          <a href="/about" className="text-gray-500 hover:text-[#D4AF37] transition-colors">Our Story</a>
+          <a href="/contact" className="text-gray-500 hover:text-[#D4AF37] transition-colors">Contact</a>
+        </div>
+        
+        <a href="/" className="absolute left-1/2 -translate-x-1/2 font-serif text-3xl font-semibold text-[#1A1D20]">
+          STITCH
+        </a>
+        
+        <div className="flex gap-8 items-center text-[0.9rem] font-medium">
+          <a href="/account/login" className="text-gray-500 flex items-center gap-2 hover:text-[#D4AF37] transition-colors">
+            <span className="text-xl">👤</span> Login
+          </a>
+          <a href="/cart" className="text-[#1A1D20] flex items-center gap-2">
+            <span className="text-xl">🛒</span> Cart
           </a>
         </div>
+      </nav>
+
+    <div className="flex h-screen items-center justify-center">
+      <div className="text-xs font-bold tracking-[0.2em] text-gray-500 uppercase animate-pulse">
+        LOADING BASKET...
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="max-w-6xl mx-auto px-6 py-20 font-sans">
+      <h1 className="text-3xl font-light mb-16 tracking-tight">Your Project Basket</h1>
+      
+      {items.length === 0 ? (
+        <div className="py-20 border-t border-b border-gray-200 rounded-none text-center">
+          <p className="text-sm font-bold tracking-widest text-gray-400 uppercase mb-6">Your basket is empty.</p>
+          <button 
+            onClick={() => window.location.href = '/'}
+            className="bg-[#343A40] text-white px-8 py-4 text-[0.95rem] font-medium tracking-wide hover:bg-[#1A1D20] transition-colors"
+          >
+            RETURN TO SHOP
+          </button>
+        </div>
       ) : (
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
-          <div className="lg:w-2/3 flex flex-col gap-6">
-            {items.map(item => {
-              const p = productsDb[item.productName];
-              const img = p?.imageUrl || 'https://shades4u.s3.amazonaws.com/images/assets/duoglide.png';
-              
-              return (
-                <div key={item._id} className="bg-white p-6 rounded-sm flex flex-col sm:flex-row gap-8 shadow-[0_12px_28px_rgba(26,29,32,0.06)] border border-gray-100 transition-all duration-300 hover:shadow-[0_12px_28px_rgba(26,29,32,0.1)] group">
-                  <div className="w-full sm:w-48 h-48 rounded-sm bg-gray-50 overflow-hidden flex-shrink-0 relative">
-                    <img src={img} alt={item.productName} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+          <div className="lg:col-span-8">
+            <div className="border-b border-[#343A40] pb-4 mb-8">
+              <h2 className="text-xs font-bold tracking-[0.15em] uppercase text-gray-500">Items ({items.length})</h2>
+            </div>
+            
+            <div className="space-y-6">
+              {items.map(item => (
+                <div key={item.cartItemId} className="flex gap-6 border-b border-gray-100 pb-8 relative group">
+                  <div className="w-24 h-24 bg-gray-50 flex items-center justify-center flex-shrink-0">
+                    <span className="text-[10px] text-gray-400 uppercase tracking-wider">{item.productName.split(' ')[0]}</span>
                   </div>
-                  
-                  <div className="flex-1 flex flex-col justify-between">
-                    <div>
-                      <div className="flex justify-between items-start gap-4">
-                        <h2 className="text-2xl font-serif text-[#1A1D20] font-medium leading-tight">{item.productName}</h2>
-                        <span className="text-xl font-serif text-[#1A1D20]">${item.totalPrice}</span>
+                  <div className="flex-grow">
+                    <div className="flex justify-between items-start mb-1">
+                      <h3 className="font-semibold text-lg">{item.productName}</h3>
+                      <button 
+                        onClick={() => handleRemove(item.cartItemId)} 
+                        className="text-gray-400 hover:text-red-500 text-xl font-light transition-colors"
+                      >
+                        ✕
+                      </button>
+                    </div>
+                    
+                    {item.details?.roomName && item.details?.roomName !== 'Unspecified Room' && (
+                      <div className="inline-block bg-gray-100 px-2 py-1 mb-3">
+                        <span className="text-[10px] font-bold tracking-widest uppercase text-gray-600">
+                          {item.details.roomName}
+                        </span>
                       </div>
-                      <p className="text-sm font-medium text-gray-400 uppercase tracking-wider mt-1 mb-4">{item.width}" W x {item.height}" H &nbsp;&bull;&nbsp; Qty: {item.quantity}</p>
-                      
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {item.details?.family && (
-                          <span className="bg-[#E8ECEF] text-[#1A1D20] px-3 py-1 rounded-sm text-xs font-medium border border-[#1A1D20]/10">
-                            {item.details.family}
-                          </span>
-                        )}
-                        {item.details?.color && (
-                          <span className="bg-[#E8ECEF] text-[#1A1D20] px-3 py-1 rounded-sm text-xs font-medium border border-[#1A1D20]/10">
-                            {item.details.color}
-                          </span>
-                        )}
+                    )}
+                    
+                    <div className="grid grid-cols-2 gap-4 text-sm text-gray-500 mt-2">
+                      <div>
+                        <span className="block text-[10px] font-bold tracking-widest uppercase text-gray-400 mb-1">Dimensions</span>
+                        {item.width}" W × {item.height}" H
+                      </div>
+                      <div>
+                        <span className="block text-[10px] font-bold tracking-widest uppercase text-gray-400 mb-1">Fabric</span>
+                        {item.details?.family || 'N/A'} - {item.details?.color || 'N/A'}
                       </div>
                     </div>
                     
-                    <div className="flex justify-end">
-                      <button 
-                        onClick={() => handleRemove(item._id)}
-                        className="text-sm font-medium text-gray-400 hover:text-red-500 transition-colors"
-                      >
-                        Remove Item
-                      </button>
+                    <div className="flex justify-between items-end mt-6">
+                      <div className="text-sm text-gray-500">
+                        Qty: {item.quantity}
+                      </div>
+                      <div className="text-xl font-light">
+                        ${item.totalPrice}
+                      </div>
                     </div>
                   </div>
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
-
-          <div className="lg:w-1/3">
-            <div className="bg-white rounded-sm shadow-[0_12px_28px_rgba(26,29,32,0.06)] border border-gray-100 p-8 sticky top-32">
-              <h3 className="text-2xl font-serif text-[#1A1D20] mb-8">Order Summary</h3>
+          
+          <div className="lg:col-span-4">
+            <div className="bg-white rounded-none shadow-sm p-8">
+              <h2 className="text-xs font-bold tracking-[0.15em] uppercase text-gray-500 mb-8 border-b border-gray-200 rounded-none pb-4">Order Summary</h2>
               
-              <div className="flex flex-col gap-4 mb-8 text-[0.95rem] text-[#1A1D20]">
-                <div className="flex justify-between">
-                  <span className="text-gray-500">Subtotal</span>
-                  <span className="font-medium">${total.toFixed(2)}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-500">Shipping</span>
-                  <span className="font-medium">Calculated at next step</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-500">Estimated Tax (5%)</span>
-                  <span className="font-medium">${tax.toFixed(2)}</span>
-                </div>
-                
-                <div className="border-t border-gray-200 mt-4 pt-6 flex justify-between items-end">
-                  <span className="text-lg font-serif">Total</span>
-                  <span className="text-3xl font-serif font-medium">${grandTotal.toFixed(2)}</span>
-                </div>
+              <div className="flex justify-between items-center mb-8">
+                <span className="text-sm text-gray-500 uppercase tracking-wider">Subtotal</span>
+                <span className="text-2xl font-light">${items.reduce((sum, item) => sum + item.totalPrice, 0)}</span>
               </div>
+              
+              {customer ? (
+                <div className="space-y-4">
+                  <div className="bg-white p-4 border border-gray-200 rounded-none">
+                    <p className="text-[10px] font-bold tracking-widest uppercase text-gray-400 mb-1">Signed in as</p>
+                    <p className="font-semibold">{customer.username}</p>
+                    <p className="text-xs text-gray-500">{customer.email}</p>
+                  </div>
+                  <button 
+                    onClick={handleLoggedInCheckout} 
+                    className="w-full bg-[#343A40] text-white py-4 rounded-none shadow-md text-[0.95rem] font-medium tracking-wide hover:bg-[#1A1D20] transition-colors"
+                  >
+                    Place Order
+                  </button>
+                  <button onClick={handleLogout} className="w-full text-gray-400 text-xs tracking-widest uppercase mt-4 hover:text-[#1A1D20] transition-colors">Sign out</button>
+                </div>
+              ) : (
+                <>
+                  {step === 'cart' && (
+                    <div className="space-y-4">
+                      <button 
+                        onClick={() => window.location.href = '/api/auth/google'}
+                        className="w-full bg-white border border-gray-200 rounded-none text-[#1A1D20] py-4 flex justify-center items-center gap-3 hover:bg-gray-50 transition-colors"
+                      >
+                        <img src="https://img.icons8.com/color/48/google-logo.png" className="w-5 h-5" alt="Google" />
+                        <span className="text-[0.95rem] font-medium tracking-wide">Sign in with Google</span>
+                      </button>
+                      
+                      <div className="relative flex py-6 items-center">
+                        <div className="flex-grow border-t border-gray-200 rounded-none"></div>
+                        <span className="flex-shrink-0 mx-4 text-gray-400 text-[10px] font-bold tracking-widest uppercase">OR CONTINUE AS GUEST</span>
+                        <div className="flex-grow border-t border-gray-200 rounded-none"></div>
+                      </div>
 
-              {step === 'cart' && (
-                <div className="flex flex-col gap-4">
-                  {customer ? (
-                    <div className="mb-4 bg-gray-50 p-4 rounded-sm border border-gray-200 text-sm">
-                      <span className="text-gray-500 block mb-1">Logged in as</span>
-                      <strong className="text-[#1A1D20] block">{customer.email}</strong>
-                      <button onClick={handleLogout} className="text-xs text-[#8D99AE] hover:underline mt-2 inline-block">Logout</button>
+                      <button 
+                        onClick={() => setStep('email')} 
+                        className="w-full bg-[#343A40] text-white py-4 rounded-none shadow-md text-[0.95rem] font-medium tracking-wide hover:bg-[#1A1D20] transition-colors"
+                      >
+                        Guest Checkout
+                      </button>
                     </div>
-                  ) : null}
-                  <button 
-                    onClick={beginCheckout}
-                    className="w-full bg-[#1A1D20] text-white py-4 rounded-sm font-medium hover:bg-[#111518] transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
-                  >
-                    Proceed to Checkout
-                  </button>
-                </div>
+                  )}
+
+                  {step === 'email' && (
+                    <div className="space-y-4">
+                      <p className="text-xs text-gray-500 leading-relaxed mb-4">Enter your email to receive a verification code.</p>
+                      <input 
+                        type="email" 
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                        placeholder="name@company.com" 
+                        className="w-full bg-white border border-gray-200 rounded-none p-4 text-sm outline-none focus:border-[#343A40] transition-colors"
+                      />
+                      <button 
+                        onClick={handleSendCode} 
+                        className="w-full bg-[#343A40] text-white py-4 rounded-none shadow-md text-[0.95rem] font-medium tracking-wide hover:bg-[#1A1D20] transition-colors mt-2"
+                      >
+                        Send Code
+                      </button>
+                      <button onClick={() => setStep('cart')} className="w-full text-gray-400 text-xs tracking-widest uppercase mt-4 hover:text-[#1A1D20] transition-colors">Cancel</button>
+                    </div>
+                  )}
+
+                  {step === 'verify' && (
+                    <div className="space-y-4">
+                      <p className="text-xs text-gray-500 leading-relaxed mb-4">Enter the 6-digit code sent to <br/><b className="text-[#1A1D20]">{email}</b></p>
+                      <input 
+                        type="text" 
+                        value={code}
+                        onChange={e => setCode(e.target.value)}
+                        placeholder="••••••" 
+                        className="w-full bg-white border border-gray-200 rounded-none p-4 text-center text-2xl tracking-[0.5em] outline-none focus:border-[#343A40] transition-colors"
+                        maxLength={6}
+                      />
+                      <button 
+                        onClick={handleVerifyAndCheckout} 
+                        className="w-full bg-[#343A40] text-white py-4 rounded-none shadow-md text-[0.95rem] font-medium tracking-wide hover:bg-[#1A1D20] transition-colors mt-2"
+                      >
+                        Verify & Place Order
+                      </button>
+                      <button onClick={() => setStep('email')} className="w-full text-gray-400 text-xs tracking-widest uppercase mt-4 hover:text-[#1A1D20] transition-colors">Back</button>
+                    </div>
+                  )}
+                </>
               )}
 
-              {step === 'email' && (
-                <div className="mt-8 bg-gray-50 p-6 border border-gray-200 rounded-sm">
-                  <h4 className="font-medium text-[#1A1D20] mb-4">Guest Checkout</h4>
-                  <input 
-                    type="email" 
-                    placeholder="Enter email address" 
-                    value={email} 
-                    onChange={e => setEmail(e.target.value)} 
-                    className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-[#1A1D20] focus:ring-1 focus:ring-[#1A1D20] outline-none transition-all duration-300 mb-4 bg-white"
-                  />
-                  <button 
-                    onClick={handleSendCode}
-                    className="w-full bg-[#1A1D20] text-white py-3 rounded-sm font-medium hover:bg-[#111518] transition-all"
-                  >
-                    Continue
-                  </button>
-                  {msg && <p className="mt-4 text-sm text-[#1A1D20] text-center font-medium">{msg}</p>}
-                </div>
-              )}
-
-              {step === 'verify' && (
-                <div className="mt-8 bg-gray-50 p-6 border border-gray-200 rounded-sm">
-                  <h4 className="font-medium text-[#1A1D20] mb-2">Check your email</h4>
-                  <p className="text-sm text-gray-500 mb-4">We sent a verification code to {email}</p>
-                  <input 
-                    type="text" 
-                    placeholder="Enter 6-digit code" 
-                    value={code} 
-                    onChange={e => setCode(e.target.value)} 
-                    className="w-full px-4 py-3 border border-gray-200 rounded-sm text-center tracking-widest text-lg focus:border-[#1A1D20] focus:ring-1 focus:ring-[#1A1D20] outline-none transition-all duration-300 mb-4 bg-white"
-                  />
-                  <button 
-                    onClick={handleVerify}
-                    className="w-full bg-[#1A1D20] text-white py-3 rounded-sm font-medium hover:bg-[#111518] transition-all"
-                  >
-                    Verify & Complete
-                  </button>
-                  {msg && <p className="mt-4 text-sm text-[#1A1D20] text-center font-medium">{msg}</p>}
+              {msg && (
+                <div className={`mt-6 p-4 text-xs tracking-wide uppercase font-bold border ${msg.includes('Success') ? 'bg-[#f0fdf4] border-[#bbf7d0] text-[#166534]' : 'bg-gray-100 border-gray-200 rounded-none text-[#1A1D20]'}`}>
+                  {msg}
                 </div>
               )}
             </div>
@@ -256,5 +308,6 @@ export default function CartPage() {
         </div>
       )}
     </div>
+    </main>
   );
 }
