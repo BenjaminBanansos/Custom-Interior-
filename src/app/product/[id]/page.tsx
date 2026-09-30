@@ -18,7 +18,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
   }
 
   return (
-    <main style={{ minHeight: '100vh', backgroundColor: 'var(--bg-primary)' }}>
+    <main style={{ minHeight: '100vh', backgroundColor: 'var(--bg-secondary)' }}>
       {/* Navigation */}
       <nav style={{ padding: '0 4rem', height: '90px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#fff', borderBottom: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-sm)', position: 'sticky', top: 0, zIndex: 100 }}>
         <div style={{ display: 'flex', gap: '2.5rem', fontSize: '0.9rem', fontWeight: 500 }}>

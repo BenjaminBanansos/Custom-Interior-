@@ -102,6 +102,30 @@ export default function CartPage() {
   };
 
   if (loading) return (
+    <main className="min-h-screen bg-[#F7F3EA] flex flex-col">
+
+      {/* Navigation */}
+      <nav className="w-full h-[90px] flex justify-between items-center bg-white border-b border-gray-200 shadow-sm px-16 sticky top-0 z-[100]">
+        <div className="flex gap-10 text-[0.9rem] font-medium">
+          <a href="/categories/all" className="text-gray-500 hover:text-[#D4AF37] transition-colors">Shop Categories</a>
+          <a href="/about" className="text-gray-500 hover:text-[#D4AF37] transition-colors">Our Story</a>
+          <a href="/contact" className="text-gray-500 hover:text-[#D4AF37] transition-colors">Contact</a>
+        </div>
+        
+        <a href="/" className="absolute left-1/2 -translate-x-1/2 font-['Outfit'] text-3xl font-semibold text-[#071F45]">
+          STITCH
+        </a>
+        
+        <div className="flex gap-8 items-center text-[0.9rem] font-medium">
+          <a href="/account/login" className="text-gray-500 flex items-center gap-2 hover:text-[#D4AF37] transition-colors">
+            <span className="text-xl">👤</span> Login
+          </a>
+          <a href="/cart" className="text-[#071F45] flex items-center gap-2">
+            <span className="text-xl">🛒</span> Cart
+          </a>
+        </div>
+      </nav>
+
     <div className="flex h-screen items-center justify-center">
       <div className="text-xs font-bold tracking-[0.2em] text-gray-500 uppercase animate-pulse">
         LOADING BASKET...
@@ -181,7 +205,7 @@ export default function CartPage() {
           </div>
           
           <div className="lg:col-span-4">
-            <div className="bg-[#F7F3EA] rounded-[18px] shadow-sm p-8">
+            <div className="bg-white rounded-[18px] shadow-sm p-8">
               <h2 className="text-xs font-bold tracking-[0.15em] uppercase text-gray-500 mb-8 border-b border-gray-200 rounded-[18px] pb-4">Order Summary</h2>
               
               <div className="flex justify-between items-center mb-8">
@@ -191,7 +215,7 @@ export default function CartPage() {
               
               {customer ? (
                 <div className="space-y-4">
-                  <div className="bg-white p-4 border border-gray-200 rounded-xl rounded-[18px]">
+                  <div className="bg-white p-4 border border-gray-200 rounded-[18px]">
                     <p className="text-[10px] font-bold tracking-widest uppercase text-gray-400 mb-1">Signed in as</p>
                     <p className="font-semibold">{customer.username}</p>
                     <p className="text-xs text-gray-500">{customer.email}</p>
@@ -210,7 +234,7 @@ export default function CartPage() {
                     <div className="space-y-4">
                       <button 
                         onClick={() => window.location.href = '/api/auth/google'}
-                        className="w-full bg-white border border-gray-200 rounded-xl rounded-[18px] text-[#071F45] py-4 flex justify-center items-center gap-3 hover:bg-gray-50 transition-colors"
+                        className="w-full bg-white border border-gray-200 rounded-[18px] text-[#071F45] py-4 flex justify-center items-center gap-3 hover:bg-gray-50 transition-colors"
                       >
                         <img src="https://img.icons8.com/color/48/google-logo.png" className="w-5 h-5" alt="Google" />
                         <span className="text-[0.95rem] font-medium tracking-wide">Sign in with Google</span>
@@ -239,7 +263,7 @@ export default function CartPage() {
                         value={email}
                         onChange={e => setEmail(e.target.value)}
                         placeholder="name@company.com" 
-                        className="w-full bg-white border border-gray-200 rounded-xl rounded-[18px] p-4 text-sm outline-none focus:border-[#0B2C5F] transition-colors"
+                        className="w-full bg-white border border-gray-200 rounded-[18px] p-4 text-sm outline-none focus:border-[#0B2C5F] transition-colors"
                       />
                       <button 
                         onClick={handleSendCode} 
@@ -259,7 +283,7 @@ export default function CartPage() {
                         value={code}
                         onChange={e => setCode(e.target.value)}
                         placeholder="••••••" 
-                        className="w-full bg-white border border-gray-200 rounded-xl rounded-[18px] p-4 text-center text-2xl tracking-[0.5em] outline-none focus:border-[#0B2C5F] transition-colors"
+                        className="w-full bg-white border border-gray-200 rounded-[18px] p-4 text-center text-2xl tracking-[0.5em] outline-none focus:border-[#0B2C5F] transition-colors"
                         maxLength={6}
                       />
                       <button 
@@ -284,5 +308,6 @@ export default function CartPage() {
         </div>
       )}
     </div>
+    </main>
   );
 }

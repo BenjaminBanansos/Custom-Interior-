@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -9,6 +10,7 @@ import { useRouter } from 'next/navigation';
 interface ConfiguratorProps {
   product: Product;
   theme?: ThemeConfig;
+  allProducts?: Product[];
 }
 
 export default function Configurator({ product, theme }: ConfiguratorProps) {
@@ -20,21 +22,16 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
   const [quantity, setQuantity] = useState('1');
   const [roomName, setRoomName] = useState('');
   
-  // Advanced State
   const initialFamily = product.fabricFamilies?.[0];
   const [selectedFamily, setSelectedFamily] = useState<FabricFamily | null>(initialFamily || null);
   const categories = Array.from(new Set((product.fabricFamilies || []).map(f => f.category || 'Standard'))).sort();
   const [selectedCategory, setSelectedCategory] = useState<string>(categories[0] || 'Standard');
   const [selectedColor, setSelectedColor] = useState<FabricColor | null>(initialFamily?.colors?.[0] || null);
   
-  // Modifiers: Map of groupId -> optionId
   const [selectedModifiers, setSelectedModifiers] = useState<Record<string, string>>({});
-  // Sub-Attributes: Map of subAttributeId -> choiceId
   const [selectedSubAttributes, setSelectedSubAttributes] = useState<Record<string, string>>({});
   
   const [totalPrice, setTotalPrice] = useState(product.basePrice);
-  
-  // Lightbox State
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const [hardwareLightboxImage, setHardwareLightboxImage] = useState<string | null>(null);
@@ -76,11 +73,9 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
     return parseFloat(val) || 0;
   };
 
-  
   const handleOrderSubmit = async () => {
     setOrderStatus('submitting');
     
-    // Gather all details
     const orderDetails = {
       family: selectedFamily?.name,
       color: selectedColor?.name,
@@ -120,7 +115,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
     }
 
     setOrderStatus('success');
-    setRoomName(''); // Reset for next window
+    setRoomName(''); 
     setTimeout(() => setOrderStatus('idle'), 3000);
   };
 
@@ -130,17 +125,15 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
     const liftStyle = selectedModifiers['lift-style'];
     if (liftStyle === 'motorization') return 24;
     if (liftStyle === 'cordless') return 20;
-    return 12; // default for standard-chain and others
+    return 12;
   };
 
   const isOptionCompatible = (opt: any) => {
     const selected = getSelectedIds();
     if (opt.requires && opt.requires.length > 0) {
-      // Must have AT LEAST ONE of the required options
       if (!opt.requires.some((r: string) => selected.includes(r))) return false;
     }
     if (opt.excludes && opt.excludes.length > 0) {
-      // Must NOT have ANY of the excluded options
       if (opt.excludes.some((e: string) => selected.includes(e))) return false;
     }
     return true;
@@ -158,25 +151,21 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
       price = product.basePrice;
     }
 
-    // Add Fabric Family Modifier
     if (selectedFamily) price += selectedFamily.priceModifier;
 
     let newSelectedModifiers = { ...selectedModifiers };
     let hasChanges = false;
 
-    // Add Modifiers and Sub-Attributes
     product.modifiers?.forEach(group => {
       const selectedOptionId = newSelectedModifiers[group.id];
       if (selectedOptionId) {
         const option = group.options.find(o => o.id === selectedOptionId);
         if (option) {
-          // Check if it's still compatible
           if (!isOptionCompatible(option)) {
             delete newSelectedModifiers[group.id];
             hasChanges = true;
           } else {
             price += option.priceAdjustment;
-            // Sub-attributes
             option.subAttributes?.forEach(sub => {
               const selectedChoiceId = selectedSubAttributes[sub.id];
               if (selectedChoiceId) {
@@ -213,64 +202,80 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
             gap: 60px;
           }
         }
+        
+        /* Janal Image Layout */
         .visual-panel {
           position: relative;
-          height: 300px;
-          width: 300px;
-          border-radius: 16px;
+          height: 350px;
+          width: 100%;
+          border-radius: var(--radius-md);
           margin-top: 20px;
           background-color: ${selectedColor?.hex || '#f9f9f9'};
           background-image: ${bgImageUrl ? `url(${bgImageUrl})` : 'none'};
           background-size: cover;
           background-position: center;
-          box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+          box-shadow: var(--shadow-sm);
           flex-shrink: 0;
-          border: 1px solid rgba(0,0,0,0.05);
         }
         @media (min-width: 1024px) {
           .visual-panel {
-            width: ${theme?.productImageSize || 500}px;
-            height: ${theme?.productImageSize || 500}px;
+            width: ${theme?.productImageSize || 550}px;
+            height: ${theme?.productImageSize || 550}px;
             position: sticky;
             top: 140px;
-            margin-top: 40px;
+            margin-top: 0px;
           }
         }
+        
         .control-panel {
           width: 100%;
-          padding: 40px 0;
-          background: transparent;
+          padding: 0 0 160px 0;
         }
         @media (min-width: 1024px) {
           .control-panel {
             flex: 1;
-            padding: 40px 0 140px 0; 
           }
         }
+        
+        /* Clean Inputs */
+        .janal-input {
+          flex: 2;
+          padding: 16px 20px;
+          border: 1px solid var(--border-subtle);
+          border-radius: var(--radius-sm);
+          font-size: 1rem;
+          outline: none;
+          background: #fff;
+          color: var(--text-primary);
+          transition: var(--transition-smooth);
+        }
+        .janal-input:focus {
+          border-color: var(--accent-primary);
+          box-shadow: 0 0 0 3px rgba(11,44,95,0.1);
+        }
+        
+        /* Sticky Cart Bar Janal Style */
         .glass-bar {
           position: fixed;
           bottom: 0;
           left: 0;
           width: 100%;
-          padding: 20px;
-          background: rgba(255, 255, 255, 0.85);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          border-top: 1px solid rgba(0,0,0,0.05);
+          padding: 20px 5%;
+          background: #fff;
+          border-top: 1px solid var(--border-subtle);
           z-index: 50;
           display: flex;
           justify-content: space-between;
           align-items: center;
-          box-shadow: 0 -10px 40px rgba(0,0,0,0.05);
+          box-shadow: 0 -4px 20px rgba(11,44,95,0.08);
         }
         @media (min-width: 1024px) {
           .glass-bar {
-            width: 600px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 16px 16px 0 0;
-            border: 1px solid rgba(0,0,0,0.05);
-            padding: 20px 40px;
+            width: calc(100% - ${theme?.productImageSize || 550}px - 60px);
+            left: auto;
+            right: 0;
+            padding: 24px 60px;
+            border-radius: var(--radius-md) 0 0 0;
           }
         }
       `}</style>
@@ -278,77 +283,28 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
       <div className="config-container">
         {/* Visual Preview */}
         <div className="visual-panel" onClick={openLightbox} style={{ cursor: 'pointer' }}>
-          <div style={{ position: 'absolute', bottom: '-30px', left: 0, width: '100%', textAlign: 'center', fontSize: '0.7rem', fontWeight: 600, color: '#888' }}>
-            PREVIEW: {selectedColor?.name || 'Base Model'}
-          </div>
-          <div style={{ position: 'absolute', top: '20px', right: '20px', background: 'rgba(255,255,255,0.8)', padding: '8px 12px', borderRadius: '20px', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.1em' }}>
+          <div style={{ position: 'absolute', top: '20px', right: '20px', background: '#fff', color: 'var(--text-primary)', padding: '8px 16px', borderRadius: 'var(--radius-pill)', fontSize: '0.8rem', fontWeight: 600, boxShadow: 'var(--shadow-sm)' }}>
             🔍 ENLARGE
           </div>
         </div>
 
         {/* Control Panel */}
         <div className="control-panel">
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '3rem', fontWeight: 400, letterSpacing: '-0.03em' }}>{product.name}</h2>
+          <div style={{ marginBottom: '2rem' }}>
+            <h1 style={{ fontSize: '3rem', fontWeight: 500, color: 'var(--text-primary)', marginBottom: '0.5rem', lineHeight: 1.1 }}>{product.name}</h1>
+            <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)' }}>From ${product.basePrice}</p>
+          </div>
           
-          {/* Measurements */}
-          <div style={{ marginBottom: '4rem' }}>
-            <label style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1.5rem', display: 'block', color: 'var(--text-primary)' }}>
-              Precision Dimensions
-            </label>
+          {/* Step 1: Measurements */}
+          <div style={{ backgroundColor: '#fff', padding: '30px', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-sm)', marginBottom: '30px' }}>
+            <h3 style={{ fontSize: '1.2rem', fontWeight: 500, marginBottom: '20px', color: 'var(--text-primary)' }}>1. Dimensions & Quantity</h3>
+            
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
               <div>
-                <label style={{ fontSize: '0.7rem', color: '#888', display: 'block', marginBottom: '8px' }}>WIDTH (IN)</label>
-                <div style={{ display: 'flex', gap: '8px' }}>
-                  <input 
-                    type="number" 
-                    min="12"
-                    placeholder="Inches"
-                    value={width}
-                    onChange={(e) => setWidth(e.target.value)}
-                    style={{ flex: 2, padding: '16px', border: '1px solid #e0e0e0', borderRadius: 'var(--radius-sm)', fontSize: '1.1rem', outline: 'none', background: '#fafafa' }}
-                  />
-                  <select 
-                    value={widthFraction} 
-                    onChange={(e) => setWidthFraction(e.target.value)}
-                    style={{ flex: 1, padding: '16px', border: '1px solid #e0e0e0', borderRadius: 'var(--radius-sm)', fontSize: '1.1rem', outline: 'none', background: '#fafafa', appearance: 'none', cursor: 'pointer' }}
-                  >
-                    <option value="0">0"</option>
-                    <option value="1/8">1/8"</option>
-                    <option value="1/4">1/4"</option>
-                    <option value="3/8">3/8"</option>
-                    <option value="1/2">1/2"</option>
-                    <option value="5/8">5/8"</option>
-                    <option value="3/4">3/4"</option>
-                    <option value="7/8">7/8"</option>
-                  </select>
-                </div>
-                {selectedFamily?.maxWidth && (parseFloat(width) > selectedFamily.maxWidth) && (
-                  <div style={{ color: 'red', fontSize: '0.7rem', marginTop: '4px' }}>
-                    Max width for this fabric is {selectedFamily.maxWidth}"
-                  </div>
-                )}
-                {(parseFloat(width) < getDynamicMinWidth()) && (
-                  <div style={{ color: 'red', fontSize: '0.7rem', marginTop: '4px' }}>
-                    Min width for the selected lift system is {getDynamicMinWidth()}"
-                  </div>
-                )}
-              </div>
-              <div>
-                <label style={{ fontSize: '0.7rem', color: '#888', display: 'block', marginBottom: '8px' }}>HEIGHT (IN)</label>
-                <div style={{ display: 'flex', gap: '8px' }}>
-                  <input 
-                    type="number" 
-                    min="12"
-                    placeholder="Inches"
-                    value={height}
-                    onChange={(e) => setHeight(e.target.value)}
-                    style={{ flex: 2, padding: '16px', border: '1px solid #e0e0e0', borderRadius: 'var(--radius-sm)', fontSize: '1.1rem', outline: 'none', background: '#fafafa' }}
-                  />
-                  <select 
-                    value={heightFraction} 
-                    onChange={(e) => setHeightFraction(e.target.value)}
-                    style={{ flex: 1, padding: '16px', border: '1px solid #e0e0e0', borderRadius: 'var(--radius-sm)', fontSize: '1.1rem', outline: 'none', background: '#fafafa', appearance: 'none', cursor: 'pointer' }}
-                  >
+                <label style={{ fontSize: '0.85rem', fontWeight: 500, color: 'var(--text-secondary)', display: 'block', marginBottom: '8px' }}>WIDTH (IN)</label>
+                <div style={{ display: 'flex', gap: '10px' }}>
+                  <input type="number" min="12" value={width} onChange={(e) => setWidth(e.target.value)} className="janal-input" />
+                  <select value={widthFraction} onChange={(e) => setWidthFraction(e.target.value)} className="janal-input" style={{ flex: 1, padding: '16px 10px' }}>
                     <option value="0">0"</option>
                     <option value="1/8">1/8"</option>
                     <option value="1/4">1/4"</option>
@@ -360,91 +316,82 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
                   </select>
                 </div>
               </div>
+              
               <div>
-                <label style={{ fontSize: '0.7rem', color: '#888', display: 'block', marginBottom: '8px' }}>QUANTITY</label>
-                <input 
-                  type="number" 
-                  min="1"
-                  value={quantity}
-                  onChange={(e) => setQuantity(e.target.value)}
-                  style={{ width: '100%', padding: '16px', border: '1px solid #e0e0e0', borderRadius: 'var(--radius-sm)', fontSize: '1.1rem', outline: 'none', background: '#fafafa', transition: 'border 0.3s' }}
-                />
+                <label style={{ fontSize: '0.85rem', fontWeight: 500, color: 'var(--text-secondary)', display: 'block', marginBottom: '8px' }}>HEIGHT (IN)</label>
+                <div style={{ display: 'flex', gap: '10px' }}>
+                  <input type="number" min="12" value={height} onChange={(e) => setHeight(e.target.value)} className="janal-input" />
+                  <select value={heightFraction} onChange={(e) => setHeightFraction(e.target.value)} className="janal-input" style={{ flex: 1, padding: '16px 10px' }}>
+                    <option value="0">0"</option>
+                    <option value="1/8">1/8"</option>
+                    <option value="1/4">1/4"</option>
+                    <option value="3/8">3/8"</option>
+                    <option value="1/2">1/2"</option>
+                    <option value="5/8">5/8"</option>
+                    <option value="3/4">3/4"</option>
+                    <option value="7/8">7/8"</option>
+                  </select>
+                </div>
               </div>
+              
               <div>
-                <label style={{ fontSize: '0.7rem', color: '#888', display: 'block', marginBottom: '8px' }}>ROOM NAME</label>
-                <input 
-                  type="text" 
-                  placeholder="e.g. Master Bedroom"
-                  value={roomName}
-                  onChange={(e) => setRoomName(e.target.value)}
-                  style={{ width: '100%', padding: '16px', border: '1px solid #e0e0e0', borderRadius: 'var(--radius-sm)', fontSize: '1.1rem', outline: 'none', background: '#fafafa', transition: 'border 0.3s' }}
-                />
+                <label style={{ fontSize: '0.85rem', fontWeight: 500, color: 'var(--text-secondary)', display: 'block', marginBottom: '8px' }}>ROOM NAME</label>
+                <input type="text" placeholder="e.g. Master Bedroom" value={roomName} onChange={(e) => setRoomName(e.target.value)} className="janal-input" style={{ width: '100%' }} />
+              </div>
+              
+              <div>
+                <label style={{ fontSize: '0.85rem', fontWeight: 500, color: 'var(--text-secondary)', display: 'block', marginBottom: '8px' }}>QUANTITY</label>
+                <input type="number" min="1" value={quantity} onChange={(e) => setQuantity(e.target.value)} className="janal-input" style={{ width: '100%' }} />
               </div>
             </div>
           </div>
 
-          {/* Fabric Selection */}
+          {/* Step 2: Fabric Selection */}
           {product.fabricFamilies && product.fabricFamilies.length > 0 && (
-            <div style={{ marginBottom: '4rem' }}>
-              <label style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1.5rem', display: 'block', color: 'var(--text-primary)' }}>
-                Opacity / Category
-              </label>
+            <div style={{ backgroundColor: '#fff', padding: '30px', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-sm)', marginBottom: '30px' }}>
+              <h3 style={{ fontSize: '1.2rem', fontWeight: 500, marginBottom: '20px', color: 'var(--text-primary)' }}>2. Fabric Collection</h3>
               
-              <div style={{ display: 'flex', gap: '15px', borderBottom: '1px solid #eaeaea', paddingBottom: '15px', marginBottom: '30px' }}>
-                {categories.map(cat => (
-                  <button 
-                    key={cat}
-                    onClick={() => {
-                      setSelectedCategory(cat);
-                      const firstFamInCat = product.fabricFamilies.find(f => (f.category || 'Standard') === cat);
-                      if (firstFamInCat) {
-                        setSelectedFamily(firstFamInCat);
-                        setSelectedColor(firstFamInCat.colors[0] || null);
-                      }
-                    }}
-                    style={{ 
-                      background: 'none', border: 'none', padding: 0, cursor: 'pointer',
-                      fontSize: '1.1rem', fontWeight: selectedCategory === cat ? 700 : 400,
-                      color: selectedCategory === cat ? 'var(--text-primary)' : '#888',
-                      borderBottom: selectedCategory === cat ? '2px solid var(--text-primary)' : 'none',
-                      paddingBottom: '5px'
-                    }}
-                  >{cat}</button>
-                ))}
-              </div>
-            <div style={{ display: 'flex', gap: '10px', overflowX: 'auto', paddingBottom: '10px', marginBottom: '20px' }}>
+              {/* Category Pills */}
+              <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '25px' }}>
                 {product.fabricFamilies.map(fam => (
                   <button 
                     key={fam.fabricId}
                     onClick={() => { setSelectedFamily(fam); setSelectedColor(fam.colors[0] || null); }}
                     style={{ 
-                      padding: '10px 20px', borderRadius: 'var(--radius-pill)', border: selectedFamily?.fabricId === fam.fabricId ? '1px solid var(--accent-primary)' : '1px solid #eaeaea', cursor: 'pointer', whiteSpace: 'nowrap',
+                      padding: '8px 16px', borderRadius: 'var(--radius-pill)', 
+                      border: selectedFamily?.fabricId === fam.fabricId ? '1px solid var(--accent-primary)' : '1px solid var(--border-subtle)',
                       backgroundColor: selectedFamily?.fabricId === fam.fabricId ? 'var(--accent-primary)' : '#fff',
-                      color: selectedFamily?.fabricId === fam.fabricId ? '#fff' : 'var(--text-primary)',
-                      fontSize: '0.8rem', fontWeight: 600, transition: 'all 0.3s'
+                      color: selectedFamily?.fabricId === fam.fabricId ? '#fff' : 'var(--text-secondary)',
+                      fontSize: '0.9rem', fontWeight: 500, cursor: 'pointer', transition: 'var(--transition-smooth)'
                     }}
                   >{fam.name} {fam.priceModifier > 0 && `(+$${fam.priceModifier})`}</button>
                 ))}
               </div>
 
+              {/* Swatch Grid - Circular like Janal */}
               {selectedFamily && (
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(80px, 1fr))', gap: '15px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(70px, 1fr))', gap: '20px' }}>
                   {selectedFamily.colors.map(color => (
                     <div 
                       key={color.colorId}
                       onClick={() => setSelectedColor(color)}
-                      style={{ 
-                        border: selectedColor?.colorId === color.colorId ? '2px solid var(--accent-primary)' : '1px solid transparent',
-                        padding: '4px', borderRadius: 'var(--radius-md)', cursor: 'pointer', opacity: color.status === 'out-of-stock' ? 0.5 : 1,
-                        transition: 'all 0.2s'
-                      }}
+                      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', cursor: 'pointer', opacity: color.status === 'out-of-stock' ? 0.5 : 1 }}
                     >
                       <div style={{ 
-                        height: '70px', backgroundColor: color.hex, borderRadius: 'var(--radius-pill)',
+                        width: '60px', height: '60px', 
+                        backgroundColor: color.hex, 
+                        borderRadius: '50%',
                         backgroundImage: color.mediaUrl ? `url(${color.mediaUrl})` : 'none',
-                        backgroundSize: 'cover', backgroundPosition: 'center', boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
+                        backgroundSize: 'cover', backgroundPosition: 'center', 
+                        boxShadow: '0 4px 12px rgba(11,44,95,0.08)',
+                        border: selectedColor?.colorId === color.colorId ? '3px solid var(--accent-primary)' : '3px solid transparent',
+                        padding: '2px', // gap for ring
+                        backgroundClip: 'content-box',
+                        transition: 'var(--transition-smooth)'
                       }}></div>
-                      <div style={{ padding: '8px 0 0 0', fontSize: '0.65rem', textAlign: 'center', fontWeight: 600, color: '#333' }}>{color.name}</div>
+                      <div style={{ fontSize: '0.75rem', textAlign: 'center', fontWeight: 500, color: selectedColor?.colorId === color.colorId ? 'var(--text-primary)' : 'var(--text-secondary)' }}>
+                        {color.name}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -452,75 +399,70 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
             </div>
           )}
 
-          {/* Dynamic Modifiers */}
-          {product.modifiers && product.modifiers.map(group => {
+          {/* Step 3: Modifiers */}
+          {product.modifiers && product.modifiers.map((group, index) => {
             const selectedOption = group.options.find(o => o.id === selectedModifiers[group.id]);
             
             return (
-              <div key={group.id} style={{ marginBottom: '4rem', borderTop: '1px solid #eaeaea', paddingTop: '3rem' }}>
-                <label style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1.5rem', display: 'block', color: 'var(--text-primary)' }}>
-                  {group.name}
-                </label>
+              <div key={group.id} style={{ backgroundColor: '#fff', padding: '30px', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-sm)', marginBottom: '30px' }}>
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 500, marginBottom: '20px', color: 'var(--text-primary)' }}>{index + 3}. {group.name}</h3>
                 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '12px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '15px' }}>
                   {group.options.map(opt => {
                     const isCompatible = isOptionCompatible(opt);
+                    const isSelected = selectedOption?.id === opt.id;
                     return (
                       <div 
                         key={opt.id}
-                        onClick={() => {
-                          if (isCompatible) {
-                            setSelectedModifiers({ ...selectedModifiers, [group.id]: opt.id });
-                          }
-                        }}
+                        onClick={() => { if (isCompatible) setSelectedModifiers({ ...selectedModifiers, [group.id]: opt.id }); }}
                         style={{ 
-                          border: selectedOption?.id === opt.id ? '2px solid var(--accent-primary)' : '1px solid #eaeaea',
+                          border: isSelected ? '2px solid var(--accent-primary)' : '1px solid var(--border-subtle)',
+                          borderRadius: 'var(--radius-sm)',
                           padding: '20px', cursor: isCompatible ? 'pointer' : 'not-allowed', 
-                          background: selectedOption?.id === opt.id ? '#fafafa' : '#fff',
-                          opacity: isCompatible ? 1 : 0.4,
-                          display: 'flex', alignItems: 'center', gap: '20px', transition: 'all 0.2s'
+                          background: isSelected ? 'var(--bg-tertiary)' : '#fff',
+                          opacity: isCompatible ? 1 : 0.5,
+                          display: 'flex', alignItems: 'center', gap: '20px', transition: 'var(--transition-smooth)'
                         }}
                       >
+                        {/* Radio indicator */}
+                        <div style={{ width: '20px', height: '20px', borderRadius: '50%', border: isSelected ? '6px solid var(--accent-primary)' : '2px solid var(--border-subtle)', backgroundColor: '#fff', flexShrink: 0 }}></div>
+                        
                         {opt.mediaUrl && (
-                          <div style={{ position: 'relative' }}>
-                            <div 
-                              onClick={(e) => { 
-                                e.stopPropagation();
-                                setHardwareLightboxImage(opt.mediaUrl || null);
-                              }} 
-                              style={{ width: '60px', height: '60px', borderRadius: 'var(--radius-md)', backgroundImage: `url(${opt.mediaUrl})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', flexShrink: 0, border: '1px solid #eee', backgroundColor: '#fff', cursor: 'zoom-in' }} 
-                            />
-                            <div style={{ position: 'absolute', bottom: '-8px', right: '-8px', background: 'rgba(0,0,0,0.6)', color: 'white', fontSize: '10px', padding: '2px 4px', borderRadius: 'var(--radius-md)', pointerEvents: 'none' }}>🔍</div>
-                          </div>
+                          <div 
+                            onClick={(e) => { e.stopPropagation(); setHardwareLightboxImage(opt.mediaUrl || null); }} 
+                            style={{ width: '50px', height: '50px', borderRadius: 'var(--radius-sm)', backgroundImage: `url(${opt.mediaUrl})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', border: '1px solid var(--border-subtle)', backgroundColor: '#fff', cursor: 'zoom-in' }} 
+                          />
                         )}
-                        <div>
-                          <div style={{ fontSize: '1.1rem', fontWeight: 400, color: 'var(--text-primary)' }}>
-                            {opt.name} {!isCompatible && <span style={{fontSize:'0.7rem', color:'red', marginLeft:'10px'}}>Incompatible with current selections</span>}
+                        <div style={{ flex: 1 }}>
+                          <div style={{ fontSize: '1.05rem', fontWeight: 500, color: 'var(--text-primary)' }}>
+                            {opt.name} {!isCompatible && <span style={{fontSize:'0.75rem', color:'#e53e3e', marginLeft:'10px'}}>Incompatible</span>}
                           </div>
-                          <div style={{ fontSize: '0.8rem', color: opt.priceAdjustment > 0 ? '#10b981' : '#888', marginTop: '4px' }}>{opt.priceAdjustment > 0 ? `+ $${opt.priceAdjustment}` : 'Included in Base'}</div>
+                          <div style={{ fontSize: '0.85rem', color: opt.priceAdjustment > 0 ? 'var(--text-secondary)' : 'var(--text-muted)', marginTop: '4px' }}>
+                            {opt.priceAdjustment > 0 ? `+ $${opt.priceAdjustment}` : 'Included in Base'}
+                          </div>
                         </div>
                       </div>
                     );
                   })}
                 </div>
 
-                {/* Sub-Attributes Accordion */}
+                {/* Sub-Attributes */}
                 {selectedOption && selectedOption.subAttributes && selectedOption.subAttributes.length > 0 && (
-                  <div style={{ marginTop: '20px', padding: '20px 20px 20px 30px', borderLeft: '2px solid var(--accent-primary)' }}>
+                  <div style={{ marginTop: '20px', padding: '20px', backgroundColor: 'var(--bg-secondary)', borderRadius: 'var(--radius-sm)' }}>
                     {selectedOption.subAttributes.map(sub => (
-                      <div key={sub.id} style={{ marginBottom: '20px' }}>
-                        <div style={{ fontSize: '0.8rem', fontWeight: 600, marginBottom: '12px', color: '#555' }}>{sub.name}</div>
+                      <div key={sub.id} style={{ marginBottom: '15px', borderBottom: '1px solid var(--border-subtle)', paddingBottom: '15px' }}>
+                        <div style={{ fontSize: '0.9rem', fontWeight: 600, marginBottom: '12px', color: 'var(--text-primary)' }}>{sub.name}</div>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
                           {sub.choices.map(choice => (
                             <button 
                               key={choice.id}
                               onClick={() => setSelectedSubAttributes({ ...selectedSubAttributes, [sub.id]: choice.id })}
                               style={{ 
-                                padding: '10px 20px', cursor: 'pointer', fontSize: '0.8rem',
-                                border: selectedSubAttributes[sub.id] === choice.id ? '1px solid var(--accent-primary)' : '1px solid #ddd',
+                                padding: '8px 16px', borderRadius: 'var(--radius-pill)', cursor: 'pointer', fontSize: '0.85rem', fontWeight: 500,
+                                border: selectedSubAttributes[sub.id] === choice.id ? '1px solid var(--accent-primary)' : '1px solid var(--border-subtle)',
                                 backgroundColor: selectedSubAttributes[sub.id] === choice.id ? 'var(--accent-primary)' : '#fff',
-                                color: selectedSubAttributes[sub.id] === choice.id ? '#fff' : 'var(--text-primary)',
-                                transition: 'all 0.2s'
+                                color: selectedSubAttributes[sub.id] === choice.id ? '#fff' : 'var(--text-secondary)',
+                                transition: 'var(--transition-smooth)'
                               }}
                             >
                               {choice.name} {choice.priceAdjustment > 0 && `(+$${choice.priceAdjustment})`}
@@ -540,25 +482,18 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
       {/* Floating Glassmorphic Cart Bar */}
       <div className="glass-bar">
         <div>
-          <span style={{ fontSize: '0.7rem', color: '#555', fontWeight: 700, letterSpacing: '0.1em', display: 'block', marginBottom: '4px' }}>ESTIMATED TOTAL</span>
-          <span style={{ fontSize: '2rem', fontWeight: 400, letterSpacing: '-0.05em' }}>${totalPrice}</span>
+          <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 500, display: 'block', marginBottom: '4px' }}>Total Price</span>
+          <span style={{ fontSize: '2.5rem', fontWeight: 500, color: 'var(--text-primary)', lineHeight: 1 }}>${totalPrice}</span>
         </div>
         
         {(() => {
           const isTooLarge = selectedFamily?.maxWidth && (parseFloat(width) > selectedFamily.maxWidth);
           const isTooSmall = parseFloat(width) < getDynamicMinWidth();
           
-          if (isTooLarge) {
+          if (isTooLarge || isTooSmall) {
             return (
-              <button style={{ padding: '16px 32px', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.1em', backgroundColor: '#e53e3e', color: '#fff', border: 'none', borderRadius: 'var(--radius-pill)', cursor: 'not-allowed' }}>
-                SIZE TOO LARGE
-              </button>
-            );
-          }
-          if (isTooSmall) {
-            return (
-              <button style={{ padding: '16px 32px', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.1em', backgroundColor: '#e53e3e', color: '#fff', border: 'none', borderRadius: 'var(--radius-pill)', cursor: 'not-allowed' }}>
-                SIZE TOO SMALL
+              <button style={{ padding: '16px 40px', borderRadius: 'var(--radius-pill)', fontSize: '1rem', fontWeight: 500, backgroundColor: '#e53e3e', color: '#fff', border: 'none', cursor: 'not-allowed' }}>
+                INVALID SIZE
               </button>
             );
           }
@@ -567,51 +502,30 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
             <button 
               onClick={handleOrderSubmit}
               disabled={orderStatus === 'submitting'}
-              style={{ padding: '16px 32px', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.1em', backgroundColor: orderStatus === 'success' ? '#10b981' : 'var(--accent-primary)', color: '#fff', border: 'none', borderRadius: 'var(--radius-pill)', cursor: orderStatus === 'submitting' ? 'wait' : 'pointer', transition: 'all 0.2s' }} 
-              onMouseOver={e => { if(orderStatus === 'idle') e.currentTarget.style.transform = 'scale(1.02)'; }} 
-              onMouseOut={e => { if(orderStatus === 'idle') e.currentTarget.style.transform = 'scale(1)'; }}
+              style={{ padding: '16px 40px', borderRadius: 'var(--radius-pill)', fontSize: '1rem', fontWeight: 500, backgroundColor: orderStatus === 'success' ? '#10b981' : 'var(--accent-primary)', color: '#fff', border: 'none', cursor: orderStatus === 'submitting' ? 'wait' : 'pointer', transition: 'var(--transition-smooth)', boxShadow: 'var(--shadow-sm)' }} 
+              onMouseOver={e => { if(orderStatus === 'idle') e.currentTarget.style.transform = 'translateY(-2px)'; }} 
+              onMouseOut={e => { if(orderStatus === 'idle') e.currentTarget.style.transform = 'translateY(0)'; }}
             >
-              {orderStatus === 'submitting' ? 'PROCESSING...' : orderStatus === 'success' ? 'ADDED TO CART ✓' : 'ADD TO CART'}
+              {orderStatus === 'submitting' ? 'Processing...' : orderStatus === 'success' ? 'Added to Cart ✓' : 'Add to Cart'}
             </button>
           );
         })()}
 
       </div>
 
-      {/* Lightbox Modal */}
+      {/* Lightbox Modals... */}
       {lightboxOpen && selectedFamily && (
-        <div style={{
-          position: 'fixed', inset: 0, zIndex: 9999, backgroundColor: 'rgba(0,0,0,0.9)',
-          display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(10px)'
-        }} onClick={() => setLightboxOpen(false)}>
-          
-          <button style={{ position: 'absolute', top: '30px', right: '30px', background: 'transparent', border: 'none', color: 'white', fontSize: '2rem', cursor: 'pointer', padding: '10px' }} onClick={() => setLightboxOpen(false)}>✕</button>
-          
+        <div style={{ position: 'fixed', inset: 0, zIndex: 9999, backgroundColor: 'rgba(7,31,69,0.9)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} onClick={() => setLightboxOpen(false)}>
+          <button style={{ position: 'absolute', top: '30px', right: '30px', background: 'transparent', border: 'none', color: '#fff', fontSize: '2rem', cursor: 'pointer' }} onClick={() => setLightboxOpen(false)}>✕</button>
           <div style={{ display: 'flex', alignItems: 'center', gap: '40px', maxWidth: '90vw' }}>
-            <button style={{ background: 'rgba(255,255,255,0.1)', border: 'none', color: 'white', fontSize: '3rem', padding: '20px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80px', height: '80px' }} onClick={prevLightboxImage}>‹</button>
-            
+            <button style={{ background: 'rgba(255,255,255,0.2)', border: 'none', color: '#fff', fontSize: '3rem', borderRadius: '50%', cursor: 'pointer', width: '80px', height: '80px' }} onClick={prevLightboxImage}>‹</button>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <img src={selectedFamily.colors[lightboxIndex]?.mediaUrl} alt={selectedFamily.colors[lightboxIndex]?.name} style={{ maxHeight: '75vh', maxWidth: '75vw', objectFit: 'contain', borderRadius: 'var(--radius-md)', boxShadow: '0 20px 50px rgba(0,0,0,0.5)' }} />
-              <div style={{ color: 'white', marginTop: '20px', fontSize: '1.5rem', fontWeight: 500, letterSpacing: '0.05em' }}>
+              <img src={selectedFamily.colors[lightboxIndex]?.mediaUrl} alt={selectedFamily.colors[lightboxIndex]?.name} style={{ maxHeight: '75vh', maxWidth: '75vw', objectFit: 'contain', borderRadius: 'var(--radius-md)' }} />
+              <div style={{ color: '#fff', marginTop: '20px', fontSize: '1.5rem', fontWeight: 500 }}>
                 {selectedFamily.colors[lightboxIndex]?.name}
               </div>
             </div>
-            <button style={{ background: 'rgba(255,255,255,0.1)', border: 'none', color: 'white', fontSize: '3rem', padding: '20px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80px', height: '80px' }} onClick={nextLightboxImage}>›</button>
-          </div>
-        </div>
-      )}
-
-      {/* Hardware Lightbox Modal */}
-      {hardwareLightboxImage && (
-        <div style={{
-          position: 'fixed', inset: 0, zIndex: 10000, backgroundColor: 'rgba(0,0,0,0.9)',
-          display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(10px)'
-        }} onClick={() => setHardwareLightboxImage(null)}>
-          
-          <button style={{ position: 'absolute', top: '30px', right: '30px', background: 'transparent', border: 'none', color: 'white', fontSize: '2rem', cursor: 'pointer', padding: '10px' }} onClick={() => setHardwareLightboxImage(null)}>✕</button>
-          
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', maxWidth: '90vw' }}>
-            <img src={hardwareLightboxImage} alt="Hardware Enlarge" style={{ maxHeight: '85vh', maxWidth: '85vw', objectFit: 'contain', borderRadius: 'var(--radius-md)', boxShadow: '0 20px 50px rgba(0,0,0,0.5)' }} />
+            <button style={{ background: 'rgba(255,255,255,0.2)', border: 'none', color: '#fff', fontSize: '3rem', borderRadius: '50%', cursor: 'pointer', width: '80px', height: '80px' }} onClick={nextLightboxImage}>›</button>
           </div>
         </div>
       )}
