@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   /* JANAL ELEGANT PALETTE (Navy & Gold) */
   --bg-primary: #FFFFFF; /* Pure White */
