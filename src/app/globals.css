@@ -14,7 +14,7 @@
   --border-subtle: #E5E7EB; /* Very light grey */
   
   /* Glassmorphism & Elevation */
-  --shadow-sm: 0 4px 12px rgba(11,44,95,0.04);
+  --shadow-sm: 0 4px 12px rgba(26,29,32,0.04);
   --shadow-md: 0 8px 30px rgba(26, 29, 32, 0.06); /* Janal's exact soft shadow */
   
   /* SHAPES: Soft, rounded, elegant */
@@ -117,7 +117,7 @@ a:hover {
 }
 .input-elegant:focus {
   border-color: var(--accent-primary);
-  box-shadow: 0 0 0 3px rgba(11,44,95,0.1);
+  box-shadow: 0 0 0 3px rgba(26,29,32,0.1);
 }
 
 /* Global Overrides for Existing Components (Cart, Configurator) */
@@ -133,7 +133,7 @@ input[type="number"], input[type="text"], input[type="email"], input[type="passw
 }
 input:focus, select:focus, textarea:focus {
   border-color: var(--accent-primary) !important;
-  box-shadow: 0 0 0 3px rgba(11,44,95,0.1) !important;
+  box-shadow: 0 0 0 3px rgba(26,29,32,0.1) !important;
 }
 
 /* Ensure Light Mode in legacy pages */
