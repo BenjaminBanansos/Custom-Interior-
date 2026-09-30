@@ -36,7 +36,7 @@ export default async function Home() {
           <Link href="/contact" style={{ color: 'var(--text-secondary)' }}>Contact</Link>
         </div>
         
-        <Link href="/" style={{ fontFamily: 'var(--font-outfit)', fontSize: '2rem', fontWeight: 600, color: 'var(--text-primary)', position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
+        <Link href="/" style={{ fontFamily: 'var(--font-playfair)', fontSize: '2rem', fontWeight: 600, color: 'var(--text-primary)', position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
           STITCH
         </Link>
         
@@ -62,7 +62,7 @@ export default async function Home() {
         padding: '0 5%'
       }}>
         <div style={{ flex: 1, paddingRight: '4rem', zIndex: 10 }}>
-          <h1 style={{ fontFamily: 'var(--font-outfit)', fontSize: 'clamp(3rem, 5vw, 4.5rem)', fontWeight: 600, color: 'var(--text-primary)', lineHeight: 1.1, marginBottom: '1.5rem' }}>
+          <h1 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(3rem, 5vw, 4.5rem)', fontWeight: 600, color: 'var(--text-primary)', lineHeight: 1.1, marginBottom: '1.5rem' }}>
             Stylish. Functional.<br />Made for your space.
           </h1>
           <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', marginBottom: '2.5rem', lineHeight: 1.6, maxWidth: '480px' }}>
@@ -181,7 +181,7 @@ export default async function Home() {
       }}>
         <div style={{ flex: '1 1 400px' }}>
           <div style={{ color: 'var(--accent-gold)', fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '12px' }}>Dealer Network</div>
-          <h2 style={{ fontFamily: 'var(--font-outfit)', fontSize: '2.2rem', fontWeight: 500, marginBottom: '1rem', color: '#fff' }}>Need Help with Installation?</h2>
+          <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: '2.2rem', fontWeight: 500, marginBottom: '1rem', color: '#fff' }}>Need Help with Installation?</h2>
           <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1.05rem', lineHeight: 1.6, margin: 0, maxWidth: '500px' }}>
             Contact our dealer network and get it done by professionals.
           </p>
@@ -201,7 +201,7 @@ export default async function Home() {
       }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr 1.2fr', gap: '3rem', padding: '4rem 5%' }}>
           <div>
-            <div style={{ fontFamily: 'var(--font-outfit)', fontSize: '1.8rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '1.5rem' }}>STITCH</div>
+            <div style={{ fontFamily: 'var(--font-playfair)', fontSize: '1.8rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '1.5rem' }}>STITCH</div>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
               Functional, beautiful window treatments for the modern home.
             </p>

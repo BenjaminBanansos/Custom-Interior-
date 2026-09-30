@@ -27,7 +27,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
           <Link href="/contact" style={{ color: 'var(--text-secondary)' }}>Contact</Link>
         </div>
         
-        <Link href="/" style={{ fontFamily: 'var(--font-outfit)', fontSize: '2rem', fontWeight: 600, color: 'var(--text-primary)', position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
+        <Link href="/" style={{ fontFamily: 'var(--font-playfair)', fontSize: '2rem', fontWeight: 600, color: 'var(--text-primary)', position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
           STITCH
         </Link>
         

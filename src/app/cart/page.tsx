@@ -112,7 +112,7 @@ export default function CartPage() {
           <a href="/contact" className="text-gray-500 hover:text-[#D4AF37] transition-colors">Contact</a>
         </div>
         
-        <a href="/" className="absolute left-1/2 -translate-x-1/2 font-['Outfit'] text-3xl font-semibold text-[#071F45]">
+        <a href="/" className="absolute left-1/2 -translate-x-1/2 font-serif text-3xl font-semibold text-[#071F45]">
           STITCH
         </a>
         

@@ -36,14 +36,14 @@
 html, body {
   max-width: 100vw;
   overflow-x: hidden;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--font-jost), 'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   color: var(--text-secondary);
   background: var(--bg-primary);
   line-height: 1.65;
 }
 
 h1, h2, h3, h4 {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-playfair), 'Playfair Display', sans-serif;
   font-weight: 500;
   color: var(--text-primary);
   letter-spacing: -0.01em;
@@ -71,7 +71,7 @@ a:hover {
   padding: 0.8rem 2rem;
   border: none;
   border-radius: var(--radius-pill); /* Pill shaped like Janal */
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-playfair), 'Playfair Display', sans-serif;
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
@@ -91,7 +91,7 @@ a:hover {
   padding: 0.8rem 2rem;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-pill);
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-playfair), 'Playfair Display', sans-serif;
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
@@ -108,7 +108,7 @@ a:hover {
   border: 1px solid var(--border-subtle);
   color: var(--text-primary);
   padding: 0.8rem 1.2rem;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-jost), 'Jost', sans-serif;
   font-size: 0.95rem;
   width: 100%;
   border-radius: var(--radius-sm);

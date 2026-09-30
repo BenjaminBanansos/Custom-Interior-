@@ -12,7 +12,7 @@ export default async function AllProducts() {
     <main style={{ minHeight: '100vh', backgroundColor: 'var(--bg-secondary)' }}>
       {/* Structural Navigation */}
       <nav style={{ padding: '0 4rem', height: '90px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#fff', borderBottom: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-sm)' }}>
-        <Link href="/" style={{ fontFamily: 'var(--font-outfit)', fontSize: '2rem', fontWeight: 600, color: 'var(--text-primary)' }}>
+        <Link href="/" style={{ fontFamily: 'var(--font-playfair)', fontSize: '2rem', fontWeight: 600, color: 'var(--text-primary)' }}>
           STITCH
         </Link>
         <div style={{ display: 'flex', gap: '2rem', fontSize: '0.9rem', fontWeight: 500 }}>

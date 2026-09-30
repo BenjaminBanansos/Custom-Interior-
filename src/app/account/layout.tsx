@@ -11,7 +11,7 @@ export default function AccountLayout({ children }: { children: React.ReactNode 
     }}>
       {/* Auth Navigation */}
       <nav style={{ padding: '2rem 5%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#fff', borderBottom: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-sm)' }}>
-        <Link href="/" style={{ fontFamily: 'var(--font-outfit)', fontSize: '1.8rem', fontWeight: 600, color: 'var(--text-primary)' }}>
+        <Link href="/" style={{ fontFamily: 'var(--font-playfair)', fontSize: '1.8rem', fontWeight: 600, color: 'var(--text-primary)' }}>
           STITCH
         </Link>
         <Link href="/" style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '8px' }}>
