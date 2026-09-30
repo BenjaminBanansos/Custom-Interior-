@@ -1,83 +1,45 @@
+
 import React from 'react';
-import Link from 'next/link';
-import { getProducts } from '../../../lib/storage_actions';
-import { getTheme } from '../../../lib/theme_actions';
-import Configurator from '../../../components/Configurator';
-import { notFound } from 'next/navigation';
+import { getProductById, getProducts } from '../../lib/products_actions';
+import { getTheme } from '../../lib/theme_actions';
+import Configurator from '../../components/Configurator';
 
-export const dynamic = 'force-dynamic';
-
-export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
-  const products = await getProducts();
-  const product = products.find(p => p.id === id);
-  const theme = await getTheme();
+export default async function ProductPage({ params }: { params: { id: string } }) {
+  const [product, allProducts, theme] = await Promise.all([
+    getProductById(params.id),
+    getProducts(),
+    getTheme()
+  ]);
 
   if (!product) {
-    notFound();
+    return (
+      <div className="min-h-[60vh] flex items-center justify-center bg-[#F7F3EA]">
+        <div className="bg-white p-12 rounded-[18px] shadow-sm text-center">
+          <h1 className="text-3xl font-serif text-[#0B2C5F] mb-4">Product Not Found</h1>
+          <a href="/categories/all" className="text-[#D4AF37] hover:underline font-medium">Return to Shop</a>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <main style={{ minHeight: '100vh', backgroundColor: 'var(--bg-secondary)' }}>
-      {/* Navigation */}
-      <nav style={{ padding: '0 4rem', height: '90px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#fff', borderBottom: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-sm)', position: 'sticky', top: 0, zIndex: 100 }}>
-        <div style={{ display: 'flex', gap: '2.5rem', fontSize: '0.9rem', fontWeight: 500 }}>
-          <Link href="/categories/all" style={{ color: 'var(--text-secondary)' }}>Shop Categories</Link>
-          <Link href="/about" style={{ color: 'var(--text-secondary)' }}>Our Story</Link>
-          <Link href="/contact" style={{ color: 'var(--text-secondary)' }}>Contact</Link>
+    <div className="w-full bg-[#F7F3EA] min-h-screen">
+      {/* Breadcrumb Header */}
+      <div className="max-w-[1400px] mx-auto px-8 md:px-16 py-8">
+        <div className="flex items-center gap-2 text-sm font-medium text-gray-500">
+          <a href="/" className="hover:text-[#0B2C5F] transition-colors">Home</a>
+          <span>/</span>
+          <a href="/categories/all" className="hover:text-[#0B2C5F] transition-colors">Shop</a>
+          <span>/</span>
+          <a href={`/categories/${product.fabricFamilies?.[0]?.category || 'all'}`} className="hover:text-[#0B2C5F] transition-colors">{product.fabricFamilies?.[0]?.category || 'Category'}</a>
+          <span>/</span>
+          <span className="text-[#0B2C5F]">{product.name}</span>
         </div>
-        
-        <Link href="/" style={{ fontFamily: 'var(--font-playfair)', fontSize: '2rem', fontWeight: 600, color: 'var(--text-primary)', position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
-          STITCH
-        </Link>
-        
-        <div style={{ display: 'flex', gap: '2rem', alignItems: 'center', fontSize: '0.9rem', fontWeight: 500 }}>
-          <Link href="/account/login" style={{ color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span style={{ fontSize: '1.2rem' }}>👤</span> Login
-          </Link>
-          <Link href="/cart" style={{ color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span style={{ fontSize: '1.2rem' }}>🛒</span> Cart
-          </Link>
-        </div>
-      </nav>
-
-      <div className="container" style={{ paddingTop: '60px', paddingBottom: '120px', margin: '0 auto', maxWidth: theme.containerWidth, transition: 'max-width 0.3s ease' }}>
-        <div style={{ marginBottom: '20px' }}>
-          <Link href="/categories/all" style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span>←</span> Back to Categories
-          </Link>
-        </div>
-        
-        <Configurator product={product} theme={theme} allProducts={products} />
-
-        {/* Product Details Section */}
-        <section style={{ marginTop: '80px', borderTop: '1px solid var(--border-subtle)', paddingTop: '60px' }}>
-          <h2 style={{ fontSize: '2rem', color: 'var(--text-primary)', marginBottom: '2rem' }}>Product Details</h2>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', maxWidth: '800px', marginBottom: '3rem', lineHeight: 1.6 }}>
-            {product.description || 'Premium architectural grade window treatments sourced globally and assembled in Canada. UV resistant, color-stable, and engineered for precision light control.'}
-          </p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '40px' }}>
-            <div style={{ padding: '2rem', backgroundColor: 'var(--bg-secondary)', borderRadius: 'var(--radius-md)' }}>
-              <h4 style={{ marginBottom: '15px', color: 'var(--text-primary)' }}>Materials</h4>
-              <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)' }}>
-                Premium grade fabrics. UV resistant and color-stable.
-              </p>
-            </div>
-            <div style={{ padding: '2rem', backgroundColor: 'var(--bg-secondary)', borderRadius: 'var(--radius-md)' }}>
-              <h4 style={{ marginBottom: '15px', color: 'var(--text-primary)' }}>Mechanism</h4>
-              <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)' }}>
-                Ultra-smooth lift systems with optional motorization.
-              </p>
-            </div>
-            <div style={{ padding: '2rem', backgroundColor: 'var(--bg-secondary)', borderRadius: 'var(--radius-md)' }}>
-              <h4 style={{ marginBottom: '15px', color: 'var(--text-primary)' }}>Warranty</h4>
-              <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)' }}>
-                5-year architectural warranty on all mechanisms.
-              </p>
-            </div>
-          </div>
-        </section>
       </div>
-    </main>
+
+      <div className="px-4 md:px-8 pb-16">
+        <Configurator product={product} allProducts={allProducts} theme={theme} />
+      </div>
+    </div>
   );
 }

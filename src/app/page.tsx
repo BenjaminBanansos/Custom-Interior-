@@ -1,246 +1,129 @@
+
 import React from 'react';
 import Link from 'next/link';
-import { getProducts } from '../lib/storage_actions';
 
-export const dynamic = 'force-dynamic';
-
-export default async function Home() {
-  const products = await getProducts();
-  const orderedProducts = [...products].sort((a, b) => (a.order || 99) - (b.order || 99)).filter(p => p.status !== 'draft');
-
+export default function Home() {
   return (
-    <main style={{ flex: 1, margin: '0 auto', width: '100%', backgroundColor: 'var(--bg-primary)' }}>
-      
-      {/* Top Banner - Winter Sale */}
-      <div style={{ backgroundColor: 'var(--text-primary)', color: '#fff', textAlign: 'center', padding: '10px', fontSize: '0.8rem', fontWeight: 500, letterSpacing: '0.05em' }}>
-        Winter Sale is Now On - Get Free Shipping for orders above $100
-      </div>
-
-      {/* Navigation */}
-      <nav style={{ 
-        height: '90px', 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'space-between',
-        padding: '0 4rem',
-        backgroundColor: '#fff',
-        borderBottom: '1px solid var(--border-subtle)',
-        position: 'sticky',
-        top: 0,
-        zIndex: 100,
-        boxShadow: 'var(--shadow-sm)'
-      }}>
-        <div style={{ display: 'flex', gap: '2.5rem', fontSize: '0.9rem', fontWeight: 500 }}>
-          <Link href="/categories/all" style={{ color: 'var(--text-secondary)' }}>Shop Categories</Link>
-          <Link href="/about" style={{ color: 'var(--text-secondary)' }}>Our Story</Link>
-          <Link href="/contact" style={{ color: 'var(--text-secondary)' }}>Contact</Link>
-        </div>
-        
-        <Link href="/" style={{ fontFamily: 'var(--font-playfair)', fontSize: '2rem', fontWeight: 600, color: 'var(--text-primary)', position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
-          STITCH
-        </Link>
-        
-        <div style={{ display: 'flex', gap: '2rem', alignItems: 'center', fontSize: '0.9rem', fontWeight: 500 }}>
-          <Link href="/account/login" style={{ color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span style={{ fontSize: '1.2rem' }}>👤</span> Login
-          </Link>
-          <Link href="/account/dealer-login" style={{ color: 'var(--text-secondary)' }}>Dealer Portal</Link>
-          <Link href="/cart" style={{ color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span style={{ fontSize: '1.2rem' }}>🛒</span> Cart
-          </Link>
-        </div>
-      </nav>
-
+    <div className="w-full flex flex-col bg-white">
       {/* Hero Section */}
-      <section style={{ 
-        position: 'relative', 
-        height: '80vh', 
-        minHeight: '600px',
-        backgroundColor: 'var(--bg-secondary)',
-        display: 'flex',
-        alignItems: 'center',
-        padding: '0 5%'
-      }}>
-        <div style={{ flex: 1, paddingRight: '4rem', zIndex: 10 }}>
-          <h1 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(3rem, 5vw, 4.5rem)', fontWeight: 600, color: 'var(--text-primary)', lineHeight: 1.1, marginBottom: '1.5rem' }}>
-            Stylish. Functional.<br />Made for your space.
+      <section className="relative h-[85vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://shades4u.s3.amazonaws.com/images/assets/duoglide.png')] bg-cover bg-center" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0B2C5F]/90 via-[#0B2C5F]/40 to-transparent" />
+        
+        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto flex flex-col items-center mt-32">
+          <span className="text-[#D4AF37] text-sm md:text-base tracking-[0.2em] font-medium mb-6 uppercase">Precision Engineered</span>
+          <h1 className="text-5xl md:text-7xl font-serif text-white mb-8 leading-tight drop-shadow-lg">
+            Architectural Light Control
           </h1>
-          <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', marginBottom: '2.5rem', lineHeight: 1.6, maxWidth: '480px' }}>
-            Explore our wide range of custom blinds and shades. Precision-engineered architectural light control for modern homes.
+          <p className="text-lg md:text-xl text-white/90 font-light mb-12 max-w-2xl mx-auto">
+            Custom-tailored blinds and curtains for retail and wholesale. Premium quality designed for Canadian homes.
           </p>
-          <div style={{ display: 'flex', gap: '1rem' }}>
-            <Link href="/categories/all" className="btn-primary" style={{ padding: '1rem 2.5rem', fontSize: '1rem' }}>
-              Explore Collection
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Link href="/categories/all" className="px-10 py-4 bg-white text-[#0B2C5F] rounded-full font-medium hover:bg-[#F7F3EA] transition-all duration-300 shadow-xl hover:-translate-y-1">
+              Shop Collections
             </Link>
-            <Link href="#sale" className="btn-outline" style={{ padding: '1rem 2.5rem', fontSize: '1rem' }}>
-              Shop the Sale
+            <Link href="/account/dealer-login" className="px-10 py-4 bg-transparent border-2 border-white text-white rounded-full font-medium hover:bg-white/10 transition-all duration-300">
+              Dealer Portal
             </Link>
           </div>
         </div>
-        
-        {/* Right Hero Visual - Soft Rounded Image */}
-        <div style={{ 
-          flex: 1.2, 
-          height: '80%', 
-          borderRadius: 'var(--radius-md)',
-          backgroundColor: 'var(--bg-tertiary)',
-          backgroundImage: 'url(https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          boxShadow: 'var(--shadow-md)'
-        }}></div>
       </section>
 
-      {/* Categories Grid - Emulating Janal's "Shop by Category" */}
-      <section style={{ padding: '6rem 5%', backgroundColor: '#fff' }}>
-        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <h2 style={{ fontSize: '2.5rem', color: 'var(--text-primary)' }}>Shop by category</h2>
-          <p style={{ color: 'var(--text-secondary)', marginTop: '0.5rem', fontSize: '1.1rem' }}>Explore Our Collection</p>
-        </div>
-        
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px' }}>
-          {['Roller Shades', 'Custom Window Treatments', 'Motorized Automation'].map((cat, i) => (
-            <Link key={i} href={`/categories/${cat.replace(/\s+/g, '-')}`} style={{ display: 'block', position: 'relative', borderRadius: 'var(--radius-md)', overflow: 'hidden', boxShadow: 'var(--shadow-sm)', transition: 'var(--transition-smooth)' }}>
-              <div style={{ 
-                height: '400px', 
-                backgroundColor: 'var(--bg-secondary)', 
-                backgroundImage: 'url(https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=800&q=80)',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                transition: 'transform 0.5s ease'
-              }} className="cat-img"></div>
-              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '2rem', background: 'linear-gradient(to top, rgba(26,29,32,0.9), transparent)', color: '#fff' }}>
-                <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem', color: '#fff' }}>{cat}</h3>
-                <span style={{ fontSize: '0.9rem', opacity: 0.9 }}>Clean & Modern →</span>
+      {/* Featured Categories */}
+      <section className="py-24 bg-[#F7F3EA] px-8 md:px-16">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="flex justify-between items-end mb-16">
+            <div>
+              <span className="text-[#D4AF37] text-sm font-bold tracking-widest uppercase mb-3 block">Our Products</span>
+              <h2 className="text-4xl md:text-5xl font-serif text-[#0B2C5F]">Premium Collections</h2>
+            </div>
+            <Link href="/categories/all" className="hidden md:inline-flex text-[#0B2C5F] font-medium hover:text-[#D4AF37] transition-colors items-center gap-2">
+              View All <span className="text-xl">→</span>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Category Card 1 */}
+            <Link href="/categories/Duo-Glide" className="group block bg-white rounded-[18px] overflow-hidden shadow-[0_12px_28px_rgba(11,44,95,0.06)] hover:shadow-[0_12px_28px_rgba(11,44,95,0.12)] transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+              <div className="aspect-[4/3] overflow-hidden bg-gray-50">
+                <img src="https://shades4u.s3.amazonaws.com/images/assets/duoglide.png" alt="Duo Glide" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              </div>
+              <div className="p-8 flex justify-between items-center">
+                <div>
+                  <h3 className="text-2xl font-serif text-[#0B2C5F] mb-1">Duo-Glide</h3>
+                  <p className="text-gray-500 text-sm">Light Filtering & Privacy</p>
+                </div>
+                <div className="w-12 h-12 rounded-full bg-[#0B2C5F] text-white flex items-center justify-center transition-colors group-hover:bg-[#D4AF37]">
+                  <span className="text-xl">→</span>
+                </div>
               </div>
             </Link>
-          ))}
-        </div>
-        <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-          <Link href="/categories/all" className="btn-outline">View All Categories</Link>
+
+            {/* Category Card 2 */}
+            <Link href="/categories/Roller" className="group block bg-white rounded-[18px] overflow-hidden shadow-[0_12px_28px_rgba(11,44,95,0.06)] hover:shadow-[0_12px_28px_rgba(11,44,95,0.12)] transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+              <div className="aspect-[4/3] overflow-hidden bg-gray-50">
+                <img src="https://shades4u.s3.amazonaws.com/images/assets/roller.png" alt="Roller Shades" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              </div>
+              <div className="p-8 flex justify-between items-center">
+                <div>
+                  <h3 className="text-2xl font-serif text-[#0B2C5F] mb-1">Roller Shades</h3>
+                  <p className="text-gray-500 text-sm">Minimalist & Modern</p>
+                </div>
+                <div className="w-12 h-12 rounded-full bg-[#0B2C5F] text-white flex items-center justify-center transition-colors group-hover:bg-[#D4AF37]">
+                  <span className="text-xl">→</span>
+                </div>
+              </div>
+            </Link>
+
+            {/* Category Card 3 */}
+            <Link href="/categories/Silhouette" className="group block bg-white rounded-[18px] overflow-hidden shadow-[0_12px_28px_rgba(11,44,95,0.06)] hover:shadow-[0_12px_28px_rgba(11,44,95,0.12)] transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+              <div className="aspect-[4/3] overflow-hidden bg-gray-50">
+                <img src="https://shades4u.s3.amazonaws.com/images/assets/silhouette.png" alt="Silhouette" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              </div>
+              <div className="p-8 flex justify-between items-center">
+                <div>
+                  <h3 className="text-2xl font-serif text-[#0B2C5F] mb-1">Silhouette</h3>
+                  <p className="text-gray-500 text-sm">Soft Elegance</p>
+                </div>
+                <div className="w-12 h-12 rounded-full bg-[#0B2C5F] text-white flex items-center justify-center transition-colors group-hover:bg-[#D4AF37]">
+                  <span className="text-xl">→</span>
+                </div>
+              </div>
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* Promotional / Bargain Section (65% OFF) */}
-      <section id="sale" style={{ padding: '6rem 5%', backgroundColor: 'var(--bg-secondary)' }}>
-        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <div style={{ color: 'var(--accent-gold)', fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px' }}>Ends Today</div>
-          <h2 style={{ fontSize: '2.5rem', color: 'var(--text-primary)' }}>65% OFF Winter Sale</h2>
-          <p style={{ color: 'var(--text-secondary)' }}>Bargain Fabric Duo-Glide Shades</p>
-        </div>
-        
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '30px' }}>
-          {orderedProducts.slice(0, 4).map(product => (
-            <div key={product.id} style={{ 
-              backgroundColor: '#fff',
-              borderRadius: 'var(--radius-md)',
-              padding: '1.5rem',
-              boxShadow: 'var(--shadow-sm)',
-              position: 'relative',
-              transition: 'var(--transition-smooth)',
-              display: 'flex',
-              flexDirection: 'column'
-            }}>
-              <div style={{ position: 'absolute', top: '1.5rem', right: '1.5rem', backgroundColor: 'var(--text-primary)', color: '#fff', padding: '4px 10px', fontSize: '0.75rem', fontWeight: 500, borderRadius: 'var(--radius-pill)', zIndex: 10 }}>
-                65% Off
-              </div>
-              <div style={{ 
-                height: '240px', 
-                backgroundColor: 'var(--bg-tertiary)',
-                backgroundImage: product.imageUrl ? `url(${product.imageUrl})` : 'none',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                borderRadius: 'var(--radius-sm)',
-                marginBottom: '1.5rem'
-              }}></div>
-              <h4 style={{ fontSize: '1.25rem', marginBottom: '0.25rem', color: 'var(--text-primary)' }}>{product.name}</h4>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '1.5rem', flex: 1 }}>
-                BARGAIN LIGHT FILTERING FABRIC DUO-GLIDE SHADES
-              </p>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto' }}>
-                <span style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--text-primary)' }}>${product.basePrice}</span>
-                <Link href={`/product/${product.id}`} className="btn-primary" style={{ padding: '0.6rem 1.25rem', fontSize: '0.85rem' }}>
-                  Add to Cart
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Newsletter / Dealer CTA matching Janal's Gradient Footer Top */}
-      <section style={{ 
-        background: 'linear-gradient(120deg, #071f45, #0b2c5f 60%, #154785)', 
-        padding: '5rem 5%',
-        color: '#fff',
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        gap: '3rem'
-      }}>
-        <div style={{ flex: '1 1 400px' }}>
-          <div style={{ color: 'var(--accent-gold)', fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '12px' }}>Dealer Network</div>
-          <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: '2.2rem', fontWeight: 500, marginBottom: '1rem', color: '#fff' }}>Need Help with Installation?</h2>
-          <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1.05rem', lineHeight: 1.6, margin: 0, maxWidth: '500px' }}>
-            Contact our dealer network and get it done by professionals.
+      {/* Dealer CTA Section */}
+      <section className="py-24 bg-[#0B2C5F] text-white px-8 md:px-16 text-center">
+        <div className="max-w-3xl mx-auto flex flex-col items-center">
+          <span className="text-[#D4AF37] font-medium tracking-[0.2em] uppercase text-sm mb-6 block">Trade Professionals</span>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8 leading-tight">Join our Dealer Network</h2>
+          <p className="text-lg text-white/80 font-light mb-10">
+            Get access to wholesale pricing, dedicated support, and our premium product catalog. Exclusively for designers, architects, and installers.
           </p>
-        </div>
-        <div style={{ flex: '1 1 300px', display: 'flex', justifyContent: 'flex-end' }}>
-          <Link href="/contact" style={{ backgroundColor: '#fff', color: 'var(--text-primary)', padding: '1rem 2.5rem', fontSize: '0.95rem', fontWeight: 600, borderRadius: 'var(--radius-pill)', textDecoration: 'none', boxShadow: 'var(--shadow-sm)' }}>
-            Contact Now
+          <Link href="/account/dealer-login" className="inline-block px-12 py-5 bg-white text-[#0B2C5F] rounded-full font-medium hover:bg-[#D4AF37] hover:text-white transition-all duration-300 shadow-xl hover:-translate-y-1">
+            Apply for Trade Account
           </Link>
         </div>
       </section>
-
-      {/* Footer matching Janal layout */}
-      <footer style={{ 
-        backgroundColor: 'var(--bg-primary)', 
-        color: 'var(--text-secondary)',
-        borderTop: '1px solid var(--border-subtle)'
-      }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr 1.2fr', gap: '3rem', padding: '4rem 5%' }}>
-          <div>
-            <div style={{ fontFamily: 'var(--font-playfair)', fontSize: '1.8rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '1.5rem' }}>STITCH</div>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
-              Functional, beautiful window treatments for the modern home.
-            </p>
-            <div style={{ display: 'flex', gap: '1rem' }}>
-              <div style={{ width: '36px', height: '36px', borderRadius: '50%', border: '1px solid var(--border-subtle)', display: 'grid', placeItems: 'center' }}>f</div>
-              <div style={{ width: '36px', height: '36px', borderRadius: '50%', border: '1px solid var(--border-subtle)', display: 'grid', placeItems: 'center' }}>ig</div>
-            </div>
+      
+      {/* Footer */}
+      <footer className="bg-white border-t border-gray-200 py-16 px-8 md:px-16">
+        <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="font-serif text-3xl font-semibold text-[#0B2C5F] tracking-wide">
+            STITCH
           </div>
-          <div>
-            <h4 style={{ fontSize: '1.1rem', marginBottom: '1.5rem', color: 'var(--text-primary)' }}>Quick Links</h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <Link href="/categories/roller-shades" style={{ color: 'var(--text-muted)' }}>Roller Shades</Link>
-              <Link href="/categories/duo-glide" style={{ color: 'var(--text-muted)' }}>Duo-Glide</Link>
-              <Link href="/track-order" style={{ color: 'var(--text-muted)' }}>Track Order</Link>
-            </div>
+          <div className="flex gap-8 text-sm font-medium text-gray-500">
+            <Link href="/about" className="hover:text-[#0B2C5F] transition-colors">About Us</Link>
+            <Link href="/contact" className="hover:text-[#0B2C5F] transition-colors">Contact</Link>
+            <Link href="/account/login" className="hover:text-[#0B2C5F] transition-colors">Login</Link>
           </div>
-          <div>
-            <h4 style={{ fontSize: '1.1rem', marginBottom: '1.5rem', color: 'var(--text-primary)' }}>Company</h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <Link href="/about" style={{ color: 'var(--text-muted)' }}>About Us</Link>
-              <Link href="/contact" style={{ color: 'var(--text-muted)' }}>Contact Us</Link>
-              <Link href="/account/dealer-login" style={{ color: 'var(--text-muted)' }}>Dealer Login</Link>
-            </div>
-          </div>
-          <div>
-            <h4 style={{ fontSize: '1.1rem', marginBottom: '1.5rem', color: 'var(--text-primary)' }}>Contact</h4>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '1rem' }}>100 Architectural Way<br />Toronto, ON M5V 2H1</p>
-            <a href="mailto:info@stitchcanada.com" style={{ color: 'var(--text-primary)', fontWeight: 500 }}>info@stitchcanada.com</a>
-          </div>
-        </div>
-        
-        <div style={{ borderTop: '1px solid var(--border-subtle)', padding: '1.5rem 5%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-          <p>© 2026 STITCH CANADA. ALL RIGHTS RESERVED.</p>
-          <div style={{ display: 'flex', gap: '2rem' }}>
-            <Link href="/privacy">Privacy Policy</Link>
-            <Link href="/terms">Terms of Service</Link>
+          <div className="text-sm text-gray-400">
+            &copy; {new Date().getFullYear()} Stitch Interiors. All rights reserved.
           </div>
         </div>
       </footer>
-    </main>
+    </div>
   );
 }

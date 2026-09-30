@@ -3,6 +3,7 @@ import { Jost, Playfair_Display } from "next/font/google";
 import { getTheme } from "../lib/theme_actions";
 import ThemeProvider from "../components/ThemeProvider";
 import FloatingCart from "../components/FloatingCart";
+import Navbar from "../components/Navbar";
 import "./globals.css";
 
 const jost = Jost({
@@ -35,7 +36,8 @@ export default async function RootLayout({
       </head>
       <body style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', margin: 0 }}>
         <ThemeProvider initialTheme={theme}>
-          {children}
+          <Navbar />
+          <main className="flex-1 w-full bg-[#F7F3EA]">{children}</main>
           <FloatingCart />
         </ThemeProvider>
       </body>
