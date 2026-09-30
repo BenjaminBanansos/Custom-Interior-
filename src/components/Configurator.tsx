@@ -292,7 +292,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
           
           {/* Measurements */}
           <div style={{ marginBottom: '4rem' }}>
-            <label style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1.5rem', display: 'block', color: '#000' }}>
+            <label style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1.5rem', display: 'block', color: 'var(--text-primary)' }}>
               Precision Dimensions
             </label>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
@@ -305,12 +305,12 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
                     placeholder="Inches"
                     value={width}
                     onChange={(e) => setWidth(e.target.value)}
-                    style={{ flex: 2, padding: '16px', border: '1px solid #e0e0e0', borderRadius: '0', fontSize: '1.1rem', outline: 'none', background: '#fafafa' }}
+                    style={{ flex: 2, padding: '16px', border: '1px solid #e0e0e0', borderRadius: 'var(--radius-sm)', fontSize: '1.1rem', outline: 'none', background: '#fafafa' }}
                   />
                   <select 
                     value={widthFraction} 
                     onChange={(e) => setWidthFraction(e.target.value)}
-                    style={{ flex: 1, padding: '16px', border: '1px solid #e0e0e0', borderRadius: '0', fontSize: '1.1rem', outline: 'none', background: '#fafafa', appearance: 'none', cursor: 'pointer' }}
+                    style={{ flex: 1, padding: '16px', border: '1px solid #e0e0e0', borderRadius: 'var(--radius-sm)', fontSize: '1.1rem', outline: 'none', background: '#fafafa', appearance: 'none', cursor: 'pointer' }}
                   >
                     <option value="0">0"</option>
                     <option value="1/8">1/8"</option>
@@ -342,12 +342,12 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
                     placeholder="Inches"
                     value={height}
                     onChange={(e) => setHeight(e.target.value)}
-                    style={{ flex: 2, padding: '16px', border: '1px solid #e0e0e0', borderRadius: '0', fontSize: '1.1rem', outline: 'none', background: '#fafafa' }}
+                    style={{ flex: 2, padding: '16px', border: '1px solid #e0e0e0', borderRadius: 'var(--radius-sm)', fontSize: '1.1rem', outline: 'none', background: '#fafafa' }}
                   />
                   <select 
                     value={heightFraction} 
                     onChange={(e) => setHeightFraction(e.target.value)}
-                    style={{ flex: 1, padding: '16px', border: '1px solid #e0e0e0', borderRadius: '0', fontSize: '1.1rem', outline: 'none', background: '#fafafa', appearance: 'none', cursor: 'pointer' }}
+                    style={{ flex: 1, padding: '16px', border: '1px solid #e0e0e0', borderRadius: 'var(--radius-sm)', fontSize: '1.1rem', outline: 'none', background: '#fafafa', appearance: 'none', cursor: 'pointer' }}
                   >
                     <option value="0">0"</option>
                     <option value="1/8">1/8"</option>
@@ -367,7 +367,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
                   min="1"
                   value={quantity}
                   onChange={(e) => setQuantity(e.target.value)}
-                  style={{ width: '100%', padding: '16px', border: '1px solid #e0e0e0', borderRadius: '0', fontSize: '1.1rem', outline: 'none', background: '#fafafa', transition: 'border 0.3s' }}
+                  style={{ width: '100%', padding: '16px', border: '1px solid #e0e0e0', borderRadius: 'var(--radius-sm)', fontSize: '1.1rem', outline: 'none', background: '#fafafa', transition: 'border 0.3s' }}
                 />
               </div>
               <div>
@@ -377,7 +377,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
                   placeholder="e.g. Master Bedroom"
                   value={roomName}
                   onChange={(e) => setRoomName(e.target.value)}
-                  style={{ width: '100%', padding: '16px', border: '1px solid #e0e0e0', borderRadius: '0', fontSize: '1.1rem', outline: 'none', background: '#fafafa', transition: 'border 0.3s' }}
+                  style={{ width: '100%', padding: '16px', border: '1px solid #e0e0e0', borderRadius: 'var(--radius-sm)', fontSize: '1.1rem', outline: 'none', background: '#fafafa', transition: 'border 0.3s' }}
                 />
               </div>
             </div>
@@ -386,7 +386,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
           {/* Fabric Selection */}
           {product.fabricFamilies && product.fabricFamilies.length > 0 && (
             <div style={{ marginBottom: '4rem' }}>
-              <label style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1.5rem', display: 'block', color: '#000' }}>
+              <label style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1.5rem', display: 'block', color: 'var(--text-primary)' }}>
                 Opacity / Category
               </label>
               
@@ -405,8 +405,8 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
                     style={{ 
                       background: 'none', border: 'none', padding: 0, cursor: 'pointer',
                       fontSize: '1.1rem', fontWeight: selectedCategory === cat ? 700 : 400,
-                      color: selectedCategory === cat ? '#000' : '#888',
-                      borderBottom: selectedCategory === cat ? '2px solid #000' : 'none',
+                      color: selectedCategory === cat ? 'var(--text-primary)' : '#888',
+                      borderBottom: selectedCategory === cat ? '2px solid var(--text-primary)' : 'none',
                       paddingBottom: '5px'
                     }}
                   >{cat}</button>
@@ -418,9 +418,9 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
                     key={fam.fabricId}
                     onClick={() => { setSelectedFamily(fam); setSelectedColor(fam.colors[0] || null); }}
                     style={{ 
-                      padding: '10px 20px', borderRadius: '30px', border: selectedFamily?.fabricId === fam.fabricId ? '1px solid #000' : '1px solid #eaeaea', cursor: 'pointer', whiteSpace: 'nowrap',
-                      backgroundColor: selectedFamily?.fabricId === fam.fabricId ? '#000' : '#fff',
-                      color: selectedFamily?.fabricId === fam.fabricId ? '#fff' : '#000',
+                      padding: '10px 20px', borderRadius: 'var(--radius-pill)', border: selectedFamily?.fabricId === fam.fabricId ? '1px solid var(--accent-primary)' : '1px solid #eaeaea', cursor: 'pointer', whiteSpace: 'nowrap',
+                      backgroundColor: selectedFamily?.fabricId === fam.fabricId ? 'var(--accent-primary)' : '#fff',
+                      color: selectedFamily?.fabricId === fam.fabricId ? '#fff' : 'var(--text-primary)',
                       fontSize: '0.8rem', fontWeight: 600, transition: 'all 0.3s'
                     }}
                   >{fam.name} {fam.priceModifier > 0 && `(+$${fam.priceModifier})`}</button>
@@ -434,13 +434,13 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
                       key={color.colorId}
                       onClick={() => setSelectedColor(color)}
                       style={{ 
-                        border: selectedColor?.colorId === color.colorId ? '2px solid #000' : '1px solid transparent',
-                        padding: '4px', borderRadius: '8px', cursor: 'pointer', opacity: color.status === 'out-of-stock' ? 0.5 : 1,
+                        border: selectedColor?.colorId === color.colorId ? '2px solid var(--accent-primary)' : '1px solid transparent',
+                        padding: '4px', borderRadius: 'var(--radius-md)', cursor: 'pointer', opacity: color.status === 'out-of-stock' ? 0.5 : 1,
                         transition: 'all 0.2s'
                       }}
                     >
                       <div style={{ 
-                        height: '70px', backgroundColor: color.hex, borderRadius: '4px',
+                        height: '70px', backgroundColor: color.hex, borderRadius: 'var(--radius-pill)',
                         backgroundImage: color.mediaUrl ? `url(${color.mediaUrl})` : 'none',
                         backgroundSize: 'cover', backgroundPosition: 'center', boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
                       }}></div>
@@ -458,7 +458,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
             
             return (
               <div key={group.id} style={{ marginBottom: '4rem', borderTop: '1px solid #eaeaea', paddingTop: '3rem' }}>
-                <label style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1.5rem', display: 'block', color: '#000' }}>
+                <label style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1.5rem', display: 'block', color: 'var(--text-primary)' }}>
                   {group.name}
                 </label>
                 
@@ -474,7 +474,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
                           }
                         }}
                         style={{ 
-                          border: selectedOption?.id === opt.id ? '2px solid #000' : '1px solid #eaeaea',
+                          border: selectedOption?.id === opt.id ? '2px solid var(--accent-primary)' : '1px solid #eaeaea',
                           padding: '20px', cursor: isCompatible ? 'pointer' : 'not-allowed', 
                           background: selectedOption?.id === opt.id ? '#fafafa' : '#fff',
                           opacity: isCompatible ? 1 : 0.4,
@@ -488,13 +488,13 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
                                 e.stopPropagation();
                                 setHardwareLightboxImage(opt.mediaUrl || null);
                               }} 
-                              style={{ width: '60px', height: '60px', borderRadius: '4px', backgroundImage: `url(${opt.mediaUrl})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', flexShrink: 0, border: '1px solid #eee', backgroundColor: '#fff', cursor: 'zoom-in' }} 
+                              style={{ width: '60px', height: '60px', borderRadius: 'var(--radius-md)', backgroundImage: `url(${opt.mediaUrl})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', flexShrink: 0, border: '1px solid #eee', backgroundColor: '#fff', cursor: 'zoom-in' }} 
                             />
-                            <div style={{ position: 'absolute', bottom: '-8px', right: '-8px', background: 'rgba(0,0,0,0.6)', color: 'white', fontSize: '10px', padding: '2px 4px', borderRadius: '4px', pointerEvents: 'none' }}>🔍</div>
+                            <div style={{ position: 'absolute', bottom: '-8px', right: '-8px', background: 'rgba(0,0,0,0.6)', color: 'white', fontSize: '10px', padding: '2px 4px', borderRadius: 'var(--radius-md)', pointerEvents: 'none' }}>🔍</div>
                           </div>
                         )}
                         <div>
-                          <div style={{ fontSize: '1.1rem', fontWeight: 400, color: '#000' }}>
+                          <div style={{ fontSize: '1.1rem', fontWeight: 400, color: 'var(--text-primary)' }}>
                             {opt.name} {!isCompatible && <span style={{fontSize:'0.7rem', color:'red', marginLeft:'10px'}}>Incompatible with current selections</span>}
                           </div>
                           <div style={{ fontSize: '0.8rem', color: opt.priceAdjustment > 0 ? '#10b981' : '#888', marginTop: '4px' }}>{opt.priceAdjustment > 0 ? `+ $${opt.priceAdjustment}` : 'Included in Base'}</div>
@@ -506,7 +506,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
 
                 {/* Sub-Attributes Accordion */}
                 {selectedOption && selectedOption.subAttributes && selectedOption.subAttributes.length > 0 && (
-                  <div style={{ marginTop: '20px', padding: '20px 20px 20px 30px', borderLeft: '2px solid #000' }}>
+                  <div style={{ marginTop: '20px', padding: '20px 20px 20px 30px', borderLeft: '2px solid var(--accent-primary)' }}>
                     {selectedOption.subAttributes.map(sub => (
                       <div key={sub.id} style={{ marginBottom: '20px' }}>
                         <div style={{ fontSize: '0.8rem', fontWeight: 600, marginBottom: '12px', color: '#555' }}>{sub.name}</div>
@@ -517,9 +517,9 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
                               onClick={() => setSelectedSubAttributes({ ...selectedSubAttributes, [sub.id]: choice.id })}
                               style={{ 
                                 padding: '10px 20px', cursor: 'pointer', fontSize: '0.8rem',
-                                border: selectedSubAttributes[sub.id] === choice.id ? '1px solid #000' : '1px solid #ddd',
-                                backgroundColor: selectedSubAttributes[sub.id] === choice.id ? '#000' : '#fff',
-                                color: selectedSubAttributes[sub.id] === choice.id ? '#fff' : '#000',
+                                border: selectedSubAttributes[sub.id] === choice.id ? '1px solid var(--accent-primary)' : '1px solid #ddd',
+                                backgroundColor: selectedSubAttributes[sub.id] === choice.id ? 'var(--accent-primary)' : '#fff',
+                                color: selectedSubAttributes[sub.id] === choice.id ? '#fff' : 'var(--text-primary)',
                                 transition: 'all 0.2s'
                               }}
                             >
@@ -550,14 +550,14 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
           
           if (isTooLarge) {
             return (
-              <button style={{ padding: '16px 32px', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.1em', backgroundColor: '#e53e3e', color: '#fff', border: 'none', cursor: 'not-allowed' }}>
+              <button style={{ padding: '16px 32px', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.1em', backgroundColor: '#e53e3e', color: '#fff', border: 'none', borderRadius: 'var(--radius-pill)', cursor: 'not-allowed' }}>
                 SIZE TOO LARGE
               </button>
             );
           }
           if (isTooSmall) {
             return (
-              <button style={{ padding: '16px 32px', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.1em', backgroundColor: '#e53e3e', color: '#fff', border: 'none', cursor: 'not-allowed' }}>
+              <button style={{ padding: '16px 32px', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.1em', backgroundColor: '#e53e3e', color: '#fff', border: 'none', borderRadius: 'var(--radius-pill)', cursor: 'not-allowed' }}>
                 SIZE TOO SMALL
               </button>
             );
@@ -567,7 +567,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
             <button 
               onClick={handleOrderSubmit}
               disabled={orderStatus === 'submitting'}
-              style={{ padding: '16px 32px', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.1em', backgroundColor: orderStatus === 'success' ? '#10b981' : '#000', color: '#fff', border: 'none', cursor: orderStatus === 'submitting' ? 'wait' : 'pointer', transition: 'all 0.2s' }} 
+              style={{ padding: '16px 32px', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.1em', backgroundColor: orderStatus === 'success' ? '#10b981' : 'var(--accent-primary)', color: '#fff', border: 'none', borderRadius: 'var(--radius-pill)', cursor: orderStatus === 'submitting' ? 'wait' : 'pointer', transition: 'all 0.2s' }} 
               onMouseOver={e => { if(orderStatus === 'idle') e.currentTarget.style.transform = 'scale(1.02)'; }} 
               onMouseOut={e => { if(orderStatus === 'idle') e.currentTarget.style.transform = 'scale(1)'; }}
             >
@@ -591,7 +591,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
             <button style={{ background: 'rgba(255,255,255,0.1)', border: 'none', color: 'white', fontSize: '3rem', padding: '20px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80px', height: '80px' }} onClick={prevLightboxImage}>‹</button>
             
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <img src={selectedFamily.colors[lightboxIndex]?.mediaUrl} alt={selectedFamily.colors[lightboxIndex]?.name} style={{ maxHeight: '75vh', maxWidth: '75vw', objectFit: 'contain', borderRadius: '8px', boxShadow: '0 20px 50px rgba(0,0,0,0.5)' }} />
+              <img src={selectedFamily.colors[lightboxIndex]?.mediaUrl} alt={selectedFamily.colors[lightboxIndex]?.name} style={{ maxHeight: '75vh', maxWidth: '75vw', objectFit: 'contain', borderRadius: 'var(--radius-md)', boxShadow: '0 20px 50px rgba(0,0,0,0.5)' }} />
               <div style={{ color: 'white', marginTop: '20px', fontSize: '1.5rem', fontWeight: 500, letterSpacing: '0.05em' }}>
                 {selectedFamily.colors[lightboxIndex]?.name}
               </div>
@@ -611,7 +611,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
           <button style={{ position: 'absolute', top: '30px', right: '30px', background: 'transparent', border: 'none', color: 'white', fontSize: '2rem', cursor: 'pointer', padding: '10px' }} onClick={() => setHardwareLightboxImage(null)}>✕</button>
           
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', maxWidth: '90vw' }}>
-            <img src={hardwareLightboxImage} alt="Hardware Enlarge" style={{ maxHeight: '85vh', maxWidth: '85vw', objectFit: 'contain', borderRadius: '8px', boxShadow: '0 20px 50px rgba(0,0,0,0.5)' }} />
+            <img src={hardwareLightboxImage} alt="Hardware Enlarge" style={{ maxHeight: '85vh', maxWidth: '85vw', objectFit: 'contain', borderRadius: 'var(--radius-md)', boxShadow: '0 20px 50px rgba(0,0,0,0.5)' }} />
           </div>
         </div>
       )}
