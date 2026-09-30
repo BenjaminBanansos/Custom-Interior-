@@ -1,26 +1,26 @@
 :root {
   /* JANAL ELEGANT PALETTE (Navy & Gold) */
   --bg-primary: #FFFFFF; /* Pure White */
-  --bg-secondary: #F5F7F9; /* Warm Champagne / Off-White */
-  --bg-tertiary: #E8ECEF; /* Soft Ice Blue (for gradients) */
+  --bg-secondary: #F7F3EA; /* Warm Champagne / Off-White */
+  --bg-tertiary: #EEF4FB; /* Soft Ice Blue (for gradients) */
   
-  --text-primary: #1A1D20; /* Deep Navy Blue */
-  --text-secondary: #6C757D; /* Charcoal Grey for readability */
+  --text-primary: #071F45; /* Deep Navy Blue */
+  --text-secondary: #374151; /* Charcoal Grey for readability */
   --text-muted: #6B7280; /* Light Grey */
   
-  --accent-primary: #343A40; /* Brighter Navy for buttons */
-  --accent-gold: #8D99AE; /* Elegant Gold */
+  --accent-primary: #0B2C5F; /* Brighter Navy for buttons */
+  --accent-gold: #D4AF37; /* Elegant Gold */
   
   --border-subtle: #E5E7EB; /* Very light grey */
   
   /* Glassmorphism & Elevation */
-  --shadow-sm: 0 4px 12px rgba(26,29,32,0.04);
-  --shadow-md: 0 8px 30px rgba(26, 29, 32, 0.06); /* Janal's exact soft shadow */
+  --shadow-sm: 0 4px 12px rgba(11,44,95,0.04);
+  --shadow-md: 0 12px 28px rgba(11,44,95,0.08); /* Janal's exact soft shadow */
   
   /* SHAPES: Soft, rounded, elegant */
-  --radius-sm: 0px;
-  --radius-md: 0px; /* Janal's preferred card radius */
-  --radius-pill: 0px;
+  --radius-sm: 8px;
+  --radius-md: 18px; /* Janal's preferred card radius */
+  --radius-pill: 999px;
   
   /* Spacing & Transitions */
   --spacing-unit: 1rem;
@@ -117,7 +117,7 @@ a:hover {
 }
 .input-elegant:focus {
   border-color: var(--accent-primary);
-  box-shadow: 0 0 0 3px rgba(26,29,32,0.1);
+  box-shadow: 0 0 0 3px rgba(11,44,95,0.1);
 }
 
 /* Global Overrides for Existing Components (Cart, Configurator) */
@@ -133,7 +133,7 @@ input[type="number"], input[type="text"], input[type="email"], input[type="passw
 }
 input:focus, select:focus, textarea:focus {
   border-color: var(--accent-primary) !important;
-  box-shadow: 0 0 0 3px rgba(26,29,32,0.1) !important;
+  box-shadow: 0 0 0 3px rgba(11,44,95,0.1) !important;
 }
 
 /* Ensure Light Mode in legacy pages */

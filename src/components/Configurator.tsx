@@ -251,7 +251,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
         }
         .janal-input:focus {
           border-color: var(--accent-primary);
-          box-shadow: 0 0 0 3px rgba(26,29,32,0.1);
+          box-shadow: 0 0 0 3px rgba(11,44,95,0.1);
         }
         
         /* Sticky Cart Bar Janal Style */
@@ -267,7 +267,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          box-shadow: 0 -4px 20px rgba(26,29,32,0.08);
+          box-shadow: 0 -4px 20px rgba(11,44,95,0.08);
         }
         @media (min-width: 1024px) {
           .glass-bar {
@@ -380,12 +380,12 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
                       <div style={{ 
                         width: '60px', height: '60px', 
                         backgroundColor: color.hex, 
-                        borderRadius: '0px',
+                        borderRadius: '50%',
                         backgroundImage: color.mediaUrl ? `url(${color.mediaUrl})` : 'none',
                         backgroundSize: 'cover', backgroundPosition: 'center', 
-                        boxShadow: '0 4px 12px rgba(26,29,32,0.08)',
+                        boxShadow: '0 4px 12px rgba(11,44,95,0.08)',
                         border: selectedColor?.colorId === color.colorId ? '3px solid var(--accent-primary)' : '3px solid transparent',
-                        padding: '4px',
+                        padding: '2px',
                         backgroundClip: 'content-box',
                         transition: 'var(--transition-smooth)'
                       }}></div>
@@ -425,7 +425,7 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
                         }}
                       >
                         {/* Radio indicator */}
-                        <div style={{ width: '20px', height: '20px', borderRadius: '0px', border: isSelected ? '6px solid var(--accent-primary)' : '2px solid var(--border-subtle)', backgroundColor: '#fff', flexShrink: 0 }}></div>
+                        <div style={{ width: '20px', height: '20px', borderRadius: '50%', border: isSelected ? '6px solid var(--accent-primary)' : '2px solid var(--border-subtle)', backgroundColor: '#fff', flexShrink: 0 }}></div>
                         
                         {opt.mediaUrl && (
                           <div 
@@ -515,17 +515,17 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
 
       {/* Lightbox Modals... */}
       {lightboxOpen && selectedFamily && (
-        <div style={{ position: 'fixed', inset: 0, zIndex: 9999, backgroundColor: 'rgba(26,29,32,0.9)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} onClick={() => setLightboxOpen(false)}>
+        <div style={{ position: 'fixed', inset: 0, zIndex: 9999, backgroundColor: 'rgba(11,44,95,0.9)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} onClick={() => setLightboxOpen(false)}>
           <button style={{ position: 'absolute', top: '30px', right: '30px', background: 'transparent', border: 'none', color: '#fff', fontSize: '2rem', cursor: 'pointer' }} onClick={() => setLightboxOpen(false)}>✕</button>
           <div style={{ display: 'flex', alignItems: 'center', gap: '40px', maxWidth: '90vw' }}>
-            <button style={{ background: 'rgba(255,255,255,0.2)', border: 'none', color: '#fff', fontSize: '3rem', borderRadius: '0px', cursor: 'pointer', width: '80px', height: '80px' }} onClick={prevLightboxImage}>‹</button>
+            <button style={{ background: 'rgba(255,255,255,0.2)', border: 'none', color: '#fff', fontSize: '3rem', borderRadius: '50%', cursor: 'pointer', width: '80px', height: '80px' }} onClick={prevLightboxImage}>‹</button>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <img src={selectedFamily.colors[lightboxIndex]?.mediaUrl} alt={selectedFamily.colors[lightboxIndex]?.name} style={{ maxHeight: '75vh', maxWidth: '75vw', objectFit: 'contain', borderRadius: 'var(--radius-md)' }} />
               <div style={{ color: '#fff', marginTop: '20px', fontSize: '1.5rem', fontWeight: 500 }}>
                 {selectedFamily.colors[lightboxIndex]?.name}
               </div>
             </div>
-            <button style={{ background: 'rgba(255,255,255,0.2)', border: 'none', color: '#fff', fontSize: '3rem', borderRadius: '0px', cursor: 'pointer', width: '80px', height: '80px' }} onClick={nextLightboxImage}>›</button>
+            <button style={{ background: 'rgba(255,255,255,0.2)', border: 'none', color: '#fff', fontSize: '3rem', borderRadius: '50%', cursor: 'pointer', width: '80px', height: '80px' }} onClick={nextLightboxImage}>›</button>
           </div>
         </div>
       )}
