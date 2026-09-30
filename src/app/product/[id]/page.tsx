@@ -4,6 +4,8 @@ import { getProducts } from '@/lib/storage_actions';
 import { getTheme } from '@/lib/theme_actions';
 import Configurator from '@/components/Configurator';
 
+export const dynamic = 'force-dynamic';
+
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
     const [allProducts, theme] = await Promise.all([
