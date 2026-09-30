@@ -109,7 +109,7 @@ export default async function Home() {
                 backgroundPosition: 'center',
                 transition: 'transform 0.5s ease'
               }} className="cat-img"></div>
-              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '2rem', background: 'linear-gradient(to top, rgba(7,31,69,0.9), transparent)', color: '#fff' }}>
+              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '2rem', background: 'linear-gradient(to top, rgba(26,29,32,0.9), transparent)', color: '#fff' }}>
                 <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem', color: '#fff' }}>{cat}</h3>
                 <span style={{ fontSize: '0.9rem', opacity: 0.9 }}>Clean & Modern →</span>
               </div>
@@ -170,7 +170,7 @@ export default async function Home() {
 
       {/* Newsletter / Dealer CTA matching Janal's Gradient Footer Top */}
       <section style={{ 
-        background: 'linear-gradient(120deg, #071f45, #0b2c5f 60%, #154785)', 
+        background: 'linear-gradient(120deg, #1A1D20, #343A40 60%, #495057)', 
         padding: '5rem 5%',
         color: '#fff',
         display: 'flex',
