@@ -101,132 +101,185 @@ export default function CartPage() {
     }
   };
 
-  if (loading) return <div className="p-10">Loading Cart...</div>;
+  if (loading) return (
+    <div className="flex h-screen items-center justify-center">
+      <div className="text-xs font-bold tracking-[0.2em] text-gray-500 uppercase animate-pulse">
+        LOADING BASKET...
+      </div>
+    </div>
+  );
 
   return (
-    <div className="max-w-4xl mx-auto p-10">
-      <h1 className="text-4xl font-bold mb-10">Your Project Basket</h1>
+    <div className="max-w-6xl mx-auto px-6 py-20 font-sans">
+      <h1 className="text-3xl font-light mb-16 tracking-tight">Your Project Basket</h1>
       
       {items.length === 0 ? (
-        <p>Your basket is empty.</p>
+        <div className="py-20 border-t border-b border-gray-200 text-center">
+          <p className="text-sm font-bold tracking-widest text-gray-400 uppercase mb-6">Your basket is empty.</p>
+          <button 
+            onClick={() => window.location.href = '/'}
+            className="bg-black text-white px-8 py-4 text-xs font-bold tracking-widest uppercase hover:bg-gray-800 transition-colors"
+          >
+            RETURN TO SHOP
+          </button>
+        </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div>
-            <h2 className="text-2xl font-semibold mb-4">Items</h2>
-            {items.map(item => (
-              <div key={item.cartItemId} className="border p-4 rounded mb-4 relative">
-                <button onClick={() => handleRemove(item.cartItemId)} className="absolute top-4 right-4 text-red-500 font-bold">✕</button>
-                <h3 className="font-bold">{item.productName}</h3>
-                <p className="text-sm text-gray-600">{item.width}" W x {item.height}" H</p>
-                <p className="text-sm text-gray-600">Qty: {item.quantity}</p>
-                <p className="font-bold mt-2">${item.totalPrice}</p>
-                <div className="text-xs text-gray-500 mt-2">
-                  <p>{item.details?.family} - {item.details?.color}</p>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+          <div className="lg:col-span-8">
+            <div className="border-b border-black pb-4 mb-8">
+              <h2 className="text-xs font-bold tracking-[0.15em] uppercase text-gray-500">Items ({items.length})</h2>
+            </div>
+            
+            <div className="space-y-6">
+              {items.map(item => (
+                <div key={item.cartItemId} className="flex gap-6 border-b border-gray-100 pb-8 relative group">
+                  <div className="w-24 h-24 bg-gray-50 flex items-center justify-center flex-shrink-0">
+                    <span className="text-[10px] text-gray-400 uppercase tracking-wider">{item.productName.split(' ')[0]}</span>
+                  </div>
+                  <div className="flex-grow">
+                    <div className="flex justify-between items-start mb-1">
+                      <h3 className="font-semibold text-lg">{item.productName}</h3>
+                      <button 
+                        onClick={() => handleRemove(item.cartItemId)} 
+                        className="text-gray-400 hover:text-red-500 text-xl font-light transition-colors"
+                      >
+                        ✕
+                      </button>
+                    </div>
+                    
+                    {item.details?.roomName && item.details?.roomName !== 'Unspecified Room' && (
+                      <div className="inline-block bg-gray-100 px-2 py-1 mb-3">
+                        <span className="text-[10px] font-bold tracking-widest uppercase text-gray-600">
+                          {item.details.roomName}
+                        </span>
+                      </div>
+                    )}
+                    
+                    <div className="grid grid-cols-2 gap-4 text-sm text-gray-500 mt-2">
+                      <div>
+                        <span className="block text-[10px] font-bold tracking-widest uppercase text-gray-400 mb-1">Dimensions</span>
+                        {item.width}" W × {item.height}" H
+                      </div>
+                      <div>
+                        <span className="block text-[10px] font-bold tracking-widest uppercase text-gray-400 mb-1">Fabric</span>
+                        {item.details?.family || 'N/A'} - {item.details?.color || 'N/A'}
+                      </div>
+                    </div>
+                    
+                    <div className="flex justify-between items-end mt-6">
+                      <div className="text-sm text-gray-500">
+                        Qty: {item.quantity}
+                      </div>
+                      <div className="text-xl font-light">
+                        ${item.totalPrice}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
-            <div className="text-xl font-bold mt-6">
-              Total: ${items.reduce((sum, item) => sum + item.totalPrice, 0)}
+              ))}
             </div>
           </div>
           
-          <div className="bg-gray-50 p-6 rounded border">
-            <h2 className="text-2xl font-semibold mb-6">Checkout</h2>
-            
-            {customer ? (
-              <div className="space-y-4">
-                <div className="flex items-center gap-4 bg-white p-4 border rounded">
-                  <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center font-bold text-gray-600">
-                    {customer.username.charAt(0).toUpperCase()}
+          <div className="lg:col-span-4">
+            <div className="bg-[#fafafa] p-8">
+              <h2 className="text-xs font-bold tracking-[0.15em] uppercase text-gray-500 mb-8 border-b border-gray-200 pb-4">Order Summary</h2>
+              
+              <div className="flex justify-between items-center mb-8">
+                <span className="text-sm text-gray-500 uppercase tracking-wider">Subtotal</span>
+                <span className="text-2xl font-light">${items.reduce((sum, item) => sum + item.totalPrice, 0)}</span>
+              </div>
+              
+              {customer ? (
+                <div className="space-y-4">
+                  <div className="bg-white p-4 border border-gray-200">
+                    <p className="text-[10px] font-bold tracking-widest uppercase text-gray-400 mb-1">Signed in as</p>
+                    <p className="font-semibold">{customer.username}</p>
+                    <p className="text-xs text-gray-500">{customer.email}</p>
                   </div>
-                  <div>
-                    <p className="font-bold">{customer.username}</p>
-                    <p className="text-sm text-gray-500">{customer.email}</p>
-                  </div>
+                  <button 
+                    onClick={handleLoggedInCheckout} 
+                    className="w-full bg-black text-white py-4 text-xs font-bold tracking-widest uppercase hover:bg-gray-800 transition-colors"
+                  >
+                    Place Order
+                  </button>
+                  <button onClick={handleLogout} className="w-full text-gray-400 text-xs tracking-widest uppercase mt-4 hover:text-black transition-colors">Sign out</button>
                 </div>
-                <button 
-                  onClick={handleLoggedInCheckout} 
-                  className="w-full bg-black text-white py-3 rounded font-bold hover:bg-gray-800"
-                >
-                  Place Order as {customer.username}
-                </button>
-                <button onClick={handleLogout} className="w-full text-gray-500 text-sm mt-2">Sign out</button>
-              </div>
-            ) : (
-              <>
-                {step === 'cart' && (
-                  <div className="space-y-4">
-                    <button 
-                      onClick={() => window.location.href = '/api/auth/google'}
-                      className="w-full bg-white border border-gray-300 text-black py-3 rounded font-bold hover:bg-gray-100 flex justify-center items-center gap-2 transition-colors"
-                    >
-                      <img src="https://img.icons8.com/color/48/google-logo.png" className="w-6 h-6" alt="Google" />
-                      Sign in with Google
-                    </button>
-                    
-                    <div className="relative flex py-5 items-center">
-                      <div className="flex-grow border-t border-gray-300"></div>
-                      <span className="flex-shrink-0 mx-4 text-gray-400 text-sm">OR CONTINUE WITHOUT ACCOUNT</span>
-                      <div className="flex-grow border-t border-gray-300"></div>
+              ) : (
+                <>
+                  {step === 'cart' && (
+                    <div className="space-y-4">
+                      <button 
+                        onClick={() => window.location.href = '/api/auth/google'}
+                        className="w-full bg-white border border-gray-200 text-black py-4 flex justify-center items-center gap-3 hover:bg-gray-50 transition-colors"
+                      >
+                        <img src="https://img.icons8.com/color/48/google-logo.png" className="w-5 h-5" alt="Google" />
+                        <span className="text-xs font-bold tracking-widest uppercase">Sign in with Google</span>
+                      </button>
+                      
+                      <div className="relative flex py-6 items-center">
+                        <div className="flex-grow border-t border-gray-200"></div>
+                        <span className="flex-shrink-0 mx-4 text-gray-400 text-[10px] font-bold tracking-widest uppercase">OR CONTINUE AS GUEST</span>
+                        <div className="flex-grow border-t border-gray-200"></div>
+                      </div>
+
+                      <button 
+                        onClick={() => setStep('email')} 
+                        className="w-full bg-black text-white py-4 text-xs font-bold tracking-widest uppercase hover:bg-gray-800 transition-colors"
+                      >
+                        Guest Checkout
+                      </button>
                     </div>
+                  )}
 
-                    <button 
-                      onClick={() => setStep('email')} 
-                      className="w-full bg-black text-white py-3 rounded font-bold hover:bg-gray-800"
-                    >
-                      Guest Checkout
-                    </button>
-                  </div>
-                )}
+                  {step === 'email' && (
+                    <div className="space-y-4">
+                      <p className="text-xs text-gray-500 leading-relaxed mb-4">Enter your email to receive a verification code.</p>
+                      <input 
+                        type="email" 
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                        placeholder="name@company.com" 
+                        className="w-full bg-white border border-gray-200 p-4 text-sm outline-none focus:border-black transition-colors"
+                      />
+                      <button 
+                        onClick={handleSendCode} 
+                        className="w-full bg-black text-white py-4 text-xs font-bold tracking-widest uppercase hover:bg-gray-800 transition-colors mt-2"
+                      >
+                        Send Code
+                      </button>
+                      <button onClick={() => setStep('cart')} className="w-full text-gray-400 text-xs tracking-widest uppercase mt-4 hover:text-black transition-colors">Cancel</button>
+                    </div>
+                  )}
 
-                {step === 'email' && (
-                  <div className="space-y-4">
-                    <p className="text-sm text-gray-600">Enter your email to receive a verification code.</p>
-                    <input 
-                      type="email" 
-                      value={email}
-                      onChange={e => setEmail(e.target.value)}
-                      placeholder="name@company.com" 
-                      className="w-full border p-3 rounded outline-none focus:border-black"
-                    />
-                    <button 
-                      onClick={handleSendCode} 
-                      className="w-full bg-black text-white py-3 rounded font-bold hover:bg-gray-800"
-                    >
-                      Send Verification Code
-                    </button>
-                    <button onClick={() => setStep('cart')} className="w-full text-gray-500 text-sm">Cancel</button>
-                  </div>
-                )}
+                  {step === 'verify' && (
+                    <div className="space-y-4">
+                      <p className="text-xs text-gray-500 leading-relaxed mb-4">Enter the 6-digit code sent to <br/><b className="text-black">{email}</b></p>
+                      <input 
+                        type="text" 
+                        value={code}
+                        onChange={e => setCode(e.target.value)}
+                        placeholder="••••••" 
+                        className="w-full bg-white border border-gray-200 p-4 text-center text-2xl tracking-[0.5em] outline-none focus:border-black transition-colors"
+                        maxLength={6}
+                      />
+                      <button 
+                        onClick={handleVerifyAndCheckout} 
+                        className="w-full bg-black text-white py-4 text-xs font-bold tracking-widest uppercase hover:bg-gray-800 transition-colors mt-2"
+                      >
+                        Verify & Place Order
+                      </button>
+                      <button onClick={() => setStep('email')} className="w-full text-gray-400 text-xs tracking-widest uppercase mt-4 hover:text-black transition-colors">Back</button>
+                    </div>
+                  )}
+                </>
+              )}
 
-                {step === 'verify' && (
-                  <div className="space-y-4">
-                    <p className="text-sm text-gray-600">Enter the 6-digit code sent to <b>{email}</b></p>
-                    <input 
-                      type="text" 
-                      value={code}
-                      onChange={e => setCode(e.target.value)}
-                      placeholder="123456" 
-                      className="w-full border p-3 rounded text-center text-2xl tracking-widest outline-none focus:border-black"
-                      maxLength={6}
-                    />
-                    <button 
-                      onClick={handleVerifyAndCheckout} 
-                      className="w-full bg-black text-white py-3 rounded font-bold hover:bg-gray-800"
-                    >
-                      Verify & Place Order
-                    </button>
-                    <button onClick={() => setStep('email')} className="w-full text-gray-500 text-sm">Back</button>
-                  </div>
-                )}
-              </>
-            )}
-
-            {msg && (
-              <div className="mt-4 p-4 bg-gray-100 text-black text-sm rounded font-medium border border-gray-200">
-                {msg}
-              </div>
-            )}
+              {msg && (
+                <div className={`mt-6 p-4 text-xs tracking-wide uppercase font-bold border ${msg.includes('Success') ? 'bg-[#f0fdf4] border-[#bbf7d0] text-[#166534]' : 'bg-gray-100 border-gray-200 text-black'}`}>
+                  {msg}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       )}
