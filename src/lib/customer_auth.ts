@@ -23,7 +23,7 @@ export async function registerCustomer(username: string, password: string, email
   await db.collection('users').insertOne(newUser);
   
   // Auto login
-  cookies().set({
+  (await cookies()).set({
     name: 'customer_token',
     value: newUser.id,
     httpOnly: true,
@@ -41,7 +41,7 @@ export async function loginCustomer(username: string, password: string) {
   const user = await db.collection('users').findOne({ username });
   
   if (user && user.passwordHash === hashPassword(password) && user.role === 'customer') {
-    cookies().set({
+    (await cookies()).set({
       name: 'customer_token',
       value: user.id,
       httpOnly: true,
@@ -57,12 +57,12 @@ export async function loginCustomer(username: string, password: string) {
 }
 
 export async function logoutCustomer() {
-  cookies().delete('customer_token');
+  (await cookies()).delete('customer_token');
 }
 
 export async function getLoggedInCustomer() {
   try {
-    const token = cookies().get('customer_token')?.value;
+    const token = (await cookies()).get('customer_token')?.value;
     if (!token) return null;
     
     const db = await getDb();

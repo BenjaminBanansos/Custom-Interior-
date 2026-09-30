@@ -44,7 +44,7 @@ export async function verifyOtp(email: string, code: string) {
     await db.collection('otps').deleteOne({ email });
     
     // Set a verified guest cookie
-    cookies().set({
+    (await cookies()).set({
       name: 'guest_email',
       value: email,
       httpOnly: true,

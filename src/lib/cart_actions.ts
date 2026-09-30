@@ -5,7 +5,7 @@ import { cookies } from 'next/headers';
 import { revalidatePath } from 'next/cache';
 
 export async function getCartSessionId() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   let cartId = cookieStore.get('cart_session')?.value;
   if (!cartId) {
     cartId = 'CART-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);

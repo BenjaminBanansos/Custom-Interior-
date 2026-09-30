@@ -21,8 +21,9 @@ export default function CartPage() {
 
   const loadData = async () => {
     try {
+      const localCartId = typeof window !== 'undefined' ? localStorage.getItem('local_cart_id') || undefined : undefined;
       const [cartItems, loggedInCustomer] = await Promise.all([
-        getCart(),
+        getCart(localCartId),
         getLoggedInCustomer()
       ]);
       setItems(cartItems);
@@ -36,7 +37,8 @@ export default function CartPage() {
   };
 
   const handleRemove = async (id: string) => {
-    await removeFromCart(id);
+    const localCartId = typeof window !== 'undefined' ? localStorage.getItem('local_cart_id') || undefined : undefined;
+    await removeFromCart(id, localCartId);
     loadData();
   };
 
@@ -69,10 +71,12 @@ export default function CartPage() {
     const res = await verifyOtp(email, code);
     if (res.success) {
       setMsg('Verified! Processing order...');
-      const checkoutRes = await checkoutCart(email, 'Guest Customer');
+      const localCartId = typeof window !== 'undefined' ? localStorage.getItem('local_cart_id') || undefined : undefined;
+      const checkoutRes = await checkoutCart(email, 'Guest Customer', localCartId);
       if (checkoutRes.success) {
         setMsg(`Success! Your order ID is ${checkoutRes.orderId}`);
         setItems([]);
+        if (typeof window !== 'undefined') localStorage.removeItem('local_cart_id');
         setStep('cart');
       } else {
         setMsg(checkoutRes.error || 'Failed to checkout.');
@@ -85,10 +89,12 @@ export default function CartPage() {
   const handleLoggedInCheckout = async () => {
     if (!customer) return;
     setMsg('Processing order...');
-    const checkoutRes = await checkoutCart(customer.email, customer.username);
+    const localCartId = typeof window !== 'undefined' ? localStorage.getItem('local_cart_id') || undefined : undefined;
+    const checkoutRes = await checkoutCart(customer.email, customer.username, localCartId);
     if (checkoutRes.success) {
       setMsg(`Success! Your order ID is ${checkoutRes.orderId}`);
       setItems([]);
+      if (typeof window !== 'undefined') localStorage.removeItem('local_cart_id');
       setStep('cart');
     } else {
       setMsg(checkoutRes.error || 'Failed to checkout.');

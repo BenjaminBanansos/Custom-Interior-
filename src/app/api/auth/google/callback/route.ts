@@ -66,7 +66,7 @@ export async function GET(request: Request) {
     }
 
     // 4. Set session cookie
-    cookies().set({
+    (await cookies()).set({
       name: 'customer_token',
       value: user.id,
       httpOnly: true,
