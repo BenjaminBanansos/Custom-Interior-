@@ -3,31 +3,32 @@ import Link from 'next/link';
 
 export default function Wishlist() {
   return (
-    <main style={{ minHeight: '100vh', backgroundColor: 'var(--bg-primary)' }}>
-      {/* Structural Navigation */}
-      <nav style={{ padding: '2rem 4rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--border-subtle)' }}>
-        <Link href="/" style={{ fontFamily: 'var(--font-outfit)', fontSize: '1.5rem', letterSpacing: '0.2em', color: 'var(--text-primary)' }}>
+    <main style={{ minHeight: '100vh', backgroundColor: 'var(--bg-secondary)' }}>
+      {/* Navigation */}
+      <nav style={{ padding: '0 4rem', height: '90px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#fff', borderBottom: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-sm)' }}>
+        <Link href="/" style={{ fontFamily: 'var(--font-outfit)', fontSize: '2rem', fontWeight: 600, color: 'var(--text-primary)' }}>
           STITCH
         </Link>
-        <Link href="/categories/all" style={{ color: 'var(--text-secondary)', fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-          ← Return to Terminal
+        <Link href="/categories/all" style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <span>←</span> Back to Store
         </Link>
       </nav>
 
-      <div style={{ padding: '8rem 5%', maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
-        <h1 style={{ fontSize: '3rem', color: 'var(--text-primary)', marginBottom: '1.5rem' }}>Saved Specifications</h1>
-        <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', marginBottom: '4rem' }}>Your wishlist of structural shading systems.</p>
+      <div style={{ padding: '6rem 5%', maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
+        <h1 style={{ fontSize: '3rem', color: 'var(--text-primary)', marginBottom: '1rem' }}>Wishlist</h1>
+        <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', marginBottom: '4rem' }}>Your saved custom window treatments.</p>
         
         <div style={{ 
-          border: '1px dashed var(--border-strong)', 
-          padding: '5rem 2rem', 
-          backgroundColor: 'var(--bg-secondary)',
-          clipPath: 'polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)'
+          border: '1px dashed var(--border-subtle)', 
+          padding: '6rem 2rem', 
+          backgroundColor: '#fff',
+          borderRadius: 'var(--radius-md)',
+          boxShadow: 'var(--shadow-sm)'
         }}>
-          <div style={{ fontSize: '2rem', color: 'var(--text-muted)', marginBottom: '1rem' }}>∅</div>
-          <h3 style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>No configurations saved.</h3>
-          <Link href="/categories/all" className="btn-outline">
-            Browse Systems
+          <div style={{ fontSize: '3rem', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>♡</div>
+          <h3 style={{ color: 'var(--text-primary)', marginBottom: '1.5rem', fontSize: '1.5rem' }}>No items saved yet.</h3>
+          <Link href="/categories/all" className="btn-primary">
+            Browse Products
           </Link>
         </div>
       </div>

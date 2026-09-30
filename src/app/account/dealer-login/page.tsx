@@ -19,12 +19,12 @@ export default function DealerLogin({ searchParams }: { searchParams: { apply?: 
         {isApply && (
           <div>
             <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-secondary)', fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Company Name</label>
-            <input type="text" className="input-steel" placeholder="Atelier Architecture Inc." />
+            <input type="text" className="input-elegant" placeholder="Atelier Architecture Inc." />
           </div>
         )}
         <div>
           <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-secondary)', fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Professional Email</label>
-          <input type="email" className="input-steel" placeholder="admin@domain.com" />
+          <input type="email" className="input-elegant" placeholder="admin@domain.com" />
         </div>
         {!isApply && (
           <div>
@@ -32,7 +32,7 @@ export default function DealerLogin({ searchParams }: { searchParams: { apply?: 
               <span style={{ color: 'var(--text-secondary)', fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Secure Code</span>
               <Link href="/account/forgot-password" style={{ color: 'var(--text-primary)', fontSize: '0.75rem' }}>Forgot?</Link>
             </label>
-            <input type="password" className="input-steel" placeholder="••••••••" />
+            <input type="password" className="input-elegant" placeholder="••••••••" />
           </div>
         )}
         
