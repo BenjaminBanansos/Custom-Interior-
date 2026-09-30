@@ -8,10 +8,13 @@ const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET || ('GOCSPX-' + 'uj9nqjmV
 export async function GET(request: Request) {
   const url = new URL(request.url);
   const code = url.searchParams.get('code');
-  const redirectUri = `${url.origin}/api/auth/google/callback`;
+  
+  const isProd = process.env.NODE_ENV === 'production';
+  const origin = isProd ? 'https://smartdecor.store' : url.origin;
+  const redirectUri = `${origin}/api/auth/google/callback`;
 
   if (!code) {
-    return NextResponse.redirect(`${url.origin}/cart?error=NoCode`);
+    return NextResponse.redirect(`${origin}/cart?error=NoCode`);
   }
 
   try {
@@ -31,7 +34,7 @@ export async function GET(request: Request) {
     const tokenData = await tokenRes.json();
     if (tokenData.error) {
       console.error('Token Error:', tokenData);
-      return NextResponse.redirect(`${url.origin}/cart?error=TokenFailed`);
+      return NextResponse.redirect(`${origin}/cart?error=TokenFailed`);
     }
 
     // 2. Fetch user profile
@@ -41,7 +44,7 @@ export async function GET(request: Request) {
     const profile = await profileRes.json();
 
     if (!profile.email) {
-      return NextResponse.redirect(`${url.origin}/cart?error=NoEmail`);
+      return NextResponse.redirect(`${origin}/cart?error=NoEmail`);
     }
 
     // 3. Upsert user in database
@@ -77,9 +80,9 @@ export async function GET(request: Request) {
     });
 
     // 5. Redirect back to cart
-    return NextResponse.redirect(`${url.origin}/cart`);
+    return NextResponse.redirect(`${origin}/cart`);
   } catch (error) {
     console.error('Google Auth Error:', error);
-    return NextResponse.redirect(`${url.origin}/cart?error=AuthFailed`);
+    return NextResponse.redirect(`${origin}/cart?error=AuthFailed`);
   }
 }

@@ -1,8 +1,10 @@
 import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
-  const url = new URL(request.url);
-  const redirectUri = `${url.origin}/api/auth/google/callback`;
+  const isProd = process.env.NODE_ENV === 'production';
+  const redirectUri = isProd 
+    ? 'https://smartdecor.store/api/auth/google/callback'
+    : `${url.origin}/api/auth/google/callback`;
   
   const clientId = '641463235179-v7v6telib3gk6dcpe84sqs4nueigulmn.apps.googleusercontent.com';
   
