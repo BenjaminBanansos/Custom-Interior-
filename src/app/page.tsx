@@ -59,7 +59,7 @@ export default async function Home() {
       <header className="responsive-pad flex-between">
         <Link href="/" style={{ textDecoration: 'none' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-            <img src="/smart-decor-logo.png" alt="Smart Decor Logo" style={{ height: '45px', width: 'auto' }} onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling.style.display = 'flex'; }} />
+            <img src="/smart-decor-logo.png" alt="Smart Decor Logo" style={{ height: '45px', width: 'auto' }}  />
             <div style={{ width: '45px', height: '45px', background: '#D4AF37', borderRadius: '4px', display: 'none', alignItems: 'center', justifyContent: 'center', color: '#071F45', fontWeight: 'bold', fontSize: '24px', fontFamily: 'serif' }}>S</div>
             <div>
               <div style={{ fontFamily: 'var(--font-playfair), serif', fontSize: '22px', fontWeight: 'bold', color: '#071F45', lineHeight: '1' }}>Smart Decor</div>
