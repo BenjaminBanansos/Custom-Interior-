@@ -1,16 +1,15 @@
 import React from 'react';
 import Link from 'next/link';
-import { getProducts, getCategories } from '../lib/storage_actions';
+import { getCategories } from '../lib/storage_actions';
 
 export const dynamic = 'force-dynamic';
 
 export default async function Home() {
-  const products = await getProducts();
   const categories = await getCategories();
   
-  // Sort and filter active products
-  const activeProducts = products
-    .filter(p => p.status !== 'draft')
+  // Sort and filter active categories
+  const activeCategories = categories
+    .filter(c => c.status !== 'draft')
     .sort((a, b) => (a.order || 99) - (b.order || 99));
 
   return (
@@ -36,7 +35,7 @@ export default async function Home() {
       .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
       .product-card { border-radius: 16px; overflow: hidden; background: #F5F7F9; text-decoration: none; color: inherit; transition: transform 0.3s; border: 1px solid #E5E7EB; }
       .product-card:hover { transform: translateY(-4px); }
-      .card-img-wrapper { height: 260px; background: #EEF4FB; display: flex; align-items: center; justify-content: center; }
+      .card-img-wrapper { height: 260px; background: #EEF4FB; display: flex; align-items: center; justify-content: center; overflow: hidden; }
       .card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
       .card-content { padding: 1.5rem; }
       .card-title { font-size: 1.5rem; margin-bottom: 0.5rem; color: #071F45; font-family: 'Outfit', sans-serif; }
@@ -91,7 +90,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Dynamic Products Grid */}
+      {/* Dynamic Categories Grid */}
       <section className="responsive-pad" style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
         <div className="flex-between" style={{ alignItems: 'flex-end', marginBottom: '2rem' }}>
           <div>
@@ -102,23 +101,26 @@ export default async function Home() {
         </div>
         
         <div className="grid-layout">
-          {activeProducts.map(product => (
-            <Link href={`/product/${product._id}`} key={product._id} className="product-card">
-              <div className="card-img-wrapper">
-                {product.images && product.images[0] ? (
-                  <img src={product.images[0].url} alt={product.name} />
-                ) : (
-                  <div style={{ color: '#8D99AE' }}>No Image</div>
-                )}
-              </div>
-              <div className="card-content">
-                <h3 className="card-title">{product.name}</h3>
-                <p className="card-subtitle">{product.categoryId || 'Custom Treatment'}</p>
-              </div>
-            </Link>
-          ))}
-          {activeProducts.length === 0 && (
-            <p style={{ color: '#6B7280', gridColumn: '1 / -1', padding: '2rem', textAlign: 'center' }}>No products available yet.</p>
+          {activeCategories.map(category => {
+            const imageUrl = typeof category.image === 'string' ? category.image : (category.image?.url || (category.images && category.images[0]?.url));
+            return (
+              <Link href={`/categories/${encodeURIComponent(category.name)}`} key={category._id} className="product-card">
+                <div className="card-img-wrapper">
+                  {imageUrl ? (
+                    <img src={imageUrl} alt={category.name} />
+                  ) : (
+                    <div style={{ color: '#8D99AE' }}>No Image</div>
+                  )}
+                </div>
+                <div className="card-content">
+                  <h3 className="card-title">{category.name}</h3>
+                  <p className="card-subtitle">{category.description || 'Custom Treatments'}</p>
+                </div>
+              </Link>
+            );
+          })}
+          {activeCategories.length === 0 && (
+            <p style={{ color: '#6B7280', gridColumn: '1 / -1', padding: '2rem', textAlign: 'center' }}>No categories available yet.</p>
           )}
         </div>
       </section>
