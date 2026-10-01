@@ -1,6 +1,6 @@
 {
   "name": "next_app_init",
-  "version": "1790873787571",
+  "version": "1790876169923",
   "private": true,
   "scripts": {
     "dev": "next dev",
