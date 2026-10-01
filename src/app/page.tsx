@@ -69,7 +69,7 @@ export default async function Home() {
           </Link>
           <nav className="nav-links">
             <Link href="/">Home</Link>
-            <Link href="/categories/all">Shop</Link>
+            <Link href="/products/all">Shop</Link>
             <Link href="/about">About</Link>
             <Link href="/contact">Contact</Link>
           </nav>
@@ -86,7 +86,7 @@ export default async function Home() {
         <div className="hero-content">
           <h1 className="hero-title">Premium Custom Blinds & Shades</h1>
           <p className="hero-text">Stylish. Functional. Made for your space. Explore our wide range of custom window treatments. Built with precision for modern homes.</p>
-          <Link href="/categories/all" className="btn-primary">Shop Collections &rarr;</Link>
+          <Link href="/products/all" className="btn-primary">Shop Collections &rarr;</Link>
         </div>
       </section>
 
@@ -97,14 +97,14 @@ export default async function Home() {
             <span style={{ color: '#D4AF37', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.85rem' }}>Shop by Product</span>
             <h2 style={{ fontSize: '2.5rem', marginTop: '0.5rem', fontFamily: 'Outfit, sans-serif' }}>Explore Our Products</h2>
           </div>
-          <Link href="/categories/all" style={{ color: '#071F45', fontWeight: 600, textDecoration: 'none' }}>View All &rarr;</Link>
+          <Link href="/products/all" style={{ color: '#071F45', fontWeight: 600, textDecoration: 'none' }}>View All &rarr;</Link>
         </div>
         
         <div className="grid-layout">
           {activeCategories.map(category => {
             const imageUrl = typeof category.image === 'string' ? category.image : (category.image?.url || (category.images && category.images[0]?.url));
             return (
-              <Link href={`/categories/${encodeURIComponent(category.name)}`} key={category._id} className="product-card">
+              <Link href={`/products/${encodeURIComponent(category.name)}`} key={category._id} className="product-card">
                 <div className="card-img-wrapper">
                   {imageUrl ? (
                     <img src={imageUrl} alt={category.name} />
@@ -141,18 +141,6 @@ export default async function Home() {
         </div>
       </section>
       
-      {/* Footer / Newsletter */}
-      <section className="responsive-pad flex-between" style={{ background: 'linear-gradient(120deg,#071f45,#0b2c5f 60%,#154785)', paddingTop: '4rem', paddingBottom: '4rem', flexWrap: 'wrap', gap: '2rem' }}>
-        <div style={{ maxWidth: '600px' }}>
-          <h2 style={{ color: '#FFFFFF', fontSize: '2.5rem', fontFamily: 'Outfit, sans-serif', margin: '0 0 1rem 0' }}>Get The Latest Offers</h2>
-          <p style={{ color: 'rgba(255,255,255,0.82)', margin: 0, fontSize: '1.1rem' }}>Subscribe to our newsletter and never miss a deal on custom window treatments.</p>
-        </div>
-        <div style={{ display: 'flex', gap: '0.5rem', background: '#fff', padding: '0.5rem', borderRadius: '12px', minWidth: '300px', width: '100%', maxWidth: '400px' }}>
-          <input type="email" placeholder="Email Address" style={{ border: 'none', outline: 'none', padding: '0.5rem 1rem', flex: 1, width: '100%' }} />
-          <button style={{ background: '#071F45', color: '#fff', border: 'none', padding: '0.8rem 1.5rem', borderRadius: '8px', fontWeight: 600, cursor: 'pointer' }}>Subscribe</button>
-        </div>
-      </section>
-
     </main>
     </>
   );
