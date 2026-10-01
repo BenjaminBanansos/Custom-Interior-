@@ -170,7 +170,7 @@ export default async function Home() {
 
       {/* Newsletter / Dealer CTA matching Janal's Gradient Footer Top */}
       <section style={{ 
-        background: 'linear-gradient(120deg, #1A1D20, #343A40 60%, #495057)', 
+        background: 'linear-gradient(120deg, #071f45, #0b2c5f 60%, #154785)', 
         padding: '5rem 5%',
         color: '#fff',
         display: 'flex',
