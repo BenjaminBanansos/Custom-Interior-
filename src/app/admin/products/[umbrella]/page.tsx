@@ -1,14 +1,15 @@
 'use client';
-import React, { useEffect, useState, use } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 
-export default function UmbrellaManager(props: { params: Promise<{ umbrella: string }> }) {
+export default function UmbrellaManager() {
   const [products, setProducts] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   
-  // Unwrap params using React.use()
-  const params = use(props.params);
-  const umbrellaName = decodeURIComponent(params.umbrella);
+  const params = useParams();
+  const rawUmbrella = params?.umbrella || '';
+  const umbrellaName = typeof rawUmbrella === 'string' ? decodeURIComponent(rawUmbrella) : 'Unknown';
 
   async function loadData() {
     setIsLoading(true);
