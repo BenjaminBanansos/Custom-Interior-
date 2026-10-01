@@ -9,8 +9,8 @@ export default async function Home() {
   
   // Sort and filter active categories
   const activeCategories = categories
-    .filter(c => c.status !== 'draft')
-    .sort((a, b) => (a.order || 99) - (b.order || 99));
+    .filter((c: any) => c.status !== 'draft')
+    .sort((a: any, b: any) => (a.order || 99) - (b.order || 99));
 
   return (
     <>
