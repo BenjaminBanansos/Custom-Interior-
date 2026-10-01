@@ -94,8 +94,8 @@ export default async function Home() {
       <section className="responsive-pad" style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
         <div className="flex-between" style={{ alignItems: 'flex-end', marginBottom: '2rem' }}>
           <div>
-            <span style={{ color: '#D4AF37', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.85rem' }}>Shop by Category</span>
-            <h2 style={{ fontSize: '2.5rem', marginTop: '0.5rem', fontFamily: 'Outfit, sans-serif' }}>Explore Our Collection</h2>
+            <span style={{ color: '#D4AF37', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.85rem' }}>Shop by Product</span>
+            <h2 style={{ fontSize: '2.5rem', marginTop: '0.5rem', fontFamily: 'Outfit, sans-serif' }}>Explore Our Products</h2>
           </div>
           <Link href="/categories/all" style={{ color: '#071F45', fontWeight: 600, textDecoration: 'none' }}>View All &rarr;</Link>
         </div>
