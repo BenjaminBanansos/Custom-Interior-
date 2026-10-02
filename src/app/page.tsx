@@ -24,114 +24,139 @@ export default async function Home() {
   return (
     <>
     <style dangerouslySetInnerHTML={{__html: `
-      .responsive-pad { padding: 0 10%; }
-      .flex-between { display: flex; justify-content: space-between; align-items: center; }
-      .btn-primary { display: inline-flex; align-items: center; padding: 12px 28px; background-color: #D4AF37; color: #071F45; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: opacity 0.3s; border: none; cursor: pointer; }
-      .btn-primary:hover { opacity: 0.9; }
-      .btn-nav { padding: 8px 16px; background-color: #071F45; color: #fff; border-radius: 18px; text-decoration: none; font-weight: 600; font-size: 0.9rem; }
-      
-      header { height: 90px; border-bottom: 1px solid #E5E7EB; position: sticky; top: 0; background: #fff; z-index: 100; }
-      .hero-section { min-height: 80vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #071F45; }
-      .hero-bg { position: absolute; inset: 0; opacity: 0.4; background-image: url('https://res.cloudinary.com/dz63zobq2/image/upload/v1734914194/Duo_Stripes_l0t2qg.jpg'); background-size: cover; background-position: center; mix-blend-mode: luminosity; }
-      .hero-content { position: relative; z-index: 10; text-align: center; color: white; max-width: 800px; padding: 0 20px; }
-      .hero-title { font-family: var(--font-playfair), serif; font-size: 4rem; font-weight: 700; margin-bottom: 24px; line-height: 1.1; }
-      .hero-subtitle { font-family: var(--font-jost), sans-serif; font-size: 1.25rem; margin-bottom: 40px; opacity: 0.9; }
-      
-      .section-title { text-align: center; font-family: var(--font-playfair), serif; font-size: 2.5rem; color: #071F45; margin-bottom: 40px; }
-      .grid-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
-      
-      .product-card { display: flex; flex-direction: column; border-radius: 16px; overflow: hidden; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s; background: #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-      .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-      .card-img-wrapper { position: relative; width: 100%; padding-top: 100%; overflow: hidden; background: #f3f4f6; display: flex; align-items: center; justify-content: center; }
-      .card-img-wrapper img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
-      .card-content { padding: 24px; text-align: center; display: flex; flex-direction: column; flex-grow: 1; }
-      .card-title { font-family: var(--font-playfair), serif; font-size: 1.5rem; color: #071F45; font-weight: 700; margin-bottom: 8px; }
-      .card-subtitle { font-size: 0.9rem; color: #6B7280; font-family: 'Outfit', sans-serif; letter-spacing: 0.05em; text-transform: uppercase; }
-      
-      .value-props { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: center; padding: 80px 10%; background: #fff; }
-      @media (max-width: 768px) {
-        .hero-title { font-size: 2.5rem; }
-        .hero-subtitle { font-size: 1rem; }
-        .value-props { grid-template-columns: 1fr; gap: 30px; }
+      .hero-mask {
+        border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+        overflow: hidden;
+      }
+      .badge-dashed {
+        border: 2px dashed rgba(255,255,255,0.4);
+        border-radius: 50%;
       }
     `}} />
 
-      <header className="responsive-pad flex-between">
-        <Link href="/" style={{ textDecoration: 'none' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-            <img src="/smart-decor-logo.png" alt="Smart Decor Logo" style={{ height: '45px', width: 'auto' }}  />
-            <div style={{ width: '45px', height: '45px', background: '#D4AF37', borderRadius: '4px', display: 'none', alignItems: 'center', justifyContent: 'center', color: '#071F45', fontWeight: 'bold', fontSize: '24px', fontFamily: 'serif' }}>S</div>
-            <div>
-              <div style={{ fontFamily: 'var(--font-playfair), serif', fontSize: '22px', fontWeight: 'bold', color: '#071F45', lineHeight: '1' }}>Smart Decor</div>
-              <div style={{ fontFamily: 'var(--font-jost), sans-serif', fontSize: '11px', color: '#666', letterSpacing: '1px', marginTop: '2px' }}>HOME INTERIORS</div>
+    {/* Navigation */}
+    <nav className="w-full bg-white z-50 relative border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 h-24 flex justify-between items-center">
+            <div className="flex items-center">
+                <span className="text-3xl font-bold text-[#0F2C59] italic tracking-tight" style={{ fontFamily: 'serif' }}>SmartDecor</span>
             </div>
-          </div>
-        </Link>
-        <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
-          <Link href="/products/all" className="btn-nav" style={{ background: 'transparent', color: '#071F45' }}>All Products</Link>
-          <Link href="/contact" className="btn-nav" style={{ background: 'transparent', color: '#071F45' }}>Contact</Link>
-          <Link href="/admin" className="btn-nav">Admin Portal</Link>
+            <div className="hidden md:flex items-center space-x-6">
+                <Link href="/login" className="bg-[#0F2C59] text-white px-8 py-2.5 rounded-lg text-sm font-semibold hover:bg-opacity-90 transition-colors">Dealer Login</Link>
+                <button className="text-[#0F2C59] hover:text-[#EBB422] transition-colors">
+                    <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
         </div>
-      </header>
+    </nav>
 
-      <main>
-        <section className="hero-section">
-          <div className="hero-bg"></div>
-          <div className="hero-content">
-            <h1 className="hero-title">Architectural Light Control</h1>
-            <p className="hero-subtitle">Premium custom blinds and curtains engineered for precise light management and unparalleled design.</p>
-            <Link href="#collections" className="btn-primary" style={{ padding: '16px 40px', fontSize: '1.1rem' }}>
-              Explore Collections
-            </Link>
-          </div>
-        </section>
+    {/* Hero Section */}
+    <main className="max-w-7xl mx-auto px-6 pt-12 pb-24 lg:pt-20 overflow-hidden">
+        <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-16 lg:gap-8">
+            
+            {/* Left Side: Typography */}
+            <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left z-10">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#0F2C59] leading-[1.15] mb-6">
+                    Winter Sale is Now On
+                </h1>
+                
+                <p className="text-gray-500 text-lg md:text-xl mb-8 max-w-lg leading-relaxed">
+                    Stylish. Functional. Made for your space. Explore our wide range of custom blinds and shades.
+                    <br/><br/>
+                    Get Free Shipping for orders above $100
+                </p>
 
-        <section id="collections" className="responsive-pad" style={{ paddingTop: '80px', paddingBottom: '80px', backgroundColor: '#f9f9f9' }}>
-          <div className="flex-between" style={{ marginBottom: '40px' }}>
-            <div>
-              <h2 className="section-title" style={{ margin: 0, textAlign: 'left' }}>Shop by Product</h2>
-              <p style={{ color: '#6B7280', marginTop: '10px' }}>Discover our tailored solutions for every window.</p>
-            </div>
-            <Link href="/products/all" style={{ color: '#071F45', fontWeight: 600, textDecoration: 'none' }}>View All &rarr;</Link>
-          </div>
-          
-          <div className="grid-layout">
-            {activeCategories.map(category => (
-                <Link href={`/products/${encodeURIComponent(category.name)}`} key={category.name} className="product-card">
-                  <div className="card-img-wrapper">
-                    {category.image ? (
-                      <img src={category.image} alt={category.name} />
-                    ) : (
-                      <div style={{ color: '#8D99AE' }}>No Image</div>
-                    )}
-                  </div>
-                  <div className="card-content">
-                    <h3 className="card-title">{category.name}</h3>
-                    <p className="card-subtitle">Custom Treatments</p>
-                  </div>
+                <Link href="#collections" className="inline-flex items-center justify-center bg-[#EBB422] text-[#0F2C59] font-bold text-lg px-8 py-3.5 rounded-full hover:bg-yellow-400 transition-colors shadow-lg">
+                    Shop Now
+                    <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </Link>
-            ))}
-            {activeCategories.length === 0 && (
-              <p style={{ color: '#6B7280', gridColumn: '1 / -1', padding: '2rem', textAlign: 'center' }}>No products available yet.</p>
-            )}
-          </div>
-        </section>
 
-        <section className="value-props responsive-pad">
-          <div className="value-prop">
-            <h4 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', fontFamily: 'Outfit, sans-serif' }}>Free Shipping</h4>
-            <p style={{ color: '#6B7280', fontSize: '0.95rem' }}>On orders over $100.</p>
-          </div>
-          <div className="value-prop">
-            <h4 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', fontFamily: 'Outfit, sans-serif' }}>Secure Payments</h4>
-            <p style={{ color: '#6B7280', fontSize: '0.95rem' }}>100% safe and encrypted.</p>
-          </div>
-          <div className="value-prop">
-            <h4 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', fontFamily: 'Outfit, sans-serif' }}>Premium Quality</h4>
-            <p style={{ color: '#6B7280', fontSize: '0.95rem' }}>Built to last.</p>
-          </div>
-        </section>
-      </main>
+                <div className="mt-16 flex items-center gap-6">
+                    <div className="flex items-center text-[#0F2C59] font-bold text-xl">
+                        01<span className="text-gray-400 text-sm font-normal ml-1">/ 03</span>
+                    </div>
+                    <div className="w-24 h-[2px] bg-gray-200 relative">
+                        <div className="absolute left-0 top-0 h-full w-1/3 bg-[#EBB422]"></div>
+                    </div>
+                    <div className="flex gap-3">
+                        <button className="w-10 h-10 rounded-full border-2 border-[#0F2C59] text-[#0F2C59] flex items-center justify-center hover:bg-[#0F2C59] hover:text-white transition-colors">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
+                        </button>
+                        <button className="w-10 h-10 rounded-full border-2 border-[#0F2C59] text-[#0F2C59] flex items-center justify-center hover:bg-[#0F2C59] hover:text-white transition-colors">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            {/* Right Side: Janal Style Masked Image */}
+            <div className="w-full lg:w-1/2 relative flex justify-center lg:justify-end min-h-[450px] md:min-h-[550px]">
+                
+                {/* Decorative Elements */}
+                <div className="absolute top-0 right-0 md:right-10 w-48 h-48 bg-[#EBB422] rounded-full -z-10 translate-x-10 -translate-y-10"></div>
+                <div className="absolute top-1/2 left-0 md:left-10 w-24 h-24 bg-[#0F2C59] rounded-full -z-10 -translate-y-1/2"></div>
+                <div className="absolute inset-4 border border-[#EBB422] opacity-40 rounded-[50%] -z-10 transform -rotate-6 hidden md:block"></div>
+
+                {/* Masked Hero Image */}
+                <div className="hero-mask relative w-[90%] max-w-[500px] aspect-[4/3] bg-gray-100 z-10 border-4 border-white shadow-2xl">
+                    <img src="https://smartdecor.store/uploads/1779278868731-Black-Mockup__Tokyo-Light-FilteringH6w1zq.jpg" 
+                         alt="Duo Stripes Mockup" 
+                         className="w-full h-full object-cover" />
+                </div>
+
+                {/* Badges */}
+                <div className="absolute top-4 left-4 md:left-12 z-20 w-24 h-24 bg-[#0F2C59] rounded-full border-2 border-[#EBB422] flex flex-col items-center justify-center text-white text-center shadow-lg">
+                    <svg className="w-6 h-6 text-red-500 mb-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.5 6h-5zm0 0"/></svg>
+                    <span className="text-[7px] font-bold uppercase tracking-wider">Proudly<br/>Canadian</span>
+                </div>
+
+                <div className="absolute bottom-10 left-0 md:-left-4 z-20 w-32 h-32 bg-[#EBB422] rounded-full flex items-center justify-center shadow-xl">
+                    <div className="w-[110px] h-[110px] badge-dashed flex flex-col items-center justify-center">
+                        <span className="text-[#0F2C59] font-bold text-2xl leading-none">60%</span>
+                        <span className="text-[#0F2C59] font-bold text-xl leading-none">OFF</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    {/* Categories Section */}
+    <section id="collections" className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-16">
+                <div>
+                    <h2 className="text-[#EBB422] font-bold text-sm tracking-widest uppercase mb-2">Shop By Category</h2>
+                    <h3 className="text-3xl md:text-4xl font-bold text-[#0F2C59]">Explore Our Collection</h3>
+                </div>
+                <Link href="/admin/products" className="text-[#0F2C59] font-semibold mt-4 md:mt-0 flex items-center hover:text-[#EBB422] transition-colors">
+                    View All Categories <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </Link>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {activeCategories.map(category => (
+                    <div key={category.name} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 flex flex-col h-full group">
+                        <div className="relative aspect-square overflow-hidden bg-gray-100">
+                            {category.image ? (
+                                <img src={category.image} alt={category.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                            ) : (
+                                <div className="w-full h-full flex items-center justify-center text-gray-400">No Image</div>
+                            )}
+                        </div>
+                        <div className="p-8 flex justify-between items-center">
+                            <div>
+                                <h4 className="text-xl font-bold text-[#0F2C59] mb-1">{category.name}</h4>
+                                <p className="text-gray-500 text-sm">Custom Window Treatments</p>
+                            </div>
+                            <Link href={`/products/${encodeURIComponent(category.name)}`} className="w-12 h-12 bg-[#0F2C59] text-white rounded-full flex items-center justify-center hover:bg-[#EBB422] transition-colors shadow-md shrink-0">
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </Link>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
     </>
   );
 }
