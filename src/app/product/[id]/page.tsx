@@ -1,59 +1,71 @@
-import React from 'react';
-import { getProducts } from '../../../lib/storage_actions';
-import { getTheme } from '../../../lib/theme_actions';
-import Configurator from '../../../components/Configurator';
-import { notFound } from 'next/navigation';
+import React from "react";
+import { getProducts } from "@/lib/storage_actions";
+import { getTheme } from "@/lib/theme_actions";
+import Configurator from "@/components/Configurator";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
-export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function ProductPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const { id } = await params;
-  const products = await getProducts();
-  const product = products.find(p => p.id === id);
-  const theme = await getTheme();
+  const [allProducts, theme] = await Promise.all([getProducts(), getTheme()]);
+  const product = allProducts.find((p) => p.id === id);
 
   if (!product) {
-    notFound();
+    return (
+      <div className="min-h-[60vh] flex items-center justify-center bg-[#F5F7F9]">
+        <div className="bg-white p-12 rounded-sm shadow-sm text-center">
+          <h1 className="text-3xl font-serif text-[#1A1D20] mb-4">
+            Product Not Found
+          </h1>
+          <a
+            href="/categories/all"
+            className="text-[#8D99AE] hover:underline font-medium"
+          >
+            Return to Shop
+          </a>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div className="container" style={{ paddingTop: '120px', paddingBottom: '120px', margin: '0 auto', maxWidth: theme.containerWidth, transition: 'max-width 0.3s ease' }}>
-      <div style={{ marginBottom: '40px' }}>
-        <a href="/" style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', textDecoration: 'none' }}>← BACK TO CATALOG</a>
-      </div>
-      
-      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: '20px', marginBottom: '60px' }}>
-        <h1 style={{ fontSize: '3rem' }}>{product.name}</h1>
-        <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', maxWidth: '600px' }}>
-          {product.description}
-        </p>
-      </div>
-
-      <Configurator product={product} theme={theme} allProducts={products} />
-
-      {/* Product Details Section */}
-      <section style={{ marginTop: '120px', borderTop: '1px solid var(--border-subtle)', paddingTop: '60px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '40px' }}>
-          <div>
-            <h4 style={{ marginBottom: '15px' }}>MATERIALS</h4>
-            <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-              Premium architectural grade fabrics sourced globally and assembled in Canada. UV resistant and color-stable.
-            </p>
-          </div>
-          <div>
-            <h4 style={{ marginBottom: '15px' }}>MECHANISM</h4>
-            <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-              Ultra-smooth lift systems with optional motorization. Compatible with major smart home ecosystems.
-            </p>
-          </div>
-          <div>
-            <h4 style={{ marginBottom: '15px' }}>WARRANTY</h4>
-            <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-              5-year architectural warranty on all mechanisms and fabric integrity. Serviceable across Canada.
-            </p>
-          </div>
+    <div className="w-full bg-[#F5F7F9] min-h-screen">
+      {/* Breadcrumb Header */}
+      <div className="max-w-[1400px] mx-auto px-8 md:px-16 py-8">
+        <div className="flex items-center gap-2 text-sm font-medium text-gray-500">
+          <a href="/" className="hover:text-[#1A1D20] transition-colors">
+            Home
+          </a>
+          <span>/</span>
+          <a
+            href="/categories/all"
+            className="hover:text-[#1A1D20] transition-colors"
+          >
+            Shop
+          </a>
+          <span>/</span>
+          <a
+            href={`/categories/${product.fabricFamilies?.[0]?.category || "all"}`}
+            className="hover:text-[#1A1D20] transition-colors"
+          >
+            {product.fabricFamilies?.[0]?.category || "Category"}
+          </a>
+          <span>/</span>
+          <span className="text-[#1A1D20]">{product.name}</span>
         </div>
-      </section>
+      </div>
+
+      <div className="px-4 md:px-8 pb-16">
+        <Configurator
+          product={product}
+          allProducts={allProducts}
+          theme={theme}
+        />
+      </div>
     </div>
   );
 }

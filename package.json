@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "rm -rf .next && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "prebuild": "npx tailwindcss -i ./src/app/globals.css -o ./src/app/compiled.css"
   },
   "dependencies": {
     "cloudinary": "^2.11.0",
@@ -15,7 +16,10 @@
     "next": "^16.2.4",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "recharts": "^2.15.0"
+    "recharts": "^2.15.0",
+    "tailwindcss": "^3.4.1",
+    "postcss": "^8.4.31",
+    "autoprefixer": "^10.4.16"
   },
   "devDependencies": {
     "@types/node": "25.6.0",
