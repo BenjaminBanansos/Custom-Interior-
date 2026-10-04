@@ -1,37 +1,37 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
 import { Product, FabricFamily, FabricColor } from '../lib/products';
 import { ThemeConfig } from '../lib/theme_actions';
-import { submitOrder } from '../lib/order_actions';
+import { addToCart } from '../lib/cart_actions';
+import { useRouter } from 'next/navigation';
 
 interface ConfiguratorProps {
   product: Product;
   theme?: ThemeConfig;
+  allProducts?: Product[];
 }
 
 export default function Configurator({ product, theme }: ConfiguratorProps) {
+  const router = useRouter();
   const [width, setWidth] = useState('24');
   const [widthFraction, setWidthFraction] = useState('0');
   const [height, setHeight] = useState('36');
   const [heightFraction, setHeightFraction] = useState('0');
   const [quantity, setQuantity] = useState('1');
+  const [roomName, setRoomName] = useState('');
   
-  // Advanced State
   const initialFamily = product.fabricFamilies?.[0];
   const [selectedFamily, setSelectedFamily] = useState<FabricFamily | null>(initialFamily || null);
   const categories = Array.from(new Set((product.fabricFamilies || []).map(f => f.category || 'Standard'))).sort();
   const [selectedCategory, setSelectedCategory] = useState<string>(categories[0] || 'Standard');
   const [selectedColor, setSelectedColor] = useState<FabricColor | null>(initialFamily?.colors?.[0] || null);
   
-  // Modifiers: Map of groupId -> optionId
   const [selectedModifiers, setSelectedModifiers] = useState<Record<string, string>>({});
-  // Sub-Attributes: Map of subAttributeId -> choiceId
   const [selectedSubAttributes, setSelectedSubAttributes] = useState<Record<string, string>>({});
   
   const [totalPrice, setTotalPrice] = useState(product.basePrice);
-  
-  // Lightbox State
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const [hardwareLightboxImage, setHardwareLightboxImage] = useState<string | null>(null);
@@ -73,14 +73,13 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
     return parseFloat(val) || 0;
   };
 
-  
   const handleOrderSubmit = async () => {
     setOrderStatus('submitting');
     
-    // Gather all details
     const orderDetails = {
       family: selectedFamily?.name,
       color: selectedColor?.name,
+      roomName: roomName || 'Unspecified Room',
       modifiers: Object.entries(selectedModifiers).map(([groupId, optId]) => {
         const group = product.modifiers?.find(m => m.id === groupId);
         const opt = group?.options.find(o => o.id === optId);
@@ -94,17 +93,30 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
     const w = (parseFloat(width) || 0) + parseFraction(widthFraction);
     const h = (parseFloat(height) || 0) + parseFraction(heightFraction);
 
-    await submitOrder({
+    const localCartId = typeof window !== 'undefined' ? localStorage.getItem('local_cart_id') || undefined : undefined;
+
+    const res = await addToCart({
       productName: product.name,
       width: w.toString(),
       height: h.toString(),
       quantity: parseInt(quantity) || 1,
       totalPrice: totalPrice,
       details: orderDetails
-    });
+    }, localCartId);
+
+    if (res && res.error) {
+      alert("Failed to add to cart: " + res.error);
+      setOrderStatus('idle');
+      return;
+    }
+    
+    if (res && res.cartId && typeof window !== 'undefined') {
+      localStorage.setItem('local_cart_id', res.cartId);
+    }
 
     setOrderStatus('success');
-    setTimeout(() => setOrderStatus('idle'), 4000);
+    setRoomName(''); 
+    setTimeout(() => setOrderStatus('idle'), 3000);
   };
 
   const getSelectedIds = () => Object.values(selectedModifiers);
@@ -113,17 +125,15 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
     const liftStyle = selectedModifiers['lift-style'];
     if (liftStyle === 'motorization') return 24;
     if (liftStyle === 'cordless') return 20;
-    return 12; // default for standard-chain and others
+    return 12;
   };
 
   const isOptionCompatible = (opt: any) => {
     const selected = getSelectedIds();
     if (opt.requires && opt.requires.length > 0) {
-      // Must have AT LEAST ONE of the required options
       if (!opt.requires.some((r: string) => selected.includes(r))) return false;
     }
     if (opt.excludes && opt.excludes.length > 0) {
-      // Must NOT have ANY of the excluded options
       if (opt.excludes.some((e: string) => selected.includes(e))) return false;
     }
     return true;
@@ -141,25 +151,21 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
       price = product.basePrice;
     }
 
-    // Add Fabric Family Modifier
     if (selectedFamily) price += selectedFamily.priceModifier;
 
     let newSelectedModifiers = { ...selectedModifiers };
     let hasChanges = false;
 
-    // Add Modifiers and Sub-Attributes
     product.modifiers?.forEach(group => {
       const selectedOptionId = newSelectedModifiers[group.id];
       if (selectedOptionId) {
         const option = group.options.find(o => o.id === selectedOptionId);
         if (option) {
-          // Check if it's still compatible
           if (!isOptionCompatible(option)) {
             delete newSelectedModifiers[group.id];
             hasChanges = true;
           } else {
             price += option.priceAdjustment;
-            // Sub-attributes
             option.subAttributes?.forEach(sub => {
               const selectedChoiceId = selectedSubAttributes[sub.id];
               if (selectedChoiceId) {
@@ -182,412 +188,243 @@ export default function Configurator({ product, theme }: ConfiguratorProps) {
   const bgImageUrl = selectedColor?.mediaUrl || product.imageUrl || '';
 
   return (
-    <>
-      <style>{`
-        .config-container {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-        @media (min-width: 1024px) {
-          .config-container {
-            flex-direction: row;
-            align-items: flex-start;
-            gap: 60px;
-          }
-        }
-        .visual-panel {
-          position: relative;
-          height: 300px;
-          width: 300px;
-          border-radius: 16px;
-          margin-top: 20px;
-          background-color: ${selectedColor?.hex || '#f9f9f9'};
-          background-image: ${bgImageUrl ? `url(${bgImageUrl})` : 'none'};
-          background-size: cover;
-          background-position: center;
-          box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-          flex-shrink: 0;
-          border: 1px solid rgba(0,0,0,0.05);
-        }
-        @media (min-width: 1024px) {
-          .visual-panel {
-            width: ${theme?.productImageSize || 500}px;
-            height: ${theme?.productImageSize || 500}px;
-            position: sticky;
-            top: 140px;
-            margin-top: 40px;
-          }
-        }
-        .control-panel {
-          width: 100%;
-          padding: 40px 0;
-          background: transparent;
-        }
-        @media (min-width: 1024px) {
-          .control-panel {
-            flex: 1;
-            padding: 40px 0 140px 0; 
-          }
-        }
-        .glass-bar {
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          padding: 20px;
-          background: rgba(255, 255, 255, 0.85);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          border-top: 1px solid rgba(0,0,0,0.05);
-          z-index: 50;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          box-shadow: 0 -10px 40px rgba(0,0,0,0.05);
-        }
-        @media (min-width: 1024px) {
-          .glass-bar {
-            width: 600px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 16px 16px 0 0;
-            border: 1px solid rgba(0,0,0,0.05);
-            padding: 20px 40px;
-          }
-        }
-      `}</style>
-
-      <div className="config-container">
-        {/* Visual Preview */}
-        <div className="visual-panel" onClick={openLightbox} style={{ cursor: 'pointer' }}>
-          <div style={{ position: 'absolute', bottom: '-30px', left: 0, width: '100%', textAlign: 'center', fontSize: '0.7rem', fontWeight: 600, color: '#888' }}>
-            PREVIEW: {selectedColor?.name || 'Base Model'}
-          </div>
-          <div style={{ position: 'absolute', top: '20px', right: '20px', background: 'rgba(255,255,255,0.8)', padding: '8px 12px', borderRadius: '20px', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.1em' }}>
+    <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 max-w-[1400px] mx-auto w-full relative">
+      
+      {/* Visual Preview Left Column */}
+      <div className="w-full lg:w-1/2 flex-shrink-0">
+        <div 
+          onClick={openLightbox} 
+          className="sticky top-32 w-full aspect-[4/5] rounded-sm bg-gray-50 shadow-sm cursor-pointer overflow-hidden transition-all duration-500 hover:shadow-lg group"
+          style={{
+            backgroundColor: selectedColor?.hex || '#f9f9f9',
+            backgroundImage: bgImageUrl ? `url(${bgImageUrl})` : 'none',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-md text-[#1A1D20] px-4 py-2 rounded-sm text-xs font-semibold tracking-wider shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             🔍 ENLARGE
           </div>
         </div>
+      </div>
 
-        {/* Control Panel */}
-        <div className="control-panel">
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '3rem', fontWeight: 400, letterSpacing: '-0.03em' }}>{product.name}</h2>
+      {/* Control Panel Right Column */}
+      <div className="w-full lg:w-1/2 pb-40">
+        <div className="mb-10">
+          <h1 className="text-4xl lg:text-5xl font-serif text-[#1A1D20] mb-4 leading-tight">{product.name}</h1>
+          <p className="text-xl text-gray-500 font-medium">From ${product.basePrice}</p>
+        </div>
+        
+        {/* Step 1: Measurements */}
+        <div className="bg-white p-8 rounded-sm shadow-[0_12px_28px_rgba(26,29,32,0.06)] mb-8 transition-shadow duration-300 hover:shadow-[0_12px_28px_rgba(26,29,32,0.1)]">
+          <h3 className="text-lg font-medium text-[#1A1D20] mb-6">1. Dimensions & Quantity</h3>
           
-          {/* Measurements */}
-          <div style={{ marginBottom: '4rem' }}>
-            <label style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1.5rem', display: 'block', color: '#000' }}>
-              Precision Dimensions
-            </label>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-              <div>
-                <label style={{ fontSize: '0.7rem', color: '#888', display: 'block', marginBottom: '8px' }}>WIDTH (IN)</label>
-                <div style={{ display: 'flex', gap: '8px' }}>
-                  <input 
-                    type="number" 
-                    min="12"
-                    placeholder="Inches"
-                    value={width}
-                    onChange={(e) => setWidth(e.target.value)}
-                    style={{ flex: 2, padding: '16px', border: '1px solid #e0e0e0', borderRadius: '0', fontSize: '1.1rem', outline: 'none', background: '#fafafa' }}
-                  />
-                  <select 
-                    value={widthFraction} 
-                    onChange={(e) => setWidthFraction(e.target.value)}
-                    style={{ flex: 1, padding: '16px', border: '1px solid #e0e0e0', borderRadius: '0', fontSize: '1.1rem', outline: 'none', background: '#fafafa', appearance: 'none', cursor: 'pointer' }}
-                  >
-                    <option value="0">0"</option>
-                    <option value="1/8">1/8"</option>
-                    <option value="1/4">1/4"</option>
-                    <option value="3/8">3/8"</option>
-                    <option value="1/2">1/2"</option>
-                    <option value="5/8">5/8"</option>
-                    <option value="3/4">3/4"</option>
-                    <option value="7/8">7/8"</option>
-                  </select>
-                </div>
-                {selectedFamily?.maxWidth && (parseFloat(width) > selectedFamily.maxWidth) && (
-                  <div style={{ color: 'red', fontSize: '0.7rem', marginTop: '4px' }}>
-                    Max width for this fabric is {selectedFamily.maxWidth}"
-                  </div>
-                )}
-                {(parseFloat(width) < getDynamicMinWidth()) && (
-                  <div style={{ color: 'red', fontSize: '0.7rem', marginTop: '4px' }}>
-                    Min width for the selected lift system is {getDynamicMinWidth()}"
-                  </div>
-                )}
-              </div>
-              <div>
-                <label style={{ fontSize: '0.7rem', color: '#888', display: 'block', marginBottom: '8px' }}>HEIGHT (IN)</label>
-                <div style={{ display: 'flex', gap: '8px' }}>
-                  <input 
-                    type="number" 
-                    min="12"
-                    placeholder="Inches"
-                    value={height}
-                    onChange={(e) => setHeight(e.target.value)}
-                    style={{ flex: 2, padding: '16px', border: '1px solid #e0e0e0', borderRadius: '0', fontSize: '1.1rem', outline: 'none', background: '#fafafa' }}
-                  />
-                  <select 
-                    value={heightFraction} 
-                    onChange={(e) => setHeightFraction(e.target.value)}
-                    style={{ flex: 1, padding: '16px', border: '1px solid #e0e0e0', borderRadius: '0', fontSize: '1.1rem', outline: 'none', background: '#fafafa', appearance: 'none', cursor: 'pointer' }}
-                  >
-                    <option value="0">0"</option>
-                    <option value="1/8">1/8"</option>
-                    <option value="1/4">1/4"</option>
-                    <option value="3/8">3/8"</option>
-                    <option value="1/2">1/2"</option>
-                    <option value="5/8">5/8"</option>
-                    <option value="3/4">3/4"</option>
-                    <option value="7/8">7/8"</option>
-                  </select>
-                </div>
-              </div>
-              <div>
-                <label style={{ fontSize: '0.7rem', color: '#888', display: 'block', marginBottom: '8px' }}>QUANTITY</label>
-                <input 
-                  type="number" 
-                  min="1"
-                  value={quantity}
-                  onChange={(e) => setQuantity(e.target.value)}
-                  style={{ width: '100%', padding: '16px', border: '1px solid #e0e0e0', borderRadius: '0', fontSize: '1.1rem', outline: 'none', background: '#fafafa', transition: 'border 0.3s' }}
-                />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-500 mb-2">WIDTH (IN)</label>
+              <div className="flex gap-3">
+                <input type="number" min="12" value={width} onChange={(e) => setWidth(e.target.value)} className="w-2/3 px-4 py-3 border border-gray-200 rounded-sm focus:border-[#1A1D20] focus:ring-1 focus:ring-[#1A1D20] outline-none transition-all duration-300" />
+                <select value={widthFraction} onChange={(e) => setWidthFraction(e.target.value)} className="w-1/3 px-3 py-3 border border-gray-200 rounded-sm focus:border-[#1A1D20] focus:ring-1 focus:ring-[#1A1D20] outline-none transition-all duration-300 appearance-none bg-white">
+                  <option value="0">0"</option>
+                  <option value="1/8">1/8"</option>
+                  <option value="1/4">1/4"</option>
+                  <option value="3/8">3/8"</option>
+                  <option value="1/2">1/2"</option>
+                  <option value="5/8">5/8"</option>
+                  <option value="3/4">3/4"</option>
+                  <option value="7/8">7/8"</option>
+                </select>
               </div>
             </div>
+            
+            <div>
+              <label className="block text-sm font-medium text-gray-500 mb-2">HEIGHT (IN)</label>
+              <div className="flex gap-3">
+                <input type="number" min="12" value={height} onChange={(e) => setHeight(e.target.value)} className="w-2/3 px-4 py-3 border border-gray-200 rounded-sm focus:border-[#1A1D20] focus:ring-1 focus:ring-[#1A1D20] outline-none transition-all duration-300" />
+                <select value={heightFraction} onChange={(e) => setHeightFraction(e.target.value)} className="w-1/3 px-3 py-3 border border-gray-200 rounded-sm focus:border-[#1A1D20] focus:ring-1 focus:ring-[#1A1D20] outline-none transition-all duration-300 appearance-none bg-white">
+                  <option value="0">0"</option>
+                  <option value="1/8">1/8"</option>
+                  <option value="1/4">1/4"</option>
+                  <option value="3/8">3/8"</option>
+                  <option value="1/2">1/2"</option>
+                  <option value="5/8">5/8"</option>
+                  <option value="3/4">3/4"</option>
+                  <option value="7/8">7/8"</option>
+                </select>
+              </div>
+            </div>
+            
+            <div>
+              <label className="block text-sm font-medium text-gray-500 mb-2">ROOM NAME</label>
+              <input type="text" placeholder="e.g. Master Bedroom" value={roomName} onChange={(e) => setRoomName(e.target.value)} className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-[#1A1D20] focus:ring-1 focus:ring-[#1A1D20] outline-none transition-all duration-300" />
+            </div>
+            
+            <div>
+              <label className="block text-sm font-medium text-gray-500 mb-2">QUANTITY</label>
+              <input type="number" min="1" value={quantity} onChange={(e) => setQuantity(e.target.value)} className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-[#1A1D20] focus:ring-1 focus:ring-[#1A1D20] outline-none transition-all duration-300" />
+            </div>
           </div>
+        </div>
 
-          {/* Fabric Selection */}
-          {product.fabricFamilies && product.fabricFamilies.length > 0 && (
-            <div style={{ marginBottom: '4rem' }}>
-              <label style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1.5rem', display: 'block', color: '#000' }}>
-                Opacity / Category
-              </label>
-              
-              <div style={{ display: 'flex', gap: '15px', borderBottom: '1px solid #eaeaea', paddingBottom: '15px', marginBottom: '30px' }}>
-                {categories.map(cat => (
-                  <button 
-                    key={cat}
-                    onClick={() => {
-                      setSelectedCategory(cat);
-                      const firstFamInCat = product.fabricFamilies.find(f => (f.category || 'Standard') === cat);
-                      if (firstFamInCat) {
-                        setSelectedFamily(firstFamInCat);
-                        setSelectedColor(firstFamInCat.colors[0] || null);
-                      }
-                    }}
-                    style={{ 
-                      background: 'none', border: 'none', padding: 0, cursor: 'pointer',
-                      fontSize: '1.1rem', fontWeight: selectedCategory === cat ? 700 : 400,
-                      color: selectedCategory === cat ? '#000' : '#888',
-                      borderBottom: selectedCategory === cat ? '2px solid #000' : 'none',
-                      paddingBottom: '5px'
-                    }}
-                  >{cat}</button>
-                ))}
-              </div>
-            <div style={{ display: 'flex', gap: '10px', overflowX: 'auto', paddingBottom: '10px', marginBottom: '20px' }}>
-                {product.fabricFamilies.map(fam => (
-                  <button 
-                    key={fam.fabricId}
-                    onClick={() => { setSelectedFamily(fam); setSelectedColor(fam.colors[0] || null); }}
-                    style={{ 
-                      padding: '10px 20px', borderRadius: '30px', border: selectedFamily?.fabricId === fam.fabricId ? '1px solid #000' : '1px solid #eaeaea', cursor: 'pointer', whiteSpace: 'nowrap',
-                      backgroundColor: selectedFamily?.fabricId === fam.fabricId ? '#000' : '#fff',
-                      color: selectedFamily?.fabricId === fam.fabricId ? '#fff' : '#000',
-                      fontSize: '0.8rem', fontWeight: 600, transition: 'all 0.3s'
-                    }}
-                  >{fam.name} {fam.priceModifier > 0 && `(+$${fam.priceModifier})`}</button>
-                ))}
-              </div>
+        {/* Step 2: Fabric Selection */}
+        {product.fabricFamilies && product.fabricFamilies.length > 0 && (
+          <div className="bg-white p-8 rounded-sm shadow-[0_12px_28px_rgba(26,29,32,0.06)] mb-8 transition-shadow duration-300 hover:shadow-[0_12px_28px_rgba(26,29,32,0.1)]">
+            <h3 className="text-lg font-medium text-[#1A1D20] mb-6">2. Fabric Collection</h3>
+            
+            {/* Category Pills */}
+            <div className="flex flex-wrap gap-3 mb-8">
+              {product.fabricFamilies.map(fam => (
+                <button 
+                  key={fam.fabricId}
+                  onClick={() => { setSelectedFamily(fam); setSelectedColor(fam.colors[0] || null); }}
+                  className={`px-5 py-2.5 rounded-sm text-sm font-medium transition-all duration-300 ${selectedFamily?.fabricId === fam.fabricId ? 'bg-[#1A1D20] text-white shadow-md' : 'bg-white border border-gray-200 text-gray-600 hover:border-[#1A1D20] hover:text-[#1A1D20]'}`}
+                >{fam.name} {fam.priceModifier > 0 && `(+$${fam.priceModifier})`}</button>
+              ))}
+            </div>
 
-              {selectedFamily && (
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(80px, 1fr))', gap: '15px' }}>
-                  {selectedFamily.colors.map(color => (
+            {/* Swatch Grid */}
+            {selectedFamily && (
+              <div className="grid grid-cols-4 md:grid-cols-5 gap-y-6 gap-x-4">
+                {selectedFamily.colors.map(color => (
+                  <div 
+                    key={color.colorId}
+                    onClick={() => setSelectedColor(color)}
+                    className={`flex flex-col items-center gap-2 cursor-pointer transition-transform duration-300 hover:scale-105 ${color.status === 'out-of-stock' ? 'opacity-50' : 'opacity-100'}`}
+                  >
                     <div 
-                      key={color.colorId}
-                      onClick={() => setSelectedColor(color)}
+                      className={`w-16 h-16 rounded-none shadow-sm bg-cover bg-center bg-clip-content p-[2px] transition-all duration-300 ${selectedColor?.colorId === color.colorId ? 'border-[3px] border-[#1A1D20]' : 'border-[3px] border-transparent'}`}
                       style={{ 
-                        border: selectedColor?.colorId === color.colorId ? '2px solid #000' : '1px solid transparent',
-                        padding: '4px', borderRadius: '8px', cursor: 'pointer', opacity: color.status === 'out-of-stock' ? 0.5 : 1,
-                        transition: 'all 0.2s'
+                        backgroundColor: color.hex, 
+                        backgroundImage: color.mediaUrl ? `url(${color.mediaUrl})` : 'none'
                       }}
+                    />
+                    <span className={`text-xs text-center font-medium ${selectedColor?.colorId === color.colorId ? 'text-[#1A1D20]' : 'text-gray-500'}`}>
+                      {color.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Step 3: Modifiers */}
+        {product.modifiers && product.modifiers.map((group, index) => {
+          const selectedOption = group.options.find(o => o.id === selectedModifiers[group.id]);
+          
+          return (
+            <div key={group.id} className="bg-white p-8 rounded-sm shadow-[0_12px_28px_rgba(26,29,32,0.06)] mb-8 transition-shadow duration-300 hover:shadow-[0_12px_28px_rgba(26,29,32,0.1)]">
+              <h3 className="text-lg font-medium text-[#1A1D20] mb-6">{index + 3}. {group.name}</h3>
+              
+              <div className="grid grid-cols-1 gap-4">
+                {group.options.map(opt => {
+                  const isCompatible = isOptionCompatible(opt);
+                  const isSelected = selectedOption?.id === opt.id;
+                  return (
+                    <div 
+                      key={opt.id}
+                      onClick={() => { if (isCompatible) setSelectedModifiers({ ...selectedModifiers, [group.id]: opt.id }); }}
+                      className={`flex items-center gap-5 p-5 border rounded-sm transition-all duration-300 ${isSelected ? 'border-[#1A1D20] bg-[#E8ECEF]/30' : 'border-gray-200 bg-white hover:border-gray-300'} ${isCompatible ? 'cursor-pointer opacity-100' : 'cursor-not-allowed opacity-50'}`}
                     >
-                      <div style={{ 
-                        height: '70px', backgroundColor: color.hex, borderRadius: '4px',
-                        backgroundImage: color.mediaUrl ? `url(${color.mediaUrl})` : 'none',
-                        backgroundSize: 'cover', backgroundPosition: 'center', boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
-                      }}></div>
-                      <div style={{ padding: '8px 0 0 0', fontSize: '0.65rem', textAlign: 'center', fontWeight: 600, color: '#333' }}>{color.name}</div>
+                      {/* Radio indicator */}
+                      <div className={`w-5 h-5 rounded-sm flex-shrink-0 transition-all duration-300 ${isSelected ? 'border-[6px] border-[#1A1D20] bg-white' : 'border-2 border-gray-300 bg-white'}`} />
+                      
+                      {opt.mediaUrl && (
+                        <div 
+                          onClick={(e) => { e.stopPropagation(); setHardwareLightboxImage(opt.mediaUrl || null); }} 
+                          className="w-12 h-12 rounded-sm border border-gray-100 bg-white bg-contain bg-center bg-no-repeat cursor-zoom-in shadow-sm hover:shadow-md transition-shadow"
+                          style={{ backgroundImage: `url(${opt.mediaUrl})` }}
+                        />
+                      )}
+                      
+                      <div className="flex-1">
+                        <div className="text-base font-medium text-[#1A1D20]">
+                          {opt.name} {!isCompatible && <span className="text-xs text-red-500 ml-2 font-normal">Incompatible</span>}
+                        </div>
+                        <div className="text-sm mt-1 text-gray-500">
+                          {opt.priceAdjustment > 0 ? `+ $${opt.priceAdjustment}` : 'Included in Base'}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Sub-Attributes */}
+              {selectedOption && selectedOption.subAttributes && selectedOption.subAttributes.length > 0 && (
+                <div className="mt-6 p-6 bg-gray-50 rounded-sm">
+                  {selectedOption.subAttributes.map((sub, i) => (
+                    <div key={sub.id} className={`${i > 0 ? 'mt-6 pt-6 border-t border-gray-200' : ''}`}>
+                      <div className="text-sm font-medium text-[#1A1D20] mb-4">{sub.name}</div>
+                      <div className="flex flex-wrap gap-3">
+                        {sub.choices.map(choice => (
+                          <button 
+                            key={choice.id}
+                            onClick={() => setSelectedSubAttributes({ ...selectedSubAttributes, [sub.id]: choice.id })}
+                            className={`px-5 py-2.5 rounded-sm text-sm font-medium transition-all duration-300 ${selectedSubAttributes[sub.id] === choice.id ? 'bg-[#1A1D20] text-white shadow-md' : 'bg-white border border-gray-200 text-gray-600 hover:border-[#1A1D20] hover:text-[#1A1D20]'}`}
+                          >
+                            {choice.name} {choice.priceAdjustment > 0 && `(+$${choice.priceAdjustment})`}
+                          </button>
+                        ))}
+                      </div>
                     </div>
                   ))}
                 </div>
               )}
             </div>
-          )}
-
-          {/* Dynamic Modifiers */}
-          {product.modifiers && product.modifiers.map(group => {
-            const selectedOption = group.options.find(o => o.id === selectedModifiers[group.id]);
-            
-            return (
-              <div key={group.id} style={{ marginBottom: '4rem', borderTop: '1px solid #eaeaea', paddingTop: '3rem' }}>
-                <label style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1.5rem', display: 'block', color: '#000' }}>
-                  {group.name}
-                </label>
-                
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '12px' }}>
-                  {group.options.map(opt => {
-                    const isCompatible = isOptionCompatible(opt);
-                    return (
-                      <div 
-                        key={opt.id}
-                        onClick={() => {
-                          if (isCompatible) {
-                            setSelectedModifiers({ ...selectedModifiers, [group.id]: opt.id });
-                          }
-                        }}
-                        style={{ 
-                          border: selectedOption?.id === opt.id ? '2px solid #000' : '1px solid #eaeaea',
-                          padding: '20px', cursor: isCompatible ? 'pointer' : 'not-allowed', 
-                          background: selectedOption?.id === opt.id ? '#fafafa' : '#fff',
-                          opacity: isCompatible ? 1 : 0.4,
-                          display: 'flex', alignItems: 'center', gap: '20px', transition: 'all 0.2s'
-                        }}
-                      >
-                        {opt.mediaUrl && (
-                          <div style={{ position: 'relative' }}>
-                            <div 
-                              onClick={(e) => { 
-                                e.stopPropagation();
-                                setHardwareLightboxImage(opt.mediaUrl || null);
-                              }} 
-                              style={{ width: '60px', height: '60px', borderRadius: '4px', backgroundImage: `url(${opt.mediaUrl})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', flexShrink: 0, border: '1px solid #eee', backgroundColor: '#fff', cursor: 'zoom-in' }} 
-                            />
-                            <div style={{ position: 'absolute', bottom: '-8px', right: '-8px', background: 'rgba(0,0,0,0.6)', color: 'white', fontSize: '10px', padding: '2px 4px', borderRadius: '4px', pointerEvents: 'none' }}>🔍</div>
-                          </div>
-                        )}
-                        <div>
-                          <div style={{ fontSize: '1.1rem', fontWeight: 400, color: '#000' }}>
-                            {opt.name} {!isCompatible && <span style={{fontSize:'0.7rem', color:'red', marginLeft:'10px'}}>Incompatible with current selections</span>}
-                          </div>
-                          <div style={{ fontSize: '0.8rem', color: opt.priceAdjustment > 0 ? '#10b981' : '#888', marginTop: '4px' }}>{opt.priceAdjustment > 0 ? `+ $${opt.priceAdjustment}` : 'Included in Base'}</div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-
-                {/* Sub-Attributes Accordion */}
-                {selectedOption && selectedOption.subAttributes && selectedOption.subAttributes.length > 0 && (
-                  <div style={{ marginTop: '20px', padding: '20px 20px 20px 30px', borderLeft: '2px solid #000' }}>
-                    {selectedOption.subAttributes.map(sub => (
-                      <div key={sub.id} style={{ marginBottom: '20px' }}>
-                        <div style={{ fontSize: '0.8rem', fontWeight: 600, marginBottom: '12px', color: '#555' }}>{sub.name}</div>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                          {sub.choices.map(choice => (
-                            <button 
-                              key={choice.id}
-                              onClick={() => setSelectedSubAttributes({ ...selectedSubAttributes, [sub.id]: choice.id })}
-                              style={{ 
-                                padding: '10px 20px', cursor: 'pointer', fontSize: '0.8rem',
-                                border: selectedSubAttributes[sub.id] === choice.id ? '1px solid #000' : '1px solid #ddd',
-                                backgroundColor: selectedSubAttributes[sub.id] === choice.id ? '#000' : '#fff',
-                                color: selectedSubAttributes[sub.id] === choice.id ? '#fff' : '#000',
-                                transition: 'all 0.2s'
-                              }}
-                            >
-                              {choice.name} {choice.priceAdjustment > 0 && `(+$${choice.priceAdjustment})`}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
+          );
+        })}
       </div>
 
       {/* Floating Glassmorphic Cart Bar */}
-      <div className="glass-bar">
-        <div>
-          <span style={{ fontSize: '0.7rem', color: '#555', fontWeight: 700, letterSpacing: '0.1em', display: 'block', marginBottom: '4px' }}>ESTIMATED TOTAL</span>
-          <span style={{ fontSize: '2rem', fontWeight: 400, letterSpacing: '-0.05em' }}>${totalPrice}</span>
+      <div className="fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-md border-t border-gray-200 z-50 shadow-[0_-4px_20px_rgba(26,29,32,0.06)]">
+        <div className="max-w-[1400px] mx-auto px-8 py-5 flex justify-between items-center lg:justify-end lg:gap-12 lg:pr-16">
+          <div className="lg:absolute lg:left-16 flex flex-col">
+            <span className="text-xs font-medium text-gray-500 tracking-wider uppercase mb-1">Total Price</span>
+            <span className="text-3xl font-serif font-medium text-[#1A1D20] leading-none">${totalPrice}</span>
+          </div>
+          
+          {(() => {
+            const isTooLarge = selectedFamily?.maxWidth && (parseFloat(width) > selectedFamily.maxWidth);
+            const isTooSmall = parseFloat(width) < getDynamicMinWidth();
+            
+            if (isTooLarge || isTooSmall) {
+              return (
+                <button className="px-8 py-4 rounded-sm text-sm font-medium bg-red-500 text-white cursor-not-allowed opacity-90">
+                  INVALID SIZE
+                </button>
+              );
+            }
+            
+            return (
+              <button 
+                onClick={handleOrderSubmit}
+                disabled={orderStatus === 'submitting'}
+                className={`px-10 py-4 rounded-sm text-[0.95rem] font-medium text-white transition-all duration-300 shadow-md hover:shadow-lg ${orderStatus === 'success' ? 'bg-green-500 hover:bg-green-600' : 'bg-[#1A1D20] hover:bg-[#111518] hover:-translate-y-0.5'} ${orderStatus === 'submitting' ? 'opacity-80 cursor-wait' : 'cursor-pointer'}`}
+              >
+                {orderStatus === 'submitting' ? 'Processing...' : orderStatus === 'success' ? 'Added to Cart ✓' : 'Add to Cart'}
+              </button>
+            );
+          })()}
         </div>
-        
-        {(() => {
-          const isTooLarge = selectedFamily?.maxWidth && (parseFloat(width) > selectedFamily.maxWidth);
-          const isTooSmall = parseFloat(width) < getDynamicMinWidth();
-          
-          if (isTooLarge) {
-            return (
-              <button style={{ padding: '16px 32px', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.1em', backgroundColor: '#e53e3e', color: '#fff', border: 'none', cursor: 'not-allowed' }}>
-                SIZE TOO LARGE
-              </button>
-            );
-          }
-          if (isTooSmall) {
-            return (
-              <button style={{ padding: '16px 32px', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.1em', backgroundColor: '#e53e3e', color: '#fff', border: 'none', cursor: 'not-allowed' }}>
-                SIZE TOO SMALL
-              </button>
-            );
-          }
-          
-          return (
-            <button 
-              onClick={handleOrderSubmit}
-              disabled={orderStatus === 'submitting'}
-              style={{ padding: '16px 32px', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.1em', backgroundColor: orderStatus === 'success' ? '#10b981' : '#000', color: '#fff', border: 'none', cursor: orderStatus === 'submitting' ? 'wait' : 'pointer', transition: 'all 0.2s' }} 
-              onMouseOver={e => { if(orderStatus === 'idle') e.currentTarget.style.transform = 'scale(1.02)'; }} 
-              onMouseOut={e => { if(orderStatus === 'idle') e.currentTarget.style.transform = 'scale(1)'; }}
-            >
-              {orderStatus === 'submitting' ? 'PROCESSING...' : orderStatus === 'success' ? 'ORDER SENT ✓' : 'ADD TO PROJECT'}
-            </button>
-          );
-        })()}
-
       </div>
 
-      {/* Lightbox Modal */}
+      {/* Lightbox Modals... */}
       {lightboxOpen && selectedFamily && (
-        <div style={{
-          position: 'fixed', inset: 0, zIndex: 9999, backgroundColor: 'rgba(0,0,0,0.9)',
-          display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(10px)'
-        }} onClick={() => setLightboxOpen(false)}>
-          
-          <button style={{ position: 'absolute', top: '30px', right: '30px', background: 'transparent', border: 'none', color: 'white', fontSize: '2rem', cursor: 'pointer', padding: '10px' }} onClick={() => setLightboxOpen(false)}>✕</button>
-          
-          <div style={{ display: 'flex', alignItems: 'center', gap: '40px', maxWidth: '90vw' }}>
-            <button style={{ background: 'rgba(255,255,255,0.1)', border: 'none', color: 'white', fontSize: '3rem', padding: '20px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80px', height: '80px' }} onClick={prevLightboxImage}>‹</button>
-            
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <img src={selectedFamily.colors[lightboxIndex]?.mediaUrl} alt={selectedFamily.colors[lightboxIndex]?.name} style={{ maxHeight: '75vh', maxWidth: '75vw', objectFit: 'contain', borderRadius: '8px', boxShadow: '0 20px 50px rgba(0,0,0,0.5)' }} />
-              <div style={{ color: 'white', marginTop: '20px', fontSize: '1.5rem', fontWeight: 500, letterSpacing: '0.05em' }}>
+        <div className="fixed inset-0 z-[9999] bg-[#111518]/90 backdrop-blur-sm flex flex-col items-center justify-center" onClick={() => setLightboxOpen(false)}>
+          <button className="absolute top-8 right-8 text-white text-3xl hover:text-[#8D99AE] transition-colors" onClick={() => setLightboxOpen(false)}>✕</button>
+          <div className="flex items-center gap-10 max-w-[90vw]">
+            <button className="w-16 h-16 rounded-sm bg-white/10 hover:bg-white/20 text-white text-4xl flex items-center justify-center transition-all" onClick={prevLightboxImage}>‹</button>
+            <div className="flex flex-col items-center">
+              <img src={selectedFamily.colors[lightboxIndex]?.mediaUrl} alt={selectedFamily.colors[lightboxIndex]?.name} className="max-h-[75vh] max-w-[75vw] object-contain rounded-sm shadow-2xl" />
+              <div className="text-white mt-6 text-xl font-medium tracking-wide">
                 {selectedFamily.colors[lightboxIndex]?.name}
               </div>
             </div>
-            <button style={{ background: 'rgba(255,255,255,0.1)', border: 'none', color: 'white', fontSize: '3rem', padding: '20px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80px', height: '80px' }} onClick={nextLightboxImage}>›</button>
+            <button className="w-16 h-16 rounded-sm bg-white/10 hover:bg-white/20 text-white text-4xl flex items-center justify-center transition-all" onClick={nextLightboxImage}>›</button>
           </div>
         </div>
       )}
-
-      {/* Hardware Lightbox Modal */}
-      {hardwareLightboxImage && (
-        <div style={{
-          position: 'fixed', inset: 0, zIndex: 10000, backgroundColor: 'rgba(0,0,0,0.9)',
-          display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(10px)'
-        }} onClick={() => setHardwareLightboxImage(null)}>
-          
-          <button style={{ position: 'absolute', top: '30px', right: '30px', background: 'transparent', border: 'none', color: 'white', fontSize: '2rem', cursor: 'pointer', padding: '10px' }} onClick={() => setHardwareLightboxImage(null)}>✕</button>
-          
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', maxWidth: '90vw' }}>
-            <img src={hardwareLightboxImage} alt="Hardware Enlarge" style={{ maxHeight: '85vh', maxWidth: '85vw', objectFit: 'contain', borderRadius: '8px', boxShadow: '0 20px 50px rgba(0,0,0,0.5)' }} />
-          </div>
-        </div>
-      )}
-    </>
+    </div>
   );
 }

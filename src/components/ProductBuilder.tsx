@@ -5,7 +5,9 @@ import { Product, FabricFamily, FabricColor, Category } from '../lib/products';
 import { saveProduct, getCategories, getProducts } from '../lib/storage_actions';
 import { useRouter, useParams } from 'next/navigation';
 
-export default function ProductBuilder({ productId: initialProductId, initialData }: { productId?: string, initialData?: any }) {\n  const params = useParams();\n  const productId = initialProductId || (params?.id as string);
+export default function ProductBuilder({ productId: initialProductId, initialData }: { productId?: string, initialData?: any }) {
+  const params = useParams();
+  const productId = initialProductId || (params?.id as string);
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [isLoading, setIsLoading] = useState(!initialData && (!!initialProductId || !!(params && params.id)));
@@ -27,9 +29,7 @@ export default function ProductBuilder({ productId: initialProductId, initialDat
         colors: [{ colorId: 'col-1', name: 'Snow White', hex: '#ffffff', status: 'active', mediaUrl: '' }] 
       }
     ],
-    modifiers: [
-      { id: 'mod-1', name: 'Lift Style', isRequired: true, options: [{ id: 'opt-1', name: 'Cordless', priceAdjustment: 0, mediaUrl: '' }] }
-    ],
+    modifiers: [{"id":"mod-mount","name":"Mount Type","isRequired":true,"options":[{"id":"opt-mount-1","name":"Inside Mount","priceAdjustment":0,"mediaUrl":""},{"id":"opt-mount-2","name":"Outside Mount","priceAdjustment":0,"mediaUrl":""}]},{"id":"mod-lift","name":"Lift Style","isRequired":true,"options":[{"id":"opt-lift-1","name":"Cordless","priceAdjustment":0,"mediaUrl":""},{"id":"opt-lift-2","name":"Motorized","priceAdjustment":0,"mediaUrl":""},{"id":"opt-lift-3","name":"Continuous Cord Loop","priceAdjustment":0,"mediaUrl":""}]},{"id":"mod-casette","name":"Casette Style","isRequired":true,"options":[{"id":"opt-casette-1","name":"Standard Casette","priceAdjustment":0,"mediaUrl":""},{"id":"opt-casette-2","name":"Fascia","priceAdjustment":0,"mediaUrl":""},{"id":"opt-casette-3","name":"Fabric Wrapped","priceAdjustment":0,"mediaUrl":""}]},{"id":"mod-bottom","name":"Bottom Rail","isRequired":true,"options":[{"id":"opt-bottom-1","name":"Standard","priceAdjustment":0,"mediaUrl":""},{"id":"opt-bottom-2","name":"Fabric Wrapped","priceAdjustment":0,"mediaUrl":""},{"id":"opt-bottom-3","name":"Sealed","priceAdjustment":0,"mediaUrl":""}]},{"id":"mod-motor","name":"Motor","isRequired":false,"options":[{"id":"opt-motor-1","name":"Standard Motor","priceAdjustment":100,"mediaUrl":""},{"id":"opt-motor-2","name":"Quiet Motor","priceAdjustment":150,"mediaUrl":""}]},{"id":"mod-remote","name":"Remote Control","isRequired":false,"options":[{"id":"opt-remote-1","name":"1-Channel Remote","priceAdjustment":30,"mediaUrl":""},{"id":"opt-remote-2","name":"5-Channel Remote","priceAdjustment":40,"mediaUrl":""},{"id":"opt-remote-3","name":"15-Channel Remote","priceAdjustment":50,"mediaUrl":""}]},{"id":"mod-hub","name":"Smart Hub","isRequired":false,"options":[{"id":"opt-hub-1","name":"No Hub","priceAdjustment":0,"mediaUrl":""},{"id":"opt-hub-2","name":"WiFi Smart Hub","priceAdjustment":99,"mediaUrl":""}]}],
     constraints: { minWidth: 400, maxWidth: 3000, minHeight: 400, maxHeight: 4000 },
     logic: []
   });
@@ -42,6 +42,9 @@ export default function ProductBuilder({ productId: initialProductId, initialDat
       if (initialData) {
         let d = { ...initialData };
         if ((!d.mediaAssets || d.mediaAssets.length === 0) && d.imageUrl) d.mediaAssets = [d.imageUrl];
+        if (!d.constraints) d.constraints = { minWidth: 400, maxWidth: 3000, minHeight: 400, maxHeight: 4000 };
+        if (!d.fabricFamilies) d.fabricFamilies = [];
+        if (!d.modifiers || d.modifiers.length === 0) d.modifiers = [{"id":"mod-mount","name":"Mount Type","isRequired":true,"options":[{"id":"opt-mount-1","name":"Inside Mount","priceAdjustment":0,"mediaUrl":""},{"id":"opt-mount-2","name":"Outside Mount","priceAdjustment":0,"mediaUrl":""}]},{"id":"mod-lift","name":"Lift Style","isRequired":true,"options":[{"id":"opt-lift-1","name":"Cordless","priceAdjustment":0,"mediaUrl":""},{"id":"opt-lift-2","name":"Motorized","priceAdjustment":0,"mediaUrl":""},{"id":"opt-lift-3","name":"Continuous Cord Loop","priceAdjustment":0,"mediaUrl":""}]},{"id":"mod-casette","name":"Casette Style","isRequired":true,"options":[{"id":"opt-casette-1","name":"Standard Casette","priceAdjustment":0,"mediaUrl":""},{"id":"opt-casette-2","name":"Fascia","priceAdjustment":0,"mediaUrl":""},{"id":"opt-casette-3","name":"Fabric Wrapped","priceAdjustment":0,"mediaUrl":""}]},{"id":"mod-bottom","name":"Bottom Rail","isRequired":true,"options":[{"id":"opt-bottom-1","name":"Standard","priceAdjustment":0,"mediaUrl":""},{"id":"opt-bottom-2","name":"Fabric Wrapped","priceAdjustment":0,"mediaUrl":""},{"id":"opt-bottom-3","name":"Sealed","priceAdjustment":0,"mediaUrl":""}]},{"id":"mod-motor","name":"Motor","isRequired":false,"options":[{"id":"opt-motor-1","name":"Standard Motor","priceAdjustment":100,"mediaUrl":""},{"id":"opt-motor-2","name":"Quiet Motor","priceAdjustment":150,"mediaUrl":""}]},{"id":"mod-remote","name":"Remote Control","isRequired":false,"options":[{"id":"opt-remote-1","name":"1-Channel Remote","priceAdjustment":30,"mediaUrl":""},{"id":"opt-remote-2","name":"5-Channel Remote","priceAdjustment":40,"mediaUrl":""},{"id":"opt-remote-3","name":"15-Channel Remote","priceAdjustment":50,"mediaUrl":""}]},{"id":"mod-hub","name":"Smart Hub","isRequired":false,"options":[{"id":"opt-hub-1","name":"No Hub","priceAdjustment":0,"mediaUrl":""},{"id":"opt-hub-2","name":"WiFi Smart Hub","priceAdjustment":99,"mediaUrl":""}]}];
         setFormData(d);
         setIsLoading(false);
         return;
@@ -309,7 +312,7 @@ function BasicInfoStep({ data, update, categories }: any) {
 }
 
 function DimensionsStep({ data, update }: any) {
-  const c = data.constraints;
+  const c = data.constraints || { minWidth: 400, maxWidth: 3000, minHeight: 400, maxHeight: 4000 };
   const setC = (nc: any) => update({...data, constraints: {...c, ...nc}});
 
   return (
@@ -347,24 +350,13 @@ function DimensionsStep({ data, update }: any) {
 }
 
 function MaterialsStep({ data, update }: any) {
+  const [matModal, setMatModal] = React.useState<any>(null);
   // --- FAMILY CRUD ---
   const addFamily = () => {
-    const name = prompt('Fabric Family Name (e.g. Premium Silk):');
-    if (!name) return;
-    const newFam: FabricFamily = { fabricId: `fam-${Date.now()}`, name, priceModifier: 0, colors: [] };
-    update({ ...data, fabricFamilies: [...(data.fabricFamilies || []), newFam] });
+    setMatModal({ isNew: true, type: 'family', name: '', category: '', priceModifier: 0, maxWidth: 0, maxHeight: 0 });
   };
   const editFamily = (famId: string, oldName: string, oldPrice: number, oldMaxW: number = 0, oldMaxH: number = 0, oldCategory: string = '') => {
-    const name = prompt('Edit Fabric Family Name:', oldName);
-    if (!name && name !== '') return;
-    const cat = prompt('Fabric Category (e.g. Translucent, Blackout):', oldCategory);
-    const priceStr = prompt('Edit Base Price Modifier ($):', oldPrice.toString());
-    const priceModifier = priceStr ? parseFloat(priceStr) : oldPrice;
-    const maxWStr = prompt('Max Width (Inches):', oldMaxW.toString());
-    const maxW = maxWStr ? parseFloat(maxWStr) : oldMaxW;
-    const maxHStr = prompt('Max Height (Inches):', oldMaxH.toString());
-    const maxH = maxHStr ? parseFloat(maxHStr) : oldMaxH;
-    update({ ...data, fabricFamilies: data.fabricFamilies.map((f: FabricFamily) => f.fabricId === famId ? { ...f, name: name || f.name, category: cat || f.category, priceModifier, maxWidth: maxW, maxHeight: maxH } : f) });
+    setMatModal({ isNew: false, type: 'family', famId, name: oldName, category: oldCategory, priceModifier: oldPrice, maxWidth: oldMaxW, maxHeight: oldMaxH });
   };
   const deleteFamily = (famId: string) => {
     if (!confirm('Delete this fabric family and all its colors?')) return;
@@ -373,17 +365,10 @@ function MaterialsStep({ data, update }: any) {
 
   // --- COLOR CRUD ---
   const addColor = (familyId: string) => {
-    const name = prompt('Color Name (e.g. Midnight Blue):');
-    if (!name) return;
-    const hex = prompt('Hex Code (e.g. #0a192f):', '#000000') || '#000000';
-    const newColor: FabricColor = { colorId: `col-${Date.now()}`, name, hex, status: 'active', mediaUrl: '' };
-    update({ ...data, fabricFamilies: data.fabricFamilies.map((fam: FabricFamily) => fam.fabricId === familyId ? { ...fam, colors: [...fam.colors, newColor] } : fam) });
+    setMatModal({ isNew: true, type: 'color', famId: familyId, name: '', hex: '#000000' });
   };
   const editColor = (familyId: string, colorId: string, oldName: string, oldHex: string) => {
-    const name = prompt('Edit Color Name:', oldName);
-    if (!name && name !== '') return;
-    const hex = prompt('Edit Hex Code:', oldHex) || oldHex;
-    update({ ...data, fabricFamilies: data.fabricFamilies.map((fam: FabricFamily) => fam.fabricId === familyId ? { ...fam, colors: fam.colors.map(c => c.colorId === colorId ? { ...c, name: name || c.name, hex } : c) } : fam) });
+    setMatModal({ isNew: false, type: 'color', famId: familyId, colorId, name: oldName, hex: oldHex });
   };
   const deleteColor = (familyId: string, colorId: string) => {
     if (!confirm('Delete this color?')) return;
@@ -402,54 +387,35 @@ function MaterialsStep({ data, update }: any) {
     } catch(err) { console.error(err); }
   };
 
-  // --- MODIFIER CRUD ---
-  const editModifier = (modId: string, oldName: string) => {
-    const name = prompt('Edit Attribute Group Name:', oldName);
+
+  const handleMatModalSave = () => {
+    const { isNew, type, famId, colorId, name, category, priceModifier, maxWidth, maxHeight, hex } = matModal;
     if (!name) return;
-    update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, name } : m) });
-  };
-  const deleteModifier = (modId: string) => {
-    if (!confirm('Delete this attribute group and ALL its options?')) return;
-    update({ ...data, modifiers: data.modifiers.filter((m: any) => m.id !== modId) });
+
+    if (type === 'family') {
+      if (isNew) {
+        const newFam: FabricFamily = { fabricId: `fam-${Date.now()}`, name, category: category || '', priceModifier: parseFloat(priceModifier)||0, maxWidth: parseFloat(maxWidth)||0, maxHeight: parseFloat(maxHeight)||0, colors: [] };
+        update({ ...data, fabricFamilies: [...(data.fabricFamilies || []), newFam] });
+      } else {
+        update({ ...data, fabricFamilies: data.fabricFamilies.map((f: FabricFamily) => f.fabricId === famId ? { ...f, name, category, priceModifier: parseFloat(priceModifier)||0, maxWidth: parseFloat(maxWidth)||0, maxHeight: parseFloat(maxHeight)||0 } : f) });
+      }
+    } else if (type === 'color') {
+      if (isNew) {
+        const newColor: FabricColor = { colorId: `col-${Date.now()}`, name, hex: hex || '#000000', status: 'active', mediaUrl: '' };
+        update({ ...data, fabricFamilies: data.fabricFamilies.map((fam: FabricFamily) => fam.fabricId === famId ? { ...fam, colors: [...fam.colors, newColor] } : fam) });
+      } else {
+        update({ ...data, fabricFamilies: data.fabricFamilies.map((fam: FabricFamily) => fam.fabricId === famId ? { ...fam, colors: fam.colors.map(c => c.colorId === colorId ? { ...c, name, hex } : c) } : fam) });
+      }
+    }
+    setMatModal(null);
   };
 
-  // --- OPTION CRUD ---
-  const editOption = (modId: string, optId: string, oldName: string, oldPrice: number) => {
-    const name = prompt('Edit Option Name:', oldName);
-    if (!name && name !== '') return;
-    const priceStr = prompt('Edit Price Adjustment ($):', oldPrice.toString());
-    const priceAdjustment = priceStr ? parseFloat(priceStr) : oldPrice;
-    update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, name: name || o.name, priceAdjustment } : o) } : m) });
+  const modalOverlayStyle: React.CSSProperties = {
+    position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center'
   };
-  const deleteOption = (modId: string, optId: string) => {
-    if (!confirm('Delete this option?')) return;
-    update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.filter((o: any) => o.id !== optId) } : m) });
+  const modalStyle: React.CSSProperties = {
+    backgroundColor: '#fff', padding: '20px', borderRadius: '8px', width: '400px', maxWidth: '90%', maxHeight: '90vh', overflowY: 'auto'
   };
-
-  // --- SUB-ATTRIBUTE CRUD ---
-  const editSub = (modId: string, optId: string, subId: string, oldName: string) => {
-    const name = prompt('Edit Sub-Attribute Name:', oldName);
-    if (!name) return;
-    update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === subId ? { ...s, name } : s) } : o) } : m) });
-  };
-  const deleteSub = (modId: string, optId: string, subId: string) => {
-    if (!confirm('Delete this sub-attribute?')) return;
-    update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.filter((s: any) => s.id !== subId) } : o) } : m) });
-  };
-
-  // --- CHOICE CRUD ---
-  const editChoice = (modId: string, optId: string, subId: string, choiceId: string, oldName: string, oldPrice: number) => {
-    const name = prompt('Edit Choice Name:', oldName);
-    if (!name && name !== '') return;
-    const priceStr = prompt('Edit Price Adjustment ($):', oldPrice.toString());
-    const priceAdjustment = priceStr ? parseFloat(priceStr) : oldPrice;
-    update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === subId ? { ...s, choices: s.choices.map((c: any) => c.id === choiceId ? { ...c, name: name || c.name, priceAdjustment } : c) } : s) } : o) } : m) });
-  };
-  const deleteChoice = (modId: string, optId: string, subId: string, choiceId: string) => {
-    if (!confirm('Delete this choice?')) return;
-    update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === subId ? { ...s, choices: s.choices.filter((c: any) => c.id !== choiceId) } : s) } : o) } : m) });
-  };
-
 
   return (
     <Section title="Materials & Hardware (GIF-Style Configurator)">
@@ -517,13 +483,156 @@ function MaterialsStep({ data, update }: any) {
         </div>
       </div>
 
-      </Section>
+  
+      {matModal && (
+        <div style={modalOverlayStyle}>
+          <div style={modalStyle}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+              <h3 style={{ margin: 0 }}>{matModal.isNew ? 'Add' : 'Edit'} {matModal.type.charAt(0).toUpperCase() + matModal.type.slice(1)}</h3>
+              <button onClick={() => setMatModal(null)} style={{ background: 'none', border: 'none', fontSize: '1.2rem', cursor: 'pointer' }}>&times;</button>
+            </div>
+            
+            <div style={{ marginBottom: '10px' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Name</label>
+              <input type="text" value={matModal.name || ''} onChange={e => setMatModal({...matModal, name: e.target.value})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+            </div>
+
+            {matModal.type === 'family' && (
+              <>
+                <div style={{ marginBottom: '10px' }}>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Category (e.g. Translucent, Blackout)</label>
+                  <input type="text" value={matModal.category || ''} onChange={e => setMatModal({...matModal, category: e.target.value})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+                </div>
+                <div style={{ marginBottom: '10px' }}>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Base Price Modifier ($)</label>
+                  <input type="number" value={matModal.priceModifier || 0} onChange={e => setMatModal({...matModal, priceModifier: e.target.value})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+                </div>
+                <div style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+                  <div style={{ flex: 1 }}>
+                    <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Max Width (Inches)</label>
+                    <input type="number" value={matModal.maxWidth || 0} onChange={e => setMatModal({...matModal, maxWidth: e.target.value})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Max Height (Inches)</label>
+                    <input type="number" value={matModal.maxHeight || 0} onChange={e => setMatModal({...matModal, maxHeight: e.target.value})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+                  </div>
+                </div>
+              </>
+            )}
+
+            {matModal.type === 'color' && (
+              <div style={{ marginBottom: '15px' }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Hex Code</label>
+                <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                  <input type="color" value={matModal.hex || '#000000'} onChange={e => setMatModal({...matModal, hex: e.target.value})} style={{ width: '40px', height: '40px', padding: '0', border: 'none', cursor: 'pointer' }} />
+                  <input type="text" value={matModal.hex || '#000000'} onChange={e => setMatModal({...matModal, hex: e.target.value})} style={{ flex: 1, padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+                </div>
+              </div>
+            )}
+            
+            <button onClick={handleMatModalSave} style={{ width: '100%', padding: '10px', backgroundColor: '#000', color: '#fff', border: 'none', borderRadius: '6px', fontWeight: 600, cursor: 'pointer', marginTop: '10px' }}>Save Changes</button>
+          </div>
+        </div>
+      )}
+    </Section>
   );
 }
 
 
 function CustomizationStep({ data, update }: any) {
+  const [editModal, setEditModal] = React.useState<any>(null);
+  const [bulkModal, setBulkModal] = React.useState<any>(null);
+  const [allProducts, setAllProducts] = React.useState<any[]>([]);
+
+  React.useEffect(() => {
+    if (bulkModal && allProducts.length === 0) {
+      fetch('/api/products').then(res => res.json()).then(data => setAllProducts(data || []));
+    }
+  }, [bulkModal]);
+
+// --- MODIFIER CRUD ---
+  const editModifier = (modId: string, oldName: string, oldReqs: string[] = [], oldExcls: string[] = [], oldConstraints: any = {}) => {
+    setEditModal({ type: 'modifier', modId, name: oldName, requires: oldReqs, excludes: oldExcls, constraints: oldConstraints });
+  };
+  const deleteModifier = (modId: string) => {
+    if (!confirm('Delete this attribute group and ALL its options?')) return;
+    update({ ...data, modifiers: data.modifiers.filter((m: any) => m.id !== modId) });
+  };
+
+  // --- OPTION CRUD ---
+  const editOption = (modId: string, optId: string, oldName: string, oldPrice: number, oldReqs: string[] = [], oldExcls: string[] = [], oldConstraints: any = {}) => {
+    setEditModal({ type: 'option', modId, optId, name: oldName, priceAdjustment: oldPrice, requires: oldReqs, excludes: oldExcls, constraints: oldConstraints });
+  };
+  const deleteOption = (modId: string, optId: string) => {
+    if (!confirm('Delete this option?')) return;
+    update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.filter((o: any) => o.id !== optId) } : m) });
+  };
+
+  // --- SUB-ATTRIBUTE CRUD ---
+  const editSub = (modId: string, optId: string, subId: string, oldName: string, oldReqs: string[] = [], oldExcls: string[] = [], oldConstraints: any = {}) => {
+    setEditModal({ type: 'sub', modId, optId, subId, name: oldName, requires: oldReqs, excludes: oldExcls, constraints: oldConstraints });
+  };
+  const deleteSub = (modId: string, optId: string, subId: string) => {
+    if (!confirm('Delete this sub-attribute?')) return;
+    update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.filter((s: any) => s.id !== subId) } : o) } : m) });
+  };
+
+  // --- CHOICE CRUD ---
+  const editChoice = (modId: string, optId: string, subId: string, choiceId: string, oldName: string, oldPrice: number, oldReqs: string[] = [], oldExcls: string[] = [], oldConstraints: any = {}) => {
+    setEditModal({ type: 'choice', modId, optId, subId, choiceId, name: oldName, priceAdjustment: oldPrice, requires: oldReqs, excludes: oldExcls, constraints: oldConstraints });
+  };
+  const deleteChoice = (modId: string, optId: string, subId: string, choiceId: string) => {
+    if (!confirm('Delete this choice?')) return;
+    update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === subId ? { ...s, choices: s.choices.filter((c: any) => c.id !== choiceId) } : s) } : o) } : m) });
+  };
+
+
   
+  
+
+  const handleModalSave = () => {
+    const { isNew, type, modId, optId, subId, choiceId, name, priceAdjustment, requires, excludes, constraints } = editModal;
+    const cleanConstraints: any = {};
+    if (!isNaN(constraints?.minWidth)) cleanConstraints.minWidth = constraints.minWidth;
+    if (!isNaN(constraints?.maxWidth)) cleanConstraints.maxWidth = constraints.maxWidth;
+    if (!isNaN(constraints?.minHeight)) cleanConstraints.minHeight = constraints.minHeight;
+    if (!isNaN(constraints?.maxHeight)) cleanConstraints.maxHeight = constraints.maxHeight;
+
+    if (isNew) {
+      if (type === 'modifier') {
+        const newGroup = { id: modId, name, isRequired: true, options: [], requires, excludes, constraints: cleanConstraints };
+        update({ ...data, modifiers: [...(data.modifiers || []), newGroup] });
+      } else if (type === 'option') {
+        const newOpt = { id: optId, name, priceAdjustment: priceAdjustment || 0, requires, excludes, constraints: cleanConstraints, subAttributes: [] };
+        update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: [...m.options, newOpt] } : m) });
+      } else if (type === 'sub') {
+        const newSub = { id: subId, name, choices: [], requires, excludes, constraints: cleanConstraints };
+        update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: [...(o.subAttributes||[]), newSub] } : o) } : m) });
+      } else if (type === 'choice') {
+        const newChoice = { id: choiceId, name, priceAdjustment: priceAdjustment || 0, requires, excludes, constraints: cleanConstraints };
+        update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === subId ? { ...s, choices: [...s.choices, newChoice] } : s) } : o) } : m) });
+      }
+    } else {
+      if (type === 'modifier') {
+        update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, name, requires, excludes, constraints: cleanConstraints } : m) });
+      } else if (type === 'option') {
+        update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, name, priceAdjustment, requires, excludes, constraints: cleanConstraints } : o) } : m) });
+      } else if (type === 'sub') {
+        update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === subId ? { ...s, name, requires, excludes, constraints: cleanConstraints } : s) } : o) } : m) });
+      } else if (type === 'choice') {
+        update({ ...data, modifiers: data.modifiers.map((m: any) => m.id === modId ? { ...m, options: m.options.map((o: any) => o.id === optId ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === subId ? { ...s, choices: s.choices.map((c: any) => c.id === choiceId ? { ...c, name, priceAdjustment, requires, excludes, constraints: cleanConstraints } : c) } : s) } : o) } : m) });
+      }
+    }
+    setEditModal(null);
+  };
+
+  const modalOverlayStyle: React.CSSProperties = {
+    position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center'
+  };
+  const modalStyle: React.CSSProperties = {
+    backgroundColor: '#fff', padding: '20px', borderRadius: '8px', width: '400px', maxWidth: '90%', maxHeight: '90vh', overflowY: 'auto'
+  };
+
   return (
     <Section title="Product Customization (Hardware)">
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
@@ -531,13 +640,8 @@ function CustomizationStep({ data, update }: any) {
             <h4 style={{ fontSize: '1.2rem', color: '#000', margin: 0 }}>DYNAMIC ATTRIBUTES</h4>
             <p style={{ fontSize: '0.8rem', color: '#888', margin: '5px 0 0 0' }}>Define custom configurations like Lift Style, Mount Type, Valance, etc.</p>
           </div>
-          <button onClick={() => {
-            const name = prompt('Attribute Group Name (e.g. Lift Style):');
-            if (!name) return;
-            const newGroup = { id: `mod-${Date.now()}`, name, isRequired: true, options: [] };
-            update({ ...data, modifiers: [...(data.modifiers || []), newGroup] });
-          }} style={{ padding: '8px 16px', borderRadius: '6px', backgroundColor: '#000', color: '#fff', border: 'none', cursor: 'pointer', fontSize: '0.8rem', fontWeight: 600 }}>
-            + Add Attribute Group
+          <button onClick={() => setEditModal({ isNew: true, type: 'modifier', modId: `mod-${Date.now()}`, name: '', requires: [], excludes: [], constraints: {} })} style={{ padding: '8px 16px', borderRadius: '6px', backgroundColor: '#000', color: '#fff', border: 'none', cursor: 'pointer', fontSize: '0.8rem', fontWeight: 600 }}>
+            + Attribute Group
           </button>
         </div>
         
@@ -558,19 +662,17 @@ function CustomizationStep({ data, update }: any) {
                       update({ ...data, modifiers: newMods });
                     }} style={{ border: 'none', background: 'none', cursor: groupIndex === data.modifiers.length - 1 ? 'not-allowed' : 'pointer', opacity: groupIndex === data.modifiers.length - 1 ? 0.3 : 1, padding: 0 }}>↓</button>
                   </div>
-                  <h5 style={{ fontSize: '1rem', margin: 0 }}>{group.name}</h5>
-                  <button onClick={() => editModifier(group.id, group.name)} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>✏️</button>
+                  <div style={{display:'flex', flexDirection:'column'}}>
+                    <h5 style={{ fontSize: '1rem', margin: 0 }}>{group.name}</h5>
+                    {group.requires && group.requires.length > 0 && <span style={{display:'block', color:'#0066cc', fontSize:'0.65rem'}}>Requires: {group.requires.join(', ')}</span>}
+                    {group.excludes && group.excludes.length > 0 && <span style={{display:'block', color:'#ef4444', fontSize:'0.65rem'}}>Excludes: {group.excludes.join(', ')}</span>}
+                    {group.constraints && (group.constraints.minWidth || group.constraints.maxWidth || group.constraints.minHeight || group.constraints.maxHeight) && <span style={{display:'block', color:'#9333ea', fontSize:'0.65rem'}}>Limits: W[{group.constraints.minWidth || 0}-{group.constraints.maxWidth || '∞'}] H[{group.constraints.minHeight || 0}-{group.constraints.maxHeight || '∞'}]</span>}
+                  </div>
+                  <button onClick={() => editModifier(group.id, group.name, group.requires, group.excludes, group.constraints)} style={{ padding: '4px 10px', borderRadius: '4px', backgroundColor: '#f3f4f6', color: '#374151', border: '1px solid #d1d5db', cursor: 'pointer', fontSize: '0.8rem', fontWeight: 600 }}>Edit Group</button>
                 </div>
                 <div style={{ display: 'flex', gap: '10px' }}>
                   <button onClick={() => deleteModifier(group.id)} style={{ padding: '6px 12px', borderRadius: '6px', backgroundColor: '#fee2e2', color: '#ef4444', border: 'none', cursor: 'pointer', fontSize: '0.8rem' }}>🗑️ Delete Group</button>
-                  <button onClick={() => {
-                    const optName = prompt(`New option for ${group.name} (e.g. Motorized):`);
-                    if (!optName) return;
-                    const price = prompt('Price adjustment ($):', '0') || '0';
-                    const newOpt = { id: `opt-${Date.now()}`, name: optName, priceAdjustment: parseFloat(price), mediaUrl: '' };
-                    const updated = data.modifiers.map((m: any) => m.id === group.id ? { ...m, options: [...m.options, newOpt] } : m);
-                    update({ ...data, modifiers: updated });
-                  }} style={{ padding: '6px 12px', borderRadius: '6px', backgroundColor: '#fff', color: '#000', border: '1px solid #ccc', cursor: 'pointer', fontSize: '0.8rem' }}>+ Add Option</button>
+                  <button onClick={() => setEditModal({ isNew: true, type: 'option', modId: group.id, optId: `opt-${Date.now()}`, name: '', priceAdjustment: 0, requires: [], excludes: [], constraints: {} })} style={{ padding: '6px 12px', borderRadius: '6px', backgroundColor: '#000', color: '#fff', border: 'none', cursor: 'pointer', fontSize: '0.8rem' }}>+ Option</button>
                 </div>
               </div>
 
@@ -612,11 +714,12 @@ function CustomizationStep({ data, update }: any) {
                             {opt.priceAdjustment > 0 ? `+ ${opt.priceAdjustment}` : 'Included'}
                             {opt.requires && opt.requires.length > 0 && <span style={{display:'block', color:'#0066cc', fontSize:'0.65rem'}}>Requires: {opt.requires.join(', ')}</span>}
                             {opt.excludes && opt.excludes.length > 0 && <span style={{display:'block', color:'#ef4444', fontSize:'0.65rem'}}>Excludes: {opt.excludes.join(', ')}</span>}
+                            {opt.constraints && (opt.constraints.minWidth || opt.constraints.maxWidth || opt.constraints.minHeight || opt.constraints.maxHeight) && <span style={{display:'block', color:'#9333ea', fontSize:'0.65rem'}}>Limits: W[{opt.constraints.minWidth || 0}-{opt.constraints.maxWidth || '∞'}] H[{opt.constraints.minHeight || 0}-{opt.constraints.maxHeight || '∞'}]</span>}
                           </div>
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-                          <button onClick={() => editOption(group.id, opt.id, opt.name, opt.priceAdjustment, opt.requires, opt.excludes)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.8rem' }}>✏️</button>
-                          <button onClick={() => deleteOption(group.id, opt.id)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.8rem', color: 'red' }}>🗑️</button>
+                          <button onClick={() => editOption(group.id, opt.id, opt.name, opt.priceAdjustment, opt.requires, opt.excludes, opt.constraints)} style={{ padding: '4px 10px', borderRadius: '4px', backgroundColor: '#f3f4f6', color: '#374151', border: '1px solid #d1d5db', cursor: 'pointer', fontSize: '0.75rem', fontWeight: 600, width: '100%' }}>Edit Option</button>
+                          <button onClick={() => deleteOption(group.id, opt.id)} style={{ padding: '4px 10px', borderRadius: '4px', backgroundColor: '#fee2e2', color: '#ef4444', border: '1px solid #fca5a5', cursor: 'pointer', fontSize: '0.75rem', fontWeight: 600, width: '100%' }}>Delete Option</button>
                         </div>
                       </div>
                       
@@ -624,39 +727,35 @@ function CustomizationStep({ data, update }: any) {
                       <div style={{ marginTop: '15px', paddingTop: '15px', borderTop: '1px dashed #eee' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
                           <span style={{ fontSize: '0.7rem', color: '#888', fontWeight: 600 }}>SUB-ATTRIBUTES</span>
-                          <button onClick={() => {
-                            const subName = prompt(`Sub-attribute name for ${opt.name} (e.g. Wand Position):`);
-                            if (!subName) return;
-                            const newSub = { id: `sub-${Date.now()}`, name: subName, choices: [] };
-                            const updated = data.modifiers.map((m: any) => m.id === group.id ? { ...m, options: m.options.map((o: any) => o.id === opt.id ? { ...o, subAttributes: [...(o.subAttributes || []), newSub] } : o) } : m);
-                            update({ ...data, modifiers: updated });
-                          }} style={{ padding: '4px 8px', borderRadius: '4px', background: '#f5f5f5', border: '1px solid #ccc', fontSize: '0.6rem', cursor: 'pointer' }}>+ Add</button>
+                          <button onClick={() => setEditModal({ isNew: true, type: 'sub', modId: group.id, optId: opt.id, subId: `sub-${Date.now()}`, name: '', requires: [], excludes: [], constraints: {} })} style={{ fontSize: '0.7rem', color: '#0066cc', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>+ Sub-Attribute</button>
                         </div>
                         
                         {(opt.subAttributes || []).map((sub: any) => (
                           <div key={sub.id} style={{ marginBottom: '10px', background: '#fafafa', padding: '10px', borderRadius: '6px', border: '1px solid #f0f0f0' }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
-                              <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
-                                <span style={{ fontSize: '0.8rem', fontWeight: 600 }}>{sub.name}</span>
-                                <button onClick={() => editSub(group.id, opt.id, sub.id, sub.name)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.7rem' }}>✏️</button>
-                                <button onClick={() => deleteSub(group.id, opt.id, sub.id)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.7rem', color: 'red' }}>🗑️</button>
+                              <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                                <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
+                                  <span style={{ fontSize: '0.8rem', fontWeight: 600 }}>{sub.name}</span>
+                                  <button onClick={() => editSub(group.id, opt.id, sub.id, sub.name, sub.requires, sub.excludes, sub.constraints)} style={{ padding: '2px 6px', borderRadius: '4px', backgroundColor: '#f3f4f6', color: '#374151', border: '1px solid #d1d5db', cursor: 'pointer', fontSize: '0.65rem' }}>Edit Sub-Attribute</button>
+                                  <button onClick={() => deleteSub(group.id, opt.id, sub.id)} style={{ padding: '2px 6px', borderRadius: '4px', backgroundColor: '#fee2e2', color: '#ef4444', border: '1px solid #fca5a5', cursor: 'pointer', fontSize: '0.65rem' }}>Delete Sub</button>
+                                </div>
+                                {sub.requires && sub.requires.length > 0 && <span style={{display:'block', color:'#0066cc', fontSize:'0.65rem'}}>Requires: {sub.requires.join(', ')}</span>}
+                                {sub.excludes && sub.excludes.length > 0 && <span style={{display:'block', color:'#ef4444', fontSize:'0.65rem'}}>Excludes: {sub.excludes.join(', ')}</span>}
+                                {sub.constraints && (sub.constraints.minWidth || sub.constraints.maxWidth || sub.constraints.minHeight || sub.constraints.maxHeight) && <span style={{display:'block', color:'#9333ea', fontSize:'0.65rem'}}>Limits: W[{sub.constraints.minWidth || 0}-{sub.constraints.maxWidth || '∞'}] H[{sub.constraints.minHeight || 0}-{sub.constraints.maxHeight || '∞'}]</span>}
                               </div>
-                              <button onClick={() => {
-                                const choiceName = prompt(`Choice for ${sub.name} (e.g. Left):`);
-                                if (!choiceName) return;
-                                const price = prompt('Price adjustment ($):', '0') || '0';
-                                const newChoice = { id: `choice-${Date.now()}`, name: choiceName, priceAdjustment: parseFloat(price) };
-                                const updated = data.modifiers.map((m: any) => m.id === group.id ? { ...m, options: m.options.map((o: any) => o.id === opt.id ? { ...o, subAttributes: o.subAttributes.map((s: any) => s.id === sub.id ? { ...s, choices: [...s.choices, newChoice] } : s) } : o) } : m);
-                                update({ ...data, modifiers: updated });
-                              }} style={{ fontSize: '0.7rem', color: '#0066cc', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>+ Choice</button>
+                              <button onClick={() => setEditModal({ isNew: true, type: 'choice', modId: group.id, optId: opt.id, subId: sub.id, choiceId: `choice-${Date.now()}`, name: '', priceAdjustment: 0, requires: [], excludes: [], constraints: {} })} style={{ fontSize: '0.7rem', color: '#0066cc', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>+ Choice</button>
                             </div>
                             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px' }}>
                               {sub.choices.map((c: any) => (
                                 <span key={c.id} style={{ fontSize: '0.7rem', background: '#fff', border: '1px solid #ddd', padding: '2px 6px', borderRadius: '12px', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                                  <span onClick={() => editChoice(group.id, opt.id, sub.id, c.id, c.name, c.priceAdjustment)} style={{ cursor: 'pointer' }}>
-                                    {c.name} <span style={{ color: c.priceAdjustment > 0 ? '#10b981' : '#888' }}>({c.priceAdjustment > 0 ? `+$${c.priceAdjustment}` : '+$0'})</span>
+                                  <span style={{display:'flex', flexDirection:'column'}}>
+                                    <span>{c.name} <span style={{ color: c.priceAdjustment > 0 ? '#10b981' : '#888', fontWeight: 600 }}>({c.priceAdjustment > 0 ? `+${c.priceAdjustment}` : '+$0'})</span></span>
+                                    {c.requires && c.requires.length > 0 && <span style={{color:'#0066cc', fontSize:'0.55rem'}}>Req: {c.requires.join(', ')}</span>}
+                                    {c.excludes && c.excludes.length > 0 && <span style={{color:'#ef4444', fontSize:'0.55rem'}}>Exc: {c.excludes.join(', ')}</span>}
+                                    {c.constraints && (c.constraints.minWidth || c.constraints.maxWidth || c.constraints.minHeight || c.constraints.maxHeight) && <span style={{color:'#9333ea', fontSize:'0.55rem'}}>Limits: W[{c.constraints.minWidth || 0}-{c.constraints.maxWidth || '∞'}] H[{c.constraints.minHeight || 0}-{c.constraints.maxHeight || '∞'}]</span>}
                                   </span>
-                                  <button onClick={() => deleteChoice(group.id, opt.id, sub.id, c.id)} style={{ background: 'none', border: 'none', color: 'red', cursor: 'pointer', padding: 0, fontSize: '0.6rem' }}>✕</button>
+                                  <button onClick={() => editChoice(group.id, opt.id, sub.id, c.id, c.name, c.priceAdjustment, c.requires, c.excludes, c.constraints)} style={{ padding: '2px 6px', borderRadius: '4px', backgroundColor: '#f3f4f6', color: '#000', border: '1px solid #ccc', cursor: 'pointer', fontSize: '0.65rem' }}>Edit Choice</button>
+                                  <button onClick={() => deleteChoice(group.id, opt.id, sub.id, c.id)} style={{ padding: '2px 6px', borderRadius: '4px', backgroundColor: '#fee2e2', color: '#ef4444', border: '1px solid #fca5a5', cursor: 'pointer', fontSize: '0.65rem' }}>X</button>
                                 </span>
                               ))}
                             </div>
@@ -675,6 +774,131 @@ function CustomizationStep({ data, update }: any) {
           )}
         </div>
     
+
+      {editModal && (
+        <div style={modalOverlayStyle}>
+          <div style={modalStyle}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+              <h3 style={{ margin: 0 }}>{editModal.isNew ? 'Add' : 'Edit'} {editModal.type.charAt(0).toUpperCase() + editModal.type.slice(1)}</h3>
+              <button onClick={() => setEditModal(null)} style={{ background: 'none', border: 'none', fontSize: '1.2rem', cursor: 'pointer' }}>&times;</button>
+            </div>
+            
+            <div style={{ marginBottom: '10px' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Name</label>
+              <input type="text" value={editModal.name} onChange={e => setEditModal({...editModal, name: e.target.value})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+            </div>
+            
+            {(editModal.type === 'option' || editModal.type === 'choice') && (
+              <div style={{ marginBottom: '10px' }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Price Adjustment ($)</label>
+                <input type="number" value={editModal.priceAdjustment || 0} onChange={e => setEditModal({...editModal, priceAdjustment: parseFloat(e.target.value) || 0})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+            )}
+            
+            <div style={{ marginBottom: '10px' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Requires (comma-separated IDs)</label>
+              <input type="text" value={(editModal.requires || []).join(', ')} onChange={e => setEditModal({...editModal, requires: e.target.value.split(',').map(s => s.trim()).filter(Boolean)})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+            </div>
+            
+            <div style={{ marginBottom: '10px' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Excludes (comma-separated IDs)</label>
+              <input type="text" value={(editModal.excludes || []).join(', ')} onChange={e => setEditModal({...editModal, excludes: e.target.value.split(',').map(s => s.trim()).filter(Boolean)})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+            </div>
+            
+            <div style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+              <div style={{ flex: 1 }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Min Width</label>
+                <input type="number" value={editModal.constraints?.minWidth || ''} onChange={e => setEditModal({...editModal, constraints: {...(editModal.constraints||{}), minWidth: parseFloat(e.target.value)}})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+              <div style={{ flex: 1 }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Max Width</label>
+                <input type="number" value={editModal.constraints?.maxWidth || ''} onChange={e => setEditModal({...editModal, constraints: {...(editModal.constraints||{}), maxWidth: parseFloat(e.target.value)}})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+            </div>
+            
+            <div style={{ display: 'flex', gap: '10px', marginBottom: '15px' }}>
+              <div style={{ flex: 1 }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Min Height</label>
+                <input type="number" value={editModal.constraints?.minHeight || ''} onChange={e => setEditModal({...editModal, constraints: {...(editModal.constraints||{}), minHeight: parseFloat(e.target.value)}})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+              <div style={{ flex: 1 }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: '4px' }}>Max Height</label>
+                <input type="number" value={editModal.constraints?.maxHeight || ''} onChange={e => setEditModal({...editModal, constraints: {...(editModal.constraints||{}), maxHeight: parseFloat(e.target.value)}})} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+              </div>
+            </div>
+            
+            <button onClick={handleModalSave} style={{ width: '100%', padding: '10px', backgroundColor: '#000', color: '#fff', border: 'none', borderRadius: '6px', fontWeight: 600, cursor: 'pointer' }}>Save Changes</button>
+          </div>
+        </div>
+      )}
+
+      {bulkModal && (
+        <div style={modalOverlayStyle}>
+          <div style={modalStyle}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+              <h3 style={{ margin: 0 }}>Advanced Bulk Apply</h3>
+              <button onClick={() => setBulkModal(null)} style={{ background: 'none', border: 'none', fontSize: '1.2rem', cursor: 'pointer' }}>&times;</button>
+            </div>
+            
+            <p style={{ fontSize: '0.8rem', color: '#666', marginBottom: '15px' }}>Apply the current hardware configuration to multiple products at once.</p>
+            
+            <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold', marginBottom: '15px', padding: '10px', background: '#f3f4f6', borderRadius: '6px' }}>
+              <input type="checkbox" checked={bulkModal.applyAll} onChange={e => setBulkModal({...bulkModal, applyAll: e.target.checked})} />
+              Apply to ALL Products
+            </label>
+            
+            {!bulkModal.applyAll && (
+              <div style={{ maxHeight: '300px', overflowY: 'auto', border: '1px solid #eee', padding: '10px', borderRadius: '6px', marginBottom: '15px' }}>
+                {allProducts.length === 0 ? <div style={{fontSize:'0.8rem', color:'#888'}}>Loading products...</div> : (
+                  <>
+                    <div style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: '5px', marginTop: '10px' }}>By Category</div>
+                    {Array.from(new Set(allProducts.map(p => p.category).filter(Boolean))).map(cat => (
+                      <label key={cat as string} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', marginBottom: '4px' }}>
+                        <input type="checkbox" checked={bulkModal.categories.includes(cat)} onChange={e => {
+                          const newCats = e.target.checked ? [...bulkModal.categories, cat] : bulkModal.categories.filter((c:any) => c !== cat);
+                          setBulkModal({...bulkModal, categories: newCats});
+                        }} /> {cat as string}
+                      </label>
+                    ))}
+
+                    <div style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: '5px', marginTop: '15px' }}>By Fabric Type (Translucent, Blackout, etc.)</div>
+                    {Array.from(new Set(allProducts.flatMap(p => p.fabricFamilies?.map((f:any) => f.category)).filter(Boolean))).map(fab => (
+                      <label key={fab as string} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', marginBottom: '4px' }}>
+                        <input type="checkbox" checked={bulkModal.fabricTypes.includes(fab)} onChange={e => {
+                          const newFabs = e.target.checked ? [...bulkModal.fabricTypes, fab] : bulkModal.fabricTypes.filter((c:any) => c !== fab);
+                          setBulkModal({...bulkModal, fabricTypes: newFabs});
+                        }} /> {fab as string}
+                      </label>
+                    ))}
+
+                    <div style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: '5px', marginTop: '15px' }}>By Product Variant / Collection Code</div>
+                    <input type="text" placeholder="e.g. g31, premium (comma separated)" onChange={e => setBulkModal({...bulkModal, collections: e.target.value.split(',').map(s=>s.trim()).filter(Boolean)})} style={{ width: '100%', padding: '6px', borderRadius: '4px', border: '1px solid #ccc', fontSize: '0.8rem' }} />
+                  </>
+                )}
+              </div>
+            )}
+            
+            <button onClick={async () => {
+              try {
+                const res = await fetch('/api/products/bulk-update-modifiers', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ filter: bulkModal, modifiers: data.modifiers })
+                });
+                const result = await res.json();
+                if (result.success) {
+                  alert(`Successfully applied to ${result.modifiedCount} products!`);
+                  setBulkModal(null);
+                } else {
+                  alert('Error: ' + result.error);
+                }
+              } catch(e) {
+                alert('Failed to apply bulk update.');
+              }
+            }} style={{ width: '100%', padding: '10px', backgroundColor: '#2563eb', color: '#fff', border: 'none', borderRadius: '6px', fontWeight: 600, cursor: 'pointer' }}>Apply Configuration</button>
+          </div>
+        </div>
+      )}
     </Section>
   );
 }

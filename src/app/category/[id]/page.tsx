@@ -1,6 +1,11 @@
 export default function Page() {
   return (
-    <main>
+    <>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}`,
+        }}
+      />
       <header className="fixed top-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
         <div className="h-20 w-full px-gutter-mobile lg:px-margin flex items-center justify-between gap-gutter">
           <div className="flex items-center gap-space-lg">
@@ -98,7 +103,7 @@ export default function Page() {
       </header>
       <main className="w-full pt-20 bg-surface">
         <div className="flex flex-col w-full">
-          {/*  Top Breadcrumb & Return Context Bar  */}
+          {/* Top Breadcrumb & Return Context Bar */}
           <section className="w-full bg-surface-container-lowest px-gutter-mobile lg:px-margin py-space-sm shadow-sm">
             <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-space-sm">
               <div className="flex items-center gap-space-xs text-on-surface-variant font-label-md text-label-md">
@@ -132,11 +137,11 @@ export default function Page() {
               </div>
             </div>
           </section>
-          {/*  Category Hero & Architecture Statement  */}
+          {/* Category Hero & Architecture Statement */}
           <section className="w-full px-gutter-mobile lg:px-margin py-space-lg">
             <div className="max-w-7xl mx-auto">
               <div className="bg-surface-container-lowest rounded-xl p-space-lg lg:p-space-xl shadow-sm relative overflow-hidden">
-                {/*  Subtle architectural backdrop water-mark  */}
+                {/* Subtle architectural backdrop water-mark */}
                 <div className="absolute -right-12 -top-12 opacity-5 pointer-events-none select-none text-on-surface">
                   <span className="material-symbols-outlined text-[240px]">
                     roller_shades
@@ -204,7 +209,7 @@ export default function Page() {
               </div>
             </div>
           </section>
-          {/*  Opacity Tier Selection Segment  */}
+          {/* Opacity Tier Selection Segment */}
           <section className="w-full px-gutter-mobile lg:px-margin">
             <div className="max-w-7xl mx-auto space-y-space-md">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
@@ -221,12 +226,12 @@ export default function Page() {
                   instantly.
                 </p>
               </div>
-              {/*  Segmented Opacity Interactive Cards  */}
+              {/* Segmented Opacity Interactive Cards */}
               <div
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-sm"
                 id="opacityTabsContainer"
               >
-                {/*  Tab: Translucent (Active Initially)  */}
+                {/* Tab: Translucent (Active Initially) */}
                 <button
                   className="opacity-tier-btn text-left p-space-md rounded-xl transition-all relative overflow-hidden bg-primary-container text-on-primary shadow-md"
                   data-tier="translucent"
@@ -262,7 +267,7 @@ export default function Page() {
                     </span>
                   </div>
                 </button>
-                {/*  Tab: Room Darkening  */}
+                {/* Tab: Room Darkening */}
                 <button
                   className="opacity-tier-btn text-left p-space-md rounded-xl transition-all relative overflow-hidden bg-surface-container-lowest text-on-surface shadow-sm hover:bg-surface-container-low"
                   data-tier="darkening"
@@ -295,7 +300,7 @@ export default function Page() {
                     </span>
                   </div>
                 </button>
-                {/*  Tab: Blackout  */}
+                {/* Tab: Blackout */}
                 <button
                   className="opacity-tier-btn text-left p-space-md rounded-xl transition-all relative overflow-hidden bg-surface-container-lowest text-on-surface shadow-sm hover:bg-surface-container-low"
                   data-tier="blackout"
@@ -328,7 +333,7 @@ export default function Page() {
                     </span>
                   </div>
                 </button>
-                {/*  Tab: All Opacities  */}
+                {/* Tab: All Opacities */}
                 <button
                   className="opacity-tier-btn text-left p-space-md rounded-xl transition-all relative overflow-hidden bg-surface-container-lowest text-on-surface shadow-sm hover:bg-surface-container-low"
                   data-tier="all"
@@ -364,12 +369,12 @@ export default function Page() {
               </div>
             </div>
           </section>
-          {/*  Filter & Specification Control Bar  */}
+          {/* Filter & Specification Control Bar */}
           <section className="w-full px-gutter-mobile lg:px-margin pt-space-lg">
             <div className="max-w-7xl mx-auto">
               <div className="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-space-sm">
                 <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md">
-                  {/*  SKU Search within Category  */}
+                  {/* SKU Search within Category */}
                   <div className="flex-1 relative">
                     <span className="material-symbols-outlined text-outline absolute left-3.5 top-1/2 -translate-y-1/2 text-lg">
                       search
@@ -381,9 +386,9 @@ export default function Page() {
                       type="text"
                     />
                   </div>
-                  {/*  Dynamic Specification Filter Group  */}
+                  {/* Dynamic Specification Filter Group */}
                   <div className="flex flex-wrap items-center gap-space-xs">
-                    {/*  Motor Selection  */}
+                    {/* Motor Selection */}
                     <div className="relative">
                       <select
                         className="appearance-none bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md pl-3 pr-8 py-2.5 rounded cursor-pointer transition-colors focus:outline-none"
@@ -398,7 +403,7 @@ export default function Page() {
                         expand_more
                       </span>
                     </div>
-                    {/*  Fabric Weave Selection  */}
+                    {/* Fabric Weave Selection */}
                     <div className="relative">
                       <select
                         className="appearance-none bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md pl-3 pr-8 py-2.5 rounded cursor-pointer transition-colors focus:outline-none"
@@ -418,7 +423,7 @@ export default function Page() {
                         expand_more
                       </span>
                     </div>
-                    {/*  Sort Mechanism  */}
+                    {/* Sort Mechanism */}
                     <div className="relative">
                       <select
                         className="appearance-none bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md pl-3 pr-8 py-2.5 rounded cursor-pointer transition-colors focus:outline-none"
@@ -446,7 +451,7 @@ export default function Page() {
                     </button>
                   </div>
                 </div>
-                {/*  Filter context summary chips  */}
+                {/* Filter context summary chips */}
                 <div className="flex flex-wrap items-center justify-between text-body-sm text-body-sm text-on-surface-variant pt-space-xs">
                   <div className="flex items-center gap-space-xs">
                     <span
@@ -476,14 +481,14 @@ export default function Page() {
               </div>
             </div>
           </section>
-          {/*  Product Catalog Grid - Isolated to Category/Selected Tier  */}
+          {/* Product Catalog Grid - Isolated to Category/Selected Tier */}
           <section className="w-full px-gutter-mobile lg:px-margin py-space-lg">
             <div className="max-w-7xl mx-auto">
               <div
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-md"
                 id="productGrid"
               >
-                {/*  Product 1: Aura Linen  */}
+                {/* Product 1: Aura Linen */}
                 <article
                   className="product-card group bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden"
                   data-motor="matter"
@@ -537,7 +542,7 @@ export default function Page() {
                         Calibrated semi-opaque weave blending pure Belgian flax
                         with flame-retardant micro-polymer warp threads.
                       </p>
-                      {/*  Swatch Preview Dots  */}
+                      {/* Swatch Preview Dots */}
                       <div className="pt-2 flex items-center gap-2">
                         <span className="font-label-sm text-label-sm text-outline mr-1">
                           Tones:
@@ -581,7 +586,7 @@ export default function Page() {
                     </div>
                   </div>
                 </article>
-                {/*  Product 2: Nordic Sheer Solar Shade  */}
+                {/* Product 2: Nordic Sheer Solar Shade */}
                 <article
                   className="product-card group bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden"
                   data-motor="24v"
@@ -636,7 +641,7 @@ export default function Page() {
                         optical distortion while reflecting 78% of incoming
                         solar heat.
                       </p>
-                      {/*  Swatch Preview Dots  */}
+                      {/* Swatch Preview Dots */}
                       <div className="pt-2 flex items-center gap-2">
                         <span className="font-label-sm text-label-sm text-outline mr-1">
                           Tones:
@@ -680,7 +685,7 @@ export default function Page() {
                     </div>
                   </div>
                 </article>
-                {/*  Product 3: Kyoto Paper-Linen Shade  */}
+                {/* Product 3: Kyoto Paper-Linen Shade */}
                 <article
                   className="product-card group bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden"
                   data-motor="matter"
@@ -734,7 +739,7 @@ export default function Page() {
                         Infused washi paper mulberry fibers bound with tensile
                         Japanese polyester yarn for organic shadow patterns.
                       </p>
-                      {/*  Swatch Preview Dots  */}
+                      {/* Swatch Preview Dots */}
                       <div className="pt-2 flex items-center gap-2">
                         <span className="font-label-sm text-label-sm text-outline mr-1">
                           Tones:
@@ -774,7 +779,7 @@ export default function Page() {
                     </div>
                   </div>
                 </article>
-                {/*  Product 4: Calais Silk-Loom Shade  */}
+                {/* Product 4: Calais Silk-Loom Shade */}
                 <article
                   className="product-card group bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden"
                   data-motor="matter"
@@ -829,7 +834,7 @@ export default function Page() {
                         Jacquard looms for exceptional tactile depth and
                         daylight bounce.
                       </p>
-                      {/*  Swatch Preview Dots  */}
+                      {/* Swatch Preview Dots */}
                       <div className="pt-2 flex items-center gap-2">
                         <span className="font-label-sm text-label-sm text-outline mr-1">
                           Tones:
@@ -869,7 +874,7 @@ export default function Page() {
                     </div>
                   </div>
                 </article>
-                {/*  Product 5: Geneva Fine Weave  */}
+                {/* Product 5: Geneva Fine Weave */}
                 <article
                   className="product-card group bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden"
                   data-motor="24v"
@@ -923,7 +928,7 @@ export default function Page() {
                         Uniform micro-perforated density designed for executive
                         conference suites and high-lumen residential atriums.
                       </p>
-                      {/*  Swatch Preview Dots  */}
+                      {/* Swatch Preview Dots */}
                       <div className="pt-2 flex items-center gap-2">
                         <span className="font-label-sm text-label-sm text-outline mr-1">
                           Tones:
@@ -963,7 +968,7 @@ export default function Page() {
                     </div>
                   </div>
                 </article>
-                {/*  Product 6: Vapour Architectural Sheer  */}
+                {/* Product 6: Vapour Architectural Sheer */}
                 <article
                   className="product-card group bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden"
                   data-motor="manual"
@@ -1018,7 +1023,7 @@ export default function Page() {
                         crystalline outward clarity while diffusing harsh
                         interior reflections.
                       </p>
-                      {/*  Swatch Preview Dots  */}
+                      {/* Swatch Preview Dots */}
                       <div className="pt-2 flex items-center gap-2">
                         <span className="font-label-sm text-label-sm text-outline mr-1">
                           Tones:
@@ -1061,7 +1066,7 @@ export default function Page() {
               </div>
             </div>
           </section>
-          {/*  Technical Spec & Architectural Integration Blueprint Strip  */}
+          {/* Technical Spec & Architectural Integration Blueprint Strip */}
           <section className="w-full px-gutter-mobile lg:px-margin py-space-xl">
             <div className="max-w-7xl mx-auto bg-surface-container-low rounded-xl p-space-lg lg:p-space-xl">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-space-lg">
@@ -1134,7 +1139,7 @@ export default function Page() {
               </div>
             </div>
           </section>
-          {/*  Interactive Tier Switching & Filter Orchestration Script  */}
+          {/* Interactive Tier Switching & Filter Orchestration Script */}
         </div>
       </main>
       <footer className="w-full bg-surface-container-lowest mt-space-xl py-space-lg shadow-[0_-1px_6px_rgba(0,0,0,0.02)]">
@@ -1173,6 +1178,6 @@ export default function Page() {
           </div>
         </div>
       </footer>
-    </main>
+    </>
   );
 }

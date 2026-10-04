@@ -1,6 +1,11 @@
 export default function Page() {
   return (
-    <main>
+    <>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}`,
+        }}
+      />
       <header className="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)]">
         <div className="h-20 w-full px-margin-mobile lg:px-margin flex items-center justify-between gap-gutter">
           <div className="flex items-center gap-space-md">
@@ -65,10 +70,10 @@ export default function Page() {
       </header>
       <main className="w-full pt-20 bg-surface-container-lowest min-h-screen">
         <div className="flex flex-col w-full">
-          {/*  HERO: Pure Light, Editorial & Architectural Spatial Rhythm  */}
+          {/* HERO: Pure Light, Editorial & Architectural Spatial Rhythm */}
           <section className="relative w-full px-margin-mobile lg:px-margin pt-space-lg lg:pt-space-xl pb-space-xl overflow-hidden bg-surface-container-lowest">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
-              {/*  Text Narrative Column  */}
+              {/* Text Narrative Column */}
               <div className="lg:col-span-6 flex flex-col items-start z-10">
                 <div className="inline-flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-surface-container-low mb-space-md shadow-sm">
                   <span className="w-1.5 h-1.5 rounded-full bg-secondary"></span>
@@ -96,14 +101,14 @@ export default function Page() {
                     Explore Collection
                   </a>
                 </div>
-                {/*  Metric micro-strip  */}
+                {/* Metric micro-strip */}
                 <div className="grid grid-cols-3 gap-gutter pt-space-xl mt-space-lg w-full max-w-lg">
                   <div className="flex flex-col"></div>
                 </div>
               </div>
-              {/*  Hero Visual Column  */}
+              {/* Hero Visual Column */}
               <div className="lg:col-span-6 relative mt-space-lg lg:mt-0">
-                {/*  Whisper-soft framing backdrop  */}
+                {/* Whisper-soft framing backdrop */}
                 <div className="absolute -inset-2 rounded-2xl bg-surface-container-low shadow-sm -rotate-1 hidden sm:block"></div>
                 <div className="relative rounded-xl overflow-hidden shadow-xl bg-surface-container-lowest aspect-[4/3] lg:aspect-[11/10] group">
                   <img
@@ -111,7 +116,7 @@ export default function Page() {
                     data-alt="High-end architectural photography of luxury home interior with window blinds and treatments, circular composition frame inspired by modern interior design catalogs."
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkWebaybcbyrpglvaJXwY3N-nC4Wx476OyX9S_UTAAPKJqZifEaH-nrrt_dFKcf62eXdJgLv-CKzGTK7Nx2zIp8LTgKa06Ih9UapWGl5juXPoALRzSLL5DJL3QqSvXamIyY5ayy6L0auBMhcDOqc8llOn5Nr6TIo3kqWxKdF-yD3wgNXS71oAqPwCejxygkr1IH697V2PwLxVnz0PtjutuDEqaCMuvjfSbTB9ftaQmll3YYjrGMvE8vw"
                   />
-                  {/*  Editorial Live Atmosphere HUD Float  */}
+                  {/* Editorial Live Atmosphere HUD Float */}
                   <div className="absolute bottom-6 left-6 right-6 p-space-md rounded-lg bg-surface-container-lowest/90 backdrop-blur-md shadow-lg flex items-center justify-between">
                     <div className="flex items-center gap-space-sm">
                       <span className="material-symbols-outlined text-secondary text-[22px]">
@@ -137,7 +142,7 @@ export default function Page() {
               </div>
             </div>
           </section>
-          {/*  4-POINT TRUST & CRAFT STRIP (CANAL / JANAL STYLE)  */}
+          {/* 4-POINT TRUST & CRAFT STRIP (CANAL / JANAL STYLE) */}
           <section className="w-full px-margin-mobile lg:px-margin py-space-lg bg-surface-container-lowest">
             <div className="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
@@ -205,7 +210,7 @@ export default function Page() {
               </div>
             </div>
           </section>
-          {/*  CURATED ARCHITECTURAL COLLECTIONS  */}
+          {/* CURATED ARCHITECTURAL COLLECTIONS */}
           <section className="w-full px-margin-mobile lg:px-margin py-space-xl bg-surface-container-lowest">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-space-lg gap-space-md">
               <div>
@@ -221,7 +226,7 @@ export default function Page() {
                 that light and movement appear unassisted.
               </p>
             </div>
-            {/*  3 Editorial Showcase Cards  */}
+            {/* 3 Editorial Showcase Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter max-w-5xl mx-auto">
               <article className="group flex flex-col rounded-xl bg-surface-container-lowest p-space-md shadow-md hover:shadow-xl transition-all duration-300 border border-surface-container-high/40">
                 <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden bg-surface-container-low mb-space-md">
@@ -251,7 +256,7 @@ export default function Page() {
               </article>
             </div>
           </section>
-          {/*  INTERACTIVE SYSTEM SIMULATION MODULE  */}
+          {/* INTERACTIVE SYSTEM SIMULATION MODULE */}
           <section className="w-full px-margin-mobile lg:px-margin py-space-xl bg-surface-container-lowest">
             <div className="rounded-2xl p-space-lg lg:p-space-xl bg-surface-container-lowest shadow-lg">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
@@ -267,7 +272,7 @@ export default function Page() {
                     presets. Experience how subtle modulation transforms
                     architectural volumes without sound.
                   </p>
-                  {/*  Scene Selector Buttons  */}
+                  {/* Scene Selector Buttons */}
                   <div className="flex flex-col gap-space-sm">
                     <button
                       className="scene-toggle text-left p-space-md rounded-lg bg-surface-container-low transition-all duration-200 flex items-center justify-between"
@@ -323,7 +328,7 @@ export default function Page() {
                     </button>
                   </div>
                 </div>
-                {/*  Dynamic Visualization Canvas  */}
+                {/* Dynamic Visualization Canvas */}
                 <div className="lg:col-span-7 flex flex-col items-center">
                   <div className="w-full aspect-[16/10] rounded-xl overflow-hidden relative shadow-md bg-surface-container-low">
                     <img
@@ -332,7 +337,7 @@ export default function Page() {
                       id="simulation-image"
                       src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDdHX68uOg49Yw6rQDAi0agPJLvEegk2INtOTp-V49WNqTx1YU7QJkUsPCcUJPdbugK8vTT9y8W9ldUE-TSKIjG1nI0K2TtsiQQ6AmqiFEpatW5yW0TcMji2CZ3fT8zZ0yQOfczwXzfXOrUHhGCeRzPsDy2XTo9orPCId4JuiC0VzYquMoH4m8t7RP8-5ZJVvMB__Mz2zYwuZWUkrnoZ-tvx6AyIVoMkiWqjGfeBCBnn11nEsSsg9AiA"
                     />
-                    {/*  Realtime Telemetry Card Floating  */}
+                    {/* Realtime Telemetry Card Floating */}
                     <div className="absolute top-6 right-6 p-space-sm rounded-lg bg-surface-container-lowest/90 backdrop-blur shadow-md flex items-center gap-space-md">
                       <div className="flex items-center gap-2">
                         <span className="material-symbols-outlined text-secondary text-[18px]">
@@ -352,7 +357,7 @@ export default function Page() {
                         </span>
                       </div>
                     </div>
-                    {/*  Interactive Shading Slider Overlay  */}
+                    {/* Interactive Shading Slider Overlay */}
                     <div className="absolute bottom-6 left-6 right-6 p-space-md rounded-lg bg-surface-container-lowest/95 backdrop-blur shadow-md flex flex-col gap-space-xs">
                       <div className="flex justify-between items-center">
                         <span className="font-label-sm text-label-sm uppercase tracking-wider text-on-surface font-semibold">
@@ -379,9 +384,9 @@ export default function Page() {
               </div>
             </div>
           </section>
-          {/*  ARCHITECTURAL SPACES & RESIDENCES  */}
+          {/* ARCHITECTURAL SPACES & RESIDENCES */}
 
-          {/*  TRADE & AIA COLLABORATION TEASER  */}
+          {/* TRADE & AIA COLLABORATION TEASER */}
           <section className="w-full px-margin-mobile lg:px-margin py-space-lg bg-surface-container-lowest">
             <div className="rounded-xl p-space-lg lg:p-space-xl bg-surface-container-low shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-space-lg">
               <div className="max-w-2xl">
@@ -415,7 +420,7 @@ export default function Page() {
               </div>
             </div>
           </section>
-          {/*  QUIET CONVERSION / INQUIRY BANNER  */}
+          {/* QUIET CONVERSION / INQUIRY BANNER */}
           <section
             className="w-full px-margin-mobile lg:px-margin py-space-xl mb-space-lg bg-surface-container-lowest"
             id="installation-partners"
@@ -443,7 +448,7 @@ export default function Page() {
               <div className="w-full max-w-4xl p-space-sm rounded-xl bg-surface-container-lowest shadow-md mb-space-xl border border-surface-container-high/60">
                 <form
                   className="grid grid-cols-1 md:grid-cols-12 gap-space-sm"
-                  onsubmit="event.preventDefault();"
+                  onSubmit="event.preventDefault();"
                 >
                   <div className="md:col-span-6 relative flex items-center">
                     <span className="material-symbols-outlined text-on-surface-variant text-[20px] absolute left-4">
@@ -750,6 +755,6 @@ export default function Page() {
           </div>
         </div>
       </footer>
-    </main>
+    </>
   );
 }

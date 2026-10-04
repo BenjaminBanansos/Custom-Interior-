@@ -1,6 +1,11 @@
 export default function Page() {
   return (
-    <main>
+    <>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}`,
+        }}
+      />
       <header className="fixed top-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
         <div className="h-16 w-full px-gutter-mobile lg:px-margin flex items-center justify-between gap-gutter border-b border-surface-container-high bg-surface-container-lowest">
           <div className="flex items-center gap-space-md">
@@ -143,7 +148,7 @@ export default function Page() {
           </nav>
         </div>
         <div className="flex flex-col w-full">
-          {/*  Top Command & Architecture Overview Bar  */}
+          {/* Top Command & Architecture Overview Bar */}
           <section className="w-full px-gutter-mobile lg:px-margin pt-space-xs pb-space-lg">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
               <div className="space-y-1 max-w-3xl">
@@ -229,7 +234,7 @@ export default function Page() {
               </div>
             </div>
           </section>
-          {/*  Level 1: Category Strip / Architectural Ribbon  */}
+          {/* Level 1: Category Strip / Architectural Ribbon */}
           <section className="w-full px-gutter-mobile lg:px-margin pb-space-lg">
             <div className="flex items-center justify-between pb-space-xs mb-space-sm">
               <div className="flex items-center gap-space-xs">
@@ -460,7 +465,7 @@ export default function Page() {
               </div>
             </div>
           </section>
-          {/*  Level 2: Active Category Focus + Opacity Tiers Architecture  */}
+          {/* Level 2: Active Category Focus + Opacity Tiers Architecture */}
           <section className="w-full px-gutter-mobile lg:px-margin pb-space-lg">
             <div className="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm border border-surface-container-high space-y-space-md">
               <div className="flex flex-col lg:flex-row lg:items-center justify-between pb-space-sm border-b border-surface-container-high gap-space-sm">
@@ -542,7 +547,7 @@ export default function Page() {
               </div>
             </div>
           </section>
-          {/*  Level 3: Products Categorized Strictly under Category -> Opacity (Translucent Focus)  */}
+          {/* Level 3: Products Categorized Strictly under Category -> Opacity (Translucent Focus) */}
           <section className="w-full px-gutter-mobile lg:px-margin pb-space-xl">
             <div className="bg-surface-container-lowest rounded-2xl shadow-sm border border-surface-container-high overflow-hidden mb-space-lg">
               <div className="p-space-md border-b border-surface-container-high flex flex-col md:flex-row md:items-center justify-between gap-space-sm bg-surface-container-low/40">
@@ -1138,23 +1143,23 @@ export default function Page() {
               </div>
             </div>
           </section>
-          {/*  "+ Create Product" Architectural Slide-Out Modal Drawer  */}
+          {/* "+ Create Product" Architectural Slide-Out Modal Drawer */}
           <div
             className="fixed inset-0 z-50 pointer-events-none transition-all duration-300 opacity-0"
             id="create-product-drawer"
           >
-            {/*  Backdrop Scrim  */}
+            {/* Backdrop Scrim */}
             <div
               className="absolute inset-0 bg-primary-container/40 backdrop-blur-sm transition-opacity opacity-0"
               id="drawer-backdrop"
             ></div>
-            {/*  Right Drawer Content  */}
+            {/* Right Drawer Content */}
             <div
               className="absolute top-0 right-0 h-full w-full max-w-xl bg-surface-container-lowest shadow-2xl p-space-md lg:p-space-lg flex flex-col justify-between transform translate-x-full transition-transform duration-300 ease-out pointer-events-auto overflow-y-auto"
               id="drawer-panel"
             >
               <div className="space-y-space-md">
-                {/*  Drawer Header  */}
+                {/* Drawer Header */}
                 <div className="flex items-center justify-between pb-space-sm">
                   <div>
                     <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest">
@@ -1177,7 +1182,7 @@ export default function Page() {
                     </span>
                   </button>
                 </div>
-                {/*  Hierarchy Step 1: Master Category  */}
+                {/* Hierarchy Step 1: Master Category */}
                 <div className="space-y-2">
                   <label className="block font-label-md text-label-md text-on-surface uppercase tracking-wider">
                     Step 1 • Master Shade Category{" "}
@@ -1207,7 +1212,7 @@ export default function Page() {
                     Defines mechanical mounting hardware and fascia envelope.
                   </p>
                 </div>
-                {/*  Hierarchy Step 2: Opacity Sub-Tier (The explicit mandate)  */}
+                {/* Hierarchy Step 2: Opacity Sub-Tier (The explicit mandate) */}
                 <div className="space-y-2">
                   <label className="block font-label-md text-label-md text-on-surface uppercase tracking-wider">
                     Step 2 • Opacity Sub-Tier{" "}
@@ -1259,7 +1264,7 @@ export default function Page() {
                     </label>
                   </div>
                 </div>
-                {/*  Hierarchy Step 3: Specific Product Identifiers  */}
+                {/* Hierarchy Step 3: Specific Product Identifiers */}
                 <div className="space-y-space-sm pt-space-xs">
                   <div className="space-y-1">
                     <label className="block font-label-md text-label-md text-on-surface uppercase tracking-wider">
@@ -1327,7 +1332,7 @@ export default function Page() {
                     </div>
                   </div>
                 </div>
-                {/*  Spec Verification Ribbon  */}
+                {/* Spec Verification Ribbon */}
                 <div className="p-space-sm rounded-xl bg-surface-container-low flex items-start gap-space-xs">
                   <span className="material-symbols-outlined text-secondary text-lg mt-0.5">
                     verified
@@ -1342,7 +1347,7 @@ export default function Page() {
                   </div>
                 </div>
               </div>
-              {/*  Drawer Footer Actions  */}
+              {/* Drawer Footer Actions */}
               <div className="pt-space-md mt-space-md flex items-center justify-end gap-space-sm">
                 <button
                   className="px-space-md py-space-sm font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors"
@@ -1399,6 +1404,6 @@ export default function Page() {
           </div>
         </div>
       </footer>
-    </main>
+    </>
   );
 }
