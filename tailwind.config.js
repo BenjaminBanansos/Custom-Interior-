@@ -1,0 +1,55 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        surface: "#f8f9fa",
+        "surface-container-lowest": "#ffffff",
+        "surface-container-low": "#f8fafc",
+        "surface-container": "#f1f5f9",
+        "surface-container-high": "#e2e8f0",
+        "surface-tint": "#0b1426",
+        "on-surface": "#0b1426",
+        "on-surface-variant": "#64748b",
+        "primary-container": "#0b1426",
+        "on-primary": "#ffffff",
+        secondary: "#d4af37",
+        "on-secondary": "#0b1426",
+        outline: "#94a3b8",
+      },
+      fontFamily: {
+        heading: ["var(--font-outfit)", "Outfit", "sans-serif"],
+        body: ["var(--font-inter)", "Inter", "sans-serif"],
+      },
+      spacing: {
+        gutter: "2rem",
+        "gutter-mobile": "1rem",
+        margin: "4rem",
+        "margin-mobile": "1.5rem",
+        "space-xs": "0.5rem",
+        "space-sm": "0.75rem",
+        "space-md": "1rem",
+        "space-lg": "1.5rem",
+        "space-xl": "2.5rem",
+      },
+      fontSize: {
+        "display-lg": ["3.25rem", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
+        "headline-lg": ["2.25rem", { lineHeight: "1.2", letterSpacing: "-0.01em" }],
+        "headline-md": ["1.875rem", { lineHeight: "1.25" }],
+        "headline-sm": ["1.375rem", { lineHeight: "1.3" }],
+        "title-md": ["1.125rem", { lineHeight: "1.4", fontWeight: "600" }],
+        "label-md": ["0.875rem", { lineHeight: "1.4", fontWeight: "600" }],
+        "label-sm": ["0.75rem", { lineHeight: "1.4", fontWeight: "600" }],
+        "body-lg": ["1.125rem", { lineHeight: "1.6" }],
+        "body-md": ["1rem", { lineHeight: "1.6" }],
+        "body-sm": ["0.875rem", { lineHeight: "1.5" }],
+      },
+    },
+  },
+  plugins: [],
+};

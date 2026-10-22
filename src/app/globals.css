@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   /* Neutral Palette - Premium Architectural Tones */
   --bg-primary: hsl(0, 0%, 100%);
