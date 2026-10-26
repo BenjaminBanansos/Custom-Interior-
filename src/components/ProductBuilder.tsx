@@ -5,7 +5,9 @@ import { Product, FabricFamily, FabricColor, Category } from '../lib/products';
 import { saveProduct, getCategories, getProducts } from '../lib/storage_actions';
 import { useRouter, useParams } from 'next/navigation';
 
-export default function ProductBuilder({ productId: initialProductId, initialData }: { productId?: string, initialData?: any }) {\n  const params = useParams();\n  const productId = initialProductId || (params?.id as string);
+export default function ProductBuilder({ productId: initialProductId, initialData }: { productId?: string, initialData?: any }) {
+  const params = useParams();
+  const productId = initialProductId || (params?.id as string);
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [isLoading, setIsLoading] = useState(!initialData && (!!initialProductId || !!(params && params.id)));
